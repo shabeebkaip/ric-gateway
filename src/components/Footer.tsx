@@ -25,7 +25,7 @@ const socialLinks = [
 export const Footer = () => {
   return (
     <footer className="bg-foreground text-card pt-16 pb-8">
-      <div className="container-padding max-w-7xl mx-auto">
+      <div className="container-padding container mx-auto">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <motion.div

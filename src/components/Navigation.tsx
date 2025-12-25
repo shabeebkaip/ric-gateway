@@ -42,7 +42,7 @@ export const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container-padding max-w-7xl mx-auto">
+      <div className="container-padding container mx-auto">
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <motion.a
@@ -50,13 +50,11 @@ export const Navigation = () => {
             className="flex items-center gap-3"
             whileHover={{ scale: 1.02 }}
           >
-            <div className="w-12 h-12 rounded-xl gradient-bg-primary flex items-center justify-center shadow-soft">
-              <span className="text-xl font-bold text-primary-foreground">R</span>
-            </div>
-            <div className="hidden sm:block">
-              <p className="text-lg font-bold text-foreground">RIC</p>
-              <p className="text-xs text-muted-foreground -mt-1">Medical Solutions</p>
-            </div>
+            <img 
+              src="/logo@2x.png" 
+              alt="RIC Medical Solutions" 
+              className="h-12 w-auto object-contain"
+            />
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -70,9 +68,12 @@ export const Navigation = () => {
               >
                 <a
                   href={item.href}
-                  className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-lg hover:bg-primary/5"
+                  className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-all duration-300 rounded-lg hover:bg-gradient-to-r hover:from-gold/5 hover:to-primary/5 relative group"
                 >
-                  {item.label}
+                  <span className="relative">
+                    {item.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-gold to-primary transition-all duration-300 group-hover:w-full"></span>
+                  </span>
                   {item.dropdown && <ChevronDown className="w-4 h-4" />}
                 </a>
                 
@@ -88,7 +89,7 @@ export const Navigation = () => {
                       <a
                         key={subItem.label}
                         href={subItem.href}
-                        className="block px-4 py-3 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors"
+                        className="block px-4 py-3 text-sm text-foreground/80 hover:text-primary hover:bg-gradient-to-r hover:from-gold/5 hover:to-primary/5 transition-all duration-300 border-l-2 border-transparent hover:border-gold"
                       >
                         {subItem.label}
                       </a>

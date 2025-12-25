@@ -11,7 +11,7 @@ const stats = [
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-[90vh] gradient-bg-hero overflow-hidden">
+    <section className="relative  gradient-bg-hero overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float" />
@@ -37,7 +37,7 @@ export const HeroSection = () => {
         </svg>
       </div>
 
-      <div className="container-padding max-w-7xl mx-auto relative z-10">
+      <div className="container-padding container  mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 pt-24 lg:pt-32">
           {/* Left Content */}
           <motion.div 
@@ -47,13 +47,13 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <motion.div 
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-gold/10 to-primary/10 border border-gold/20 text-primary text-sm font-medium mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <Heart className="w-4 h-4 animate-heartbeat" />
-              <span>Trusted Since 1985</span>
+              <Heart className="w-4 h-4 animate-heartbeat text-gold" />
+              <span className="bg-gradient-to-r from-gold to-primary bg-clip-text text-transparent font-semibold">Trusted Since 1985</span>
             </motion.div>
 
             <motion.h1 
@@ -81,10 +81,10 @@ export const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <Button variant="hero" size="xl">
+              <Button variant="hero" size="xl" className="bg-gradient-to-r from-primary to-primary hover:from-gold hover:to-primary transition-all duration-500 shadow-lg hover:shadow-gold/20">
                 Explore Our Solutions
               </Button>
-              <Button variant="heroOutline" size="xl">
+              <Button variant="heroOutline" size="xl" className="hover:border-gold/50 hover:text-gold transition-all duration-300">
                 Contact Us
               </Button>
             </motion.div>
@@ -154,12 +154,12 @@ export const HeroSection = () => {
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              className="glass-card rounded-2xl p-6 text-center hover-lift"
+              className="glass-card rounded-2xl p-6 text-center hover-lift group hover:border-gold/30 transition-all duration-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 + index * 0.1 }}
             >
-              <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
+              <stat.icon className="w-8 h-8 text-primary group-hover:text-gold mx-auto mb-3 transition-colors duration-300" />
               <p className="text-3xl font-bold text-foreground mb-1">{stat.value}</p>
               <p className="text-sm text-muted-foreground">{stat.label}</p>
             </motion.div>

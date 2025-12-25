@@ -28,7 +28,7 @@ const values = [
 export const VisionMissionSection = () => {
   return (
     <section className="section-padding bg-background">
-      <div className="container-padding max-w-7xl mx-auto">
+      <div className="container-padding container mx-auto">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}

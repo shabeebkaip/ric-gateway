@@ -58,6 +58,8 @@
     --shadow-card: 0 8px 30px -8px hsl(220 49% 20% / 0.1);
     --shadow-elevated: 0 20px 50px -12px hsl(203 100% 39% / 0.15);
     --shadow-glow: 0 0 40px hsl(203 100% 39% / 0.2);
+    --shadow-gold: 0 4px 20px -4px hsl(43 46% 58% / 0.3);
+    --shadow-gold-glow: 0 0 30px hsl(43 46% 58% / 0.2);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -113,6 +115,10 @@
 
   .gradient-bg-primary {
     background: var(--gradient-primary);
+  }
+
+  .gradient-bg-gold {
+    background: linear-gradient(135deg, hsl(43 46% 58%), hsl(203 100% 39%));
   }
 
   .gradient-bg-hero {

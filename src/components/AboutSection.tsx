@@ -23,7 +23,7 @@ const features = [
 export const AboutSection = () => {
   return (
     <section id="about" className="section-padding bg-card">
-      <div className="container-padding max-w-7xl mx-auto">
+      <div className="container-padding container mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Content */}
           <motion.div

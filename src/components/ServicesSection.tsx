@@ -50,7 +50,7 @@ const itemVariants = {
 export const ServicesSection = () => {
   return (
     <section id="services" className="section-padding bg-background">
-      <div className="container-padding max-w-7xl mx-auto">
+      <div className="container-padding container mx-auto">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -58,8 +58,8 @@ export const ServicesSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Our Services
+          <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-gold/10 to-primary/10 border border-gold/20 text-sm font-medium mb-4">
+            <span className="bg-gradient-to-r from-gold to-primary bg-clip-text text-transparent font-semibold">Our Services</span>
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Comprehensive Medical Solutions
@@ -79,21 +79,21 @@ export const ServicesSection = () => {
           {services.map((service) => (
             <motion.div
               key={service.title}
-              className="group relative glass-card rounded-2xl p-8 hover-lift cursor-pointer overflow-hidden"
+              className="group relative glass-card rounded-2xl p-8 hover-lift cursor-pointer overflow-hidden hover:border-gold/30 transition-all duration-300"
               variants={itemVariants}
             >
               {/* Background Gradient on Hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${
                 service.color === "primary" 
-                  ? "from-primary/5 to-primary/0" 
-                  : "from-accent/5 to-accent/0"
+                  ? "from-gold/5 via-primary/5 to-primary/0" 
+                  : "from-gold/5 via-accent/5 to-accent/0"
               } opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
               
               <div className="relative z-10">
-                <div className={`inline-flex p-4 rounded-2xl mb-6 ${
+                <div className={`inline-flex p-4 rounded-2xl mb-6 transition-all duration-300 ${
                   service.color === "primary" 
-                    ? "bg-primary/10 text-primary" 
-                    : "bg-accent/10 text-accent"
+                    ? "bg-gradient-to-br from-gold/10 to-primary/10 text-primary group-hover:from-gold/20 group-hover:to-primary/20" 
+                    : "bg-gradient-to-br from-gold/10 to-accent/10 text-accent group-hover:from-gold/20 group-hover:to-accent/20"
                 }`}>
                   <service.icon className="w-8 h-8" />
                 </div>
@@ -108,12 +108,10 @@ export const ServicesSection = () => {
                 
                 <a
                   href="#"
-                  className={`inline-flex items-center gap-2 font-medium ${
-                    service.color === "primary" ? "text-primary" : "text-accent"
-                  } group-hover:gap-4 transition-all duration-300`}
+                  className="inline-flex items-center gap-2 font-medium bg-gradient-to-r from-gold to-primary bg-clip-text text-transparent group-hover:gap-4 transition-all duration-300"
                 >
                   Learn More
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-gold" />
                 </a>
               </div>
             </motion.div>
