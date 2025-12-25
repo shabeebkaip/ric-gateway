@@ -33,14 +33,12 @@ export const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl gradient-bg-primary flex items-center justify-center">
-                <span className="text-xl font-bold text-primary-foreground">R</span>
-              </div>
-              <div>
-                <p className="text-lg font-bold text-card">RIC</p>
-                <p className="text-xs text-card/60 -mt-1">Medical Solutions</p>
-              </div>
+            <div className="mb-6">
+              <img 
+                src="/logo@2x.png" 
+                alt="RIC Medical Solutions" 
+                className="h-16 w-auto object-contain"
+              />
             </div>
             <p className="text-card/70 mb-6 leading-relaxed">
               Leading provider of advanced medical equipment and healthcare solutions in Saudi Arabia since 1985.
