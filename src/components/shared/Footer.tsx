@@ -45,18 +45,6 @@ export const Footer = () => {
             <p className="text-card/70 mb-6 leading-relaxed">
               Leading provider of advanced medical equipment and healthcare solutions in Saudi Arabia since 1985.
             </p>
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="w-10 h-10 rounded-lg bg-card/10 flex items-center justify-center hover:bg-primary transition-colors group"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-5 h-5 text-card/70 group-hover:text-primary-foreground transition-colors" />
-                </a>
-              ))}
-            </div>
           </motion.div>
 
           {/* Quick Links */}

@@ -5,7 +5,7 @@ import '@fontsource/poppins/600.css';
 import '@fontsource/poppins/700.css';
 import '../src/index.css';
 import { Providers } from './providers';
-import { Navigation } from '@/components/Navigation';
+import { Navigation } from '@/components/shared/Navigation';
 import { Footer } from '@/components/shared/Footer';
 
 export const metadata: Metadata = {

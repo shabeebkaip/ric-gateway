@@ -85,7 +85,7 @@ export const Navigation = () => {
               <img 
                 src="/logo@2x.png" 
                 alt="RIC Medical Solutions" 
-                className="h-12 w-auto object-contain relative z-10"
+                className="h-16 md:h-20 w-auto object-contain relative z-10"
               />
               {/* Glow effect on hover */}
               <div className="absolute inset-0 bg-gradient-to-r from-gold/20 to-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
