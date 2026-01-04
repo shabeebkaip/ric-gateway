@@ -3,20 +3,20 @@
 import { motion } from "framer-motion";
 import { Heart, Activity, Shield, Award, Users, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { partners } from "@/lib/data";
+import { companyStats } from "@/lib/data";
 
 const stats = [
   {
     icon: Clock,
-    value: new Date().getFullYear() - 1985,
+    value: new Date().getFullYear() - companyStats.yearsFounded,
     label: "Years of Excellence",
   },
   {
     icon: Users,
-    value: partners.length.toString(),
+    value: companyStats.partnersCount.toString(),
     label: "International Partners",
   },
-  { icon: Shield, value: "100+", label: "Healthcare Facilities" },
+  { icon: Shield, value: companyStats.facilitiesServed, label: "Healthcare Facilities" },
   { icon: Award, value: "ISO", label: "Certified Operations" },
 ];
 

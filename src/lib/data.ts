@@ -123,3 +123,61 @@ export const productCategories = [
     icon: "Package",
   },
 ];
+
+// Company stats
+export const companyStats = {
+  yearsFounded: 1985,
+  partnersCount: partners.length,
+  categoriesCount: productCategories.length,
+  facilitiesServed: "100+",
+  support: "24/7",
+};
+
+// Company features
+export const companyFeatures = [
+  {
+    icon: "Award",
+    title: "ISO Certified Operations",
+    description: "Maintaining international quality standards in all our processes and services.",
+  },
+  {
+    icon: "Shield",
+    title: "SFDA Approved Products",
+    description: "All our medical equipment meets Saudi FDA regulatory requirements.",
+  },
+  {
+    icon: "Headphones",
+    title: "Comprehensive Support",
+    description: "From installation to maintenance, our team provides complete technical support.",
+  },
+  {
+    icon: "TrendingUp",
+    title: "Continuous Innovation",
+    description: "Staying ahead with the latest medical technologies and healthcare solutions.",
+  },
+];
+
+// Company values (Vision, Mission, Values)
+export const companyValues = [
+  {
+    icon: "Eye",
+    title: "Our Vision",
+    description: "Keep pace with fast-moving technology for Saudi Arabia's 2030 vision to accomplish excellence in healthy living by offering complete medical solutions.",
+    gradient: "from-primary/10 to-primary/5",
+    iconColor: "text-primary",
+  },
+  {
+    icon: "Target",
+    title: "Our Mission",
+    description: "Inspire hope and improve quality of life by offering verifiable, effective professional solutions ensuring partner satisfaction.",
+    gradient: "from-accent/10 to-accent/5",
+    iconColor: "text-accent",
+  },
+  {
+    icon: "Heart",
+    title: "Our Values",
+    description: "Trust, loyalty, and respect — the constant fundamentals of our commitment to excellence in healthcare partnerships.",
+    gradient: "from-gold/10 to-gold/5",
+    iconColor: "text-gold",
+  },
+];

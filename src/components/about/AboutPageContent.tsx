@@ -1,77 +1,41 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Building2, Users2, Headphones, Award, TrendingUp, Shield, Heart, Eye, Target } from "lucide-react";
+import { CheckCircle2, Award, TrendingUp, Shield, Heart, Eye, Target, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { companyStats, companyFeatures, companyValues } from "@/lib/data";
+
+const iconMap: Record<string, any> = {
+  Award,
+  Shield,
+  Headphones,
+  TrendingUp,
+  Eye,
+  Target,
+  Heart,
+};
 
 const stats = [
   {
-    number: "40+",
+    number: `${new Date().getFullYear() - companyStats.yearsFounded}+`,
     label: "Years of Excellence",
-    description: "Since 1985",
+    description: `Since ${companyStats.yearsFounded}`,
   },
   {
-    number: "9+",
+    number: `${companyStats.partnersCount}+`,
     label: "Global Partners",
     description: "Worldwide manufacturers",
   },
   {
-    number: "4",
+    number: companyStats.categoriesCount.toString(),
     label: "Product Categories",
     description: "Specialized solutions",
   },
   {
-    number: "24/7",
+    number: companyStats.support,
     label: "Support",
     description: "Technical assistance",
-  },
-];
-
-const features = [
-  {
-    icon: Award,
-    title: "ISO Certified Operations",
-    description: "Maintaining international quality standards in all our processes and services.",
-  },
-  {
-    icon: Shield,
-    title: "SFDA Approved Products",
-    description: "All our medical equipment meets Saudi FDA regulatory requirements.",
-  },
-  {
-    icon: Headphones,
-    title: "Comprehensive Support",
-    description: "From installation to maintenance, our team provides complete technical support.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Continuous Innovation",
-    description: "Staying ahead with the latest medical technologies and healthcare solutions.",
-  },
-];
-
-const values = [
-  {
-    icon: Eye,
-    title: "Our Vision",
-    description: "Keep pace with fast-moving technology for Saudi Arabia's 2030 vision to accomplish excellence in healthy living by offering complete medical solutions.",
-    gradient: "from-primary/10 to-primary/5",
-    iconColor: "text-primary",
-  },
-  {
-    icon: Target,
-    title: "Our Mission",
-    description: "Inspire hope and improve quality of life by offering verifiable, effective professional solutions ensuring partner satisfaction.",
-    gradient: "from-accent/10 to-accent/5",
-    iconColor: "text-accent",
-  },
-  {
-    icon: Heart,
-    title: "Our Values",
-    description: "Trust, loyalty, and respect — the constant fundamentals of our commitment to excellence in healthcare partnerships.",
-    gradient: "from-gold/10 to-gold/5",
-    iconColor: "text-gold",
   },
 ];
 
@@ -168,28 +132,31 @@ export const AboutPageContent = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.title}
-                  className="glass-card rounded-2xl p-6 hover-lift border border-border/50 hover:border-gold/30 transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="w-6 h-6 text-primary" />
+              {companyFeatures.map((feature, index) => {
+                const Icon = iconMap[feature.icon];
+                return (
+                  <motion.div
+                    key={feature.title}
+                    className="glass-card rounded-2xl p-6 hover-lift border border-border/50 hover:border-gold/30 transition-all duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-foreground mb-2">{feature.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {feature.description}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">{feature.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </div>
         </div>
@@ -216,33 +183,36 @@ export const AboutPageContent = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${value.gradient} p-8 border border-border/50`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-              >
-                <div className="relative z-10">
-                  <div className={`inline-flex p-4 rounded-2xl bg-card shadow-soft mb-6 ${value.iconColor}`}>
-                    <value.icon className="w-8 h-8" />
+            {companyValues.map((value, index) => {
+              const Icon = iconMap[value.icon];
+              return (
+                <motion.div
+                  key={value.title}
+                  className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${value.gradient} p-8 border border-border/50`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 }}
+                >
+                  <div className="relative z-10">
+                    <div className={`inline-flex p-4 rounded-2xl bg-card shadow-soft mb-6 ${value.iconColor}`}>
+                      <Icon className="w-8 h-8" />
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold text-foreground mb-4">
+                      {value.title}
+                    </h3>
+                    
+                    <p className="text-muted-foreground leading-relaxed">
+                      {value.description}
+                    </p>
                   </div>
-                  
-                  <h3 className="text-2xl font-bold text-foreground mb-4">
-                    {value.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground leading-relaxed">
-                    {value.description}
-                  </p>
-                </div>
 
-                {/* Decorative Element */}
-                <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-card/30 blur-3xl" />
-              </motion.div>
-            ))}
+                  {/* Decorative Element */}
+                  <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-card/30 blur-3xl" />
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
