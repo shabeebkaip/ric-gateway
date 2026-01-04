@@ -5,6 +5,8 @@ import '@fontsource/poppins/600.css';
 import '@fontsource/poppins/700.css';
 import '../src/index.css';
 import { Providers } from './providers';
+import { Navigation } from '@/components/Navigation';
+import { Footer } from '@/components/shared/Footer';
 
 export const metadata: Metadata = {
   title: 'RIC - Riyadh International Corporation | Medical Equipment & Healthcare Solutions',
@@ -25,7 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navigation />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

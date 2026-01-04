@@ -1,26 +1,26 @@
 'use client';
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Microscope, Stethoscope, ScanLine, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { productCategories, partners } from "@/lib/data";
+import Link from "next/link";
 
 const navItems = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/#about" },
-  // {
-  //   label: "Services",
-  //   href: "#services",
-  //   dropdown: [
-  //     { label: "Cancer Treatment", href: "#cancer" },
-  //     { label: "Urology Treatment", href: "#urology" },
-  //     { label: "Medical Imaging", href: "#imaging" },
-  //     { label: "Disposables", href: "#disposables" },
-  //   ],
-  // },
+  { label: "Products", href: "#", hasDropdown: true },
   { label: "Partners", href: "/#partners" },
   { label: "Contact", href: "/contact" },
 ];
+
+const categoryIcons: Record<string, any> = {
+  Microscope,
+  Stethoscope,
+  ScanLine,
+  Package,
+};
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,6 +33,17 @@ export const Navigation = () => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as Element).closest('.dropdown-container')) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
   // Scroll to contact section
@@ -65,7 +76,7 @@ export const Navigation = () => {
         <nav className="flex items-center justify-between relative">
           {/* Logo */}
           <motion.a
-            href="#"
+            href="/"
             className="flex items-center gap-3 relative z-10"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
@@ -83,26 +94,87 @@ export const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-2 relative">
-            {/* {navItems.map((item, index) => (
-              ...existing code for nav items and dropdown...
-            ))} */}
-            {navItems.filter(item => item.label !== "Services").map((item, index) => (
+            {navItems.map((item, index) => (
               <motion.div
                 key={item.label}
-                className="relative"
+                className="relative dropdown-container"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
+                onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.label)}
+                onMouseLeave={() => item.hasDropdown && setActiveDropdown(null)}
               >
-                <a
-                  href={item.href}
-                  className="flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-foreground/80 hover:text-primary transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-gold/5 hover:to-primary/5 relative group"
-                >
-                  <span className="relative">
-                    {item.label}
-                    <span className="absolute -bottom-1.5 left-0 w-0 h-0.5 bg-gradient-to-r from-gold to-primary transition-all duration-300 group-hover:w-full rounded-full"></span>
-                  </span>
-                </a>
+                {item.hasDropdown ? (
+                  <>
+                    <button
+                      className="flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-foreground/80 hover:text-primary transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-gold/5 hover:to-primary/5 relative group"
+                    >
+                      <span className="relative">
+                        {item.label}
+                        <span className="absolute -bottom-1.5 left-0 w-0 h-0.5 bg-gradient-to-r from-gold to-primary transition-all duration-300 group-hover:w-full rounded-full"></span>
+                      </span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    {/* Mega Dropdown Menu */}
+                    <AnimatePresence>
+                      {activeDropdown === item.label && (
+                        <motion.div
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[700px] glass-card rounded-2xl shadow-2xl border border-gold/10 p-6"
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <div className="grid grid-cols-2 gap-4">
+                            {productCategories.map((category) => {
+                              const Icon = categoryIcons[category.icon];
+                              const categoryPartners = partners.filter(p => 
+                                p.categories.includes(category.name)
+                              );
+                              
+                              return (
+                                <Link
+                                  key={category.id}
+                                  href={`/products/${category.slug}`}
+                                  className="group p-4 rounded-xl hover:bg-gradient-to-br hover:from-gold/5 hover:to-primary/5 border border-transparent hover:border-gold/20 transition-all duration-300"
+                                  onClick={() => setActiveDropdown(null)}
+                                >
+                                  <div className="flex items-start gap-3">
+                                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                      <Icon className="w-5 h-5 text-primary" />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                      <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                                        {category.name}
+                                      </h3>
+                                      <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
+                                        {category.description}
+                                      </p>
+                                      <div className="flex items-center gap-1 text-xs text-gold">
+                                        <span className="font-medium">{categoryPartners.length} Suppliers</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </>
+                ) : (
+                  <a
+                    href={item.href}
+                    className="flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-foreground/80 hover:text-primary transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-gold/5 hover:to-primary/5 relative group"
+                  >
+                    <span className="relative">
+                      {item.label}
+                      <span className="absolute -bottom-1.5 left-0 w-0 h-0.5 bg-gradient-to-r from-gold to-primary transition-all duration-300 group-hover:w-full rounded-full"></span>
+                    </span>
+                  </a>
+                )}
               </motion.div>
             ))}
           </div>
@@ -110,7 +182,7 @@ export const Navigation = () => {
           {/* Right Side */}
           <div className="hidden lg:flex items-center gap-4">
             <motion.a 
-              href="tel:+966" 
+              href="tel:+966114654113" 
               className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-gold transition-all duration-300 rounded-lg hover:bg-gold/5 group"
               whileHover={{ scale: 1.05 }}
             >
@@ -149,42 +221,68 @@ export const Navigation = () => {
         </nav>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <motion.div
-            className="lg:hidden mt-4 glass-card rounded-2xl p-4 shadow-2xl border border-gold/10"
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            transition={{ duration: 0.3 }}
-          >
-            {navItems.filter(item => item.label !== "Services").map((item, index) => (
-              <motion.div 
-                key={item.label}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.05 }}
-              >
-                <a
-                  href={item.href}
-                  className="block py-3 px-4 text-foreground/80 hover:text-primary transition-all duration-300 font-semibold rounded-lg hover:bg-gradient-to-r hover:from-gold/5 hover:to-primary/5"
-                  onClick={() => setIsMobileMenuOpen(false)}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              className="lg:hidden mt-4 glass-card rounded-2xl p-4 shadow-2xl border border-gold/10"
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+            >
+              {navItems.map((item, index) => (
+                <motion.div 
+                  key={item.label}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
                 >
-                  {item.label}
-                </a>
+                  {item.hasDropdown ? (
+                    <div className="mb-2">
+                      <div className="py-3 px-4 text-foreground/80 font-semibold text-sm">
+                        {item.label}
+                      </div>
+                      <div className="pl-4 space-y-1">
+                        {productCategories.map((category) => {
+                          const Icon = categoryIcons[category.icon];
+                          return (
+                            <Link
+                              key={category.id}
+                              href={`/products/${category.slug}`}
+                              className="flex items-center gap-3 py-2 px-4 text-foreground/70 hover:text-primary transition-all duration-300 rounded-lg hover:bg-gradient-to-r hover:from-gold/5 hover:to-primary/5"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              <Icon className="w-4 h-4" />
+                              <span className="text-sm">{category.name}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : (
+                    <a
+                      href={item.href}
+                      className="block py-3 px-4 text-foreground/80 hover:text-primary transition-all duration-300 font-semibold rounded-lg hover:bg-gradient-to-r hover:from-gold/5 hover:to-primary/5"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  )}
+                </motion.div>
+              ))}
+              <motion.div className="mt-4 pt-4 border-t border-border/50">
+                <Button 
+                  variant="hero" 
+                  size="default" 
+                  className="w-full bg-gradient-to-r from-gold to-primary hover:from-gold/90 hover:to-primary/90 shadow-lg"
+                  onClick={handleQuoteClick}
+                >
+                  Get a Quote
+                </Button>
               </motion.div>
-            ))}
-            <motion.a className="mt-4 pt-4 border-t border-border/50" href="contact">
-              <Button 
-                variant="hero" 
-                size="default" 
-                className="w-full bg-gradient-to-r from-gold to-primary hover:from-gold/90 hover:to-primary/90 shadow-lg"
-                onClick={handleQuoteClick}
-              >
-                Get a Quote
-              </Button>
-            </motion.a>
-          </motion.div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.header>
   );

@@ -6,6 +6,8 @@ export const partners = [
     logo: "/partners/basda.png",
     website: "https://www.basdamri.com/",
     invertColor: false,
+    categories: ["Medical Imaging"],
+    products: ["MRI Systems", "CT Scanners", "X-Ray Equipment"],
   },
   {
     name: "Boston Scientific",
@@ -15,6 +17,8 @@ export const partners = [
     website:
       "https://www.bostonscientific.com/en-US/patients-caregivers/device-support/penile-implants.html",
     invertColor: false,
+    categories: ["Urology"],
+    products: ["Penile Implants", "Urological Devices", "Endourology"],
   },
   {
     name: "Combat Medical Ltd",
@@ -23,6 +27,8 @@ export const partners = [
     logo: "/partners/combat-medical.png",
     website: "https://combatcancer.com/",
     invertColor: false,
+    categories: ["Cancer Treatment"],
+    products: ["Oncology Equipment", "Cancer Therapy Systems", "Radiotherapy"],
   },
   {
     name: "Dornier MedTech",
@@ -31,6 +37,8 @@ export const partners = [
     logo: "/partners/dornier-medtech.png",
     website: "https://www.dornier.com/",
     invertColor: false,
+    categories: ["Urology"],
+    products: ["Lithotripsy Systems", "ESWL Technology", "Stone Treatment"],
   },
   {
     name: "Wikkon",
@@ -39,6 +47,8 @@ export const partners = [
     logo: "/partners/wikkon.png",
     website: "https://www.eswl.com/about-us/",
     invertColor: false,
+    categories: ["Urology"],
+    products: ["ESWL Systems", "Lithotripsy", "Urological Equipment"],
   },
   {
     name: "Excite Medical",
@@ -47,6 +57,8 @@ export const partners = [
     logo: "/partners/excite.png",
     website: "https://excitemedical.com/",
     invertColor: true,
+    categories: ["Cancer Treatment"],
+    products: ["Surgical Oncology", "Cancer Diagnostics", "Treatment Solutions"],
   },
   {
     name: "Redpine",
@@ -55,6 +67,8 @@ export const partners = [
     logo: "/partners/redpine.png",
     website: "https://en.redpinemed.com/",
     invertColor: false,
+    categories: ["Urology", "Medical Imaging"],
+    products: ["Endoscopy", "Imaging Systems", "Urological Instruments"],
   },
   {
     name: "Allwin",
@@ -63,6 +77,8 @@ export const partners = [
     logo: "/partners/allwin.jpg",
     website: "https://allwinmedical.com/",
     invertColor: false,
+    categories: ["Disposables"],
+    products: ["Surgical Disposables", "Medical Consumables", "Healthcare Supplies"],
   },
   {
     name: "Medispec",
@@ -71,5 +87,39 @@ export const partners = [
     logo: "/partners/medispec.svg",
     website: "https://medispec.com/",
     invertColor: true,
+    categories: ["Urology"],
+    products: ["Shockwave Therapy", "ED Treatment", "Lithotripsy"],
+  },
+];
+
+// Product categories for navigation
+export const productCategories = [
+  {
+    id: "cancer-treatment",
+    name: "Cancer Treatment",
+    slug: "cancer-treatment",
+    description: "Advanced oncology equipment and cancer therapy systems",
+    icon: "Microscope",
+  },
+  {
+    id: "urology",
+    name: "Urology",
+    slug: "urology",
+    description: "Comprehensive urological treatment and diagnostic solutions",
+    icon: "Stethoscope",
+  },
+  {
+    id: "medical-imaging",
+    name: "Medical Imaging",
+    slug: "medical-imaging",
+    description: "State-of-the-art diagnostic imaging systems",
+    icon: "ScanLine",
+  },
+  {
+    id: "disposables",
+    name: "Disposables",
+    slug: "disposables",
+    description: "Quality medical consumables and supplies",
+    icon: "Package",
   },
 ];

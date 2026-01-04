@@ -2,33 +2,15 @@
 
 import { motion } from "framer-motion";
 import { Microscope, Stethoscope, ScanLine, Package, ArrowRight } from "lucide-react";
+import { productCategories, partners } from "@/lib/data";
+import Link from "next/link";
 
-const services = [
-  {
-    icon: Microscope,
-    title: "Cancer Treatment",
-    description: "Advanced oncology equipment and technologies including radiation therapy, chemotherapy administration systems, and diagnostic imaging solutions.",
-    color: "primary",
-  },
-  {
-    icon: Stethoscope,
-    title: "Urology Treatment",
-    description: "Cutting-edge urological technologies featuring lithotripsy systems, endoscopy equipment, laser technologies, and diagnostic tools.",
-    color: "accent",
-  },
-  {
-    icon: ScanLine,
-    title: "Medical Imaging",
-    description: "State-of-the-art diagnostic imaging systems including CT scanners, MRI systems, ultrasound equipment, and PACS solutions.",
-    color: "primary",
-  },
-  {
-    icon: Package,
-    title: "Medical Disposables",
-    description: "Quality medical consumables and supplies including surgical disposables, infection control products, and laboratory consumables.",
-    color: "accent",
-  },
-];
+const categoryIcons: Record<string, any> = {
+  Microscope,
+  Stethoscope,
+  ScanLine,
+  Package,
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -49,9 +31,9 @@ const itemVariants = {
   },
 };
 
-export const ServicesSection = () => {
+export const ProductCategoriesSection = () => {
   return (
-    <section id="services" className="section-padding bg-background">
+    <section id="products" className="section-padding bg-background">
       <div className="container-padding container mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -61,13 +43,13 @@ export const ServicesSection = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-gold/10 to-primary/10 border border-gold/20 text-sm font-medium mb-4">
-            <span className="bg-gradient-to-r from-gold to-primary bg-clip-text text-transparent font-semibold">Our Services</span>
+            <span className="bg-gradient-to-r from-gold to-primary bg-clip-text text-transparent font-semibold">Product Categories</span>
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Comprehensive Medical Solutions
+            Medical Equipment Distribution
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From advanced diagnostics to surgical equipment, we provide complete healthcare solutions for modern medical facilities.
+            We distribute world-class medical equipment from leading international manufacturers across multiple specialties.
           </p>
         </motion.div>
 
@@ -78,48 +60,80 @@ export const ServicesSection = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {services.map((service) => (
-            <motion.div
-              key={service.title}
-              className="group relative glass-card rounded-2xl p-8 hover-lift cursor-pointer overflow-hidden hover:border-gold/30 transition-all duration-300"
-              variants={itemVariants}
-            >
-              {/* Background Gradient on Hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${
-                service.color === "primary" 
-                  ? "from-gold/5 via-primary/5 to-primary/0" 
-                  : "from-gold/5 via-accent/5 to-accent/0"
-              } opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              
-              <div className="relative z-10">
-                <div className={`inline-flex p-4 rounded-2xl mb-6 transition-all duration-300 ${
-                  service.color === "primary" 
-                    ? "bg-gradient-to-br from-gold/10 to-primary/10 text-primary group-hover:from-gold/20 group-hover:to-primary/20" 
-                    : "bg-gradient-to-br from-gold/10 to-accent/10 text-accent group-hover:from-gold/20 group-hover:to-accent/20"
-                }`}>
-                  <service.icon className="w-8 h-8" />
+          {productCategories.map((category) => {
+            const Icon = categoryIcons[category.icon];
+            const categoryPartners = partners.filter(p => 
+              p.categories.includes(category.name)
+            );
+            const isEven = productCategories.indexOf(category) % 2 === 0;
+            
+            return (
+              <motion.div
+                key={category.id}
+                className="group relative glass-card rounded-2xl p-8 hover-lift cursor-pointer overflow-hidden hover:border-gold/30 transition-all duration-300"
+                variants={itemVariants}
+              >
+                {/* Background Gradient on Hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${
+                  isEven
+                    ? "from-gold/5 via-primary/5 to-primary/0" 
+                    : "from-gold/5 via-accent/5 to-accent/0"
+                } opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                
+                <div className="relative z-10">
+                  <div className={`inline-flex p-4 rounded-2xl mb-6 transition-all duration-300 ${
+                    isEven
+                      ? "bg-gradient-to-br from-gold/10 to-primary/10 text-primary group-hover:from-gold/20 group-hover:to-primary/20" 
+                      : "bg-gradient-to-br from-gold/10 to-accent/10 text-accent group-hover:from-gold/20 group-hover:to-accent/20"
+                  }`}>
+                    <Icon className="w-8 h-8" />
+                  </div>
+                  
+                  <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3">
+                    {category.name}
+                  </h3>
+                  
+                  <p className="text-muted-foreground mb-4 leading-relaxed">
+                    {category.description}
+                  </p>
+
+                  <div className="flex items-center gap-2 mb-6">
+                    <div className="flex -space-x-2">
+                      {categoryPartners.slice(0, 3).map((partner, idx) => (
+                        <div
+                          key={partner.name}
+                          className="w-8 h-8 rounded-full bg-background border-2 border-border flex items-center justify-center overflow-hidden"
+                          title={partner.name}
+                        >
+                          <img 
+                            src={partner.logo} 
+                            alt={partner.name}
+                            className="w-full h-full object-contain p-1"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    <span className="text-sm text-muted-foreground">
+                      {categoryPartners.length} {categoryPartners.length === 1 ? 'Supplier' : 'Suppliers'}
+                    </span>
+                  </div>
+                  
+                  <Link
+                    href={`/products/${category.slug}`}
+                    className="inline-flex items-center gap-2 font-medium bg-gradient-to-r from-gold to-primary bg-clip-text text-transparent group-hover:gap-4 transition-all duration-300"
+                  >
+                    View Products
+                    <ArrowRight className="w-4 h-4 text-gold" />
+                  </Link>
                 </div>
-                
-                <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3">
-                  {service.title}
-                </h3>
-                
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-                
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 font-medium bg-gradient-to-r from-gold to-primary bg-clip-text text-transparent group-hover:gap-4 transition-all duration-300"
-                >
-                  Learn More
-                  <ArrowRight className="w-4 h-4 text-gold" />
-                </a>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
   );
 };
+
+// Keep old export name for backward compatibility during migration
+export const ServicesSection = ProductCategoriesSection;

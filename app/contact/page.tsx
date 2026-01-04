@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ContactPageContent } from '@/components/ContactPageContent';
+import { ContactPageContent } from '@/components/contact/ContactPageContent';
 
 export const metadata: Metadata = {
   title: 'Contact Us - RIC Medical Solutions | Get in Touch',
