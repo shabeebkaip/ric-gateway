@@ -9,9 +9,8 @@ import Link from "next/link";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/#about" },
+  { label: "About Us", href: "/about" },
   { label: "Products", href: "#", hasDropdown: true },
-  { label: "Partners", href: "/#partners" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -120,7 +119,7 @@ export const Navigation = () => {
                     <AnimatePresence>
                       {activeDropdown === item.label && (
                         <motion.div
-                          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[700px] glass-card rounded-2xl shadow-2xl border border-gold/10 p-6"
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-white/90 rounded-2xl shadow-2xl border border-gold/10 p-6"
                           initial={{ opacity: 0, y: 10, scale: 0.95 }}
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}

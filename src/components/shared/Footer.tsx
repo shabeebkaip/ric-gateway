@@ -4,25 +4,18 @@ import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Linkedin, Twitter, Facebook } from "lucide-react";
 
 const quickLinks = [
-  { label: "About Us", href: "/#about" },
+  { label: "About Us", href: "/about" },
   { label: "Services", href: "/#services" },
-  { label: "Partners", href: "/#partners" },
   { label: "Contact", href: "/contact" },
-  { label: "Careers", href: "#" },
 ];
 
-const services = [
+const categories = [
   { label: "Cancer Treatment", href: "#" },
   { label: "Urology Treatment", href: "#" },
   { label: "Medical Imaging", href: "#" },
   { label: "Medical Disposables", href: "#" },
 ];
 
-const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Facebook, href: "#", label: "Facebook" },
-];
 
 export const Footer = () => {
   return (
@@ -76,15 +69,15 @@ export const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <h4 className="text-lg font-bold text-card mb-6">Our Services</h4>
+            <h4 className="text-lg font-bold text-card mb-6">Our Product Categories</h4>
             <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service.label}>
+              {categories.map((category) => (
+                <li key={category.label}>
                   <a
-                    href={service.href}
+                    href={category.href}
                     className="text-card/70 hover:text-primary transition-colors"
                   >
-                    {service.label}
+                    {category.label}
                   </a>
                 </li>
               ))}

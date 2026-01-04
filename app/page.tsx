@@ -1,8 +1,8 @@
 import { HeroSection } from "@/components/home/HeroSection";
 import { PartnersSection } from "@/components/home/PartnersSection";
-import { ServicesSection } from "@/components/ServicesSection";
+import { ServicesSection } from "@/components/home/ProductCategoriesSection";
 import { AboutSection } from "@/components/home/AboutSection";
-import { VisionMissionSection } from "@/components/VisionMissionSection";
+import { VisionMissionSection } from "@/components/home/VisionMissionSection";
 import { CTASection } from "@/components/home/CTASection";
 
 export default function Home() {
