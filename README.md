@@ -1,73 +1,77 @@
-# Welcome to your Lovable project
+# RIC Gateway - Next.js
 
-## Project info
+This is a [Next.js](https://nextjs.org) project for RIC (Riyadh International Corporation) Medical Equipment & Healthcare Solutions.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Getting Started
 
-## How can I edit this code?
+First, install the dependencies:
 
-There are several ways of editing your application.
+\`\`\`bash
+npm install
+\`\`\`
 
-**Use Lovable**
+Then, run the development server:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+\`\`\`bash
 npm run dev
-```
+\`\`\`
 
-**Edit a file directly in GitHub**
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Project Structure
 
-**Use GitHub Codespaces**
+\`\`\`
+/app                    # Next.js App Router directory
+  /layout.tsx          # Root layout with metadata
+  /page.tsx            # Home page
+  /providers.tsx       # Client-side providers (React Query, etc.)
+  /not-found.tsx       # 404 page
+/src
+  /components          # React components
+  /hooks              # Custom React hooks
+  /lib                # Utility functions
+/public               # Static assets (images, logos, etc.)
+\`\`\`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Build
 
-## What technologies are used for this project?
+To create a production build:
 
-This project is built with:
+\`\`\`bash
+npm run build
+\`\`\`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+To start the production server:
 
-## How can I deploy this project?
+\`\`\`bash
+npm start
+\`\`\`
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Tech Stack
 
-## Can I connect a custom domain to my Lovable project?
+- **Next.js 15** - React framework with App Router
+- **React 18** - UI library
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Framer Motion** - Animations
+- **Shadcn/ui** - UI components
+- **React Query** - Data fetching and caching
+- **Lucide React** - Icons
 
-Yes, you can!
+## Features
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- ✅ Server-side rendering (SSR)
+- ✅ Static site generation (SSG)
+- ✅ Responsive design
+- ✅ SEO optimized
+- ✅ Modern animations
+- ✅ Dark mode support
+- ✅ Type-safe with TypeScript
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Migration from Vite
+
+This project has been migrated from Vite to Next.js. Key changes:
+
+- Removed: vite.config.ts, index.html, React Router, Vite plugins
+- Added: next.config.ts, App Router structure, 'use client' directives
+- Updated: Dependencies, TypeScript config, build scripts

@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { Microscope, Stethoscope, ScanLine, Package, ArrowRight, Zap } from "lucide-react";
 

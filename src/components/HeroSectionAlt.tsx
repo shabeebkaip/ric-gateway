@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { Heart, Activity, Shield, Award, Users, Clock, ArrowRight, Star, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";

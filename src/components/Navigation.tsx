@@ -1,13 +1,13 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-// For smooth scroll
-import React from "react";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { label: "Home", href: "#" },
-  { label: "About Us", href: "#about" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/#about" },
   // {
   //   label: "Services",
   //   href: "#services",
@@ -18,8 +18,8 @@ const navItems = [
   //     { label: "Disposables", href: "#disposables" },
   //   ],
   // },
-  { label: "Partners", href: "#partners" },
-  { label: "Contact", href: "#contact" },
+  { label: "Partners", href: "/#partners" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const Navigation = () => {

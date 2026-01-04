@@ -1,12 +1,14 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Linkedin, Twitter, Facebook } from "lucide-react";
 
 const quickLinks = [
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Partners", href: "#partners" },
+  { label: "About Us", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Partners", href: "/#partners" },
+  { label: "Contact", href: "/contact" },
   { label: "Careers", href: "#" },
-  { label: "News & Updates", href: "#" },
 ];
 
 const services = [

@@ -1,3 +1,5 @@
+'use client';
+
 import { motion, AnimatePresence } from "framer-motion";
 import { Microscope, Stethoscope, ScanLine, Package, CheckCircle2, Sparkles } from "lucide-react";
 import { useState } from "react";

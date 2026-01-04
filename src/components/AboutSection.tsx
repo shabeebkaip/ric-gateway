@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { CheckCircle2, Building2, Users2, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";

@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { ExternalLink, Globe2, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";

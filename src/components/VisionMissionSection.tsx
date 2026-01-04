@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { Eye, Target, Heart } from "lucide-react";
 
