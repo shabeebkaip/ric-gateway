@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const features = [
   {
     icon: Building2,
-    title: "39 Years of Trusted Service",
+    title: `${new Date().getFullYear() - 1985} Years of Trusted Service`,
     description: "Established in 1985, we bring decades of experience in medical equipment distribution and healthcare solutions.",
   },
   {
