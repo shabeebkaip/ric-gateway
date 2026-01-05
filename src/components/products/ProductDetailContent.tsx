@@ -155,17 +155,17 @@ export function ProductDetailContent({ product, category }: ProductDetailContent
                 >
                   <Link href="/contact">
                     <FileText className="w-4 h-4 mr-2" />
-                    Request Documentation
+                    Request for Quotation
                   </Link>
                 </Button>
                 <Button 
                   asChild 
                   variant="outline" 
-                  className="rounded-full px-8 py-6 border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all duration-300"
+                  className="rounded-full px-8 py-6 border-2 border-slate-200 hover:border-slate-300 hover:from-blue-600 hover:to-sky-600  transition-all duration-300"
                 >
                   <a href="tel:+966114654113">
                     <Stethoscope className="w-4 h-4 mr-2" />
-                    Speak with Specialist
+                    Call Us: +966 11 465 4113
                   </a>
                 </Button>
               </div>
