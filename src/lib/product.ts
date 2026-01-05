@@ -327,7 +327,7 @@ export const productData = {
     },
     // Allwin Medical Devices Products
     {
-      id: "allsoft-ureteral-stents-open-closed-intraoperative",
+      id: "Allsoft-ureteral-stents-open-closed-intraoperative",
       name: "allSoft Ureteral Stents (Open Tip, Closed Tip & Intraoperative)",
       brand: "Allwin Medical Devices",
       category: "disposables",
@@ -341,7 +341,7 @@ export const productData = {
         "https://allwinmedical.com/wp-content/uploads/2020/11/allSoft-Ureteral-Stents-Closed-Tip-12-600x600.jpg",
       ],
       description:
-        "The allSoft Ureteral Stents are intended to temporarily facilitate the drainage of urine from kidney to bladder by a trained physician. They feature low encrustation tendency, soft polyurethane material for high patient comfort, wide lumen for superior drainage, radiopacity for accurate positioning, and centimeter markings for precise placement.",
+        "The AllSoft Ureteral Stents are intended to temporarily facilitate the drainage of urine from kidney to bladder by a trained physician. They feature low encrustation tendency, soft polyurethane material for high patient comfort, wide lumen for superior drainage, radiopacity for accurate positioning, and centimeter markings for precise placement.",
       features: [
         "Low encrustation tendency to facilitate easy removal of the stent",
         "Soft polyurethane material ensures high patient comfort",
