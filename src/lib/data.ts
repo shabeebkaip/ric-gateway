@@ -883,6 +883,60 @@ export const productData = {
         email: "info@gzredpine.com",
       },
     },
+    // Excite Medical Products
+    {
+      id: "excitemed-drx9000-combination-system",
+      name: "DRX9000® Combination System",
+      brand: "excite-medical",
+      category: "spinal-decompression",
+      sub_category: null,
+      product_type: "Non-Surgical Spinal Decompression System",
+      is_parent_product: false,
+      images: [
+        "https://www.excitemedical.com/wp-content/uploads/2024/06/21069951-drx9000c-combo-lumbar-and-cervi-300x200-1.png",
+      ],
+      description:
+        "The DRX9000® Combination System combines the DRX9000® lumbar True Non-Surgical Spinal Decompression™ System with the DRX9000C® cervical attachment to provide both lumbar and cervical spinal decompression therapy designed to relieve pain associated with chronic back pain, neck pain, sciatica, herniated discs, bulging discs, and degenerative disc disease. :contentReference[oaicite:1]{index=1}",
+      features: [
+        "Combines lumbar and cervical spinal decompression therapy",
+        "True Non-Surgical Spinal Decompression™ technology",
+        "FDA-cleared treatment for back and neck pain conditions",
+        "Adjustable traction forces for targeted disc decompression",
+        "Patient monitoring and safety stop controls",
+        "Ergonomic treatment table with harness support",
+      ],
+      technical_specifications: {
+        overall_dimensions: {
+          length_in: 126,
+          width_in: 32.5,
+          height_in: 85.5,
+        },
+        weight_lbs: 1780,
+        crated_weight_lbs: 2530,
+      },
+      applications: [
+        "Non-surgical treatment of chronic low back pain",
+        "Cervical (neck) pain relief",
+        "Sciatica and radiculopathy symptom relief",
+        "Herniated and bulging disc pain management",
+        "Degenerative disc disease support",
+      ],
+      mechanism_of_action:
+        "Computer-controlled spinal traction applies graduated, targeted decompression forces to intervertebral discs to reduce pressure, promote nutrient flow, and potentially support healing, without surgical intervention. :contentReference[oaicite:2]{index=2}",
+      clearances_certifications: [
+        "FDA 510(k) Clearance for DRX9000®",
+        "ISO 13485 Quality Management Standard",
+      ],
+      clinical_benefits: [
+        "Non-invasive alternative to surgical decompression",
+        "Customisable treatment protocols",
+        "Improved patient mobility and reduced pain in many patients",
+      ],
+      distributor: {
+        name: "Excite Medical",
+        website: "https://excitemedical.com",
+      },
+    },
   ],
 };
 
