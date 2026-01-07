@@ -2,11 +2,18 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Package, Building2, Layers, ArrowRight, FileText, Phone } from "lucide-react";
+import {
+  Package,
+  Building2,
+  Layers,
+  ArrowRight,
+  FileText,
+  Phone,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getPartnerById } from "@/lib/productUtils";
-import type { Product, Category, ProductCardProps } from "@/types";
+import type { ProductCardProps } from "@/types";
 
 export function ProductCard({ product, category, index }: ProductCardProps) {
   const partnerIdToUse = product.partnerId || product.brand;
@@ -70,7 +77,7 @@ export function ProductCard({ product, category, index }: ProductCardProps) {
                 <div className="flex items-center gap-3 text-sm">
                   <div className="flex items-center gap-2 text-slate-500">
                     {partner?.logo ? (
-                      <div className="relative w-5 h-5 flex items-center justify-center">
+                      <div className="relative w-24  flex items-center justify-center">
                         <img
                           src={partner.logo}
                           alt={partner.name}
@@ -82,14 +89,13 @@ export function ProductCard({ product, category, index }: ProductCardProps) {
                     ) : (
                       <Building2 className="w-4 h-4" strokeWidth={1.5} />
                     )}
-                    <span className="font-medium">
-                      {partner?.name || product.brand}
-                    </span>
                   </div>
-                  <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-                  <span className="text-slate-400 font-light">
+                  <Badge
+                    variant="secondary"
+                    className="rounded-full px-3 py-1 text-xs font-medium"
+                  >
                     {product.product_type}
-                  </span>
+                  </Badge>
                 </div>
 
                 {/* Title */}

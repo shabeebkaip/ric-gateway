@@ -6,6 +6,7 @@ import {
   ProductInfoCards,
   TechnicalSpecifications,
   ProductCTA,
+  ProductImageGallery,
 } from "./detail";
 import type { ProductDetailContentProps } from "@/types";
 
@@ -30,6 +31,11 @@ export function ProductDetailContent({
       <TechnicalSpecifications
         specifications={product.technical_specifications}
       />
+
+      {/* Display images in full width after technical specifications when show_image_main is true */}
+      {product.show_image_main && product.images && product.images.length > 0 && (
+        <ProductImageGallery images={product.images} productName={product.name} />
+      )}
       
       <ProductCTA
         productName={product.name}

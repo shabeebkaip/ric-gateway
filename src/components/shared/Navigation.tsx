@@ -12,7 +12,7 @@ import {
   ScanLine,
   Package,
   Activity,
-  User,
+  Settings2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { productCategories, partners } from "@/lib/data";
@@ -22,6 +22,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Products", href: "#", hasDropdown: true },
+  { label: "Services", href: "/services" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -30,8 +31,8 @@ const categoryIcons: Record<string, any> = {
   Stethoscope,
   ScanLine,
   Package,
-  User,
   Activity,
+  Settings2,
 };
 
 export const Navigation = () => {

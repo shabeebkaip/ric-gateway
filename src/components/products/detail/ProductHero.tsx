@@ -91,14 +91,15 @@ export function ProductHero({ product, category }: ProductHeroProps) {
 
         <div className="grid lg:grid-cols-5 gap-12 items-start">
           {/* Product Showcase */}
-          <motion.div
-            className="lg:col-span-2"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="sticky top-40">
-              {mainImage ? (
+          {!product.show_image_main && (
+            <motion.div
+              className="lg:col-span-2"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="sticky top-40">
+                {mainImage ? (
                 <div className="space-y-4">
                   {/* Main Image with Hover Zoom */}
                   <div 
@@ -170,10 +171,11 @@ export function ProductHero({ product, category }: ProductHeroProps) {
               )}
             </div>
           </motion.div>
+          )}
 
           {/* Product Information */}
           <motion.div
-            className="lg:col-span-3 space-y-8"
+            className={`space-y-8 ${product.show_image_main ? 'lg:col-span-5' : 'lg:col-span-3'}`}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{

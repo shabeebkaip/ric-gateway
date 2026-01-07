@@ -113,12 +113,23 @@ export const partners = [
     name: "Potent Medical",
     country: "China",
     flag: "🇨🇳",
-    logo: "/partners/potent-medical.png",
+    logo: "/partners/potent-medical.webp",
     website: "https://www.potent-medical.com/",
     invertColor: false,
     categories: ["urology"],
     subcategories: ["urology-equipment"],
     products: ["Holmium Lasers", "Thulium Fiber Lasers", "Surgical Lasers"],
+  },
+  {
+    id: "concemed",
+    name: "ConceMed",
+    country: "China",
+    flag: "🇨🇳",
+    logo: "/partners/concemed.png",
+    website: "https://www.concemed.com/",
+    invertColor: false,
+    categories: ["endoscopy"],
+    products: ["Endoscopy Systems", "Gastroscopes", "Colonoscopy"],
   },
 ];
 
@@ -158,7 +169,7 @@ export const productCategories = [
     name: "Spinal Decompression",
     slug: "spinal-decompression",
     description: "Advanced spinal decompression therapy systems and equipment",
-    icon: "User",
+    icon: "Settings2",
   },
 ];
 
@@ -198,6 +209,45 @@ export const productSubcategories = [
     categoryId: "medical-imaging",
     description: "Diagnostic imaging and scanning systems",
     types: ["MRI Systems", "CT Scanners", "X-Ray Equipment"],
+  },
+  {
+    id: "gastroscopy",
+    name: "Gastroscopy",
+    slug: "gastroscopy",
+    categoryId: "endoscopy",
+    description:
+      "Gastroscopes and colonoscopes for gastrointestinal procedures",
+    types: [
+      "Video Gastroscopes",
+      "Colonoscopy Systems",
+      "Endoscopy Accessories",
+    ],
+  },
+  {
+    id: "colonoscopy",
+    name: "Colonoscopy",
+    slug: "colonoscopy",
+    categoryId: "endoscopy",
+    description:
+      "Colonoscopy systems and accessories for colorectal procedures",
+    types: [
+      "Video Colonoscopes",
+      "Colonoscopy Systems",
+      "Endoscopy Accessories",
+    ],
+  },
+  {
+    id: "endoscopy-imaging-systems",
+    name: "Imaging Systems",
+    slug: "imaging-systems",
+    categoryId: "endoscopy",
+    description:
+      "Video processors and imaging systems for endoscopic procedures",
+    types: [
+      "Video Processors",
+      "Image Processing Systems",
+      "LED Light Sources",
+    ],
   },
 ];
 
@@ -886,7 +936,7 @@ export const productData = {
     // Excite Medical Products
     {
       id: "excitemed-drx9000-combination-system",
-      name: "DRX9000® Combination System",
+      name: "DRX9000-SL® Combination System",
       brand: "excite-medical",
       category: "spinal-decompression",
       sub_category: null,
@@ -936,6 +986,59 @@ export const productData = {
         name: "Excite Medical",
         website: "https://excitemedical.com",
       },
+    },
+    // Concemed Products
+    {
+      id: "concemed-vg-h1000-video-gastroscope",
+      name: "VG-H1000 Video Gastroscope",
+      brand: "concemed",
+      category: "endoscopy",
+      sub_category: "gastroscopy",
+      product_type: "Video Gastroscope",
+      is_parent_product: false,
+      images: [
+        "https://static2.xunxiang.site/uploads/sites/2086/2024/12/0b8bb9af7b93dff2ad6dc20c28ed0c39.jpg",
+        "https://static2.xunxiang.site/uploads/sites/2086/2024/12/9f8706f791ae86afe20a6fca5a4fc159.jpg",
+      ],
+      description:
+        "The VG-H1000 Video Gastroscope is a high-performance endoscopic device designed for diagnostic and therapeutic upper gastrointestinal procedures. It offers an ultra-wide field of view, high-definition imaging, ergonomic handling, and advanced imaging compatibility to support screening, diagnosis, and treatment workflows.",
+      features: [
+        "Ultra-wide 145° field of view for enhanced visualization",
+        "High-resolution CMOS imaging sensor",
+        "Ergonomic handle design for comfortable operation",
+        "Standard integrated water delivery function",
+        "Compatible with VP-1000 image processor series",
+        "Multiple advanced imaging modes for diagnostic and therapeutic use",
+        "IPX7 waterproof design for full immersion reprocessing",
+        "Excellent maneuverability and bending performance",
+      ],
+      variants: [],
+      show_image_main : true,
+    },
+    {
+      id: "concemed-vp-1000-video-processor",
+      name: "VP-1000 Series Endoscopic Video Image Processor",
+      brand: "concemed",
+      category: "endoscopy",
+      sub_category: "endoscopy-imaging-systems",
+      product_type: "Endoscopic Video Image Processor",
+      is_parent_product: true,
+      images: ["https://concemed-02.obs.cn-north-4.myhuaweicloud.com/f75f484ee2a6f0891fd910db69fcd63f.jpg",
+      ],
+      description:
+        "The VP-1000 Series is an advanced endoscopic video image processor with an integrated multi-spectral LED light source. It delivers high-definition imaging with enhanced mucosal color expression and supports multiple imaging modes for screening, diagnosis, and therapeutic endoscopic procedures.",
+      features: [
+        "Integrated multi-spectral LED light source",
+        "High-definition image processing and display",
+        "Enhanced mucosal color expression",
+        "Multiple advanced imaging modes",
+        "8-inch touch screen control interface",
+        "Integrated water delivery system",
+        "Compatible with V-1000 series endoscopes",
+        "Supports comprehensive endoscopic workflows",
+      ],
+      variants: ["VP-1000 S", "VP-1000 A", "VP-1000 P"],
+      show_image_main : true,
     },
   ],
 };

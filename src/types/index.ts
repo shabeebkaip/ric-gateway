@@ -24,6 +24,7 @@ export interface Product {
   key_features?: string[];
   full_name?: string;
   combinations?: any;
+  show_image_main?: boolean;
 }
 
 // Category Types
