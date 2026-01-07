@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProductById } from "@/lib/productUtils";
+import { getProductById, getPartnerById } from "@/lib/productUtils";
 import { productCategories } from "@/lib/data";
 import { ProductDetailContent } from "@/components/products/ProductDetailContent";
 
@@ -21,9 +21,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const partner = getPartnerById(product.brand);
+  const brandName = partner?.name || product.brand;
+
   return {
-    title: `${product.name} - ${product.brand} | RIC Medical Equipment`,
-    description: product.description || `${product.product_type} by ${product.brand}`,
+    title: `${product.name} - ${brandName} | RIC Medical Equipment`,
+    description: product.description || `${product.product_type} by ${brandName}`,
   };
 }
 

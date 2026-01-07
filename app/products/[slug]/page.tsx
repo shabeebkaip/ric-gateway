@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProductsByCategory } from "@/lib/productUtils";
+import { getProductsByCategory, getSubcategoriesByCategory } from "@/lib/productUtils";
 import { productCategories } from "@/lib/data";
 import { ProductListContent } from "@/components/products/ProductListContent";
 
@@ -36,10 +36,11 @@ export default async function ProductCategoryPage({ params }: PageProps) {
   const { slug } = await params;
   const category = productCategories.find((cat) => cat.slug === slug);
   const products = getProductsByCategory(slug);
+  const subcategories = getSubcategoriesByCategory(slug);
 
   if (!category) {
     notFound();
   }
 
-  return <ProductListContent category={category} products={products} />;
+  return <ProductListContent category={category} products={products} subcategories={subcategories} />;
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { Microscope, Stethoscope, ScanLine, Package, ArrowRight } from "lucide-react";
+import { Microscope, Stethoscope, ScanLine, Package, Activity, User, ArrowRight } from "lucide-react";
 import { productCategories, partners } from "@/lib/data";
 import Link from "next/link";
 
@@ -10,6 +10,8 @@ const categoryIcons: Record<string, any> = {
   Stethoscope,
   ScanLine,
   Package,
+  Activity,
+  User,
 };
 
 const containerVariants = {
@@ -63,7 +65,7 @@ export const ProductCategoriesSection = () => {
           {productCategories.map((category) => {
             const Icon = categoryIcons[category.icon];
             const categoryPartners = partners.filter(p => 
-              p.categories.includes(category.name)
+              p.categories.includes(category.id)
             );
             const isEven = productCategories.indexOf(category) % 2 === 0;
             
