@@ -201,14 +201,9 @@ export const productSubcategories = [
   },
 ];
 
+
 // Company stats
-export const companyStats = {
-  yearsFounded: 1985,
-  partnersCount: partners.length,
-  categoriesCount: productCategories.length,
-  facilitiesServed: "100+",
-  support: "24/7",
-};
+
 
 // Company features
 export const companyFeatures = [
@@ -850,4 +845,14 @@ export const productData = {
       },
     },
   ],
+};
+
+
+export const companyStats = {
+  yearsFounded: 1985,
+  partnersCount: partners.length,
+  categoriesCount: productCategories.length,
+  productsCount: productData.total_products,
+  facilitiesServed: "100+",
+  support: "24/7",
 };

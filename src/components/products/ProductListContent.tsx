@@ -11,7 +11,6 @@ import {
 } from "./list";
 import type {
   Product,
-  Category,
   Subcategory,
   ProductListContentProps,
 } from "@/types";

@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { companyStats } from "@/lib/data";
 
 export function CategoryCTA() {
+  const currentYear = new Date().getFullYear();
+  const yearsInBusiness = currentYear - companyStats.yearsFounded;
   return (
     <section className="py-24 bg-gradient-to-br from-blue-50 to-sky-50">
       <div className="container mx-auto px-6 max-w-5xl">
@@ -47,7 +50,7 @@ export function CategoryCTA() {
           </div>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-3 gap-8 pt-12 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 max-w-4xl mx-auto">
             <motion.div
               className="text-center"
               initial={{ opacity: 0, y: 20 }}
@@ -56,21 +59,35 @@ export function CategoryCTA() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <div className="text-3xl font-light text-slate-900 mb-2">
-                500+
+                {companyStats.productsCount}+
               </div>
               <div className="text-sm text-slate-600 font-light">
                 Medical Products
               </div>
             </motion.div>
             <motion.div
-              className="text-center border-x border-slate-200"
+              className="text-center md:border-x border-slate-200"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <div className="text-3xl font-light text-slate-900 mb-2">
-                15+
+                {companyStats.categoriesCount}+
+              </div>
+              <div className="text-sm text-slate-600 font-light">
+                Medical Categories
+              </div>
+            </motion.div>
+            <motion.div
+              className="text-center md:border-r border-slate-200"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <div className="text-3xl font-light text-slate-900 mb-2">
+                {yearsInBusiness}+
               </div>
               <div className="text-sm text-slate-600 font-light">
                 Years Experience
@@ -81,13 +98,13 @@ export function CategoryCTA() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
             >
               <div className="text-3xl font-light text-slate-900 mb-2">
-                100+
+                {companyStats.partnersCount}+
               </div>
               <div className="text-sm text-slate-600 font-light">
-                Healthcare Partners
+                Global Partners
               </div>
             </motion.div>
           </div>
