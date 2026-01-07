@@ -150,7 +150,7 @@ export function ProductHero({ product, category }: ProductHeroProps) {
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-slate-500">
                 {partner?.logo ? (
-                  <div className="relative w-20 h-20 flex items-center justify-center">
+                  <div className="relative w-28  flex items-center justify-center">
                     <img
                       src={partner.logo}
                       alt={partner.name}
@@ -162,11 +162,8 @@ export function ProductHero({ product, category }: ProductHeroProps) {
                 ) : (
                   <Building2 className="w-5 h-5" strokeWidth={1.5} />
                 )}
-                <span className="text-sm font-medium tracking-wide uppercase">
-                  {partner?.name}
-                </span>
               </div>
-              <h1 className="text-4xl lg:text-5xl font-light text-slate-900 leading-tight tracking-tight">
+              <h1 className="text-4xl  font-light text-slate-900 leading-tight tracking-tight">
                 {product.name}
               </h1>
               {product.full_name && product.full_name !== product.name && (

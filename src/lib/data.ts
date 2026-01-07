@@ -19,7 +19,7 @@ export const partners = [
     website:
       "https://www.bostonscientific.com/en-US/patients-caregivers/device-support/penile-implants.html",
     invertColor: false,
-    categories: ["urology"],
+    categories: [""],
     products: ["Penile Implants", "Urological Devices", "Endourology"],
   },
   {
@@ -41,7 +41,7 @@ export const partners = [
     logo: "/partners/dornier-medtech.png",
     website: "https://www.dornier.com/",
     invertColor: false,
-    categories: ["urology"],
+    categories: [""],
     products: ["Lithotripsy Systems", "ESWL Technology", "Stone Treatment"],
   },
   {
@@ -52,7 +52,7 @@ export const partners = [
     logo: "/partners/wikkon.png",
     website: "https://www.eswl.com/about-us/",
     invertColor: false,
-    categories: ["urology"],
+    categories: [""],
     products: ["ESWL Systems", "Lithotripsy", "Urological Equipment"],
   },
   {
@@ -201,9 +201,7 @@ export const productSubcategories = [
   },
 ];
 
-
 // Company stats
-
 
 // Company features
 export const companyFeatures = [
@@ -844,9 +842,49 @@ export const productData = {
         with_hydrophilic_coating: "Add suffix - H",
       },
     },
+    // Redpine Products
+    {
+      id: "redpine-single-use-video-flexible-ureteroscope",
+      name: "Single-Use Video Flexible Ureteroscope",
+      brand: "redpine",
+      category: "urology",
+      sub_category: "urology-equipment",
+      product_type: "Disposable Flexible Ureteroscope",
+      is_parent_product: false,
+      images: [
+        "https://en.redpinemed.com/gzrpyl202311303965/uploadfiles/image/proinfoimg1.png",
+        "https://en.redpinemed.com/gzrpyl202311303965/uploadfiles/image/proinfoimg2.png",
+      ],
+      description:
+        "Single-Use Video Flexible Ureteroscope is designed for urological procedures where flexible access and clear visualization is necessary. The single-use design eliminates the risk of cross-contamination and reduces reprocessing costs while offering a safe, affordable endoscopic solution ideal for a wide range of stone and diagnostic procedures.:contentReference[oaicite:0]{index=0}",
+      features: [
+        "Designed for flexible ureteroscopic procedures",
+        "Single-use design to eliminate cross-contamination and reprocessing costs",
+        "High-quality endoscopic visualization",
+        "Lightweight and easy to manoeuvre",
+      ],
+      applications: [
+        "Ureteroscopy",
+        "Stone management procedures",
+        "Diagnostic upper urinary tract visualization",
+      ],
+      certifications: [
+        "CE Mark (common for Redpine single-use endoscopes)",
+        "FDA clearance on selected models (as noted in company milestones)",
+      ],
+      manufacturer: {
+        name: "Guangzhou Redpine Medical Instrument Co., Ltd.",
+        headquarters: "Guangzhou International Bioisland, Guangdong, China",
+        established: "2015",
+        specialty: "Single-use endoscopes and image processing platforms",
+      },
+      support_contact: {
+        phone: "(86) 020-80927258",
+        email: "info@gzredpine.com",
+      },
+    },
   ],
 };
-
 
 export const companyStats = {
   yearsFounded: 1985,
