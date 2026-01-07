@@ -1051,3 +1051,20 @@ export const companyStats = {
   facilitiesServed: "100+",
   support: "24/7",
 };
+
+export const contactInfo = {
+  companyName: "Riyadh International Corporation Medical Equipments & Services, Ltd",
+  address: {
+    street: "Orouba street, RIC Complex",
+    city: "Riyadh",
+    zipCode: "2324",
+    country: "Kingdom of Saudi Arabia",
+    poBox: "P.O. Box 223",
+  },
+  phone: {
+    primary: "+966114654113",
+    secondary: "+966114630135",
+  },
+  email: "info@ric.com.sa",
+  workingHours: "Sun - Thu: 8AM - 5PM",
+};

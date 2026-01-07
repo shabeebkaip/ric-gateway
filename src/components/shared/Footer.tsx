@@ -10,18 +10,12 @@ import {
   Twitter,
   Facebook,
 } from "lucide-react";
+import { productCategories, contactInfo } from "@/lib/data";
 
 const quickLinks = [
   { label: "About Us", href: "/about" },
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "Contact", href: "/contact" },
-];
-
-const categories = [
-  { label: "Cancer Treatment", href: "#" },
-  { label: "Urology Treatment", href: "#" },
-  { label: "Medical Imaging", href: "#" },
-  { label: "Medical Disposables", href: "#" },
 ];
 
 export const Footer = () => {
@@ -81,13 +75,13 @@ export const Footer = () => {
               Our Product Categories
             </h4>
             <ul className="space-y-3">
-              {categories.map((category) => (
-                <li key={category.label}>
+              {productCategories.map((category) => (
+                <li key={category.id}>
                   <a
-                    href={category.href}
+                    href={`/products/${category.slug}`}
                     className="text-card/70 hover:text-primary transition-colors"
                   >
-                    {category.label}
+                    {category.name}
                   </a>
                 </li>
               ))}
@@ -106,32 +100,32 @@ export const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <span className="text-card/70">
-                  Orouba Street, RIC Complex
+                  {contactInfo.address.street}
                   <br />
-                  Riyadh, Kingdom of Saudi Arabia
+                  {contactInfo.address.city}, {contactInfo.address.country}
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
                 <a
-                  href="tel:+966"
+                  href={`tel:${contactInfo.phone.primary}`}
                   className="text-card/70 hover:text-primary transition-colors"
                 >
-                  +966 XX XXX XXXX
+                  {contactInfo.phone.primary}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
                 <a
-                  href="mailto:info@ric.com.sa"
+                  href={`mailto:${contactInfo.email}`}
                   className="text-card/70 hover:text-primary transition-colors"
                 >
-                  info@ric.com.sa
+                  {contactInfo.email}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-card/70">Sun - Thu: 8AM - 5PM</span>
+                <span className="text-card/70">{contactInfo.workingHours}</span>
               </li>
             </ul>
           </motion.div>
@@ -141,24 +135,9 @@ export const Footer = () => {
         <div className="pt-8 border-t border-card/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-card/60 text-sm text-center md:text-left">
-              Copyright © {new Date().getFullYear()} Riyadh International
-              Corporation Medical Equipments & Services, Ltd. All rights
+              Copyright © {new Date().getFullYear()} {contactInfo.companyName}. All rights
               reserved.
             </p>
-            <div className="flex gap-6 text-sm">
-              <a
-                href="#"
-                className="text-card/60 hover:text-primary transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-card/60 hover:text-primary transition-colors"
-              >
-                Terms of Service
-              </a>
-            </div>
           </div>
         </div>
       </div>

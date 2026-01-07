@@ -59,18 +59,6 @@ export const Navigation = () => {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-  // Scroll to contact section
-  const handleQuoteClick = (
-    e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
-  ) => {
-    e.preventDefault();
-    const el = document.getElementById("contact");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -214,12 +202,12 @@ export const Navigation = () => {
             </motion.a>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
+                asChild
                 variant="hero"
                 size="default"
                 className="bg-gradient-to-r from-gold to-primary hover:from-gold/90 hover:to-primary/90 shadow-lg hover:shadow-xl hover:shadow-gold/20 transition-all duration-300"
-                onClick={handleQuoteClick}
               >
-                Get a Quote
+                <Link href="/contact">Get a Quote</Link>
               </Button>
             </motion.div>
           </div>
@@ -295,12 +283,12 @@ export const Navigation = () => {
               ))}
               <motion.div className="mt-4 pt-4 border-t border-border/50">
                 <Button
+                  asChild
                   variant="hero"
                   size="default"
                   className="w-full bg-gradient-to-r from-gold to-primary hover:from-gold/90 hover:to-primary/90 shadow-lg"
-                  onClick={handleQuoteClick}
                 >
-                  Get a Quote
+                  <Link href="/contact">Get a Quote</Link>
                 </Button>
               </motion.div>
             </motion.div>
