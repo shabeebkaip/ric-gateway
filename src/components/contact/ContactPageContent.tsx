@@ -368,7 +368,7 @@ export const ContactPageContent = () => {
                 Call Now
               </a>
               <a
-                href="mailto:info@ric.com.sa"
+                href="mailto:ricemede@ricmedical.com.sa"
                 className="inline-flex items-center justify-center px-6 py-3 border-2 border-primary hover:bg-primary/5 text-foreground font-semibold rounded-lg transition-all duration-300"
               >
                 <Mail className="w-4 h-4 mr-2" />

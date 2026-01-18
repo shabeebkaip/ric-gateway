@@ -1390,6 +1390,6 @@ export const contactInfo = {
     secondary: "+966114654113",
     fax: "+966114630135",
   },
-  email: "info@ric.com.sa",
+  email: "ricemede@ricmedical.com.sa",
   workingHours: "Sun - Thu: 8AM - 5PM",
 };

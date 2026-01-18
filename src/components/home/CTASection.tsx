@@ -213,10 +213,10 @@ export const CTASection = () => {
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Email</h3>
                   <a
-                    href="mailto:info@ric.com.sa"
+                    href="mailto:ricemede@ricmedical.com.sa"
                     className="text-muted-foreground hover:text-primary transition-colors break-all"
                   >
-                    info@ric.com.sa
+                    ricemede@ricmedical.com.sa
                   </a>
                   <p className="text-sm text-muted-foreground mt-1">
                     24/7 support available
