@@ -1218,8 +1218,9 @@ export const contactInfo = {
     poBox: "P.O. Box 223",
   },
   phone: {
-    primary: "+966114654113",
-    secondary: "+966114630135",
+    primary: "+966509698043",
+    secondary: "+966114654113",
+    fax: "+966114630135",
   },
   email: "info@ric.com.sa",
   workingHours: "Sun - Thu: 8AM - 5PM",

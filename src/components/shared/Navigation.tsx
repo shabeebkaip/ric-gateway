@@ -193,7 +193,7 @@ export const Navigation = () => {
           {/* Right Side */}
           <div className="hidden lg:flex items-center gap-4">
             <motion.a
-              href="tel:+966114654113"
+              href="tel:+966509698043"
               className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-gold transition-all duration-300 rounded-lg hover:bg-gold/5 group"
               whileHover={{ scale: 1.05 }}
             >

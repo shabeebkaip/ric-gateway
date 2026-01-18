@@ -59,13 +59,14 @@ export const ContactPageContent = () => {
         "RIC Complex",
         "P.O. Box 223, Riyadh 2324"
       ],
+      link: "https://www.google.com/maps/place/RIYADH+INTERNATIONAL+CORPORATION/@24.7166169,46.680542,17z/data=!3m1!4b1!4m6!3m5!1s0x3e2f03048c8ab6cd:0x37200af5e3ccaffc!8m2!3d24.7166169!4d46.6831169!16s%2Fg%2F1tj6fgpd?entry=ttu",
       color: "text-primary",
     },
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+966 11 465 4113"],
-      link: "tel:+966114654113",
+      details: ["+966 50 969 8043"],
+      link: "tel:+966509698043",
       color: "text-gold",
     },
     {
@@ -77,8 +78,8 @@ export const ContactPageContent = () => {
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@ric.com.sa"],
-      link: "mailto:info@ric.com.sa",
+      details: ["ricmede@ricmedical.com.sa"],
+      link: "mailto:ricmede@ricmedical.com.sa",
       color: "text-primary",
     },
     {
@@ -120,6 +121,13 @@ export const ContactPageContent = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon;
+              const CardWrapper = info.link ? 'a' : 'div';
+              const cardProps = info.link ? {
+                href: info.link,
+                target: info.icon === MapPin ? "_blank" : undefined,
+                rel: info.icon === MapPin ? "noopener noreferrer" : undefined,
+              } : {};
+
               return (
                 <motion.div
                   key={info.title}
@@ -127,29 +135,23 @@ export const ContactPageContent = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="glass-card rounded-2xl p-6 hover:shadow-card transition-all duration-300 border border-border/50 hover:border-gold/30"
                 >
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center mb-4`}>
-                    <IconComponent className={`w-6 h-6 ${info.color}`} />
-                  </div>
-                  <h3 className="font-semibold text-foreground mb-3">{info.title}</h3>
-                  <div className="space-y-1">
-                    {info.details.map((detail, i) => (
-                      info.link && i === 0 ? (
-                        <a
-                          key={i}
-                          href={info.link}
-                          className="block text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          {detail}
-                        </a>
-                      ) : (
+                  <CardWrapper
+                    {...cardProps}
+                    className={`glass-card rounded-2xl p-6 hover:shadow-card transition-all duration-300 border border-border/50 hover:border-gold/30 block ${info.link ? 'cursor-pointer' : ''}`}
+                  >
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center mb-4`}>
+                      <IconComponent className={`w-6 h-6 ${info.color}`} />
+                    </div>
+                    <h3 className="font-semibold text-foreground mb-3">{info.title}</h3>
+                    <div className="space-y-1">
+                      {info.details.map((detail, i) => (
                         <p key={i} className="text-sm text-muted-foreground">
                           {detail}
                         </p>
-                      )
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  </CardWrapper>
                 </motion.div>
               );
             })}
@@ -310,8 +312,8 @@ export const ContactPageContent = () => {
                     <Phone className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
                     <div>
                       <p className="font-semibold text-foreground">Phone</p>
-                      <a href="tel:+966114654113" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                        +966 11 465 4113
+                      <a href="tel:+966509698043" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                        +966 50 969 8043
                       </a>
                     </div>
                   </div>
@@ -359,7 +361,7 @@ export const ContactPageContent = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a 
-                href="tel:+966114654113"
+                href="tel:+966509698043"
                 className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-gold to-primary hover:from-gold/90 hover:to-primary/90 text-white font-semibold rounded-lg shadow-lg transition-all duration-300"
               >
                 <Phone className="w-4 h-4 mr-2" />
