@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Send, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Send, MessageCircle, Clock, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,7 +15,7 @@ export const CTASection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "+966",
+    phone: "",
     company: "",
     message: ""
   });
@@ -30,10 +30,10 @@ export const CTASection = () => {
     
     toast({
       title: "Message Sent Successfully!",
-      description: "We'll get back to you soon!!",
+      description: "We'll get back to you within 24 hours.",
     });
     
-    setFormData({ name: "", email: "", phone: "+966", company: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", company: "", message: "" });
     setIsSubmitting(false);
   };
 
@@ -94,7 +94,7 @@ export const CTASection = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="What's your name?"
+                      placeholder="John Doe"
                       required
                       className="h-12 border-2 focus:border-gold transition-colors"
                     />
@@ -107,7 +107,7 @@ export const CTASection = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="What's your email?"
+                      placeholder="john@example.com"
                       required
                       className="h-12 border-2 focus:border-gold transition-colors"
                     />
@@ -116,7 +116,7 @@ export const CTASection = () => {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-base">Phone Number *</Label>
+                    <Label htmlFor="phone" className="text-base">Phone Number</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -124,7 +124,6 @@ export const CTASection = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+966 XX XXX XXXX"
-                      required
                       className="h-12 border-2 focus:border-gold transition-colors"
                     />
                   </div>
@@ -135,7 +134,7 @@ export const CTASection = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      placeholder="Your Hospital/Clinic"
+                      placeholder="Your Company Name"
                       className="h-12 border-2 focus:border-gold transition-colors"
                     />
                   </div>
@@ -148,7 +147,7 @@ export const CTASection = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tell us about your requirements..."
+                    placeholder="Tell us about your inquiry..."
                     required
                     rows={6}
                     className="resize-none border-2 focus:border-gold transition-colors"
@@ -158,7 +157,7 @@ export const CTASection = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full h-14 text-base font-semibold bg-gradient-to-r from-primary to-primary hover:from-gold hover:to-primary transition-all duration-500 shadow-lg hover:shadow-xl hover:shadow-gold/20 group"
+                  className="w-full h-14 text-base font-semibold bg-gradient-to-r from-gold to-primary hover:from-gold/90 hover:to-primary/90 transition-all duration-500 shadow-lg hover:shadow-xl hover:shadow-gold/20 group"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -185,72 +184,83 @@ export const CTASection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
-                  <Phone className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
+            <a
+              href="https://www.google.com/maps/place/RIYADH+INTERNATIONAL+CORPORATION/@24.7166169,46.680542,17z/data=!3m1!4b1!4m6!3m5!1s0x3e2f03048c8ab6cd:0x37200af5e3ccaffc!8m2!3d24.7166169!4d46.6831169!16s%2Fg%2F1tj6fgpd?entry=ttu"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
+                    <MapPin className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Visit Us</h3>
+                    <p className="text-sm text-muted-foreground">Kingdom of Saudi Arabia</p>
+                    <p className="text-sm text-muted-foreground">Riyadh, Orouba Street</p>
+                    <p className="text-sm text-muted-foreground">RIC Complex</p>
+                    <p className="text-sm text-muted-foreground">P.O. Box 223, Riyadh 2324</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Phone</h3>
-                  <a
-                    href="tel:+966"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    +966 XX XXX XXXX
-                  </a>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Mon-Fri 8am-6pm
-                  </p>
+              </Card>
+            </a>
+
+            <a href="tel:+966509698043">
+              <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
+                    <Phone className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Call Us</h3>
+                    <p className="text-muted-foreground hover:text-primary transition-colors">
+                      +966 50 969 8043
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </a>
 
             <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
-                  <Mail className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
+                  <Printer className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">Email</h3>
-                  <a
-                    href="mailto:ricemede@ricmedical.com.sa"
-                    className="text-muted-foreground hover:text-primary transition-colors break-all"
-                  >
-                    ricemede@ricmedical.com.sa
-                  </a>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    24/7 support available
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
-                  <MapPin className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Location</h3>
+                  <h3 className="font-semibold text-lg mb-2">Fax</h3>
                   <p className="text-muted-foreground">
-                    Riyadh, Saudi Arabia
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Visit us by appointment
+                    +966 11 463 0135
                   </p>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-6 shadow-lg bg-gradient-to-br from-gold/5 via-primary/5 to-primary/10 border-gold/20 hover:border-gold/40 hover:scale-105 transition-all duration-300 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-2xl" />
-              <h3 className="font-semibold text-lg mb-3 bg-gradient-to-r from-gold to-primary bg-clip-text text-transparent relative">Quick Response</h3>
-              <p className="text-sm text-muted-foreground mb-4 relative">
-                Our team typically responds within 2-4 business hours. For urgent matters, please call us directly.
-              </p>
-              <div className="flex items-center gap-2 text-sm font-medium bg-gradient-to-r from-gold to-primary bg-clip-text text-transparent relative">
-                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-gold to-green-500 animate-pulse shadow-lg shadow-gold/50"></div>
-                Available Now
+            <a href="mailto:ricmede@ricmedical.com.sa">
+              <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
+                    <Mail className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Email Us</h3>
+                    <p className="text-muted-foreground hover:text-primary transition-colors break-all">
+                      ricmede@ricmedical.com.sa
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </a>
+
+            <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
+                  <Clock className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Working Hours</h3>
+                  <p className="text-sm text-muted-foreground">Sunday - Thursday</p>
+                  <p className="text-sm text-muted-foreground">8:00 AM - 5:00 PM</p>
+                </div>
               </div>
             </Card>
           </motion.div>
