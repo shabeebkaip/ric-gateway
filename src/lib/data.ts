@@ -133,7 +133,20 @@ export const partners = [
     products: ["Endoscopy Systems", "Gastroscopes", "Colonoscopy"],
     tag: "Coming Soon",
   },
+  {
+    id: "adtec-premium-plasma",
+    name: "Adtec Premium Plasma",
+    country: "Japan",
+    flag: "🇯🇵",
+    logo: "https://adtechealthcare.com/wp-content/uploads/2025/09/AdTec_Horizontal-Full-colour-scaled.png",
+    website: "https://adtechealthcare.com/",
+    categories: ["wound-care"],
+    products: ["Plasma Technology", "Medical Imaging Solutions"],
+    tag: "Coming Soon",
+
+  },
 ];
+
 
 // Product categories for navigation
 export const productCategories = [
@@ -172,6 +185,13 @@ export const productCategories = [
     slug: "spinal-decompression",
     description: "Advanced spinal decompression therapy systems and equipment",
     icon: "Settings2",
+  },
+  {
+    id: "wound-care",
+    name: "Wound Care",
+    slug: "wound-care",
+    description: "Innovative wound care and management solutions",
+    icon: "Package",
   },
 ];
 
@@ -250,6 +270,14 @@ export const productSubcategories = [
       "Image Processing Systems",
       "LED Light Sources",
     ],
+  },
+  {
+    id: "infection-management",
+    name: "Infection Management",
+    slug: "infection-management",
+    categoryId: "wound-care",
+    description: "Infection control and management solutions",
+    types: ["Antimicrobial Dressings", "Wound Cleansing Products"],
   },
 ];
 
@@ -1191,6 +1219,42 @@ export const products = [
     ],
     variants: ["VP-1000 S", "VP-1000 A", "VP-1000 P"],
     show_image_main: true,
+  },
+  // AdTec Healthcare Products
+  {
+    id: "adtec-steriplas-cold-plasma-device",
+    name: "SteriPlas",
+    brand: "Adtec Healthcare",
+    partnerId: "adtec-premium-plasma",
+    category: "wound-care",
+    sub_category: "infection-management",
+    product_type: "Cold Plasma Medical Device",
+    is_parent_product: false,
+    images: [
+      "https://adtechealthcare.com/wp-content/uploads/2025/10/head2.jpg",
+      "https://adtechealthcare.com/wp-content/uploads/2025/10/premiumplasma.jpg"
+    ],
+    description:
+      "SteriPlas is a Premium Cold Plasma medical device designed to clear infection at the source by penetrating biofilms, destroying resistant bacteria, and accelerating healing more effectively than standard therapies.",
+    features: [
+      "Premium Cold Plasma penetrates biofilm and hard-to-reach infection sites",
+      "Designed to destroy resistant bacteria including bacteria hidden in biofilm",
+      "Clinically proven to reduce bacterial load by 73.5%",
+      "Documented reduction of up to 100% wound size",
+      "Documented reduction of up to 100% wound depth",
+      "Painless treatment and causes no harm to healthy tissue",
+      "Avoids the risk of antibiotic resistance",
+      "18+ years of safe use with more than 10,000 treatments and 85+ peer-reviewed publications",
+    ],
+    applications: ["Chronic wound infections", "Surgical site infection"],
+    additional_info: {
+      source_url: "https://adtechealthcare.com/steriplas/",
+      company_location:
+        "Adtec Healthcare Limited, Unit 8, Heathlands Industrial Estate, Heathlands Close, Twickenham, TW1 4BP, UK",
+      contact_phone: "+44 208 737 5500",
+      contact_email: "info@adtechealthcare.com",
+    },
+    // show_image_main: true,
   },
 ];
 
