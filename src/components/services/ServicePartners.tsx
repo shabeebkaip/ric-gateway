@@ -32,8 +32,13 @@ export function ServicePartners() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.05 }}
-              className="bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300"
+              className="bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 relative"
             >
+              {partner.tag && (
+                <div className="absolute top-2 right-2 bg-blue-500 text-white text-[10px] font-semibold px-2 py-1 rounded-full">
+                  {partner.tag}
+                </div>
+              )}
               <div className="flex items-center justify-center mb-3 h-14">
                 <img
                   src={partner.logo}

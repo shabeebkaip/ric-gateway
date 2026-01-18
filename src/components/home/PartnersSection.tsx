@@ -68,6 +68,12 @@ export const PartnersSection = () => {
               transition={{ delay: index * 0.05 }}
               className="group relative flex items-center justify-center p-6 md:p-8"
             >
+              {/* Tag Badge */}
+              {partner.tag && (
+                <div className="absolute top-2 right-2 bg-blue-500 text-white text-[10px] font-semibold px-2 py-1 rounded-full z-10">
+                  {partner.tag}
+                </div>
+              )}
               {/* Minimal hover effect - subtle underline */}
               <div className="relative">
                 {partner.logo ? (

@@ -130,6 +130,7 @@ export const partners = [
     invertColor: false,
     categories: ["endoscopy"],
     products: ["Endoscopy Systems", "Gastroscopes", "Colonoscopy"],
+    tag: "Coming Soon",
   },
 ];
 
@@ -323,6 +324,7 @@ export const productData = {
       product_type: "Lithotripsy",
       is_parent_product: false,
       images: [
+        "/medicspec.png",
         "https://www.medispec.com/wp-content/uploads/2022/08/EM1000-36-Custom.png",
         "https://www.medispec.com/wp-content/uploads/2021/08/EM1000-Title-pic-e1638881167440.png",
         "https://www.medispec.com/wp-content/uploads/2021/10/stones.png",
@@ -375,8 +377,8 @@ export const productData = {
     },
     // Potent Medical Products
     {
-      id: "potent-cl-series-holmium-laser",
-      name: "Holmium Laser CL Series",
+      id: "potent-hp-series-holmium-laser",
+      name: "Holmium Laser HP Series High Watts",
       brand: "Potent Medical",
       partnerId: "potent-medical",
       category: "urology",
@@ -436,8 +438,8 @@ export const productData = {
       ],
     },
     {
-      id: "potent-hp-series-holmium-laser",
-      name: "Holmium Laser HP Series",
+      id: "potent-hz-series-holmium-laser",
+      name: "Holmium Laser HZ Series",
       brand: "Potent Medical",
       partnerId: "potent-medical",
       category: "urology",
@@ -595,6 +597,55 @@ export const productData = {
     },
     // BASDA Products
     {
+      id: "basda-bti-050-0-5t-permanent-magnet-mri",
+      name: "BTI-050 0.5T Wide Open C-Shape Permanent Magnet MRI Machine",
+      brand: "BASDA",
+      partnerId: "basda",
+      category: "medical-imaging",
+      sub_category: "medical-imaging-systems",
+      product_type: "MRI Systems",
+      is_parent_product: false,
+      images: [
+        "https://www.basdamri.com/photo/ps32394899-wide_open_c_shape_0_5_tesla_permanent_magnet_mri_machine_bti_050.jpg",
+      ],
+      description:
+        "The BASDA BTI-050 is a 0.5 Tesla wide open C-shape permanent magnet MRI system designed to deliver comfortable patient accessibility with reliable diagnostic imaging performance. Its open magnet design supports easier positioning, improved patient comfort, and broad clinical usability for routine imaging applications.",
+      features: [
+        "0.5 Tesla permanent magnet MRI system",
+        "Wide open C-shape design for improved patient comfort and accessibility",
+        "Designed for stable and consistent imaging performance",
+        "Suitable for routine diagnostic imaging applications",
+        "Optimised workflow for hospitals and imaging centres",
+      ],
+      technical_specifications: {
+        magnetic_field_tesla: 0.5,
+        magnet_type: "Permanent Magnet",
+        magnet_structure: "Wide Open C-Shape",
+        patient_access: "Open design for improved positioning",
+        clinical_use: "Routine diagnostic MRI imaging",
+      },
+      system_components: [
+        "Permanent magnet system",
+        "RF system",
+        "Gradient system",
+        "Patient table",
+        "Computer workstation",
+        "MRI control software",
+      ],
+      applications: [
+        "Routine diagnostic MRI imaging",
+        "Musculoskeletal imaging",
+        "Brain and neurological imaging",
+        "Abdominal imaging",
+      ],
+      certifications: [],
+      additional_info: {
+        place_of_origin: "China",
+        minimum_order_quantity: "1 set",
+        delivery_time_days: "30-45 Days",
+      },
+    },
+    {
       id: "basda-bstar-150f-1-5t-no-helium-superconducting-mri",
       name: "Bstar-150F 1.5T No-Helium Superconducting MRI Scanner",
       brand: "BASDA",
@@ -646,6 +697,81 @@ export const productData = {
         place_of_origin: "China",
         minimum_order_quantity: "1 set",
         delivery_time_days: "30-45 Days",
+      },
+    },
+    {
+      id: "basda-bstar-050-0-5t-dual-post-superconducting-open-mri",
+      name: "Dual Post Superconducting 0.5 Tesla Open MRI Machine Bstar-050",
+      brand: "BASDA",
+      partnerId: "basda",
+      category: "medical-imaging",
+      sub_category: "medical-imaging-systems",
+      product_type: "MRI Systems",
+      is_parent_product: false,
+      images: [
+        "https://www.basdamri.com/photo/ps32748164-dual_post_superconducting_0_5_tesla_open_mri_machine_bstar_050.jpg",
+      ],
+      description:
+        "The BASDA Bstar-050 is a dual post superconducting 0.5 Tesla open MRI system launched in 2016. It is designed to provide a low-cost, low-power-consumption open MRI solution with faster scanning speed than permanent magnet MRI and image quality close to 1.5T superconductive MRI, while reducing patient claustrophobia through its open magnet design.",
+      features: [
+        "0.5 Tesla superconductive open MRI scanner with dual post magnet design",
+        "Low electricity cost compared to conventional 1.5T MRI systems",
+        "Configured with Sumitomo 4K cold head to provide zero consumption of liquid helium",
+        "Faster scanning time than permanent magnet MRI systems",
+        "Image quality better than permanent magnet MRI and close to 1.5T superconductive MRI level",
+        "Open magnet design reduces claustrophobic fear and patient involuntary movement artifacts",
+        "Self-shielding gradient coil with high duty cycle gradient amplifier system",
+        "Eddy zero technology and software algorithm to eliminate eddy current effects",
+        "Special hardware noise reduction design reducing gradient noise up to 66%",
+        "Air cooling gradient system to reduce maintenance cost",
+        "4-channel RF receiving combined with parallel sampling and DDC digital direct sampling",
+        "Supports advanced sequences including MRA, MRU/MRCP/MRM, and DWI imaging",
+        "E-alarm real-time monitoring for magnet pressure, temperature, and liquid helium level with phone alerts",
+      ],
+      technical_specifications: {
+        magnetic_field_tesla: 0.5,
+        magnet_shape: "Dual Post",
+        magnet_type: "Superconductive Magnet",
+        vertical_gap_cm: 42,
+        cooling: "Water-cooled helium",
+        rf_channels: 4,
+        gradient_cooling: "Air cooling",
+        liquid_helium_consumption: "Zero (with 4K cold head)",
+      },
+      system_components: [
+        "Dual post superconductive open magnet system",
+        "Self-shielding gradient coil system",
+        "High duty cycle gradient amplifier system",
+        "4-channel RF receiving subsystem",
+        "Parallel acquisition and DDC digital direct sampling technology",
+        "Noise reduction hardware design for gradient system",
+        "Interactive scan system with full-body scan kit and sequences",
+        "E-alarm monitoring system (pressure, temperature, helium level)",
+      ],
+      applications: [
+        "Routine full-body MRI scanning",
+        "MR Angiography (MRA)",
+        "MR Urography (MRU)",
+        "MR Cholangiopancreatography (MRCP)",
+        "MR Mammography (MRM)",
+        "Diffusion Weighted Imaging (DWI)",
+      ],
+      certifications: ["CE", "ISO13485"],
+      additional_info: {
+        place_of_origin: "Guangdong, P.R.C.",
+        model_number: "Bstar-050",
+        minimum_order_quantity: "1 set",
+        price: "Negotiable",
+        packaging_details: "1 unit/wooden box",
+        delivery_time_days: "30-45 Days",
+        payment_terms: [
+          "Credit card",
+          "Paypal",
+          "T/T",
+          "Western Union",
+          "MoneyGram",
+        ],
+        supply_ability: "200 machines per year",
       },
     },
     // Allwin Medical Devices Products
@@ -932,6 +1058,32 @@ export const productData = {
         phone: "(86) 020-80927258",
         email: "info@gzredpine.com",
       },
+      show_image_main: true,
+    },
+    {
+      id: "redpine-single-use-video-flexible-cystoscope",
+      name: "Single-Use Video Flexible Cystoscope",
+      brand: "redpine",
+      category: "urology",
+      sub_category: "urology-equipment",
+      product_type: "Disposable Flexible Cystoscope",
+      is_parent_product: false,
+      images: [
+        "https://en.redpinemed.com/gzrpyl202311303965/uploadfiles/image/proinfoimg1-2.png",
+        "https://en.redpinemed.com/gzrpyl202311303965/uploadfiles/image/proinfoimg2-2.png",
+      ],
+      description:
+        "Single-Use Video Flexible Cystoscope is designed for urology procedures and provides safe, convenient cystoscopic access with clear visualization. The single-use design eliminates the risk of cross-contamination and reduces reprocessing burden while offering an easy, safe, and affordable solution.",
+      features: [
+        "Single-use design eliminates the potential risks of device-related cross-contamination",
+        "Ergonomically designed lightweight handle for smooth manoeuvrability",
+        "Highly integrated distal CMOS and dual LED provide excellent image quality",
+        "Up to 210° down and 120° up bending for clear cystoscopy",
+        "Slim outer diameter (OD 13.2Fr) for improved patient comfort",
+        "Compatible with Redpine single-use endoscopes and RP-IPD-V800 system",
+      ],
+      variants: [],
+      show_image_main: true,
     },
     // Excite Medical Products
     {
@@ -1013,7 +1165,7 @@ export const productData = {
         "Excellent maneuverability and bending performance",
       ],
       variants: [],
-      show_image_main : true,
+      show_image_main: true,
     },
     {
       id: "concemed-vp-1000-video-processor",
@@ -1023,7 +1175,8 @@ export const productData = {
       sub_category: "endoscopy-imaging-systems",
       product_type: "Endoscopic Video Image Processor",
       is_parent_product: true,
-      images: ["https://concemed-02.obs.cn-north-4.myhuaweicloud.com/f75f484ee2a6f0891fd910db69fcd63f.jpg",
+      images: [
+        "https://concemed-02.obs.cn-north-4.myhuaweicloud.com/f75f484ee2a6f0891fd910db69fcd63f.jpg",
       ],
       description:
         "The VP-1000 Series is an advanced endoscopic video image processor with an integrated multi-spectral LED light source. It delivers high-definition imaging with enhanced mucosal color expression and supports multiple imaging modes for screening, diagnosis, and therapeutic endoscopic procedures.",
@@ -1038,7 +1191,7 @@ export const productData = {
         "Supports comprehensive endoscopic workflows",
       ],
       variants: ["VP-1000 S", "VP-1000 A", "VP-1000 P"],
-      show_image_main : true,
+      show_image_main: true,
     },
   ],
 };
@@ -1053,7 +1206,8 @@ export const companyStats = {
 };
 
 export const contactInfo = {
-  companyName: "Riyadh International Corporation Medical Equipments & Services, Ltd",
+  companyName:
+    "Riyadh International Corporation Medical Equipments & Services, Ltd",
   address: {
     street: "Orouba street, RIC Complex",
     city: "Riyadh",

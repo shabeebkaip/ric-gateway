@@ -81,10 +81,10 @@ export const ProductCategoriesSection = () => {
             const isEven = productCategories.indexOf(category) % 2 === 0;
 
             return (
-              <motion.div
+              <Link
                 key={category.id}
-                className="group relative glass-card rounded-2xl p-8 hover-lift cursor-pointer overflow-hidden hover:border-gold/30 transition-all duration-300"
-                variants={itemVariants}
+                href={`/products/${category.slug}`}
+                className="block group relative glass-card rounded-2xl p-8 hover-lift cursor-pointer overflow-hidden hover:border-gold/30 transition-all duration-300"
               >
                 {/* Background Gradient on Hover */}
                 <div
@@ -136,15 +136,12 @@ export const ProductCategoriesSection = () => {
                     </span>
                   </div>
 
-                  <Link
-                    href={`/products/${category.slug}`}
-                    className="inline-flex items-center gap-2 font-medium bg-gradient-to-r from-gold to-primary bg-clip-text text-transparent group-hover:gap-4 transition-all duration-300"
-                  >
+                  <div className="inline-flex items-center gap-2 font-medium bg-gradient-to-r from-gold to-primary bg-clip-text text-transparent group-hover:gap-4 transition-all duration-300">
                     View Products
                     <ArrowRight className="w-4 h-4 text-gold" />
-                  </Link>
+                  </div>
                 </div>
-              </motion.div>
+              </Link>
             );
           })}
         </motion.div>
