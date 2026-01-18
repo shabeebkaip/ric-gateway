@@ -521,7 +521,7 @@ export const products = [
       "https://www.potent-medical.com/wp-content/uploads/2024/06/%E5%AE%B9%E5%99%A8-1@1x-2024-10-09T171925.625.webp",
     ],
     description:
-      "The Thulium Fiber Laser PulseMaster by Potent Medical is an advanced laser system designed to deliver high-precision, efficient performance for stone management and soft tissue procedures. It features ultra-long pulse technology, air cooling, intuitive touch screen controls, a smart fiber connector, and dual pedal footswitch modes for rapid switching between dusting and fragmentation. It combines safety, speed, and efficiency in one versatile surgical laser platform. :contentReference[oaicite:0]{index=0}",
+      "The Thulium Fiber Laser PulseMaster by Potent Medical is an advanced laser system designed to deliver high-precision, efficient performance for stone management and soft tissue procedures. It features ultra-long pulse technology, air cooling, intuitive touch screen controls, a smart fiber connector, and dual pedal footswitch modes for rapid switching between dusting and fragmentation. It combines safety, speed, and efficiency in one versatile surgical laser platform. ",
     features: [
       "Ultra-long pulse laser technology for precise targeting with reduced retropulsion and improved stone dusting efficiency",
       "10-inch intuitive touch screen interface",
@@ -683,7 +683,7 @@ export const products = [
       "https://www.basdamri.com/photo/ps33865573-1_5_tesla_no_helium_superconducting_mri_scanner_open_superconductive_mri_bstar_150f.jpg",
     ],
     description:
-      "The BASDA Bstar-150F is a 1.5 Tesla superconducting MRI scanner engineered without the need for liquid helium, significantly reducing operational constraints and dependency on helium supply. It provides high magnetic field stability and excellent imaging performance with an active shielding design suitable for advanced clinical diagnostics. :contentReference[oaicite:0]{index=0}",
+      "The BASDA Bstar-150F is a 1.5 Tesla superconducting MRI scanner engineered without the need for liquid helium, significantly reducing operational constraints and dependency on helium supply. It provides high magnetic field stability and excellent imaging performance with an active shielding design suitable for advanced clinical diagnostics. ",
     features: [
       "Helium-free superconducting magnet eliminates the need for liquid helium consumption. :contentReference[oaicite:1]{index=1}",
       "1.5 Tesla magnetic field for high-resolution diagnostic imaging. :contentReference[oaicite:2]{index=2}",
@@ -1057,7 +1057,7 @@ export const products = [
       "https://en.redpinemed.com/gzrpyl202311303965/uploadfiles/image/proinfoimg2.png",
     ],
     description:
-      "Single-Use Video Flexible Ureteroscope is designed for urological procedures where flexible access and clear visualization is necessary. The single-use design eliminates the risk of cross-contamination and reduces reprocessing costs while offering a safe, affordable endoscopic solution ideal for a wide range of stone and diagnostic procedures.:contentReference[oaicite:0]{index=0}",
+      "Single-Use Video Flexible Ureteroscope is designed for urological procedures where flexible access and clear visualization is necessary. The single-use design eliminates the risk of cross-contamination and reduces reprocessing costs while offering a safe, affordable endoscopic solution ideal for a wide range of stone and diagnostic procedures.",
     features: [
       "Designed for flexible ureteroscopic procedures",
       "Single-use design to eliminate cross-contamination and reprocessing costs",

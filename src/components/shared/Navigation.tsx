@@ -135,7 +135,7 @@ export const Navigation = () => {
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
                         >
-                          <div className="grid grid-cols-2 gap-4">
+                          <div className="grid grid-cols-2 gap-4 mb-4">
                             {productCategories.map((category) => {
                               const Icon = categoryIcons[category.icon];
                               const categoryPartners = partners.filter((p) =>
@@ -170,6 +170,16 @@ export const Navigation = () => {
                                 </Link>
                               );
                             })}
+                          </div>
+                          <div className="pt-4 border-t border-border/50">
+                            <Link
+                              href="/products"
+                              className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-gold/10 to-primary/10 hover:from-gold/20 hover:to-primary/20 text-primary font-semibold transition-all duration-300"
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              <Package className="w-4 h-4" />
+                              View All Products
+                            </Link>
                           </div>
                         </motion.div>
                       )}
