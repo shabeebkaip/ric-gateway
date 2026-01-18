@@ -208,7 +208,8 @@ export const Navigation = () => {
               whileHover={{ scale: 1.05 }}
             >
               <Phone className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
-              <span>Call Us</span>
+              <span className="hidden xl:inline">+966 50 969 8043</span>
+              <span className="xl:hidden">Call Us</span>
             </motion.a>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
