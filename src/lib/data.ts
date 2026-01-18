@@ -1149,6 +1149,7 @@ export const productData = {
       product_type: "Video Gastroscope",
       is_parent_product: false,
       images: [
+        "https://static2.xunxiang.site/uploads/sites/2086/2024/01/133cf46c8226398dce556c386b815971.jpg",
         "https://static2.xunxiang.site/uploads/sites/2086/2024/12/0b8bb9af7b93dff2ad6dc20c28ed0c39.jpg",
         "https://static2.xunxiang.site/uploads/sites/2086/2024/12/9f8706f791ae86afe20a6fca5a4fc159.jpg",
       ],
@@ -1176,6 +1177,7 @@ export const productData = {
       product_type: "Endoscopic Video Image Processor",
       is_parent_product: true,
       images: [
+        "	https://static2.xunxiang.site/uploads/sites/2086/2024/01/d398bc0c944a243ee45596058d0e22f1.jpg",
         "https://concemed-02.obs.cn-north-4.myhuaweicloud.com/f75f484ee2a6f0891fd910db69fcd63f.jpg",
       ],
       description:
