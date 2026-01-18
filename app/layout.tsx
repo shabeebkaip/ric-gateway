@@ -7,6 +7,7 @@ import '../src/index.css';
 import { Providers } from './providers';
 import { Navigation } from '@/components/shared/Navigation';
 import { Footer } from '@/components/shared/Footer';
+import { WhatsAppFloat } from '@/components/shared/WhatsAppFloat';
 
 export const metadata: Metadata = {
   title: 'RIC - Riyadh International Corporation | Medical Equipment & Healthcare Solutions',
@@ -36,6 +37,7 @@ export default function RootLayout({
           <Navigation />
           {children}
           <Footer />
+          <WhatsAppFloat />
         </Providers>
       </body>
     </html>
