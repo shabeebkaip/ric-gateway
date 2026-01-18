@@ -7,6 +7,7 @@ import {
   TechnicalSpecifications,
   ProductCTA,
   ProductImageGallery,
+  DynamicProductFields,
 } from "./detail";
 import type { ProductDetailContentProps } from "@/types";
 
@@ -31,6 +32,9 @@ export function ProductDetailContent({
       <TechnicalSpecifications
         specifications={product.technical_specifications}
       />
+
+      {/* Dynamic fields - displays all remaining product data */}
+      <DynamicProductFields product={product} />
 
       {/* Display images in full width after technical specifications when show_image_main is true */}
       {product.show_image_main && product.images && product.images.length > 0 && (
