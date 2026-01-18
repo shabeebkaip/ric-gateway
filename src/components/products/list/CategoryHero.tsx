@@ -27,6 +27,11 @@ export function CategoryHero({
       ariaLabel: "Home",
     },
     {
+      label: "Products",
+      href: "/products",
+      ariaLabel: "Products Overview",
+    },
+    {
       label: category.name,
       href: null,
     },

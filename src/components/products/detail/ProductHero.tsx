@@ -41,6 +41,11 @@ export function ProductHero({ product, category }: ProductHeroProps) {
       ariaLabel: "Home",
     },
     {
+      label: "Products",
+      href: "/products",
+      ariaLabel: "Products Overview",
+    }, 
+    {
       label: category.name,
       href: `/products/${category.slug}`,
     },
