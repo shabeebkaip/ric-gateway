@@ -1,50 +1,44 @@
-import { productSubcategories, partners, productData } from "./data";
+import { productSubcategories, partners, products } from "./data";
 
 export function getProductsByCategory(categorySlug: string) {
-  return productData.products.filter(
-    (product) => product.category === categorySlug
-  );
+  return products.filter((product) => product.category === categorySlug);
 }
 
 export function getProductsBySubcategory(subcategoryId: string) {
-  return productData.products.filter(
-    (product) => product.sub_category === subcategoryId
-  );
+  return products.filter((product) => product.sub_category === subcategoryId);
 }
 
 export function getProductsByCategoryAndSubcategory(
   categorySlug: string,
-  subcategorySlug: string
+  subcategorySlug: string,
 ) {
   // Find the subcategory ID that matches the category and subcategory slug
   const subcategory = productSubcategories.find(
-    (sub) => sub.categoryId === categorySlug && sub.slug === subcategorySlug
+    (sub) => sub.categoryId === categorySlug && sub.slug === subcategorySlug,
   );
 
   if (!subcategory) {
     return [];
   }
 
-  return productData.products.filter(
-    (product) => product.sub_category === subcategory.id
-  );
+  return products.filter((product) => product.sub_category === subcategory.id);
 }
 
 export function getSubcategoriesByCategory(categoryId: string) {
   return productSubcategories.filter(
-    (subcategory) => subcategory.categoryId === categoryId
+    (subcategory) => subcategory.categoryId === categoryId,
   );
 }
 
 export function getSubcategoryById(subcategoryId: string) {
   return productSubcategories.find(
-    (subcategory) => subcategory.id === subcategoryId
+    (subcategory) => subcategory.id === subcategoryId,
   );
 }
 
 export function getAllCategories() {
   const categories = new Set<string>();
-  productData.products.forEach((product) => {
+  products.forEach((product) => {
     categories.add(product.category);
   });
   return Array.from(categories);
@@ -52,7 +46,7 @@ export function getAllCategories() {
 
 export function getAllSubcategories(categorySlug: string) {
   const subcategories = new Set<string>();
-  productData.products
+  products
     .filter((product) => product.category === categorySlug)
     .forEach((product) => {
       subcategories.add(product.sub_category);
@@ -61,7 +55,7 @@ export function getAllSubcategories(categorySlug: string) {
 }
 
 export function getProductById(productId: string) {
-  return productData.products.find((product) => product.id === productId);
+  return products.find((product) => product.id === productId);
 }
 
 // Partner-related utility functions
@@ -74,8 +68,8 @@ export function getPartnerById(partnerId: string) {
 }
 
 export function getProductsByPartner(partnerId: string) {
-  return productData.products.filter(
-    (product) => product.partnerId === partnerId
+  return products.filter(
+    (product) => product.partnerId === partnerId,
   );
 }
 

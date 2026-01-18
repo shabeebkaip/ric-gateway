@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 import { partners } from "@/lib/data";
 
 export function ServicePartners() {
+  const servicePartners = partners.filter(
+    (partner) => partner.id !== "allwin" && partner.id !== "boston-scientific"
+  );
+
   return (
     <section className="py-12 bg-white">
       <div className="container mx-auto px-6 max-w-7xl">
@@ -25,7 +29,7 @@ export function ServicePartners() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {partners.map((partner, index) => (
+          {servicePartners.map((partner, index) => (
             <motion.div
               key={partner.id}
               initial={{ opacity: 0, y: 30 }}
