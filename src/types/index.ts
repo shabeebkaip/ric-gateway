@@ -125,3 +125,20 @@ export interface EmptyStateProps {
   hasActiveFilters: boolean;
   onClearFilters: () => void;
 }
+
+// Content Editor Types
+export interface PageHeroContent {
+  title: string;
+  subtitle: string;
+  description: string;
+  backgroundImage: string;
+}
+
+export interface PageHeroEditorProps {
+  page: string;
+  section: string;
+  pageTitle: string;
+  pageBreadcrumb: string;
+  previewUrl: string;
+  defaultContent: PageHeroContent;
+}

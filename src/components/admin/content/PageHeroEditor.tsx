@@ -10,22 +10,7 @@ import { ArrowLeft, Save, Eye, Undo, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { ImageUpload } from '@/components/admin/ImageUpload';
-
-interface PageHeroContent {
-  title: string;
-  subtitle: string;
-  description: string;
-  backgroundImage: string;
-}
-
-interface PageHeroEditorProps {
-  page: string;
-  section: string;
-  pageTitle: string;
-  pageBreadcrumb: string;
-  previewUrl: string;
-  defaultContent: PageHeroContent;
-}
+import { PageHeroContent, PageHeroEditorProps } from '@/types';
 
 export default function PageHeroEditorWrapper({ 
   page, 
