@@ -197,9 +197,9 @@ export default function PageHeroEditorWrapper({
           <Card className="p-6">
             <h2 className="text-lg font-semibold mb-4">Background Image</h2>
             <ImageUpload
-              images={content.backgroundImage ? [content.backgroundImage] : []}
+              value={content.backgroundImage ? [content.backgroundImage] : []}
               onChange={(images) => setContent({ ...content, backgroundImage: images[0] || '' })}
-              maxImages={1}
+              maxFiles={1}
             />
           </Card>
         </div>
