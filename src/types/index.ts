@@ -10,7 +10,7 @@ export interface Product {
   description?: string;
   images?: string[];
   is_parent_product?: boolean;
-  variants?: string[];
+  variants?: string[] | Record<string, any>[];
   features?: string[];
   applications?: string[];
   technical_specifications?: any;
@@ -25,6 +25,7 @@ export interface Product {
   full_name?: string;
   combinations?: any;
   show_image_main?: boolean;
+  accessories_included?: string[];
 }
 
 // Category Types
