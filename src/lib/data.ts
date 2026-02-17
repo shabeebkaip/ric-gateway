@@ -3039,8 +3039,251 @@ export const products = [
       source_url:
         "https://enovis.com/products/presslock-universal-fusion-plates",
     },
-    show_image_main: true,
+    show_image_main: false,
   },
+  {
+  id: "enovis-nexis-small-cannulated-screws",
+  name: "Nexis® Small Cannulated Screws",
+  brand: "Enovis",
+  partnerId: "enovis",
+  category: "orthopedics",
+  sub_category: "foot-and-ankle",
+  product_type: "Cannulated Compression Screws",
+  is_parent_product: true,
+  images: [
+    "https://enovis.widen.net/content/ed18cd50-cfe9-4700-9584-92d936a5f74d/web/nexis-small.jpg?w=720&itok=D5rPpjxD"
+  ],
+  description:
+    "Nexis® Small Cannulated Screws are self-drilling and self-tapping compressive screws designed to provide enhanced stability for a wide range of forefoot and midfoot procedures. The system offers a comprehensive portfolio of low-profile screws with precise insertion, strong compression capability, and simplified extraction features, packaged for convenient deployment in orthopedic foot and ankle surgery.",
+  features: [
+    "Self-drilling and self-tapping compressive screw design",
+    "Triple-sharpened tip for enhanced precision and penetration",
+    "Reverse cutting flutes to simplify screw extraction",
+    "Hexalobe recess interface for secure engagement and optimal torque transmission",
+    "Low-profile headless screw design for reduced soft-tissue irritation",
+    "Self-penetrating conical compression cone enabling atraumatic insertion",
+    "Comprehensive screw range covering multiple forefoot and midfoot indications",
+    "Convenient packaging for efficient surgical workflow"
+  ],
+  variants: [
+    "Ø2.3 mm Nexis Screws",
+    "Ø2.9 mm Nexis Screws",
+    "Ø4.0 mm Nexis Screws"
+  ],
+  technical_specifications: {
+    material: "Anodized Titanium Alloy (TA6V)",
+    screwdriver_interface: ["T7 Hexalobe", "T8 Hexalobe", "T10 Hexalobe"],
+    thread_diameters_mm: ["2.3", "2.9", "4.0"],
+    core_diameters_mm: ["1.75", "1.85", "2.65"],
+    head_diameters_mm: ["3.5", "3.9", "5.0"],
+    guide_wire_diameters_mm: ["0.9", "1.0", "1.4"],
+    thread_pitch_mm: ["0.9", "1.35", "1.35"],
+    screw_lengths_mm: [
+      "10–30 mm (2 mm increments)",
+      "10–34 mm (2 mm increments)",
+      "18–60 mm (2 mm increments up to 50 mm, then 5 mm increments)"
+    ],
+    thread_length: "Variable depending on screw size and length"
+  },
+  applications: [
+    "Forefoot fracture fixation",
+    "Midfoot fracture fixation",
+    "Osteotomies",
+    "Arthrodesis procedures",
+    "Hallux valgus correction",
+    "Foot deformity reconstruction"
+  ],
+  system_components: [
+    "Cannulated compression screws",
+    "Guide wires",
+    "Hexalobe screwdrivers",
+    "Instrumentation kit"
+  ],
+  certifications: [
+    "CE Mark",
+    "FDA Cleared"
+  ],
+  show_image_main: false
+},
+{
+  id: "enovis-nexis-snap-off-screws",
+  name: "Nexis® Snap-off Screws",
+  brand: "Enovis",
+  partnerId: "enovis",
+  category: "orthopedics",
+  sub_category: "foot-and-ankle",
+  product_type: "Snap-off Fixation Screws",
+  is_parent_product: false,
+  images: [
+    "https://enovis.widen.net/content/78b23b1d-32df-4ec7-b066-4ad835e366f3/web/nexis-snap.jpg?w=720&itok=x_w91YoX"
+  ],
+  description:
+    "Nexis® Snap-off Screws are self-tapping and self-drilling fixation screws designed primarily for distal oblique metatarsal (Weil) osteotomy procedures. The system features a quick-connect screwdriver tip that eliminates the need for additional tools during insertion. After fixation, the driving shank snaps off, leaving a smooth low-profile screw head for secure fixation and improved soft-tissue comfort.",
+  features: [
+    "Self-tapping and self-drilling screw design",
+    "Quick-connect screwdriver tip eliminating additional instrumentation",
+    "Snap-off mechanism leaving a smooth low-profile head after insertion",
+    "Designed for secure fixation of bone fragments",
+    "Wire driver compatible insertion",
+    "Simplified surgical workflow with efficient deployment",
+    "Sterile ready-to-use packaging (cleanSTART™ system compatible)",
+    "Titanium alloy construction for strength and biocompatibility"
+  ],
+  variants: [
+    "Ø2.0 mm Snap-off Screws (11–16 mm lengths)"
+  ],
+  technical_specifications: {
+    thread_diameter_mm: 2.0,
+    core_diameter_mm: 1.25,
+    head_diameter_mm: 3.0,
+    thread_pitch_mm: 0.85,
+    screw_lengths_mm: "11–16 mm (1 mm increments)",
+    guide_wire: "Not required",
+    material: "Anodized Titanium Alloy (TA6V ELI)",
+    screwdriver_interface: "Quick-connect Weil driver compatible"
+  },
+  applications: [
+    "Distal oblique metatarsal (Weil) osteotomy",
+    "Forefoot osteotomy fixation",
+    "Small bone fragment fixation in foot surgery"
+  ],
+  system_components: [
+    "Snap-off fixation screws",
+    "Compatible wire driver / screwdriver instrumentation"
+  ],
+  certifications: [
+    "CE Mark",
+    "FDA Cleared"
+  ],
+  additional_info: {
+    source_url: "https://enovis.com/products/nexis-snap-screws"
+  },
+  show_image_main: false
+},
+{
+  id: "enovis-peca-c-compressive-implants",
+  name: "PECA-C Compressive Implants",
+  brand: "Enovis",
+  partnerId: "enovis",
+  category: "orthopedics",
+  sub_category: "foot-and-ankle",
+  product_type: "Compressive Bone Implants",
+  is_parent_product: false,
+  images: [
+    "https://enovis.widen.net/content/79e1ecf3-fba7-48ac-a9ad-51d792ebc32c/web/peca-c.jpg?w=720&itok=Gn6CF6GW"
+  ],
+  description:
+    "The PECA-C Compressive Implants are percutaneous fixation implants designed for foot and ankle procedures including fractures, osteotomies, and arthrodesis. The system provides controlled compression and stable fixation with minimally invasive surgical techniques. It can be used independently or in combination with Airlock® and Presslock® plating systems for enhanced rigidity when required.",
+  features: [
+    "Percutaneous compressive implant design for minimally invasive surgery",
+    "Dual partially threaded configuration for optimal compression",
+    "Positive locking channel to improve anchorage and compression",
+    "Self-drilling and self-tapping design for simplified insertion",
+    "Reverse cutting flutes to facilitate implant removal",
+    "Beveled or standard head options for cortical anchorage and soft tissue preservation",
+    "Exact-T recess for dedicated instrumentation and precise engagement",
+    "Compatible with Airlock® and Presslock® plating systems"
+  ],
+  technical_specifications: {
+    diameter_mm: 4.0,
+    available_lengths_mm: "18–60 mm",
+    length_increment: "2 mm increments up to 50 mm, then 5 mm increments",
+    implant_type: "Percutaneous compression screw",
+    threading: "Dual partially threaded",
+    insertion: "Self-drilling and self-tapping",
+    instrumentation: "Exact-T10 screwdriver system"
+  },
+  applications: [
+    "Foot and ankle fractures",
+    "Arthrodesis procedures",
+    "Osteotomies",
+    "Hallux valgus correction",
+    "Forefoot and midfoot fixation",
+    "Percutaneous bone fixation procedures"
+  ],
+  compatibility: [
+    "PECA® instrumentation set",
+    "Airlock® Plating System",
+    "Presslock® Plating System"
+  ],
+  certifications: [
+    "CE Mark",
+    "ISO 13485"
+  ],
+  show_image_main: false
+},
+{
+  "id": "enovis-tiger-cannulated-screw-system",
+  "name": "Tiger Cannulated Screw System",
+  "brand": "Enovis",
+  "category": "orthopedics",
+  "sub_category": "foot-and-ankle",
+  "product_type": "Cannulated Screw System",
+  "is_parent_product": true,
+  "images": [
+    "https://enovis.widen.net/content/cfb451c3-f825-48e1-8702-852889debd83/web/Stand-Screws_White.png?w=720&itok=-H9n2NlZ"
+  ],
+  "description": "The Tiger Cannulated Screw System is a self-drilling, self-tapping titanium alloy lag screw fixation system designed for orthopedic fixation of fractures, osteotomies, non-unions, and arthrodesis procedures in the hand and foot. The system provides strong fixation, reliable compression, and versatile sizing options to address diverse anatomical and surgical requirements.",
+  "features": [
+    "Self-drilling and self-tapping screw design",
+    "Titanium alloy construction for strength and biocompatibility",
+    "Cannulated design for guided placement over a wire",
+    "Tiger stripe flute technology for improved cutting efficiency",
+    "Dual lead thread options for enhanced compression",
+    "Comprehensive size range to address multiple indications",
+    "Instrumentation set designed for precision placement",
+    "Available sterile single-use implants with reusable instrumentation"
+  ],
+  "variants": [
+    "4.5 mm Tiger Cannulated Screws",
+    "5.5 mm Tiger Large Cannulated Screws",
+    "6.5 mm Tiger Large Cannulated Screws",
+    "7.0 mm Tiger Large Cannulated Screws"
+  ],
+  "technical_specifications": {
+    "material": "Titanium Alloy (ASTM F-136)",
+    "diameter_range_mm": "4.5 – 7.0",
+    "length_range_mm": "20 – 120",
+    "thread_options": ["Short thread", "Long thread"],
+    "design": "Cannulated threaded lag screw",
+    "placement": "Guide wire assisted insertion"
+  },
+  "system_components": [
+    "Cannulated screws",
+    "Guide wires",
+    "Drill bits",
+    "Depth gauge",
+    "Countersinks",
+    "Drill sleeves",
+    "Driver shafts and handles",
+    "Screw extraction tools",
+    "Instrumentation trays"
+  ],
+  "applications": [
+    "Fracture fixation of small bones",
+    "Arthrodesis procedures",
+    "Osteotomy fixation",
+    "Non-union repair",
+    "Forefoot, midfoot, hindfoot and ankle procedures"
+  ],
+  "indications": [
+    "Fixation of fractures",
+    "Fixation of osteotomies",
+    "Bone fusion procedures",
+    "Correction of deformities in foot and ankle"
+  ],
+  "contraindications": [
+    "Active or suspected infection",
+    "Patients with sensitivity to implant materials",
+    "Compromised bone quality preventing fixation",
+    "Conditions preventing compliance with postoperative care"
+  ],
+  "show_image_main": false
+}
+
+
+
+
 ];
 
 export const companyStats = {
