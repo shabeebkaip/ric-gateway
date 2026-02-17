@@ -1747,6 +1747,81 @@ export const products = [
     },
     show_image_main: false,
   },
+  {
+    id: "wego-locking-plate-2-wedge-shape-t",
+    name: "Locking Plate-2 (Wedge shape)(T)",
+    brand: "WEGO",
+    partnerId: "wego",
+    category: "orthopedics",
+    sub_category: "trauma",
+    product_type: "Locking Plate",
+    is_parent_product: true,
+    images: ["/orthopedics/page_58_img_8.jpeg"],
+    description:
+      "The Locking Plate-2 (Wedge shape)(T) is an advanced orthopedic locking plate with a distinctive wedge configuration, featuring a premium gold/yellow anodized finish. This specialized plate is designed for precise angular correction and deformity management, offering 4 variants with hole diameters ranging from 3mm to 6mm, all maintaining a consistent 30mm length for optimal stability and surgical versatility.",
+    features: [
+      "Advanced wedge-shaped design for precise correction",
+      "Locking screw technology for maximum stability",
+      "Low-profile titanium construction",
+      "4 holes with variable diameters (3mm to 6mm)",
+      "Consistent 30mm length across all variants",
+      "Pre-contoured anatomical wedge design",
+      "Premium gold/yellow anodized finish",
+      "Ideal for osteotomy and deformity correction",
+    ],
+    variants: [
+      {
+        code: "08.311.01.201952704",
+        holes: "4",
+        hole_diameter: "3mm",
+        length: "30mm",
+      },
+      {
+        code: "08.311.01.201953704",
+        holes: "4",
+        hole_diameter: "4mm",
+        length: "30mm",
+      },
+      {
+        code: "08.311.01.201954704",
+        holes: "4",
+        hole_diameter: "5mm",
+        length: "30mm",
+      },
+      {
+        code: "08.311.01.201955704",
+        holes: "4",
+        hole_diameter: "6mm",
+        length: "30mm",
+      },
+    ],
+    technical_specifications: {
+      material: "Titanium alloy",
+      surface_finish: "Anodized gold/yellow coating",
+      plate_thickness: "Low-profile design",
+      shape: "Wedge-shaped configuration",
+      correction_angle: "Variable based on surgical planning",
+    },
+    accessories_included: [
+      "Cancellous Locking screw (3.5mm)",
+      "Cortex screw (flat head) (3.5mm)",
+    ],
+    applications: [
+      "Corrective osteotomy procedures",
+      "Angular deformity correction",
+      "Hand and wrist realignment",
+      "Malunion correction surgery",
+      "Post-traumatic deformity management",
+      "Congenital bone deformity treatment",
+      "Complex reconstruction procedures",
+    ],
+    certifications: [],
+    regulatory: {
+      intended_use:
+        "Internal fixation for corrective osteotomy, angular correction, and deformity management in hand and wrist surgery",
+    },
+    show_image_main: false,
+  },
 ];
 
 export const companyStats = {
