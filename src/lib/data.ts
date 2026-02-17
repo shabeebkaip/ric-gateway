@@ -2071,6 +2071,86 @@ export const products = [
     },
     show_image_main: true,
   },
+  {
+    id: "wego-subtalar-joint-stabilization-screw-t",
+    name: "Subtalar Joint Stabilization Screw(T)",
+    brand: "WEGO",
+    partnerId: "wego",
+    category: "orthopedics",
+    sub_category: "foot-and-ankle",
+    product_type: "Stabilization Screw",
+    is_parent_product: true,
+    images: ["/orthopedics/page_59_img_3.jpeg"],
+    description:
+      "The Subtalar Joint Stabilization Screw(T) is a specialized orthopedic implant designed for talocalcaneal joint stabilization procedures. Featuring a premium gold/brass anodized finish with cannulated design, this screw system offers six variants ranging from 5 to 10 holes, all maintaining a consistent 21mm length. Specifically engineered for subtalar arthrodesis and joint fusion procedures, it provides exceptional stability and compression for optimal bone healing.",
+    features: [
+      "Cannulated design for guided insertion",
+      "Six hole configurations (5, 6, 7, 8, 9, 10 holes)",
+      "Consistent 21mm length across all variants",
+      "Premium gold/brass anodized finish",
+      "Optimized for subtalar joint stabilization",
+      "Titanium alloy construction",
+      "Thread design for compression",
+      "Compatible with special instrument kit",
+    ],
+    variants: [
+      {
+        code: "08.311.01.170170055",
+        holes: "5",
+        length: "21mm",
+      },
+      {
+        code: "08.311.01.170170065",
+        holes: "6",
+        length: "21mm",
+      },
+      {
+        code: "08.311.01.170170075",
+        holes: "7",
+        length: "21mm",
+      },
+      {
+        code: "08.311.01.170170085",
+        holes: "8",
+        length: "21mm",
+      },
+      {
+        code: "08.311.01.170170095",
+        holes: "9",
+        length: "21mm",
+      },
+      {
+        code: "08.311.01.170170105",
+        holes: "10",
+        length: "21mm",
+      },
+    ],
+    technical_specifications: {
+      material: "Titanium alloy",
+      surface_finish: "Anodized gold/brass coating",
+      design_type: "Cannulated screw",
+      joint_application: "Talocalcaneal (Subtalar) joint",
+      compression_capability: "Yes",
+    },
+    accessories_included: [
+      "Instrument set included: 08.301.02.30900014-SET (GC9X) Talocalcaneal Joint Stabilization Screw Special Instrument Kit Packaging",
+    ],
+    applications: [
+      "Subtalar joint arthrodesis",
+      "Talocalcaneal joint fusion",
+      "Hindfoot stabilization",
+      "Flatfoot reconstruction",
+      "Post-traumatic subtalar arthritis",
+      "Congenital talipes equinovarus correction",
+      "Coalition resection with fusion",
+    ],
+    certifications: [],
+    regulatory: {
+      intended_use:
+        "Internal fixation for subtalar (talocalcaneal) joint stabilization, arthrodesis, and fusion procedures",
+    },
+    show_image_main: false,
+  },
 ];
 
 export const companyStats = {
