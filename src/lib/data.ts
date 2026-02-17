@@ -1606,6 +1606,79 @@ export const products = [
     },
     show_image_main: false,
   },
+  {
+    id: "wego-locking-plate-4-h-shape-t",
+    name: "Locking Plate-4 (H shape) (T)",
+    brand: "WEGO",
+    partnerId: "wego",
+    category: "orthopedics",
+    sub_category: "trauma",
+    product_type: "Locking Plate",
+    is_parent_product: true,
+    images: ["/orthopedics/page_58_img_7.png", "/orthopedics/page_58_img_4.png"],
+    description:
+      "The Locking Plate-4 (H shape)(T) is a premium orthopedic locking plate with a distinctive H-shaped design, featuring a gold/brass anodized finish. This specialized plate is designed for micro-fracture fixation in hand and wrist surgeries, offering 4 variants with hole diameters ranging from 2mm to 8mm for precise and versatile fixation options.",
+    features: [
+      "Micro H-shaped configuration for delicate bone fixation",
+      "Locking screw technology for maximum angular stability",
+      "Ultra-low-profile titanium construction",
+      "4 holes with micro diameters (2mm to 8mm)",
+      "Compact length options from 22mm to 28mm",
+      "Pre-contoured anatomical design",
+      "Premium gold/brass anodized finish",
+      "Ideal for pediatric and small bone applications",
+    ],
+    variants: [
+      {
+        code: "08.311.01.201920704",
+        holes: "4",
+        hole_diameter: "2mm",
+        length: "22mm",
+      },
+      {
+        code: "08.311.01.201921704",
+        holes: "4",
+        hole_diameter: "4mm",
+        length: "24mm",
+      },
+      {
+        code: "08.311.01.201922704",
+        holes: "4",
+        hole_diameter: "6mm",
+        length: "26mm",
+      },
+      {
+        code: "08.311.01.201923704",
+        holes: "4",
+        hole_diameter: "8mm",
+        length: "28mm",
+      },
+    ],
+    technical_specifications: {
+      material: "Titanium alloy",
+      surface_finish: "Anodized gold/brass coating",
+      plate_thickness: "Ultra-low-profile design",
+      shape: "H-shaped micro configuration",
+    },
+    accessories_included: [
+      "Cancellous Locking screw (3.5mm)",
+      "Cortex screw (flat head) (3.5mm)",
+    ],
+    applications: [
+      "Micro hand and wrist fracture fixation",
+      "Pediatric bone trauma reconstruction",
+      "Small bone fractures",
+      "Distal phalangeal fractures",
+      "Delicate bone repair procedures",
+      "Complex micro-fracture patterns",
+    ],
+    certifications: [],
+    regulatory: {
+      intended_use:
+        "Internal fixation of micro and small bone fractures in hand, wrist, and pediatric reconstructive procedures",
+    },
+    show_image_main: false,
+  },
 ];
 
 export const companyStats = {
