@@ -63,7 +63,7 @@ export interface ProductHeroProps {
 }
 
 export interface ProductVariantsProps {
-  variants: string[];
+  variants: string[] | Record<string, any>[];
 }
 
 export interface ProductInfoCardsProps {

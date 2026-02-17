@@ -10,7 +10,7 @@ export const partners = [
     categories: ["urology"],
     products: ["Shockwave Therapy", "ED Treatment", "Lithotripsy"],
   },
-   {
+  {
     id: "dornier-medtech",
     name: "Dornier MedTech",
     country: "Germany",
@@ -32,7 +32,7 @@ export const partners = [
     categories: [""],
     products: ["ESWL Systems", "Lithotripsy", "Urological Equipment"],
   },
-   {
+  {
     id: "potent-medical",
     name: "Potent Medical",
     country: "China",
@@ -71,7 +71,7 @@ export const partners = [
       "Medical Consumables",
     ],
   },
-   {
+  {
     id: "boston-scientific",
     name: "Boston Scientific",
     country: "USA",
@@ -84,7 +84,7 @@ export const partners = [
     products: ["Penile Implants", "Urological Devices", "Endourology"],
     tag: "Penile Implants",
   },
-   {
+  {
     id: "combat-medical",
     name: "COMBAT Medical",
     country: "United Kingdom",
@@ -121,10 +121,31 @@ export const partners = [
       "Treatment Solutions",
     ],
   },
-  
-  
-  
- 
+  {
+    id: "wego",
+    name: "WEGO",
+    country: "China",
+    flag: "🇨🇳",
+    logo: "/partners/WEGO.png",
+    website: "https://www.wegomedical.com/",
+    categories: ["orthopedics"],
+    products: ["Orthopedic Treatment Solutions", "Diagnostic Equipment"],
+  },
+  {
+    id: "enovis",
+    name: "Enovis",
+    country: "USA",
+    flag: "🇺🇸",
+    logo: "/partners/enovis.png",
+    website: "https://enovis.com/",
+    categories: ["orthopedics"],
+    products: [
+      "Orthopedic Implants",
+      "Surgical Instruments",
+      "Treatment Solutions",
+    ],
+  },
+
   {
     id: "concemed",
     name: "ConceMed",
@@ -190,10 +211,17 @@ export const productCategories = [
   },
   {
     id: "wound-care",
-    name: "Wound Care",
+    name: "Wound Care (Cold Plasma)",
     slug: "wound-care",
     description: "Innovative wound care and management solutions",
     icon: "Package",
+  },
+  {
+    id: "orthopedics",
+    name: "Orthopedics",
+    slug: "orthopedics",
+    description: "Comprehensive orthopedic treatment and diagnostic solutions",
+    icon: "Activity",
   },
 ];
 
@@ -281,6 +309,22 @@ export const productSubcategories = [
     description: "Infection control and management solutions",
     types: ["Antimicrobial Dressings", "Wound Cleansing Products"],
   },
+  {
+    id: "trauma",
+    name: "Trauma",
+    slug: "trauma",
+    categoryId: "orthopedics",
+    description: "Trauma care and management solutions",
+    types: ["Fracture Fixation", "Trauma Implants", "Surgical Instruments"],
+  },
+  {
+    id:"foot-and-ankle",
+    name: "Foot & Ankle",
+    slug: "foot-and-ankle",
+    categoryId: "orthopedics",
+    description: "Foot and ankle care and management solutions",
+    types: ["Foot & Ankle Implants", "Surgical Instruments", "Treatment Solutions"],
+  }
 ];
 
 // Company stats
@@ -632,7 +676,7 @@ export const products = [
     is_parent_product: true,
     images: [
       "https://www.potent-medical.com/wp-content/uploads/2024/01/123-2.png",
-      "https://www.potent-medical.com/wp-content/uploads/2024/01/20240605172933.gif"
+      "https://www.potent-medical.com/wp-content/uploads/2024/01/20240605172933.gif",
     ],
     description:
       "The Holmium Laser System HZ Series by Potent Medical is a versatile 90W holmium laser platform designed for stone and BPH treatment. Operating at 2100nm for efficient water absorption with reduced penetration, it provides flexible surgical treatment solutions with adjustable frequency, energy, and laser pulse duration. The system is built for quick workflow control through an intuitive touchscreen, supports a wide range of fiber sizes, and offers high mobility for diverse surgical and mobile settings.",
@@ -1367,6 +1411,200 @@ export const products = [
       contact_email: "info@adtechealthcare.com",
     },
     // show_image_main: true,
+  },
+  // Wego Products
+  {
+    id: "wego-straight-mp-joint-fusion-locking-plate-t",
+    name: "Straight MP Joint Fusion Locking Plate(T)",
+    brand: "WEGO",
+    partnerId: "wego",
+    category: "orthopedics",
+    sub_category: "trauma",
+    product_type: "Locking Plate",
+    is_parent_product: false,
+    images: ["/orthopedics/page_58_img_2.jpeg"],
+    description:
+      "The Straight MP Joint Fusion Locking Plate(T) is a specialized orthopedic implant designed for metacarpophalangeal (MP) joint fusion procedures. This titanium locking plate provides stable fixation for joint arthrodesis with a low-profile design and precise hole placement.",
+    features: [
+      "Straight design optimized for MP joint fusion",
+      "Locking screw technology for angular stability",
+      "Low-profile titanium construction",
+      "4 holes with 3.5mm diameter for optimal fixation",
+      "43.3mm length for appropriate coverage",
+      "Pre-contoured anatomical design",
+    ],
+    technical_specifications: {
+      code: "08.311.01.201820704",
+      holes: "4",
+      hole_diameter: "3.5mm",
+      length: "43.3mm",
+      material: "Titanium alloy",
+      surface_finish: "Anodized blue coating",
+    },
+    accessories_included: [
+      "Conical Head Locking screw (2.7mm)",
+      "Cortex screw (2.7mm) - Flat head",
+    ],
+    applications: [
+      "Metacarpophalangeal (MP) joint fusion",
+      "Hand trauma reconstruction",
+      "Degenerative joint disease treatment",
+      "Post-traumatic arthritis management",
+    ],
+    certifications: [],
+    regulatory: {
+      intended_use:
+        "Internal fixation of metacarpophalangeal joint fusion procedures",
+    },
+    show_image_main: false,
+  },
+  {
+    id: "wego-locking-plate-3-h-shape-t",
+    name: "Locking Plate-3 (H shape)(T)",
+    brand: "WEGO",
+    partnerId: "wego",
+    category: "orthopedics",
+    sub_category: "trauma",
+    product_type: "Locking Plate",
+    is_parent_product: true,
+    images: ["/orthopedics/page_58_img_5.jpeg"],
+    description:
+      "The Locking Plate-3 (H shape)(T) is an innovative orthopedic locking plate with a distinctive H-shaped design for enhanced fixation in complex fracture patterns. Available in multiple sizes with varying hole configurations, this titanium plate provides exceptional stability and versatility for hand and small bone trauma reconstruction.",
+    features: [
+      "Unique H-shaped configuration for multi-directional support",
+      "Locking screw technology for angular stability",
+      "Low-profile titanium construction",
+      "4 holes with variable diameters (12mm to 28mm)",
+      "Multiple length options from 23.1mm to 41.1mm",
+      "Pre-contoured anatomical design",
+      "Superior biomechanical strength",
+    ],
+    variants: [
+      {
+        code: "08.311.01.201910704",
+        holes: "4",
+        hole_diameter: "12mm",
+        length: "23.1mm",
+      },
+      {
+        code: "08.311.01.201911704",
+        holes: "4",
+        hole_diameter: "16mm",
+        length: "27.1mm",
+      },
+      {
+        code: "08.311.01.201912704",
+        holes: "4",
+        hole_diameter: "20mm",
+        length: "31.1mm",
+      },
+      {
+        code: "08.311.01.201913704",
+        holes: "4",
+        hole_diameter: "24mm",
+        length: "35.1mm",
+      },
+      {
+        code: "08.311.01.201914704",
+        holes: "4",
+        hole_diameter: "28mm",
+        length: "41.1mm",
+      },
+    ],
+    technical_specifications: {
+      material: "Titanium alloy",
+      surface_finish: "Anodized gold/yellow coating",
+      plate_thickness: "Low-profile design",
+      shape: "H-shaped configuration",
+    },
+    accessories_included: [
+      "Cancellous Locking screw (3.5mm)",
+      "Cortex screw (flat head) (3.5mm)",
+    ],
+    applications: [
+      "Complex hand fracture fixation",
+      "Small bone trauma reconstruction",
+      "Metacarpal and phalangeal fractures",
+      "Comminuted fracture stabilization",
+      "Periarticular fracture management",
+    ],
+    certifications: [],
+    regulatory: {
+      intended_use:
+        "Internal fixation of small bone fractures and reconstructive procedures in the hand and wrist",
+    },
+    show_image_main: false,
+  },
+  {
+    id: "wego-locking-plate-2-h-shape-t",
+    name: "Locking Plate-2 (H shape) (T)",
+    brand: "WEGO",
+    partnerId: "wego",
+    category: "orthopedics",
+    sub_category: "trauma",
+    product_type: "Locking Plate",
+    is_parent_product: true,
+    images: ["/orthopedics/page_58_img_1.jpeg", "/orthopedics/page_58_img_6.jpeg"],
+    description:
+      "The Locking Plate-2 (H shape)(T) is a specialized orthopedic locking plate with an H-shaped design for optimal stability in small bone fractures. This blue anodized titanium plate features a compact design with 4 variants ranging from 18mm to 24mm hole diameters, providing versatile fixation options for hand and wrist trauma procedures.",
+    features: [
+      "Compact H-shaped configuration for enhanced stability",
+      "Locking screw technology for superior angular stability",
+      "Low-profile titanium construction",
+      "4 holes with variable diameters (18mm to 24mm)",
+      "Multiple length options from 29mm to 35mm",
+      "Pre-contoured anatomical design",
+      "Dual imaging perspectives for surgical planning",
+    ],
+    variants: [
+      {
+        code: "08.311.01.201900704",
+        holes: "4",
+        hole_diameter: "18mm",
+        length: "29mm",
+      },
+      {
+        code: "08.311.01.201901704",
+        holes: "4",
+        hole_diameter: "20mm",
+        length: "31mm",
+      },
+      {
+        code: "08.311.01.201902704",
+        holes: "4",
+        hole_diameter: "22mm",
+        length: "33mm",
+      },
+      {
+        code: "08.311.01.201903704",
+        holes: "4",
+        hole_diameter: "24mm",
+        length: "35mm",
+      },
+    ],
+    technical_specifications: {
+      material: "Titanium alloy",
+      surface_finish: "Anodized blue coating",
+      plate_thickness: "Low-profile design",
+      shape: "H-shaped configuration",
+    },
+    accessories_included: [
+      "Conical Head Locking screw (2.7mm)",
+      "Cortex screw (2.7mm) - Flat head",
+    ],
+    applications: [
+      "Hand and wrist fracture fixation",
+      "Small bone trauma reconstruction",
+      "Metacarpal fractures",
+      "Phalangeal fractures",
+      "Complex fracture patterns in hand surgery",
+    ],
+    certifications: [],
+    regulatory: {
+      intended_use:
+        "Internal fixation of small bone fractures in hand and wrist reconstructive procedures",
+    },
+    show_image_main: false,
   },
 ];
 
