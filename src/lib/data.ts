@@ -3279,7 +3279,282 @@ export const products = [
     "Conditions preventing compliance with postoperative care"
   ],
   "show_image_main": false
+},
+{
+  id: "enovis-arcad-nitinol-compression-staples",
+  name: "ARCAD® Nitinol Compression Staples",
+  brand: "enovis",
+  category: "orthopedics",
+  sub_category: "foot-and-ankle",
+  product_type: "Compression Staples",
+  is_parent_product: true,
+  images: [
+    "https://enovis.widen.net/content/de8c66c1-9aa0-4796-9490-605450bdb5ec/web/acad-staples.jpg?w=720&itok=R_a-AjwL"
+  ],
+  description:
+    "The ARCAD® Nitinol Compression Staples are osteosynthesis implants designed to provide dynamic compression for bone fixation procedures such as osteotomies and joint arthrodesis. Manufactured from pseudoelastic nickel-titanium (NiTiNOL) alloy, the staples deliver continuous compression across the fusion or osteotomy site to support bone healing while simplifying implantation.",
+  features: [
+    "Pseudoelastic NiTiNOL material provides continuous dynamic compression",
+    "Designed for osteotomy fixation and joint arthrodesis procedures",
+    "Two-leg and four-leg staple configurations available",
+    "Multiple bridge and leg length options to accommodate anatomy",
+    "Preloaded sterile implants for simplified surgical workflow",
+    "Shape memory compression without heat activation",
+    "Fast and easy insertion with dedicated instrumentation",
+    "Constant compression across fusion site to support healing"
+  ],
+  variants: [
+    "ARCAD Duo",
+    "ARCAD Quadro",
+    "Multiple bridge sizes",
+    "Multiple leg lengths"
+  ],
+  show_image_main: false
+},
+{
+  "id": "enovis-dynaclip-delta",
+  "name": "DynaClip Delta™ Bone Fixation System",
+  "brand": "enovis",
+  "category": "orthopedics",
+  "sub_category": "foot-and-ankle",
+  "product_type": "Bone Fixation Staple System",
+  "is_parent_product": false,
+  "images": [
+    "https://enovis.widen.net/content/7359791d-3c8c-49de-a4c4-c0abe5417ac2/web/dynaclip-delta-in-bone.jpg?w=720&itok=YG9vaGCN",
+    "https://enovis.widen.net/content/0b468aa7-4045-4281-b0cd-c585e28d3b60/web/dynaclip-delta.jpg?w=720&itok=mg1QMQoS"
+  ],
+  "description": "The DynaClip Delta™ Bone Fixation System is an advanced NiTiNOL compression staple designed for foot and ankle fusion procedures, particularly first metatarsophalangeal (MTP) fusion. It combines the stiffness of a traditional plate and screw construct with the ease of use of a staple while providing sustained dynamic compression across the fusion site to promote healing and stability.",
+  "features": [
+    "Pseudoelastic NiTiNOL technology for sustained dynamic compression",
+    "Triangular 4-leg configuration for enhanced rotational stability",
+    "Broad low-profile bridge design to reduce implant prominence",
+    "Pre-loaded on disposable inserter for simple and fast deployment",
+    "Maintains compression throughout the healing process",
+    "High bending strength and fatigue resistance",
+    "Designed to distribute stress across the bridge rather than corners",
+    "Reduced risk of implant breakage under load",
+    "Procedural efficiency with fewer instruments required",
+    "Available in multiple sizes for various fusion procedures"
+  ],
+  "applications": [
+    "First metatarsophalangeal (MTP) fusion",
+    "Foot and ankle joint fusion procedures",
+    "Osteotomy fixation",
+    "Forefoot and midfoot reconstruction procedures"
+  ],
+  "clinical_benefits": [
+    "Maintains active compression across fusion site during healing",
+    "Reduces permanent gapping compared to traditional staples",
+    "Improves rotational stability",
+    "Combines strength of plate fixation with simplicity of staples",
+    "Supports faster and more efficient surgical workflow"
+  ],
+  "technology": [
+    "NiTiNOL pseudoelastic compression technology",
+    "Dynamic post-operative compression mechanism",
+    "Low-profile anatomical bridge design"
+  ],
+  "variants": [],
+  "show_image_main": false
+},
+{
+  "id": "enovis-dynaclip-forte-bone-fixation-system",
+  "name": "DynaClip Forte® Bone Fixation System",
+  "brand": "enovis",
+  "partnerId": "enovis",
+  "category": "orthopedics",
+  "sub_category": "foot-and-ankle",
+  "product_type": "Bone Fixation Staples",
+  "is_parent_product": false,
+  "images": [
+    "https://enovis.widen.net/content/634ba4ab-185a-494c-be63-67e99ab81350/web/Forte-Isometric.jpg?w=720&itok=gqjHvwVw"
+  ],
+  "description": "The DynaClip Forte® Bone Fixation System is an advanced nickel-titanium (NiTiNOL) bone staple designed to provide dynamic compression and rotational stability for orthopedic fixation procedures. The patented four-leg configuration with a broad curved bridge distributes stress efficiently, delivering strong fixation for demanding weight-bearing applications in foot and ankle surgery.",
+  "features": [
+    "Dynamic compression through pseudoelastic NiTiNOL construction and broad curved bridge",
+    "Four-leg design provides improved rotational stability and additional fixation points",
+    "Patented durable structure resists failure under cyclic loading conditions",
+    "Low-profile tapered bridge minimizes implant prominence and patient irritation",
+    "Broad bridge distributes stress away from legs for improved durability",
+    "Preloaded inserter system enables fast and easy deployment",
+    "Single-use sterile instrumentation kits available",
+    "Designed for demanding weight-bearing applications"
+  ],
+  "technical_specifications": {
+    "material": "Nickel Titanium Alloy (NiTiNOL)",
+    "compression_mechanism": "Superelastic dynamic compression",
+    "design": "Four-leg staple with broad curved bridge",
+    "bridge_curvature": "Up to 24°",
+    "deployment": "Preloaded disposable inserter",
+    "instrumentation": "Universal drill guide, drills, locator pins"
+  },
+  "variants": [
+    "26 x 20 x 20 mm",
+    "30 x 20 x 20 mm",
+    "26 x 16 x 16 mm",
+    "30 x 16 x 16 mm"
+  ],
+  "applications": [
+    "Foot and ankle arthrodesis",
+    "Midfoot and hindfoot fusion procedures",
+    "Lapidus (1st TMT) fusion",
+    "Calcaneocuboid fusion",
+    "Naviculocuneiform fusion",
+    "Talonavicular arthrodesis",
+    "Osteotomy fixation"
+  ],
+  "clinical_benefits": [
+    "Sustained compression across fusion sites",
+    "Improved rotational stability compared to traditional staples",
+    "Strong fixation suitable for weight-bearing conditions",
+    "Reduced need for additional fixation implants",
+    "Enhanced durability under cyclic loading"
+  ],
+  "system_components": [
+    "DynaClip Forte implant",
+    "Disposable inserter",
+    "Universal drill guide",
+    "Drills and locator pins",
+    "Single-use sterile procedure pack"
+  ],
+  "indications": [
+    "Fracture fixation",
+    "Osteotomy fixation",
+    "Joint arthrodesis of the foot and ankle",
+    "Small bone fixation"
+  ],
+  "show_image_main": false
+},
+{
+  id: "enovis-dynaclip-quattro",
+  name: "DynaClip Quattro™ Bone Fixation System",
+  brand: "enovis",
+  category: "orthopedics",
+  sub_category: "foot-and-ankle-fixation",
+  product_type: "Nitinol Compression Staple System",
+  is_parent_product: false,
+  images: [
+    "https://enovis.widen.net/content/586832c2-372a-4c0d-93e1-34062642d7b8/web/dynaclip-quattro.jpg?w=720&itok=uh96SZk6",
+    "https://enovis.widen.net/content/23c5e996-236b-4165-9570-284a211aaf46/web/dynaclip-quattro-in-bone.jpg?w=720&itok=A2tXkaFB"
+  ],
+  description:
+    "The DynaClip Quattro™ Bone Fixation System combines the strength of a plate with the active compression and ease of use of a staple. Designed for demanding fusion applications, its four-leg configuration with an extra-broad bridge provides enhanced compression and rotational stability, making it ideal for challenging load-bearing procedures in the midfoot and hindfoot.",
+  features: [
+    "Four-leg configuration with extra-broad bridge for increased compression and rotational stability",
+    "Superelastic NiTiNOL construction for sustained dynamic compression",
+    "Low-profile bridge design to reduce prominence and patient irritation",
+    "Thicker legs for improved strength and durability",
+    "Pre-loaded on disposable inserter for quick and accurate deployment",
+    "Simple, intuitive surgical workflow with fewer instruments required",
+    "Designed for demanding fusion and osteotomy procedures",
+    "Active post-operative compression maintained throughout healing"
+  ],
+  technical_specifications: {
+    material: "Superelastic NiTiNOL",
+    configuration: "Four-leg staple with broad bridge",
+    compression_mechanism: "Dynamic compression via bridge curvature and superelastic recovery",
+    deployment: "Pre-loaded disposable inserter",
+    design_characteristics: [
+      "24° bridge curvature for maximum compression",
+      "Variable-length teeth for improved pullout resistance",
+      "Thickened legs for enhanced durability",
+      "Low-profile anatomical bridge"
+    ]
+  },
+  applications: [
+    "Midfoot fusion procedures",
+    "Hindfoot fusion procedures",
+    "Lapidus fusion",
+    "Load-bearing foot fusion applications",
+    "Joint fusion and osteotomy procedures"
+  ],
+  clinical_benefits: [
+    "Provides sustained compression across fusion sites during healing",
+    "Improves rotational stability in demanding procedures",
+    "Reduces risk of implant failure under load-bearing conditions",
+    "Simplifies surgical workflow and improves procedural efficiency",
+    "Combines plate-like strength with staple ease of use"
+  ],
+  variants: [],
+  show_image_main: false
+},
+{
+  "id": "enovis-dynaclip-bone-fixation-system",
+  "name": "DynaClip® Bone Fixation System",
+  "brand": "Enovis",
+  "category": "orthopaedics",
+  "sub_category": "foot-and-ankle",
+  "product_type": "Bone Fixation Staples",
+  "is_parent_product": true,
+  "images": [
+    "https://enovis.widen.net/content/fdbe0f64-62bf-4d71-ade7-84ed92361b0c/web/DynaClip-lrg.jpg?w=720&itok=iuwi0aIN"
+  ],
+  "description": "The DynaClip® Bone Fixation System is a superelastic NiTiNOL staple implant system designed for internal fixation of small bones, osteotomies, fractures, and joint arthrodesis procedures in the hand and foot. The system delivers dynamic post-operative compression and reliable stability through its patented bridge design, distributing stresses evenly to enhance durability and clinical outcomes.",
+  "features": [
+    "Superelastic NiTiNOL implant material for dynamic compression",
+    "Patented bridge design distributes stress evenly for improved durability",
+    "Pre-loaded disposable inserter for accurate and simple deployment",
+    "Low-profile design to reduce implant prominence and patient irritation",
+    "Multiple sizes and configurations to accommodate different anatomical needs",
+    "Compatible instrumentation packaged in sterile single-use procedure kits",
+    "Provides sustained compression across osteotomy or fusion sites",
+    "Designed for reliable fixation in demanding load-bearing applications"
+  ],
+  "variants": [
+    "8 mm x 8 mm",
+    "10 mm x 10 mm",
+    "12 mm x 12 mm",
+    "14 mm x 14 mm",
+    "18 mm x 18 mm",
+    "18 mm x 20 mm",
+    "20 mm x 18 mm",
+    "20 mm x 22 mm",
+    "26 mm x 20 mm"
+  ],
+  "applications": [
+    "Fracture fixation of small bones",
+    "Osteotomy fixation",
+    "Joint arthrodesis of the hand and foot",
+    "Foot and ankle fusion procedures",
+    "Lapidus fusion",
+    "Akin osteotomy",
+    "Midfoot and hindfoot fusion",
+    "Fixation of small bone fragments"
+  ],
+  "technical_specifications": {
+    material: "Nickel-Titanium Alloy (NiTiNOL)",
+    fixation_type: "Dynamic compression staple",
+    deployment: "Pre-loaded disposable inserter",
+    instrumentation: "Sterile single-use procedure pack",
+    configurations: "Multiple bridge and leg length options"
+  },
+  "clinical_benefits": [
+    "Provides sustained compression across fusion sites",
+    "Improves fixation stability compared with traditional staples",
+    "Reduces risk of implant prominence due to low-profile design",
+    "Supports reliable bone healing and fusion outcomes",
+    "Simplifies surgical workflow with pre-loaded instrumentation"
+  ],
+  "indications": [
+    "Internal fixation of small bones",
+    "Fracture fixation and osteotomy stabilization",
+    "Joint arthrodesis procedures",
+    "Fixation of proximal tibial metaphysis osteotomy",
+    "Fixation of small bone fragments in upper and lower extremities"
+  ],
+  "contraindications": [
+    "Active infection",
+    "Poor bone quality or insufficient bone quantity",
+    "Patients unable to follow postoperative instructions",
+    "Known material sensitivity"
+  ],
+  "show_image_main": false
 }
+
+
+
+
+
 
 
 
