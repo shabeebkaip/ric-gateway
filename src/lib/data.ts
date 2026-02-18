@@ -3430,7 +3430,7 @@ export const products = [
   name: "DynaClip Quattro™ Bone Fixation System",
   brand: "enovis",
   category: "orthopedics",
-  sub_category: "foot-and-ankle-fixation",
+  sub_category: "foot-and-ankle",
   product_type: "Nitinol Compression Staple System",
   is_parent_product: false,
   images: [
