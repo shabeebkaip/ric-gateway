@@ -1,3 +1,5 @@
+import { Tag } from "lucide-react";
+
 export const partners = [
   {
     id: "medispec",
@@ -15,11 +17,12 @@ export const partners = [
     name: "Dornier MedTech",
     country: "Germany",
     flag: "🇩🇪",
-    logo: "/partners/dornier-medtech.png",
+    logo: "/partners/dornier1.webp",
     website: "https://www.dornier.com/",
     invertColor: false,
     categories: [""],
     products: ["Lithotripsy Systems", "ESWL Technology", "Stone Treatment"],
+    tag:'Maintenance'
   },
   {
     id: "wikkon",
@@ -144,6 +147,7 @@ export const partners = [
       "Surgical Instruments",
       "Treatment Solutions",
     ],
+    tag: 'Under registration'
   },
 
   {
@@ -156,7 +160,7 @@ export const partners = [
     invertColor: false,
     categories: ["endoscopy"],
     products: ["Endoscopy Systems", "Gastroscopes", "Colonoscopy"],
-    tag: "Coming Soon",
+    tag: "Under registration",
   },
   {
     id: "adtec-premium-plasma",
@@ -167,7 +171,7 @@ export const partners = [
     website: "https://adtechealthcare.com/",
     categories: ["wound-care"],
     products: ["Plasma Technology", "Medical Imaging Solutions"],
-    tag: "Coming Soon",
+    tag: "Under registration",
   },
 ];
 
