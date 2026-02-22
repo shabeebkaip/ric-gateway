@@ -37,7 +37,7 @@ export default function ContactMapEditor() {
     address: {
       title: 'Address',
       companyName: 'Riyadh International Corporation Medical Equipments & Services, Ltd',
-      street: 'Kingdom of Saudi Arabia, Riyadh, Orouba street, RIC Complex',
+      street: 'PM8M+J6X, Oruba Road, As Sulimaniyah, Riyadh 11411, Saudi Arabia',
     },
     phone: {
       title: 'Phone',

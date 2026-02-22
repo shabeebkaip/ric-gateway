@@ -490,12 +490,9 @@ async function seedContent() {
             icon: 'MapPin',
             title: 'Visit Us',
             details: [
-              'Kingdom of Saudi Arabia',
-              'Riyadh, Orouba Street',
-              'RIC Complex',
-              'P.O. Box 223, Riyadh 2324',
+              'PM8M+J6X, Oruba Road, As Sulimaniyah, Riyadh 11411, Saudi Arabia',
             ],
-            link: 'https://www.google.com/maps/place/RIYADH+INTERNATIONAL+CORPORATION/@24.7166169,46.680542,17z',
+            link: 'https://www.google.com/maps/place/PM8M%2BJ6X,+Oruba+Road,+As+Sulimaniyah,+Riyadh+11411,+Saudi+Arabia',
             color: 'text-primary',
           },
           {
@@ -580,7 +577,7 @@ async function seedContent() {
         address: {
           title: 'Address',
           companyName: 'Riyadh International Corporation Medical Equipments & Services, Ltd',
-          street: 'Kingdom of Saudi Arabia, Riyadh, Orouba street, RIC Complex',
+          street: 'PM8M+J6X, Oruba Road, As Sulimaniyah, Riyadh 11411, Saudi Arabia',
         },
         phone: {
           title: 'Phone',

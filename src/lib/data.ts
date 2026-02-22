@@ -3433,11 +3433,7 @@ export const contactInfo = {
   companyName:
     "Riyadh International Corporation Medical Equipments & Services, Ltd",
   address: {
-    street: "Orouba street, RIC Complex",
-    city: "Riyadh",
-    zipCode: "2324",
-    country: "Kingdom of Saudi Arabia",
-    poBox: "P.O. Box 223",
+    full: "PM8M+J6X, Oruba Road, As Sulimaniyah, Riyadh 11411, Saudi Arabia",
   },
   phone: {
     primary: "+966509698043",
