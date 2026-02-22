@@ -147,7 +147,7 @@ export const partners = [
       "Surgical Instruments",
       "Treatment Solutions",
     ],
-    tag: "Under registration",
+    tag: "Registration",
   },
 
   {
@@ -160,7 +160,7 @@ export const partners = [
     invertColor: false,
     categories: ["endoscopy"],
     products: ["Endoscopy Systems", "Gastroscopes", "Colonoscopy"],
-    tag: "Under registration",
+    tag: "Registration",
   },
   {
     id: "adtec-premium-plasma",
@@ -171,7 +171,7 @@ export const partners = [
     website: "https://adtechealthcare.com/",
     categories: ["wound-care"],
     products: ["Plasma Technology", "Medical Imaging Solutions"],
-    tag: "Under registration",
+    tag: "Registration",
   },
 ];
 
@@ -1182,6 +1182,34 @@ export const products = [
     is_parent_product: false,
     images: [
       "https://static2.xunxiang.site/uploads/sites/2086/2024/01/133cf46c8226398dce556c386b815971.jpg",
+      "https://static2.xunxiang.site/uploads/sites/2086/2025/08/42b0b12d37369ee4d87ceaeb036bc1b8.jpg",
+    ],
+    description:
+      "The VG-H1000Z is an advanced video optical magnifying endoscope designed for upper gastrointestinal diagnostic and therapeutic procedures. It provides high-definition imaging with optical magnification capability for detailed mucosal assessment, supporting early detection of gastrointestinal lesions and precise clinical evaluation. The device integrates with Concemed’s VP-1000 series processor and multi-spectral imaging technologies to enhance visualization across screening, diagnosis, and treatment workflows.",
+    features: [
+      "Optical magnification capability for enhanced mucosal visualization",
+      "High-resolution CMOS imaging sensor",
+      "Compatible with VP-1000 image processor series",
+      "Advanced multi-spectral imaging modes support",
+      "Ergonomic handle design for improved operator comfort",
+      "Integrated water delivery functionality",
+      "Excellent maneuverability and bending performance",
+      "Designed for early detection and detailed assessment of GI lesions",
+    ],
+    variants: [],
+    show_image_main: true,
+  },
+  {
+    id: "concemed-vg-h1000az-video-optical-magnifying-endoscope",
+    name: "VG-H1000AZ Video Optical Magnifying Endoscope",
+    brand: "concemed",
+    partnerId: "concemed",
+    category: "endoscopy",
+    sub_category: "gastroscopy",
+    product_type: "Video Optical Magnifying Endoscope",
+    is_parent_product: false,
+    images: [
+      "https://static2.xunxiang.site/uploads/sites/2086/2024/01/aa2ec76a0227bf74cfbaaf2bd9fdf58c.jpg",
       "https://static2.xunxiang.site/uploads/sites/2086/2025/08/42b0b12d37369ee4d87ceaeb036bc1b8.jpg",
     ],
     description:
