@@ -492,7 +492,7 @@ async function seedContent() {
             details: [
               'PM8M+J6X, Oruba Road, As Sulimaniyah, Riyadh 11411, Saudi Arabia',
             ],
-            link: 'https://www.google.com/maps/place/PM8M%2BJ6X,+Oruba+Road,+As+Sulimaniyah,+Riyadh+11411,+Saudi+Arabia',
+            link: 'https://www.google.com/maps/place/RIYADH+INTERNATIONAL+CORPORATION/@24.7166169,46.680542,17z',
             color: 'text-primary',
           },
           {

@@ -185,7 +185,7 @@ export const CTASection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <a
-              href="https://www.google.com/maps/place/RIYADH+INTERNATIONAL+CORPORATION/@24.7166169,46.680542,17z/data=!3m1!4b1!4m6!3m5!1s0x3e2f03048c8ab6cd:0x37200af5e3ccaffc!8m2!3d24.7166169!4d46.6831169!16s%2Fg%2F1tj6fgpd?entry=ttu"
+              href="https://www.google.com/maps/place/PM8M%2BJ6X,+Oruba+Road,+As+Sulimaniyah,+Riyadh+11411,+Saudi+Arabia"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -196,10 +196,7 @@ export const CTASection = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-2">Visit Us</h3>
-                    <p className="text-sm text-muted-foreground">Kingdom of Saudi Arabia</p>
-                    <p className="text-sm text-muted-foreground">Riyadh, Orouba Street</p>
-                    <p className="text-sm text-muted-foreground">RIC Complex</p>
-                    <p className="text-sm text-muted-foreground">P.O. Box 223, Riyadh 2324</p>
+                    <p className="text-sm text-muted-foreground">PM8M+J6X, Oruba Road, As Sulimaniyah, Riyadh 11411, Saudi Arabia</p>
                   </div>
                 </div>
               </Card>
