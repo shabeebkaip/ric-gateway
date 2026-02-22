@@ -22,7 +22,7 @@ export const partners = [
     invertColor: false,
     categories: [""],
     products: ["Lithotripsy Systems", "ESWL Technology", "Stone Treatment"],
-    tag:'Maintenance'
+    tag: "Maintenance",
   },
   {
     id: "wikkon",
@@ -147,7 +147,7 @@ export const partners = [
       "Surgical Instruments",
       "Treatment Solutions",
     ],
-    tag: 'Under registration'
+    tag: "Under registration",
   },
 
   {
@@ -1074,139 +1074,57 @@ export const products = [
     },
   },
   {
-    id: "r-renal-transplant-stents-open-closed-tip",
-    name: "R Renal Transplant Stents (Open Tip & Closed Tip)",
+    id: "allwin-u-perc-nitinol-stone-basket",
+    name: "U-Perc Nitinol Stone Basket",
     brand: "Allwin Medical Devices",
     partnerId: "allwin",
     category: "urology",
     sub_category: "urology-consumables",
-    product_type: "Renal Transplant Stents",
+    product_type: "Stone Basket",
     is_parent_product: false,
     images: [
-      "https://allwinmedical.com/wp-content/uploads/2020/11/RRenal-Transplant-Stent-Open-Tip-14.jpg",
-      "https://allwinmedical.com/wp-content/uploads/2020/11/RUreteral-Stents-Open-Tip-18-600x600.jpg",
-      "https://allwinmedical.com/wp-content/uploads/2020/11/RRenal-Transplant-Stent-Closed-Tip-15-600x600.jpg",
-      "https://allwinmedical.com/wp-content/uploads/2020/11/RUreteral-Stents-Closed-Tip-15-600x600.jpg",
-      "https://allwinmedical.com/wp-content/uploads/2020/11/R-Renal-Transplant-Stent-Open-Tip-Closed-Tip.png",
+      "https://allwinmedical.com/wp-content/uploads/2020/11/U-Perc-Nitinol-Stone-Basket-2-2.jpg",
+      "https://allwinmedical.com/wp-content/uploads/2020/11/U-Perc-Nitinol-Stone-Basket-1-3-1536x1536.jpg",
     ],
     description:
-      "The R+ Ureteral Stents are intended to temporarily facilitate the drainage of urine from kidney to bladder by a trained physician. They feature low encrustation tendency, soft polyurethane material for high patient comfort, wide lumen for superior drainage, radiopaque stent for accurate positioning, centre marking for precise placement, and a long pusher for use via ureteroscope.",
+      "The U-Perc Nitinol Stone Basket is designed for stone extraction during Percutaneous Nephrolithotomy (PCNL). It features a tipless basket for atraumatic retrieval, a lightweight handle for easy maneuverability, and a stainless steel shaft combined with a nitinol basket for kink resistance and flexibility during stone extraction procedures.",
     features: [
-      "Low encrustation tendency to facilitate easy removal of the stent",
-      "Soft polyurethane material ensures high patient comfort",
-      "Wide lumen for superior drainage",
-      "Radiopaque stent to enable accurate positioning",
-      "Centimetre marking to aid in stent advancement and precise placement",
-      "4.7 Fr stent with a long pusher for ureteroscope use",
+      "Tipless basket design for atraumatic retrieval of stones in ureter and calyces",
+      "Lightweight handle for improved maneuverability",
+      "Stainless steel shaft for durability",
+      "Nitinol basket construction providing flexibility and kink resistance",
+      "Designed for efficient stone extraction during PCNL procedures",
     ],
-    variants: [
-      "SOT4.7/16-R+ | SS4.7/16-R+ | SSI4.7/16-R+",
-      "SOT4.7/24-R+ | SS4.7/24-R+ | SSI4.7/24-R+",
-      "SOT4.7/26-R+ | SS4.7/26-R+ | SSI4.7/26-R+",
-      "SOT4.7/28-R+ | SS4.7/28-R+ | SSI4.7/28-R+",
-      "SOT4.7/30-R+ | SS4.7/30-R+ | SSI4.7/30-R+",
-      "SOT5/16-R+ | SS5/16-R+ | SSI5/16-R+",
-      "SOT5/24-R+ | SS5/24-R+ | SSI5/24-R+",
-      "SOT5/26-R+ | SS5/26-R+ | SSI5/26-R+",
-      "SOT5/28-R+ | SS5/28-R+ | SSI5/28-R+",
-      "SOT5/30-R+ | SS5/30-R+ | SSI5/30-R+",
-      "SOT6/16-R+ | SS6/16-R+ | SSI6/16-R+",
-      "SOT6/24-R+ | SS6/24-R+ | SSI6/24-R+",
-      "SOT6/26-R+ | SS6/26-R+ | SSI6/26-R+",
-      "SOT6/28-R+ | SS6/28-R+ | SSI6/28-R+",
-      "SOT6/30-R+ | SS6/30-R+ | SSI6/30-R+",
-      "SOT7/16-R+ | SS7/16-R+ | SSI7/16-R+",
-      "SOT7/24-R+ | SS7/24-R+ | SSI7/24-R+",
-      "SOT7/26-R+ | SS7/26-R+ | SSI7/26-R+",
-      "SOT7/28-R+ | SS7/28-R+ | SSI7/28-R+",
-      "SOT7/30-R+ | SS7/30-R+ | SSI7/30-R+",
-    ],
-    combinations: {
-      with_guidewire: "Add suffix - G",
-      with_suture: "Add suffix - S",
-      with_clamp: "Add suffix - C",
-      with_hydrophilic_coating: "Add suffix - H",
-    },
+    variants: ["UP8/38"],
+    show_image_main: false,
   },
   {
-    id: "allsoft-renal-transplant-stent-open-closed-tip",
-    name: "allSoft Renal Transplant Stent (Open Tip & Closed Tip)",
+    id: "allwin-fascial-dilator-set",
+    name: "Fascial Dilator Set",
     brand: "Allwin Medical Devices",
     partnerId: "allwin",
     category: "urology",
     sub_category: "urology-consumables",
-    product_type: "Renal Transplant Stents",
+    product_type: "Dilators",
     is_parent_product: false,
     images: [
-      "https://allwinmedical.com/wp-content/uploads/2020/11/allSoft-Renal-Transplant-Stent-3.jpg",
-      "https://allwinmedical.com/wp-content/uploads/2020/11/allSoft-Renal-Transplant-Stent-Closed-Tip-9-600x600.jpg",
-      "https://allwinmedical.com/wp-content/uploads/2020/11/allSoft-Renal-Transplant-Stent-Open-Tip-12-600x600.jpg",
-      "https://allwinmedical.com/wp-content/uploads/2020/11/allSoft-Renal-Transplant-Stent-Open-Tip-Closed-Tip.png",
+      "https://allwinmedical.com/wp-content/uploads/2020/11/Fascial-Dilator-001-3-600x600-1.jpg",
     ],
     description:
-      "The allSoft Renal Transplant Stent is intended to temporarily facilitate the drainage of urine from kidney to bladder by a trained physician. It is made of soft, biocompatible polyurethane with low encrustation tendency and is sized to fit renal transplant needs. Radiopaque markings aid precise placement. Suitable for use in transplant-related urinary drainage procedures.",
+      "The Fascial Dilator Set is used for dilatation of the percutaneous track over a guidewire. It features radiopaque polyethylene tubing for enhanced visibility, a uniform taper to minimise trauma, and a smooth surface to facilitate easy introduction during interventional procedures.",
     features: [
-      "Soft polyurethane material for high patient comfort",
-      "Low encrustation tendency to facilitate easy removal",
-      "Biocompatible material",
-      "Sized for renal transplant-specific anatomy",
-      "Radiopaque centremark for precise placement",
+      "Radiopaque polyethylene tubing to maximise patient comfort and visibility",
+      "Female luer lock allows injection of heparin, contrast media, or other solutions",
+      "Uniform taper design to minimise trauma to the patient",
+      "Smooth surface for easier guidewire introduction",
+      "Integrally moulded hub for secure handling",
+      "Designed for progressive percutaneous tract dilatation",
     ],
-    variants: [
-      "RTS-O6/12 | RTS-C6/12",
-      "RTS-O6/14 | RTS-C6/14",
-      "RTS-O6/16 | RTS-C6/16",
-      "RTS-O7/12 | RTS-C7/12",
-      "RTS-O7/14 | RTS-C7/14",
-      "RTS-O7/16 | RTS-C7/16",
-      "RTS-O8/12 | RTS-C8/12",
-      "RTS-O8/14 | RTS-C8/14",
-      "RTS-O8/16 | RTS-C8/16",
-    ],
-    combinations: {
-      with_guidewire: "Add suffix - G",
-      with_suture: "Add suffix - S",
-      with_clamp: "Add suffix - C",
-      with_hydrophilic_coating: "Add suffix - H",
-    },
+    variants: ["FDS6/10", "FDS8/16", "FDS6/16"],
+    show_image_main: true,
   },
-  {
-    id: "allsoft-multiloop-ureteral-stents-open-closed-tip",
-    name: "allSoft Multiloop Ureteral Stents (Open Tip & Closed Tip)",
-    brand: "Allwin Medical Devices",
-    partnerId: "allwin",
-    category: "urology",
-    sub_category: "urology-consumables",
-    product_type: "Ureteral Stents",
-    is_parent_product: false,
-    images: [
-      "https://allwinmedical.com/wp-content/uploads/2020/11/allSoft-Multiloop-Ureteral-Stents-Open-Tip-9.jpg",
-      "https://allwinmedical.com/wp-content/uploads/2020/11/allSoft-Multiloop-Ureteral-Stents-Bladder-end-Multiloop-6-600x600.jpg",
-      "https://allwinmedical.com/wp-content/uploads/2020/11/allSoft-Multiloop-Ureteral-Stents-Both-side-Multiloop-5-600x600.jpg",
-      "https://allwinmedical.com/wp-content/uploads/2020/11/allSoft-Multiloop-Ureteral-Stents-Closed-Tip-7-600x600.jpg",
-    ],
-    description:
-      "The allSoft Multiloop Ureteral Stent is intended to temporarily facilitate drainage of urine from kidney to bladder by a trained physician. It offers both open and closed tip options for bladder-end or both-end multiloop configurations and is universally suitable for ureteral lengths from 22 cm to 30 cm.",
-    features: [
-      "Available in open and closed tip configurations",
-      "Multiloop design at bladder end or both ends for improved anchorage",
-      "Suitable for ureter lengths 22–30 cm",
-      "Soft polyurethane for patient comfort",
-      "Radiopaque marking for accurate positioning",
-    ],
-    variants: [
-      "SOT4.7/ML | SS4.7/ML | SOT4.7/ML-ML | SS4.7/ML-ML",
-      "SOT5/ML | SS5/ML | SOT5/ML-ML | SS5/ML-ML",
-      "SOT6/ML | SS6/ML | SOT6/ML-ML | SS6/ML-ML",
-      "SOT7/ML | SS7/ML | SOT7/ML-ML | SS7/ML-ML",
-    ],
-    combinations: {
-      with_guidewire: "Add suffix - G",
-      with_suture: "Add suffix - S",
-      with_clamp: "Add suffix - C",
-      with_hydrophilic_coating: "Add suffix - H",
-    },
-  },
+  
+
   // Redpine Products
   {
     id: "redpine-single-use-video-flexible-ureteroscope",
@@ -3046,523 +2964,508 @@ export const products = [
     show_image_main: false,
   },
   {
-  id: "enovis-nexis-small-cannulated-screws",
-  name: "Nexis® Small Cannulated Screws",
-  brand: "Enovis",
-  partnerId: "enovis",
-  category: "orthopedics",
-  sub_category: "foot-and-ankle",
-  product_type: "Cannulated Compression Screws",
-  is_parent_product: true,
-  images: [
-    "https://enovis.widen.net/content/ed18cd50-cfe9-4700-9584-92d936a5f74d/web/nexis-small.jpg?w=720&itok=D5rPpjxD"
-  ],
-  description:
-    "Nexis® Small Cannulated Screws are self-drilling and self-tapping compressive screws designed to provide enhanced stability for a wide range of forefoot and midfoot procedures. The system offers a comprehensive portfolio of low-profile screws with precise insertion, strong compression capability, and simplified extraction features, packaged for convenient deployment in orthopedic foot and ankle surgery.",
-  features: [
-    "Self-drilling and self-tapping compressive screw design",
-    "Triple-sharpened tip for enhanced precision and penetration",
-    "Reverse cutting flutes to simplify screw extraction",
-    "Hexalobe recess interface for secure engagement and optimal torque transmission",
-    "Low-profile headless screw design for reduced soft-tissue irritation",
-    "Self-penetrating conical compression cone enabling atraumatic insertion",
-    "Comprehensive screw range covering multiple forefoot and midfoot indications",
-    "Convenient packaging for efficient surgical workflow"
-  ],
-  variants: [
-    "Ø2.3 mm Nexis Screws",
-    "Ø2.9 mm Nexis Screws",
-    "Ø4.0 mm Nexis Screws"
-  ],
-  technical_specifications: {
-    material: "Anodized Titanium Alloy (TA6V)",
-    screwdriver_interface: ["T7 Hexalobe", "T8 Hexalobe", "T10 Hexalobe"],
-    thread_diameters_mm: ["2.3", "2.9", "4.0"],
-    core_diameters_mm: ["1.75", "1.85", "2.65"],
-    head_diameters_mm: ["3.5", "3.9", "5.0"],
-    guide_wire_diameters_mm: ["0.9", "1.0", "1.4"],
-    thread_pitch_mm: ["0.9", "1.35", "1.35"],
-    screw_lengths_mm: [
-      "10–30 mm (2 mm increments)",
-      "10–34 mm (2 mm increments)",
-      "18–60 mm (2 mm increments up to 50 mm, then 5 mm increments)"
+    id: "enovis-nexis-small-cannulated-screws",
+    name: "Nexis® Small Cannulated Screws",
+    brand: "Enovis",
+    partnerId: "enovis",
+    category: "orthopedics",
+    sub_category: "foot-and-ankle",
+    product_type: "Cannulated Compression Screws",
+    is_parent_product: true,
+    images: [
+      "https://enovis.widen.net/content/ed18cd50-cfe9-4700-9584-92d936a5f74d/web/nexis-small.jpg?w=720&itok=D5rPpjxD",
     ],
-    thread_length: "Variable depending on screw size and length"
+    description:
+      "Nexis® Small Cannulated Screws are self-drilling and self-tapping compressive screws designed to provide enhanced stability for a wide range of forefoot and midfoot procedures. The system offers a comprehensive portfolio of low-profile screws with precise insertion, strong compression capability, and simplified extraction features, packaged for convenient deployment in orthopedic foot and ankle surgery.",
+    features: [
+      "Self-drilling and self-tapping compressive screw design",
+      "Triple-sharpened tip for enhanced precision and penetration",
+      "Reverse cutting flutes to simplify screw extraction",
+      "Hexalobe recess interface for secure engagement and optimal torque transmission",
+      "Low-profile headless screw design for reduced soft-tissue irritation",
+      "Self-penetrating conical compression cone enabling atraumatic insertion",
+      "Comprehensive screw range covering multiple forefoot and midfoot indications",
+      "Convenient packaging for efficient surgical workflow",
+    ],
+    variants: [
+      "Ø2.3 mm Nexis Screws",
+      "Ø2.9 mm Nexis Screws",
+      "Ø4.0 mm Nexis Screws",
+    ],
+    technical_specifications: {
+      material: "Anodized Titanium Alloy (TA6V)",
+      screwdriver_interface: ["T7 Hexalobe", "T8 Hexalobe", "T10 Hexalobe"],
+      thread_diameters_mm: ["2.3", "2.9", "4.0"],
+      core_diameters_mm: ["1.75", "1.85", "2.65"],
+      head_diameters_mm: ["3.5", "3.9", "5.0"],
+      guide_wire_diameters_mm: ["0.9", "1.0", "1.4"],
+      thread_pitch_mm: ["0.9", "1.35", "1.35"],
+      screw_lengths_mm: [
+        "10–30 mm (2 mm increments)",
+        "10–34 mm (2 mm increments)",
+        "18–60 mm (2 mm increments up to 50 mm, then 5 mm increments)",
+      ],
+      thread_length: "Variable depending on screw size and length",
+    },
+    applications: [
+      "Forefoot fracture fixation",
+      "Midfoot fracture fixation",
+      "Osteotomies",
+      "Arthrodesis procedures",
+      "Hallux valgus correction",
+      "Foot deformity reconstruction",
+    ],
+    system_components: [
+      "Cannulated compression screws",
+      "Guide wires",
+      "Hexalobe screwdrivers",
+      "Instrumentation kit",
+    ],
+    certifications: ["CE Mark", "FDA Cleared"],
+    show_image_main: false,
   },
-  applications: [
-    "Forefoot fracture fixation",
-    "Midfoot fracture fixation",
-    "Osteotomies",
-    "Arthrodesis procedures",
-    "Hallux valgus correction",
-    "Foot deformity reconstruction"
-  ],
-  system_components: [
-    "Cannulated compression screws",
-    "Guide wires",
-    "Hexalobe screwdrivers",
-    "Instrumentation kit"
-  ],
-  certifications: [
-    "CE Mark",
-    "FDA Cleared"
-  ],
-  show_image_main: false
-},
-{
-  id: "enovis-nexis-snap-off-screws",
-  name: "Nexis® Snap-off Screws",
-  brand: "Enovis",
-  partnerId: "enovis",
-  category: "orthopedics",
-  sub_category: "foot-and-ankle",
-  product_type: "Snap-off Fixation Screws",
-  is_parent_product: false,
-  images: [
-    "https://enovis.widen.net/content/78b23b1d-32df-4ec7-b066-4ad835e366f3/web/nexis-snap.jpg?w=720&itok=x_w91YoX"
-  ],
-  description:
-    "Nexis® Snap-off Screws are self-tapping and self-drilling fixation screws designed primarily for distal oblique metatarsal (Weil) osteotomy procedures. The system features a quick-connect screwdriver tip that eliminates the need for additional tools during insertion. After fixation, the driving shank snaps off, leaving a smooth low-profile screw head for secure fixation and improved soft-tissue comfort.",
-  features: [
-    "Self-tapping and self-drilling screw design",
-    "Quick-connect screwdriver tip eliminating additional instrumentation",
-    "Snap-off mechanism leaving a smooth low-profile head after insertion",
-    "Designed for secure fixation of bone fragments",
-    "Wire driver compatible insertion",
-    "Simplified surgical workflow with efficient deployment",
-    "Sterile ready-to-use packaging (cleanSTART™ system compatible)",
-    "Titanium alloy construction for strength and biocompatibility"
-  ],
-  variants: [
-    "Ø2.0 mm Snap-off Screws (11–16 mm lengths)"
-  ],
-  technical_specifications: {
-    thread_diameter_mm: 2.0,
-    core_diameter_mm: 1.25,
-    head_diameter_mm: 3.0,
-    thread_pitch_mm: 0.85,
-    screw_lengths_mm: "11–16 mm (1 mm increments)",
-    guide_wire: "Not required",
-    material: "Anodized Titanium Alloy (TA6V ELI)",
-    screwdriver_interface: "Quick-connect Weil driver compatible"
+  {
+    id: "enovis-nexis-snap-off-screws",
+    name: "Nexis® Snap-off Screws",
+    brand: "Enovis",
+    partnerId: "enovis",
+    category: "orthopedics",
+    sub_category: "foot-and-ankle",
+    product_type: "Snap-off Fixation Screws",
+    is_parent_product: false,
+    images: [
+      "https://enovis.widen.net/content/78b23b1d-32df-4ec7-b066-4ad835e366f3/web/nexis-snap.jpg?w=720&itok=x_w91YoX",
+    ],
+    description:
+      "Nexis® Snap-off Screws are self-tapping and self-drilling fixation screws designed primarily for distal oblique metatarsal (Weil) osteotomy procedures. The system features a quick-connect screwdriver tip that eliminates the need for additional tools during insertion. After fixation, the driving shank snaps off, leaving a smooth low-profile screw head for secure fixation and improved soft-tissue comfort.",
+    features: [
+      "Self-tapping and self-drilling screw design",
+      "Quick-connect screwdriver tip eliminating additional instrumentation",
+      "Snap-off mechanism leaving a smooth low-profile head after insertion",
+      "Designed for secure fixation of bone fragments",
+      "Wire driver compatible insertion",
+      "Simplified surgical workflow with efficient deployment",
+      "Sterile ready-to-use packaging (cleanSTART™ system compatible)",
+      "Titanium alloy construction for strength and biocompatibility",
+    ],
+    variants: ["Ø2.0 mm Snap-off Screws (11–16 mm lengths)"],
+    technical_specifications: {
+      thread_diameter_mm: 2.0,
+      core_diameter_mm: 1.25,
+      head_diameter_mm: 3.0,
+      thread_pitch_mm: 0.85,
+      screw_lengths_mm: "11–16 mm (1 mm increments)",
+      guide_wire: "Not required",
+      material: "Anodized Titanium Alloy (TA6V ELI)",
+      screwdriver_interface: "Quick-connect Weil driver compatible",
+    },
+    applications: [
+      "Distal oblique metatarsal (Weil) osteotomy",
+      "Forefoot osteotomy fixation",
+      "Small bone fragment fixation in foot surgery",
+    ],
+    system_components: [
+      "Snap-off fixation screws",
+      "Compatible wire driver / screwdriver instrumentation",
+    ],
+    certifications: ["CE Mark", "FDA Cleared"],
+    additional_info: {
+      source_url: "https://enovis.com/products/nexis-snap-screws",
+    },
+    show_image_main: false,
   },
-  applications: [
-    "Distal oblique metatarsal (Weil) osteotomy",
-    "Forefoot osteotomy fixation",
-    "Small bone fragment fixation in foot surgery"
-  ],
-  system_components: [
-    "Snap-off fixation screws",
-    "Compatible wire driver / screwdriver instrumentation"
-  ],
-  certifications: [
-    "CE Mark",
-    "FDA Cleared"
-  ],
-  additional_info: {
-    source_url: "https://enovis.com/products/nexis-snap-screws"
+  {
+    id: "enovis-peca-c-compressive-implants",
+    name: "PECA-C Compressive Implants",
+    brand: "Enovis",
+    partnerId: "enovis",
+    category: "orthopedics",
+    sub_category: "foot-and-ankle",
+    product_type: "Compressive Bone Implants",
+    is_parent_product: false,
+    images: [
+      "https://enovis.widen.net/content/79e1ecf3-fba7-48ac-a9ad-51d792ebc32c/web/peca-c.jpg?w=720&itok=Gn6CF6GW",
+    ],
+    description:
+      "The PECA-C Compressive Implants are percutaneous fixation implants designed for foot and ankle procedures including fractures, osteotomies, and arthrodesis. The system provides controlled compression and stable fixation with minimally invasive surgical techniques. It can be used independently or in combination with Airlock® and Presslock® plating systems for enhanced rigidity when required.",
+    features: [
+      "Percutaneous compressive implant design for minimally invasive surgery",
+      "Dual partially threaded configuration for optimal compression",
+      "Positive locking channel to improve anchorage and compression",
+      "Self-drilling and self-tapping design for simplified insertion",
+      "Reverse cutting flutes to facilitate implant removal",
+      "Beveled or standard head options for cortical anchorage and soft tissue preservation",
+      "Exact-T recess for dedicated instrumentation and precise engagement",
+      "Compatible with Airlock® and Presslock® plating systems",
+    ],
+    technical_specifications: {
+      diameter_mm: 4.0,
+      available_lengths_mm: "18–60 mm",
+      length_increment: "2 mm increments up to 50 mm, then 5 mm increments",
+      implant_type: "Percutaneous compression screw",
+      threading: "Dual partially threaded",
+      insertion: "Self-drilling and self-tapping",
+      instrumentation: "Exact-T10 screwdriver system",
+    },
+    applications: [
+      "Foot and ankle fractures",
+      "Arthrodesis procedures",
+      "Osteotomies",
+      "Hallux valgus correction",
+      "Forefoot and midfoot fixation",
+      "Percutaneous bone fixation procedures",
+    ],
+    compatibility: [
+      "PECA® instrumentation set",
+      "Airlock® Plating System",
+      "Presslock® Plating System",
+    ],
+    certifications: ["CE Mark", "ISO 13485"],
+    show_image_main: false,
   },
-  show_image_main: false
-},
-{
-  id: "enovis-peca-c-compressive-implants",
-  name: "PECA-C Compressive Implants",
-  brand: "Enovis",
-  partnerId: "enovis",
-  category: "orthopedics",
-  sub_category: "foot-and-ankle",
-  product_type: "Compressive Bone Implants",
-  is_parent_product: false,
-  images: [
-    "https://enovis.widen.net/content/79e1ecf3-fba7-48ac-a9ad-51d792ebc32c/web/peca-c.jpg?w=720&itok=Gn6CF6GW"
-  ],
-  description:
-    "The PECA-C Compressive Implants are percutaneous fixation implants designed for foot and ankle procedures including fractures, osteotomies, and arthrodesis. The system provides controlled compression and stable fixation with minimally invasive surgical techniques. It can be used independently or in combination with Airlock® and Presslock® plating systems for enhanced rigidity when required.",
-  features: [
-    "Percutaneous compressive implant design for minimally invasive surgery",
-    "Dual partially threaded configuration for optimal compression",
-    "Positive locking channel to improve anchorage and compression",
-    "Self-drilling and self-tapping design for simplified insertion",
-    "Reverse cutting flutes to facilitate implant removal",
-    "Beveled or standard head options for cortical anchorage and soft tissue preservation",
-    "Exact-T recess for dedicated instrumentation and precise engagement",
-    "Compatible with Airlock® and Presslock® plating systems"
-  ],
-  technical_specifications: {
-    diameter_mm: 4.0,
-    available_lengths_mm: "18–60 mm",
-    length_increment: "2 mm increments up to 50 mm, then 5 mm increments",
-    implant_type: "Percutaneous compression screw",
-    threading: "Dual partially threaded",
-    insertion: "Self-drilling and self-tapping",
-    instrumentation: "Exact-T10 screwdriver system"
+  {
+    id: "enovis-tiger-cannulated-screw-system",
+    name: "Tiger Cannulated Screw System",
+    brand: "Enovis",
+    category: "orthopedics",
+    sub_category: "foot-and-ankle",
+    product_type: "Cannulated Screw System",
+    is_parent_product: true,
+    images: [
+      "https://enovis.widen.net/content/cfb451c3-f825-48e1-8702-852889debd83/web/Stand-Screws_White.png?w=720&itok=-H9n2NlZ",
+    ],
+    description:
+      "The Tiger Cannulated Screw System is a self-drilling, self-tapping titanium alloy lag screw fixation system designed for orthopedic fixation of fractures, osteotomies, non-unions, and arthrodesis procedures in the hand and foot. The system provides strong fixation, reliable compression, and versatile sizing options to address diverse anatomical and surgical requirements.",
+    features: [
+      "Self-drilling and self-tapping screw design",
+      "Titanium alloy construction for strength and biocompatibility",
+      "Cannulated design for guided placement over a wire",
+      "Tiger stripe flute technology for improved cutting efficiency",
+      "Dual lead thread options for enhanced compression",
+      "Comprehensive size range to address multiple indications",
+      "Instrumentation set designed for precision placement",
+      "Available sterile single-use implants with reusable instrumentation",
+    ],
+    variants: [
+      "4.5 mm Tiger Cannulated Screws",
+      "5.5 mm Tiger Large Cannulated Screws",
+      "6.5 mm Tiger Large Cannulated Screws",
+      "7.0 mm Tiger Large Cannulated Screws",
+    ],
+    technical_specifications: {
+      material: "Titanium Alloy (ASTM F-136)",
+      diameter_range_mm: "4.5 – 7.0",
+      length_range_mm: "20 – 120",
+      thread_options: ["Short thread", "Long thread"],
+      design: "Cannulated threaded lag screw",
+      placement: "Guide wire assisted insertion",
+    },
+    system_components: [
+      "Cannulated screws",
+      "Guide wires",
+      "Drill bits",
+      "Depth gauge",
+      "Countersinks",
+      "Drill sleeves",
+      "Driver shafts and handles",
+      "Screw extraction tools",
+      "Instrumentation trays",
+    ],
+    applications: [
+      "Fracture fixation of small bones",
+      "Arthrodesis procedures",
+      "Osteotomy fixation",
+      "Non-union repair",
+      "Forefoot, midfoot, hindfoot and ankle procedures",
+    ],
+    indications: [
+      "Fixation of fractures",
+      "Fixation of osteotomies",
+      "Bone fusion procedures",
+      "Correction of deformities in foot and ankle",
+    ],
+    contraindications: [
+      "Active or suspected infection",
+      "Patients with sensitivity to implant materials",
+      "Compromised bone quality preventing fixation",
+      "Conditions preventing compliance with postoperative care",
+    ],
+    show_image_main: false,
   },
-  applications: [
-    "Foot and ankle fractures",
-    "Arthrodesis procedures",
-    "Osteotomies",
-    "Hallux valgus correction",
-    "Forefoot and midfoot fixation",
-    "Percutaneous bone fixation procedures"
-  ],
-  compatibility: [
-    "PECA® instrumentation set",
-    "Airlock® Plating System",
-    "Presslock® Plating System"
-  ],
-  certifications: [
-    "CE Mark",
-    "ISO 13485"
-  ],
-  show_image_main: false
-},
-{
-  "id": "enovis-tiger-cannulated-screw-system",
-  "name": "Tiger Cannulated Screw System",
-  "brand": "Enovis",
-  "category": "orthopedics",
-  "sub_category": "foot-and-ankle",
-  "product_type": "Cannulated Screw System",
-  "is_parent_product": true,
-  "images": [
-    "https://enovis.widen.net/content/cfb451c3-f825-48e1-8702-852889debd83/web/Stand-Screws_White.png?w=720&itok=-H9n2NlZ"
-  ],
-  "description": "The Tiger Cannulated Screw System is a self-drilling, self-tapping titanium alloy lag screw fixation system designed for orthopedic fixation of fractures, osteotomies, non-unions, and arthrodesis procedures in the hand and foot. The system provides strong fixation, reliable compression, and versatile sizing options to address diverse anatomical and surgical requirements.",
-  "features": [
-    "Self-drilling and self-tapping screw design",
-    "Titanium alloy construction for strength and biocompatibility",
-    "Cannulated design for guided placement over a wire",
-    "Tiger stripe flute technology for improved cutting efficiency",
-    "Dual lead thread options for enhanced compression",
-    "Comprehensive size range to address multiple indications",
-    "Instrumentation set designed for precision placement",
-    "Available sterile single-use implants with reusable instrumentation"
-  ],
-  "variants": [
-    "4.5 mm Tiger Cannulated Screws",
-    "5.5 mm Tiger Large Cannulated Screws",
-    "6.5 mm Tiger Large Cannulated Screws",
-    "7.0 mm Tiger Large Cannulated Screws"
-  ],
-  "technical_specifications": {
-    "material": "Titanium Alloy (ASTM F-136)",
-    "diameter_range_mm": "4.5 – 7.0",
-    "length_range_mm": "20 – 120",
-    "thread_options": ["Short thread", "Long thread"],
-    "design": "Cannulated threaded lag screw",
-    "placement": "Guide wire assisted insertion"
+  {
+    id: "enovis-arcad-nitinol-compression-staples",
+    name: "ARCAD® Nitinol Compression Staples",
+    brand: "enovis",
+    category: "orthopedics",
+    sub_category: "foot-and-ankle",
+    product_type: "Compression Staples",
+    is_parent_product: true,
+    images: [
+      "https://enovis.widen.net/content/de8c66c1-9aa0-4796-9490-605450bdb5ec/web/acad-staples.jpg?w=720&itok=R_a-AjwL",
+    ],
+    description:
+      "The ARCAD® Nitinol Compression Staples are osteosynthesis implants designed to provide dynamic compression for bone fixation procedures such as osteotomies and joint arthrodesis. Manufactured from pseudoelastic nickel-titanium (NiTiNOL) alloy, the staples deliver continuous compression across the fusion or osteotomy site to support bone healing while simplifying implantation.",
+    features: [
+      "Pseudoelastic NiTiNOL material provides continuous dynamic compression",
+      "Designed for osteotomy fixation and joint arthrodesis procedures",
+      "Two-leg and four-leg staple configurations available",
+      "Multiple bridge and leg length options to accommodate anatomy",
+      "Preloaded sterile implants for simplified surgical workflow",
+      "Shape memory compression without heat activation",
+      "Fast and easy insertion with dedicated instrumentation",
+      "Constant compression across fusion site to support healing",
+    ],
+    variants: [
+      "ARCAD Duo",
+      "ARCAD Quadro",
+      "Multiple bridge sizes",
+      "Multiple leg lengths",
+    ],
+    show_image_main: false,
   },
-  "system_components": [
-    "Cannulated screws",
-    "Guide wires",
-    "Drill bits",
-    "Depth gauge",
-    "Countersinks",
-    "Drill sleeves",
-    "Driver shafts and handles",
-    "Screw extraction tools",
-    "Instrumentation trays"
-  ],
-  "applications": [
-    "Fracture fixation of small bones",
-    "Arthrodesis procedures",
-    "Osteotomy fixation",
-    "Non-union repair",
-    "Forefoot, midfoot, hindfoot and ankle procedures"
-  ],
-  "indications": [
-    "Fixation of fractures",
-    "Fixation of osteotomies",
-    "Bone fusion procedures",
-    "Correction of deformities in foot and ankle"
-  ],
-  "contraindications": [
-    "Active or suspected infection",
-    "Patients with sensitivity to implant materials",
-    "Compromised bone quality preventing fixation",
-    "Conditions preventing compliance with postoperative care"
-  ],
-  "show_image_main": false
-},
-{
-  id: "enovis-arcad-nitinol-compression-staples",
-  name: "ARCAD® Nitinol Compression Staples",
-  brand: "enovis",
-  category: "orthopedics",
-  sub_category: "foot-and-ankle",
-  product_type: "Compression Staples",
-  is_parent_product: true,
-  images: [
-    "https://enovis.widen.net/content/de8c66c1-9aa0-4796-9490-605450bdb5ec/web/acad-staples.jpg?w=720&itok=R_a-AjwL"
-  ],
-  description:
-    "The ARCAD® Nitinol Compression Staples are osteosynthesis implants designed to provide dynamic compression for bone fixation procedures such as osteotomies and joint arthrodesis. Manufactured from pseudoelastic nickel-titanium (NiTiNOL) alloy, the staples deliver continuous compression across the fusion or osteotomy site to support bone healing while simplifying implantation.",
-  features: [
-    "Pseudoelastic NiTiNOL material provides continuous dynamic compression",
-    "Designed for osteotomy fixation and joint arthrodesis procedures",
-    "Two-leg and four-leg staple configurations available",
-    "Multiple bridge and leg length options to accommodate anatomy",
-    "Preloaded sterile implants for simplified surgical workflow",
-    "Shape memory compression without heat activation",
-    "Fast and easy insertion with dedicated instrumentation",
-    "Constant compression across fusion site to support healing"
-  ],
-  variants: [
-    "ARCAD Duo",
-    "ARCAD Quadro",
-    "Multiple bridge sizes",
-    "Multiple leg lengths"
-  ],
-  show_image_main: false
-},
-{
-  "id": "enovis-dynaclip-delta",
-  "name": "DynaClip Delta™ Bone Fixation System",
-  "brand": "enovis",
-  "category": "orthopedics",
-  "sub_category": "foot-and-ankle",
-  "product_type": "Bone Fixation Staple System",
-  "is_parent_product": false,
-  "images": [
-    "https://enovis.widen.net/content/7359791d-3c8c-49de-a4c4-c0abe5417ac2/web/dynaclip-delta-in-bone.jpg?w=720&itok=YG9vaGCN",
-    "https://enovis.widen.net/content/0b468aa7-4045-4281-b0cd-c585e28d3b60/web/dynaclip-delta.jpg?w=720&itok=mg1QMQoS"
-  ],
-  "description": "The DynaClip Delta™ Bone Fixation System is an advanced NiTiNOL compression staple designed for foot and ankle fusion procedures, particularly first metatarsophalangeal (MTP) fusion. It combines the stiffness of a traditional plate and screw construct with the ease of use of a staple while providing sustained dynamic compression across the fusion site to promote healing and stability.",
-  "features": [
-    "Pseudoelastic NiTiNOL technology for sustained dynamic compression",
-    "Triangular 4-leg configuration for enhanced rotational stability",
-    "Broad low-profile bridge design to reduce implant prominence",
-    "Pre-loaded on disposable inserter for simple and fast deployment",
-    "Maintains compression throughout the healing process",
-    "High bending strength and fatigue resistance",
-    "Designed to distribute stress across the bridge rather than corners",
-    "Reduced risk of implant breakage under load",
-    "Procedural efficiency with fewer instruments required",
-    "Available in multiple sizes for various fusion procedures"
-  ],
-  "applications": [
-    "First metatarsophalangeal (MTP) fusion",
-    "Foot and ankle joint fusion procedures",
-    "Osteotomy fixation",
-    "Forefoot and midfoot reconstruction procedures"
-  ],
-  "clinical_benefits": [
-    "Maintains active compression across fusion site during healing",
-    "Reduces permanent gapping compared to traditional staples",
-    "Improves rotational stability",
-    "Combines strength of plate fixation with simplicity of staples",
-    "Supports faster and more efficient surgical workflow"
-  ],
-  "technology": [
-    "NiTiNOL pseudoelastic compression technology",
-    "Dynamic post-operative compression mechanism",
-    "Low-profile anatomical bridge design"
-  ],
-  "variants": [],
-  "show_image_main": false
-},
-{
-  "id": "enovis-dynaclip-forte-bone-fixation-system",
-  "name": "DynaClip Forte® Bone Fixation System",
-  "brand": "enovis",
-  "partnerId": "enovis",
-  "category": "orthopedics",
-  "sub_category": "foot-and-ankle",
-  "product_type": "Bone Fixation Staples",
-  "is_parent_product": false,
-  "images": [
-    "https://enovis.widen.net/content/634ba4ab-185a-494c-be63-67e99ab81350/web/Forte-Isometric.jpg?w=720&itok=gqjHvwVw"
-  ],
-  "description": "The DynaClip Forte® Bone Fixation System is an advanced nickel-titanium (NiTiNOL) bone staple designed to provide dynamic compression and rotational stability for orthopedic fixation procedures. The patented four-leg configuration with a broad curved bridge distributes stress efficiently, delivering strong fixation for demanding weight-bearing applications in foot and ankle surgery.",
-  "features": [
-    "Dynamic compression through pseudoelastic NiTiNOL construction and broad curved bridge",
-    "Four-leg design provides improved rotational stability and additional fixation points",
-    "Patented durable structure resists failure under cyclic loading conditions",
-    "Low-profile tapered bridge minimizes implant prominence and patient irritation",
-    "Broad bridge distributes stress away from legs for improved durability",
-    "Preloaded inserter system enables fast and easy deployment",
-    "Single-use sterile instrumentation kits available",
-    "Designed for demanding weight-bearing applications"
-  ],
-  "technical_specifications": {
-    "material": "Nickel Titanium Alloy (NiTiNOL)",
-    "compression_mechanism": "Superelastic dynamic compression",
-    "design": "Four-leg staple with broad curved bridge",
-    "bridge_curvature": "Up to 24°",
-    "deployment": "Preloaded disposable inserter",
-    "instrumentation": "Universal drill guide, drills, locator pins"
+  {
+    id: "enovis-dynaclip-delta",
+    name: "DynaClip Delta™ Bone Fixation System",
+    brand: "enovis",
+    category: "orthopedics",
+    sub_category: "foot-and-ankle",
+    product_type: "Bone Fixation Staple System",
+    is_parent_product: false,
+    images: [
+      "https://enovis.widen.net/content/7359791d-3c8c-49de-a4c4-c0abe5417ac2/web/dynaclip-delta-in-bone.jpg?w=720&itok=YG9vaGCN",
+      "https://enovis.widen.net/content/0b468aa7-4045-4281-b0cd-c585e28d3b60/web/dynaclip-delta.jpg?w=720&itok=mg1QMQoS",
+    ],
+    description:
+      "The DynaClip Delta™ Bone Fixation System is an advanced NiTiNOL compression staple designed for foot and ankle fusion procedures, particularly first metatarsophalangeal (MTP) fusion. It combines the stiffness of a traditional plate and screw construct with the ease of use of a staple while providing sustained dynamic compression across the fusion site to promote healing and stability.",
+    features: [
+      "Pseudoelastic NiTiNOL technology for sustained dynamic compression",
+      "Triangular 4-leg configuration for enhanced rotational stability",
+      "Broad low-profile bridge design to reduce implant prominence",
+      "Pre-loaded on disposable inserter for simple and fast deployment",
+      "Maintains compression throughout the healing process",
+      "High bending strength and fatigue resistance",
+      "Designed to distribute stress across the bridge rather than corners",
+      "Reduced risk of implant breakage under load",
+      "Procedural efficiency with fewer instruments required",
+      "Available in multiple sizes for various fusion procedures",
+    ],
+    applications: [
+      "First metatarsophalangeal (MTP) fusion",
+      "Foot and ankle joint fusion procedures",
+      "Osteotomy fixation",
+      "Forefoot and midfoot reconstruction procedures",
+    ],
+    clinical_benefits: [
+      "Maintains active compression across fusion site during healing",
+      "Reduces permanent gapping compared to traditional staples",
+      "Improves rotational stability",
+      "Combines strength of plate fixation with simplicity of staples",
+      "Supports faster and more efficient surgical workflow",
+    ],
+    technology: [
+      "NiTiNOL pseudoelastic compression technology",
+      "Dynamic post-operative compression mechanism",
+      "Low-profile anatomical bridge design",
+    ],
+    variants: [],
+    show_image_main: false,
   },
-  "variants": [
-    "26 x 20 x 20 mm",
-    "30 x 20 x 20 mm",
-    "26 x 16 x 16 mm",
-    "30 x 16 x 16 mm"
-  ],
-  "applications": [
-    "Foot and ankle arthrodesis",
-    "Midfoot and hindfoot fusion procedures",
-    "Lapidus (1st TMT) fusion",
-    "Calcaneocuboid fusion",
-    "Naviculocuneiform fusion",
-    "Talonavicular arthrodesis",
-    "Osteotomy fixation"
-  ],
-  "clinical_benefits": [
-    "Sustained compression across fusion sites",
-    "Improved rotational stability compared to traditional staples",
-    "Strong fixation suitable for weight-bearing conditions",
-    "Reduced need for additional fixation implants",
-    "Enhanced durability under cyclic loading"
-  ],
-  "system_components": [
-    "DynaClip Forte implant",
-    "Disposable inserter",
-    "Universal drill guide",
-    "Drills and locator pins",
-    "Single-use sterile procedure pack"
-  ],
-  "indications": [
-    "Fracture fixation",
-    "Osteotomy fixation",
-    "Joint arthrodesis of the foot and ankle",
-    "Small bone fixation"
-  ],
-  "show_image_main": false
-},
-{
-  id: "enovis-dynaclip-quattro",
-  name: "DynaClip Quattro™ Bone Fixation System",
-  brand: "enovis",
-  category: "orthopedics",
-  sub_category: "foot-and-ankle",
-  product_type: "Nitinol Compression Staple System",
-  is_parent_product: false,
-  images: [
-    "https://enovis.widen.net/content/586832c2-372a-4c0d-93e1-34062642d7b8/web/dynaclip-quattro.jpg?w=720&itok=uh96SZk6",
-    "https://enovis.widen.net/content/23c5e996-236b-4165-9570-284a211aaf46/web/dynaclip-quattro-in-bone.jpg?w=720&itok=A2tXkaFB"
-  ],
-  description:
-    "The DynaClip Quattro™ Bone Fixation System combines the strength of a plate with the active compression and ease of use of a staple. Designed for demanding fusion applications, its four-leg configuration with an extra-broad bridge provides enhanced compression and rotational stability, making it ideal for challenging load-bearing procedures in the midfoot and hindfoot.",
-  features: [
-    "Four-leg configuration with extra-broad bridge for increased compression and rotational stability",
-    "Superelastic NiTiNOL construction for sustained dynamic compression",
-    "Low-profile bridge design to reduce prominence and patient irritation",
-    "Thicker legs for improved strength and durability",
-    "Pre-loaded on disposable inserter for quick and accurate deployment",
-    "Simple, intuitive surgical workflow with fewer instruments required",
-    "Designed for demanding fusion and osteotomy procedures",
-    "Active post-operative compression maintained throughout healing"
-  ],
-  technical_specifications: {
-    material: "Superelastic NiTiNOL",
-    configuration: "Four-leg staple with broad bridge",
-    compression_mechanism: "Dynamic compression via bridge curvature and superelastic recovery",
-    deployment: "Pre-loaded disposable inserter",
-    design_characteristics: [
-      "24° bridge curvature for maximum compression",
-      "Variable-length teeth for improved pullout resistance",
-      "Thickened legs for enhanced durability",
-      "Low-profile anatomical bridge"
-    ]
+  {
+    id: "enovis-dynaclip-forte-bone-fixation-system",
+    name: "DynaClip Forte® Bone Fixation System",
+    brand: "enovis",
+    partnerId: "enovis",
+    category: "orthopedics",
+    sub_category: "foot-and-ankle",
+    product_type: "Bone Fixation Staples",
+    is_parent_product: false,
+    images: [
+      "https://enovis.widen.net/content/634ba4ab-185a-494c-be63-67e99ab81350/web/Forte-Isometric.jpg?w=720&itok=gqjHvwVw",
+    ],
+    description:
+      "The DynaClip Forte® Bone Fixation System is an advanced nickel-titanium (NiTiNOL) bone staple designed to provide dynamic compression and rotational stability for orthopedic fixation procedures. The patented four-leg configuration with a broad curved bridge distributes stress efficiently, delivering strong fixation for demanding weight-bearing applications in foot and ankle surgery.",
+    features: [
+      "Dynamic compression through pseudoelastic NiTiNOL construction and broad curved bridge",
+      "Four-leg design provides improved rotational stability and additional fixation points",
+      "Patented durable structure resists failure under cyclic loading conditions",
+      "Low-profile tapered bridge minimizes implant prominence and patient irritation",
+      "Broad bridge distributes stress away from legs for improved durability",
+      "Preloaded inserter system enables fast and easy deployment",
+      "Single-use sterile instrumentation kits available",
+      "Designed for demanding weight-bearing applications",
+    ],
+    technical_specifications: {
+      material: "Nickel Titanium Alloy (NiTiNOL)",
+      compression_mechanism: "Superelastic dynamic compression",
+      design: "Four-leg staple with broad curved bridge",
+      bridge_curvature: "Up to 24°",
+      deployment: "Preloaded disposable inserter",
+      instrumentation: "Universal drill guide, drills, locator pins",
+    },
+    variants: [
+      "26 x 20 x 20 mm",
+      "30 x 20 x 20 mm",
+      "26 x 16 x 16 mm",
+      "30 x 16 x 16 mm",
+    ],
+    applications: [
+      "Foot and ankle arthrodesis",
+      "Midfoot and hindfoot fusion procedures",
+      "Lapidus (1st TMT) fusion",
+      "Calcaneocuboid fusion",
+      "Naviculocuneiform fusion",
+      "Talonavicular arthrodesis",
+      "Osteotomy fixation",
+    ],
+    clinical_benefits: [
+      "Sustained compression across fusion sites",
+      "Improved rotational stability compared to traditional staples",
+      "Strong fixation suitable for weight-bearing conditions",
+      "Reduced need for additional fixation implants",
+      "Enhanced durability under cyclic loading",
+    ],
+    system_components: [
+      "DynaClip Forte implant",
+      "Disposable inserter",
+      "Universal drill guide",
+      "Drills and locator pins",
+      "Single-use sterile procedure pack",
+    ],
+    indications: [
+      "Fracture fixation",
+      "Osteotomy fixation",
+      "Joint arthrodesis of the foot and ankle",
+      "Small bone fixation",
+    ],
+    show_image_main: false,
   },
-  applications: [
-    "Midfoot fusion procedures",
-    "Hindfoot fusion procedures",
-    "Lapidus fusion",
-    "Load-bearing foot fusion applications",
-    "Joint fusion and osteotomy procedures"
-  ],
-  clinical_benefits: [
-    "Provides sustained compression across fusion sites during healing",
-    "Improves rotational stability in demanding procedures",
-    "Reduces risk of implant failure under load-bearing conditions",
-    "Simplifies surgical workflow and improves procedural efficiency",
-    "Combines plate-like strength with staple ease of use"
-  ],
-  variants: [],
-  show_image_main: false
-},
-{
-  "id": "enovis-dynaclip-bone-fixation-system",
-  "name": "DynaClip® Bone Fixation System",
-  "brand": "Enovis",
-  "category": "orthopaedics",
-  "sub_category": "foot-and-ankle",
-  "product_type": "Bone Fixation Staples",
-  "is_parent_product": true,
-  "images": [
-    "https://enovis.widen.net/content/fdbe0f64-62bf-4d71-ade7-84ed92361b0c/web/DynaClip-lrg.jpg?w=720&itok=iuwi0aIN"
-  ],
-  "description": "The DynaClip® Bone Fixation System is a superelastic NiTiNOL staple implant system designed for internal fixation of small bones, osteotomies, fractures, and joint arthrodesis procedures in the hand and foot. The system delivers dynamic post-operative compression and reliable stability through its patented bridge design, distributing stresses evenly to enhance durability and clinical outcomes.",
-  "features": [
-    "Superelastic NiTiNOL implant material for dynamic compression",
-    "Patented bridge design distributes stress evenly for improved durability",
-    "Pre-loaded disposable inserter for accurate and simple deployment",
-    "Low-profile design to reduce implant prominence and patient irritation",
-    "Multiple sizes and configurations to accommodate different anatomical needs",
-    "Compatible instrumentation packaged in sterile single-use procedure kits",
-    "Provides sustained compression across osteotomy or fusion sites",
-    "Designed for reliable fixation in demanding load-bearing applications"
-  ],
-  "variants": [
-    "8 mm x 8 mm",
-    "10 mm x 10 mm",
-    "12 mm x 12 mm",
-    "14 mm x 14 mm",
-    "18 mm x 18 mm",
-    "18 mm x 20 mm",
-    "20 mm x 18 mm",
-    "20 mm x 22 mm",
-    "26 mm x 20 mm"
-  ],
-  "applications": [
-    "Fracture fixation of small bones",
-    "Osteotomy fixation",
-    "Joint arthrodesis of the hand and foot",
-    "Foot and ankle fusion procedures",
-    "Lapidus fusion",
-    "Akin osteotomy",
-    "Midfoot and hindfoot fusion",
-    "Fixation of small bone fragments"
-  ],
-  "technical_specifications": {
-    material: "Nickel-Titanium Alloy (NiTiNOL)",
-    fixation_type: "Dynamic compression staple",
-    deployment: "Pre-loaded disposable inserter",
-    instrumentation: "Sterile single-use procedure pack",
-    configurations: "Multiple bridge and leg length options"
+  {
+    id: "enovis-dynaclip-quattro",
+    name: "DynaClip Quattro™ Bone Fixation System",
+    brand: "enovis",
+    category: "orthopedics",
+    sub_category: "foot-and-ankle",
+    product_type: "Nitinol Compression Staple System",
+    is_parent_product: false,
+    images: [
+      "https://enovis.widen.net/content/586832c2-372a-4c0d-93e1-34062642d7b8/web/dynaclip-quattro.jpg?w=720&itok=uh96SZk6",
+      "https://enovis.widen.net/content/23c5e996-236b-4165-9570-284a211aaf46/web/dynaclip-quattro-in-bone.jpg?w=720&itok=A2tXkaFB",
+    ],
+    description:
+      "The DynaClip Quattro™ Bone Fixation System combines the strength of a plate with the active compression and ease of use of a staple. Designed for demanding fusion applications, its four-leg configuration with an extra-broad bridge provides enhanced compression and rotational stability, making it ideal for challenging load-bearing procedures in the midfoot and hindfoot.",
+    features: [
+      "Four-leg configuration with extra-broad bridge for increased compression and rotational stability",
+      "Superelastic NiTiNOL construction for sustained dynamic compression",
+      "Low-profile bridge design to reduce prominence and patient irritation",
+      "Thicker legs for improved strength and durability",
+      "Pre-loaded on disposable inserter for quick and accurate deployment",
+      "Simple, intuitive surgical workflow with fewer instruments required",
+      "Designed for demanding fusion and osteotomy procedures",
+      "Active post-operative compression maintained throughout healing",
+    ],
+    technical_specifications: {
+      material: "Superelastic NiTiNOL",
+      configuration: "Four-leg staple with broad bridge",
+      compression_mechanism:
+        "Dynamic compression via bridge curvature and superelastic recovery",
+      deployment: "Pre-loaded disposable inserter",
+      design_characteristics: [
+        "24° bridge curvature for maximum compression",
+        "Variable-length teeth for improved pullout resistance",
+        "Thickened legs for enhanced durability",
+        "Low-profile anatomical bridge",
+      ],
+    },
+    applications: [
+      "Midfoot fusion procedures",
+      "Hindfoot fusion procedures",
+      "Lapidus fusion",
+      "Load-bearing foot fusion applications",
+      "Joint fusion and osteotomy procedures",
+    ],
+    clinical_benefits: [
+      "Provides sustained compression across fusion sites during healing",
+      "Improves rotational stability in demanding procedures",
+      "Reduces risk of implant failure under load-bearing conditions",
+      "Simplifies surgical workflow and improves procedural efficiency",
+      "Combines plate-like strength with staple ease of use",
+    ],
+    variants: [],
+    show_image_main: false,
   },
-  "clinical_benefits": [
-    "Provides sustained compression across fusion sites",
-    "Improves fixation stability compared with traditional staples",
-    "Reduces risk of implant prominence due to low-profile design",
-    "Supports reliable bone healing and fusion outcomes",
-    "Simplifies surgical workflow with pre-loaded instrumentation"
-  ],
-  "indications": [
-    "Internal fixation of small bones",
-    "Fracture fixation and osteotomy stabilization",
-    "Joint arthrodesis procedures",
-    "Fixation of proximal tibial metaphysis osteotomy",
-    "Fixation of small bone fragments in upper and lower extremities"
-  ],
-  "contraindications": [
-    "Active infection",
-    "Poor bone quality or insufficient bone quantity",
-    "Patients unable to follow postoperative instructions",
-    "Known material sensitivity"
-  ],
-  "show_image_main": false
-}
-
-
-
-
-
-
-
-
-
+  {
+    id: "enovis-dynaclip-bone-fixation-system",
+    name: "DynaClip® Bone Fixation System",
+    brand: "Enovis",
+    category: "orthopaedics",
+    sub_category: "foot-and-ankle",
+    product_type: "Bone Fixation Staples",
+    is_parent_product: true,
+    images: [
+      "https://enovis.widen.net/content/fdbe0f64-62bf-4d71-ade7-84ed92361b0c/web/DynaClip-lrg.jpg?w=720&itok=iuwi0aIN",
+    ],
+    description:
+      "The DynaClip® Bone Fixation System is a superelastic NiTiNOL staple implant system designed for internal fixation of small bones, osteotomies, fractures, and joint arthrodesis procedures in the hand and foot. The system delivers dynamic post-operative compression and reliable stability through its patented bridge design, distributing stresses evenly to enhance durability and clinical outcomes.",
+    features: [
+      "Superelastic NiTiNOL implant material for dynamic compression",
+      "Patented bridge design distributes stress evenly for improved durability",
+      "Pre-loaded disposable inserter for accurate and simple deployment",
+      "Low-profile design to reduce implant prominence and patient irritation",
+      "Multiple sizes and configurations to accommodate different anatomical needs",
+      "Compatible instrumentation packaged in sterile single-use procedure kits",
+      "Provides sustained compression across osteotomy or fusion sites",
+      "Designed for reliable fixation in demanding load-bearing applications",
+    ],
+    variants: [
+      "8 mm x 8 mm",
+      "10 mm x 10 mm",
+      "12 mm x 12 mm",
+      "14 mm x 14 mm",
+      "18 mm x 18 mm",
+      "18 mm x 20 mm",
+      "20 mm x 18 mm",
+      "20 mm x 22 mm",
+      "26 mm x 20 mm",
+    ],
+    applications: [
+      "Fracture fixation of small bones",
+      "Osteotomy fixation",
+      "Joint arthrodesis of the hand and foot",
+      "Foot and ankle fusion procedures",
+      "Lapidus fusion",
+      "Akin osteotomy",
+      "Midfoot and hindfoot fusion",
+      "Fixation of small bone fragments",
+    ],
+    technical_specifications: {
+      material: "Nickel-Titanium Alloy (NiTiNOL)",
+      fixation_type: "Dynamic compression staple",
+      deployment: "Pre-loaded disposable inserter",
+      instrumentation: "Sterile single-use procedure pack",
+      configurations: "Multiple bridge and leg length options",
+    },
+    clinical_benefits: [
+      "Provides sustained compression across fusion sites",
+      "Improves fixation stability compared with traditional staples",
+      "Reduces risk of implant prominence due to low-profile design",
+      "Supports reliable bone healing and fusion outcomes",
+      "Simplifies surgical workflow with pre-loaded instrumentation",
+    ],
+    indications: [
+      "Internal fixation of small bones",
+      "Fracture fixation and osteotomy stabilization",
+      "Joint arthrodesis procedures",
+      "Fixation of proximal tibial metaphysis osteotomy",
+      "Fixation of small bone fragments in upper and lower extremities",
+    ],
+    contraindications: [
+      "Active infection",
+      "Poor bone quality or insufficient bone quantity",
+      "Patients unable to follow postoperative instructions",
+      "Known material sensitivity",
+    ],
+    show_image_main: false,
+  },
 ];
 
 export const companyStats = {
