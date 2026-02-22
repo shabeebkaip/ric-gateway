@@ -54,10 +54,7 @@ export const ContactPageContent = () => {
       icon: MapPin,
       title: "Visit Us",
       details: [
-        "Kingdom of Saudi Arabia",
-        "Riyadh, Orouba Street",
-        "RIC Complex",
-        "P.O. Box 223, Riyadh 2324"
+        "PM8M+J6X, Oruba Road, As Sulimaniyah, Riyadh 11411, Saudi Arabia"
       ],
       link: "https://www.google.com/maps/place/RIYADH+INTERNATIONAL+CORPORATION/@24.7166169,46.680542,17z/data=!3m1!4b1!4m6!3m5!1s0x3e2f03048c8ab6cd:0x37200af5e3ccaffc!8m2!3d24.7166169!4d46.6831169!16s%2Fg%2F1tj6fgpd?entry=ttu",
       color: "text-primary",
@@ -300,10 +297,7 @@ export const ContactPageContent = () => {
                     <div>
                       <p className="font-semibold text-foreground">Address</p>
                       <p className="text-sm text-muted-foreground">
-                        Riyadh International Corporation Medical Equipments & Services, Ltd
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        Kingdom of Saudi Arabia, Riyadh, Orouba street, RIC Complex
+                        PM8M+J6X, Oruba Road, As Sulimaniyah, Riyadh 11411, Saudi Arabia
                       </p>
                     </div>
                   </div>

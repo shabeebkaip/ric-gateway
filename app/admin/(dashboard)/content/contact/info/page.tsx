@@ -48,7 +48,7 @@ export default function ContactInfoEditor() {
   const [saving, setSaving] = useState(false);
   const [content, setContent] = useState<ContactInfoContent>({
     cards: [
-      { id: '1', icon: 'MapPin', title: 'Visit Us', details: ['Kingdom of Saudi Arabia', 'Riyadh, Orouba Street', 'RIC Complex', 'P.O. Box 223, Riyadh 2324'], link: 'https://maps.google.com', color: 'text-primary' },
+      { id: '1', icon: 'MapPin', title: 'Visit Us', details: ['PM8M+J6X, Oruba Road, As Sulimaniyah, Riyadh 11411, Saudi Arabia'], link: 'https://maps.google.com', color: 'text-primary' },
       { id: '2', icon: 'Phone', title: 'Call Us', details: ['+966 50 969 8043'], link: 'tel:+966509698043', color: 'text-gold' },
       { id: '3', icon: 'Printer', title: 'Fax', details: ['+966 11 463 0135'], link: null, color: 'text-accent' },
       { id: '4', icon: 'Mail', title: 'Email Us', details: ['ricmede@ricmedical.com.sa'], link: 'mailto:ricmede@ricmedical.com.sa', color: 'text-primary' },
