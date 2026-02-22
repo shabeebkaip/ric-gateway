@@ -10,6 +10,7 @@ import {
   Stethoscope,
   Home,
   Maximize2,
+  ArrowLeft,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -44,7 +45,7 @@ export function ProductHero({ product, category }: ProductHeroProps) {
       label: "Products",
       href: "/products",
       ariaLabel: "Products Overview",
-    }, 
+    },
     {
       label: category.name,
       href: `/products/${category.slug}`,
@@ -58,6 +59,19 @@ export function ProductHero({ product, category }: ProductHeroProps) {
   return (
     <section className="pt-32 pb-16 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200">
       <div className="container mx-auto px-6 max-w-7xl">
+
+        {/* Back Button */}
+        <motion.button
+          onClick={() => window.history.back()}
+          className="mb-6 flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-colors font-medium group"
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+          Back
+        </motion.button>
+
         {/* Breadcrumbs */}
         <motion.nav
           className="mb-8"
@@ -105,82 +119,82 @@ export function ProductHero({ product, category }: ProductHeroProps) {
             >
               <div className="sticky top-40">
                 {mainImage ? (
-                <div className="space-y-4">
-                  {/* Main Image with Hover Zoom */}
-                  <div 
-                    className="relative aspect-square bg-white rounded-[20px] overflow-hidden shadow-[0_1px_3px_0_rgba(15,23,42,0.03),0_1px_2px_-1px_rgba(15,23,42,0.03)] p-12 cursor-pointer group"
-                    onMouseEnter={() => setIsImageHovered(true)}
-                    onMouseLeave={() => setIsImageHovered(false)}
-                    onClick={() => setIsZoomViewOpen(true)}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white opacity-60"></div>
-                    
-                    {/* Zoom Icon Indicator */}
-                    <motion.div
-                      className="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ 
-                        opacity: isImageHovered ? 1 : 0,
-                        scale: isImageHovered ? 1 : 0.8
-                      }}
-                      transition={{ duration: 0.2 }}
+                  <div className="space-y-4">
+                    {/* Main Image with Hover Zoom */}
+                    <div
+                      className="relative aspect-square bg-white rounded-[20px] overflow-hidden shadow-[0_1px_3px_0_rgba(15,23,42,0.03),0_1px_2px_-1px_rgba(15,23,42,0.03)] p-12 cursor-pointer group"
+                      onMouseEnter={() => setIsImageHovered(true)}
+                      onMouseLeave={() => setIsImageHovered(false)}
+                      onClick={() => setIsZoomViewOpen(true)}
                     >
-                      <Maximize2 className="w-4 h-4 text-slate-700" />
-                    </motion.div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white opacity-60"></div>
 
-                    {/* Main Image */}
-                    <motion.img
-                      key={selectedImageIndex}
-                      src={mainImage}
-                      alt={product.name}
-                      className="relative w-full h-full object-contain"
-                      animate={{ 
-                        scale: isImageHovered ? 1.1 : 1,
-                      }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      {/* Zoom Icon Indicator */}
+                      <motion.div
+                        className="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{
+                          opacity: isImageHovered ? 1 : 0,
+                          scale: isImageHovered ? 1 : 0.8,
+                        }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Maximize2 className="w-4 h-4 text-slate-700" />
+                      </motion.div>
+
+                      {/* Main Image */}
+                      <motion.img
+                        key={selectedImageIndex}
+                        src={mainImage}
+                        alt={product.name}
+                        className="relative w-full h-full object-contain"
+                        animate={{
+                          scale: isImageHovered ? 1.1 : 1,
+                        }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                      />
+                    </div>
+
+                    {/* Gallery Thumbnails */}
+                    {allImages.length > 1 && (
+                      <div className="grid grid-cols-4 gap-3">
+                        {allImages.map((image, index) => (
+                          <motion.div
+                            key={index}
+                            className={`aspect-square bg-white rounded-xl overflow-hidden shadow-[0_1px_3px_0_rgba(15,23,42,0.03),0_1px_2px_-1px_rgba(15,23,42,0.03)] cursor-pointer p-2 transition-all duration-200 ${
+                              selectedImageIndex === index
+                                ? "ring-2 ring-blue-600 shadow-md"
+                                : "hover:shadow-md hover:ring-2 hover:ring-slate-300"
+                            }`}
+                            whileHover={{ y: -2 }}
+                            transition={{ duration: 0.2 }}
+                            onClick={() => setSelectedImageIndex(index)}
+                          >
+                            <img
+                              src={image}
+                              alt={`${product.name} - ${index + 1}`}
+                              className="w-full h-full object-contain"
+                            />
+                          </motion.div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="aspect-square bg-white rounded-[20px] flex items-center justify-center shadow-[0_1px_3px_0_rgba(15,23,42,0.03),0_1px_2px_-1px_rgba(15,23,42,0.03)]">
+                    <Microscope
+                      className="w-24 h-24 text-slate-300"
+                      strokeWidth={1.5}
                     />
                   </div>
-
-                  {/* Gallery Thumbnails */}
-                  {allImages.length > 1 && (
-                    <div className="grid grid-cols-4 gap-3">
-                      {allImages.map((image, index) => (
-                        <motion.div
-                          key={index}
-                          className={`aspect-square bg-white rounded-xl overflow-hidden shadow-[0_1px_3px_0_rgba(15,23,42,0.03),0_1px_2px_-1px_rgba(15,23,42,0.03)] cursor-pointer p-2 transition-all duration-200 ${
-                            selectedImageIndex === index
-                              ? 'ring-2 ring-blue-600 shadow-md'
-                              : 'hover:shadow-md hover:ring-2 hover:ring-slate-300'
-                          }`}
-                          whileHover={{ y: -2 }}
-                          transition={{ duration: 0.2 }}
-                          onClick={() => setSelectedImageIndex(index)}
-                        >
-                          <img
-                            src={image}
-                            alt={`${product.name} - ${index + 1}`}
-                            className="w-full h-full object-contain"
-                          />
-                        </motion.div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div className="aspect-square bg-white rounded-[20px] flex items-center justify-center shadow-[0_1px_3px_0_rgba(15,23,42,0.03),0_1px_2px_-1px_rgba(15,23,42,0.03)]">
-                  <Microscope
-                    className="w-24 h-24 text-slate-300"
-                    strokeWidth={1.5}
-                  />
-                </div>
-              )}
-            </div>
-          </motion.div>
+                )}
+              </div>
+            </motion.div>
           )}
 
           {/* Product Information */}
           <motion.div
-            className={`space-y-8 ${product.show_image_main ? 'lg:col-span-5' : 'lg:col-span-3'}`}
+            className={`space-y-8 ${product.show_image_main ? "lg:col-span-5" : "lg:col-span-3"}`}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -193,7 +207,7 @@ export function ProductHero({ product, category }: ProductHeroProps) {
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-slate-500">
                 {partner?.logo ? (
-                  <div className="relative w-28  flex items-center justify-center">
+                  <div className="relative w-28 flex items-center justify-center">
                     <img
                       src={partner.logo}
                       alt={partner.name}
@@ -265,7 +279,7 @@ export function ProductHero({ product, category }: ProductHeroProps) {
               <Button
                 asChild
                 variant="outline"
-                className="rounded-full px-8 py-6 border-2 border-slate-200 hover:border-slate-300 hover:from-blue-600 hover:to-sky-600  transition-all duration-300"
+                className="rounded-full px-8 py-6 border-2 border-slate-200 hover:border-slate-300 hover:from-blue-600 hover:to-sky-600 transition-all duration-300"
               >
                 <a href="tel:+966114654113">
                   <Stethoscope className="w-4 h-4 mr-2" />
@@ -328,8 +342,8 @@ export function ProductHero({ product, category }: ProductHeroProps) {
                             onClick={() => setSelectedImageIndex(index)}
                             className={`flex-shrink-0 w-20 h-20 bg-white rounded-lg overflow-hidden border-2 transition-all ${
                               selectedImageIndex === index
-                                ? 'border-blue-600 shadow-md scale-105'
-                                : 'border-slate-200 hover:border-slate-400'
+                                ? "border-blue-600 shadow-md scale-105"
+                                : "border-slate-200 hover:border-slate-400"
                             }`}
                           >
                             <img
