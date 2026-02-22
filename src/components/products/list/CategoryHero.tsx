@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
-import { Package, Grid3x3, Home } from "lucide-react";
+import { Package, Grid3x3, Home, ArrowLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
@@ -44,6 +44,19 @@ export function CategoryHero({
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-sky-200 rounded-full blur-[80px] opacity-40 pointer-events-none"></div>
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
+
+        {/* Back Button */}
+        <motion.button
+          onClick={() => window.history.back()}
+          className="mb-6 inline-flex items-center gap-2 text-sm text-slate-600 hover:text-blue-600 bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-full px-4 py-2 shadow-sm hover:shadow-md transition-all duration-200 font-medium group"
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+          Back
+        </motion.button>
+
         {/* Breadcrumbs */}
         <motion.nav
           className="mb-8"
