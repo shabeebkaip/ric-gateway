@@ -29,7 +29,8 @@ export function ProductHero({ product, category }: ProductHeroProps) {
   const [isImageHovered, setIsImageHovered] = useState(false);
   const [isZoomViewOpen, setIsZoomViewOpen] = useState(false);
 
-  const allImages = product.images && product.images.length > 0 ? product.images : [];
+  const allImages =
+    product.images && product.images.length > 0 ? product.images : [];
   const mainImage = allImages[selectedImageIndex] || null;
 
   const partnerIdToUse = product.partnerId || product.brand;
@@ -59,11 +60,10 @@ export function ProductHero({ product, category }: ProductHeroProps) {
   return (
     <section className="pt-32 pb-16 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200">
       <div className="container mx-auto px-6 max-w-7xl">
-
         {/* Back Button */}
         <motion.button
           onClick={() => window.history.back()}
-          className="mb-6 flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-colors font-medium group"
+          className="mb-6 inline-flex items-center gap-2 text-sm text-slate-600 hover:text-blue-600 bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-full px-4 py-2 shadow-sm hover:shadow-md transition-all duration-200 font-medium group"
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4 }}
@@ -313,8 +313,18 @@ export function ProductHero({ product, category }: ProductHeroProps) {
                   onClick={() => setIsZoomViewOpen(false)}
                   className="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg hover:bg-white transition-colors"
                 >
-                  <svg className="w-5 h-5 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <svg
+                    className="w-5 h-5 text-slate-700"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </button>
 
