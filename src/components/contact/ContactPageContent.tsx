@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Send, LucideIcon, Printer } from "lucide-react";
+import { MapPin, Phone, PhoneCall, Mail, Clock, Send, LucideIcon, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -62,7 +62,7 @@ export const ContactPageContent = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+966 50 969 8043"],
+      details: ["+966 50 969 8043", "+966 11 465 4113 (Ext. 106)"],
       link: "tel:+966509698043",
       color: "text-gold",
     },
@@ -306,8 +306,11 @@ export const ContactPageContent = () => {
                     <Phone className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
                     <div>
                       <p className="font-semibold text-foreground">Phone</p>
-                      <a href="tel:+966509698043" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                      <a href="tel:+966509698043" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
                         +966 50 969 8043
+                      </a>
+                      <a href="tel:+966114654113" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
+                        +966 11 465 4113 <span className="text-xs opacity-70">(Ext. 106)</span>
                       </a>
                     </div>
                   </div>
