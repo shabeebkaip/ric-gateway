@@ -836,7 +836,7 @@ export const products = [
   },
   {
     id: "basda-bstar-150f-1-5t-no-helium-superconducting-mri",
-    name: "Bstar-150F 1.5T No-Helium Superconducting MRI Scanner",
+    name: "Bstar-150F 1.5T  Superconducting MRI Scanner",
     brand: "BASDA",
     partnerId: "basda",
     category: "medical-imaging",
@@ -868,7 +868,7 @@ export const products = [
       power_consumption_kw: "45",
     },
     system_components: [
-      "No-helium superconducting magnet",
+      "superconducting magnet",
       "RF sub system with 8/16 channel receiver",
       "Gradient sub system with self-shielding coils",
       "Motor-driven patient table",
