@@ -53,9 +53,7 @@ export const PartnersSection = () => {
         </motion.div>
 
         {/* Partners Grid - Minimalist Design */}
-        <div
-          className={`grid ${getGridClass()} gap-6 md:gap-8 max-w-6xl mx-auto`}
-        >
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8 max-w-6xl mx-auto">
           {partners.map((partner, index) => (
             <motion.a
               key={partner.name}
@@ -66,7 +64,7 @@ export const PartnersSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="group relative flex items-center justify-center p-6 md:p-8"
+              className="group relative flex items-center justify-center p-6 md:p-8 w-40 md:w-48"
             >
               {/* Tag Badge */}
               {partner.tag && (

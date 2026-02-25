@@ -147,7 +147,7 @@ export const partners = [
       "Surgical Instruments",
       "Treatment Solutions",
     ],
-    tag: "Registration",
+    tag: "Under Registration",
   },
 
   {
@@ -160,7 +160,7 @@ export const partners = [
     invertColor: false,
     categories: ["endoscopy"],
     products: ["Endoscopy Systems", "Gastroscopes", "Colonoscopy"],
-    tag: "Registration",
+    tag: "Under Registration",
   },
   {
     id: "adtec-premium-plasma",
@@ -171,7 +171,7 @@ export const partners = [
     website: "https://adtechealthcare.com/",
     categories: ["wound-care"],
     products: ["Plasma Technology", "Medical Imaging Solutions"],
-    tag: "Registration",
+    tag: "Under Registration",
   },
 ];
 
