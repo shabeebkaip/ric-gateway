@@ -220,7 +220,7 @@ export const Navigation = () => {
                 whileHover={{ scale: 1.02 }}
               >
                 <PhoneCall className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
-                <span className="hidden xl:inline">+966 11 465 4113 <span className="text-xs opacity-70">(ext. 106)</span></span>
+                <span className="hidden xl:inline">+966 11 465 4113 <span className="text-xs opacity-70">(Ext. 106)</span></span>
                 <span className="xl:hidden">Landline</span>
               </motion.a>
             </div>
@@ -318,7 +318,7 @@ export const Navigation = () => {
                   className="flex items-center gap-2 py-2 px-4 text-sm text-muted-foreground hover:text-gold transition-all duration-300 rounded-lg hover:bg-gold/5"
                 >
                   <PhoneCall className="w-4 h-4" />
-                  +966 11 465 4113 <span className="text-xs opacity-70">(ext. 106)</span>
+                  +966 11 465 4113 <span className="text-xs opacity-70">(Ext. 106)</span>
                 </a>
                 <Button
                   asChild
