@@ -106,18 +106,20 @@ export const HeroSection = () => {
               transition={{ delay: 0.5 }}
             >
               <Button
+                asChild
                 variant="hero"
                 size="xl"
                 className="bg-gradient-to-r from-primary to-primary hover:from-gold hover:to-primary transition-all duration-500 shadow-lg hover:shadow-gold/20"
               >
-                Explore Our Solutions
+                <a href="/products">Explore Our Products</a>
               </Button>
               <Button
+                asChild
                 variant="heroOutline"
                 size="xl"
                 className="hover:border-gold/50 hover:text-gold transition-all duration-300"
               >
-                Contact Us
+                <a href="/contact">Contact Us</a>
               </Button>
             </motion.div>
           </motion.div>

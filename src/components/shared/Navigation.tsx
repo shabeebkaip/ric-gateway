@@ -7,6 +7,7 @@ import {
   X,
   ChevronDown,
   Phone,
+  PhoneCall,
   Microscope,
   Stethoscope,
   ScanLine,
@@ -218,8 +219,8 @@ export const Navigation = () => {
                 className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-gold hover:bg-gold/5 transition-all duration-300 w-full group"
                 whileHover={{ scale: 1.02 }}
               >
-                <Phone className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
-                <span className="hidden xl:inline">+966 11 465 4113</span>
+                <PhoneCall className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
+                <span className="hidden xl:inline">+966 11 465 4113 <span className="text-xs opacity-70">(ext. 106)</span></span>
                 <span className="xl:hidden">Landline</span>
               </motion.a>
             </div>
@@ -316,8 +317,8 @@ export const Navigation = () => {
                   href="tel:+966114654113"
                   className="flex items-center gap-2 py-2 px-4 text-sm text-muted-foreground hover:text-gold transition-all duration-300 rounded-lg hover:bg-gold/5"
                 >
-                  <Phone className="w-4 h-4" />
-                  +966 11 465 4113 (Landline)
+                  <PhoneCall className="w-4 h-4" />
+                  +966 11 465 4113 <span className="text-xs opacity-70">(ext. 106)</span>
                 </a>
                 <Button
                   asChild

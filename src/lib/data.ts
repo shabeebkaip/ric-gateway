@@ -3438,6 +3438,7 @@ export const contactInfo = {
   phone: {
     primary: "+966509698043",
     secondary: "+966114654113",
+    extenstion: "ext. 106",
     fax: "+966114630135",
   },
   email: "ricemede@ricmedical.com.sa",

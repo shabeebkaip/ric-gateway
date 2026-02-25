@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
   MapPin,
   Phone,
+  PhoneCall,
   Mail,
   Clock,
   Linkedin,
@@ -100,9 +101,7 @@ export const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <span className="text-card/70">
-                  {contactInfo.address.street}
-                  <br />
-                  {contactInfo.address.city}, {contactInfo.address.country}
+                  {contactInfo.address.full}
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -113,6 +112,18 @@ export const Footer = () => {
                 >
                   {contactInfo.phone.primary}
                 </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <PhoneCall className="w-5 h-5 text-primary flex-shrink-0" />
+                <div className="text-card/70">
+                  <a
+                    href={`tel:${contactInfo.phone.secondary}`}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {contactInfo.phone.secondary}
+                  </a>
+                  <span className="text-card/50 text-sm ml-2">({contactInfo.phone.extenstion})</span>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />

@@ -57,8 +57,8 @@ export const AboutSection = () => {
               ))}
             </div>
 
-            <Button variant="hero" size="lg" className="p-3">
-              Learn More About Us
+            <Button asChild variant="hero" size="lg" className="p-3">
+              <a href="/about">Learn More About Us</a>
             </Button>
           </motion.div>
 
