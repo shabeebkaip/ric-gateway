@@ -1632,6 +1632,68 @@ export const products = [
     },
     show_image_main: false,
   },
+  {
+    id: "allwin-ureteral-catheters",
+    name: "Ureteral Catheters (Multiple Tip Configurations)",
+    brand: "Allwin Medical Devices",
+    partnerId: "allwin",
+    category: "urology",
+    sub_category: "urology-consumables",
+    product_type: "Ureteral Catheter",
+    is_parent_product: true,
+    images: [],
+    description:
+      "Ureteral catheters designed for ureteral drainage and catheterization in urological procedures. Available in different tip configurations — angled or straight, open or closed — to match clinical preferences and procedural needs.",
+    features: [
+      "Available in multiple tip configurations (angled closed, angled open, closed, open tapered)",
+      "Radiopaque material for accurate visualization during placement",
+      "Smooth surface and atraumatic tip to minimize tissue injury",
+      "Biocompatible polyurethane construction for patient safety and comfort",
+      "Compatible with standard guidewires and introducers",
+    ],
+    variants: [
+      {
+        tip_type: "Angled Closed Tip",
+        image:
+          "https://allwinmedical.com/wp-content/uploads/2020/11/Ureteral-Catheters-Angled-Closed-Tip-3.jpg",
+        variant_codes: ["UCAC5/13", "UCAC6/16", "UCAC7/18"],
+      },
+      {
+        tip_type: "Angled Open Tip",
+        image:
+          "https://allwinmedical.com/wp-content/uploads/2020/11/Ureteral-Catheters-Angled-Open-Tip-3.jpg",
+        variant_codes: ["UCAO5/13", "UCAO6/16", "UCAO7/18"],
+      },
+      {
+        tip_type: "Closed Tip",
+        image:
+          "https://allwinmedical.com/wp-content/uploads/2020/11/Ureteral-Catheters-Closed-Tip-2.jpg",
+        variant_codes: ["UCC5/13", "UCC6/16", "UCC7/18"],
+      },
+      {
+        tip_type: "Open Tapered Tip",
+        image:
+          "https://allwinmedical.com/wp-content/uploads/2020/11/Ureteral-Catheters-Open-Tapered-Tip-2.jpg",
+        variant_codes: ["UOT5/13", "UOT6/16", "UOT7/18"],
+      },
+    ],
+    technical_specifications: {
+      material: "Polyurethane with radiopaque markers",
+      guidewire_compatibility_inch: "0.035",
+      lengths_cm: ["13", "16", "18"],
+    },
+    applications: [
+      "Ureteral catheterization",
+      "Urinary drainage in ureter and renal pelvis",
+      "Temporary ureteral access after ureteroscopy",
+      "Support for guidewire exchange",
+    ],
+    combinations: {
+      with_guidewire: "Add suffix - G",
+      with_hydrophilic_coating: "Add suffix - H",
+    },
+    show_image_main: false,
+  },
   // Redpine Products
   {
     id: "redpine-single-use-video-flexible-ureteroscope",

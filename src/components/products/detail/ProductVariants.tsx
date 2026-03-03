@@ -23,43 +23,45 @@ export function ProductVariants({ variants }: ProductVariantsProps) {
           </h2>
           
           {isObjectVariants ? (
-            // Render object variants as a table
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-slate-50">
-                    {Object.keys(variants[0] as Record<string, any>).map((key) => (
-                      <th
-                        key={key}
-                        className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider border border-slate-200"
-                      >
-                        {key.replace(/_/g, " ")}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {(variants as Record<string, any>[]).map((variant, index) => (
-                    <motion.tr
-                      key={index}
-                      className="hover:bg-slate-50 transition-colors"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.05 }}
-                    >
-                      {Object.values(variant).map((value, i) => (
-                        <td
-                          key={i}
-                          className="px-6 py-4 text-sm text-slate-700 border border-slate-200"
-                        >
-                          {String(value)}
-                        </td>
-                      ))}
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
+            // Render object variants with images
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {(variants as Record<string, any>[]).map((variant, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                >
+                  {variant.image && (
+                    <div className="aspect-square bg-slate-50 p-4">
+                      <img
+                        src={variant.image}
+                        alt={variant.tip_type || `Configuration ${index + 1}`}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  )}
+                  <div className="p-4">
+                    <h3 className="font-semibold text-slate-900 mb-2">
+                      {variant.tip_type}
+                    </h3>
+                    {variant.variant_codes && (
+                      <div className="space-y-1">
+                        <p className="text-xs font-medium text-slate-600 uppercase tracking-wider">
+                          Variant Codes
+                        </p>
+                        <p className="text-sm text-slate-700">
+                          {Array.isArray(variant.variant_codes) 
+                            ? variant.variant_codes.join(', ') 
+                            : variant.variant_codes}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           ) : (
             // Render string variants as cards

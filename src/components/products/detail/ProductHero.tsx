@@ -110,7 +110,7 @@ export function ProductHero({ product, category }: ProductHeroProps) {
 
         <div className="grid lg:grid-cols-5 gap-12 items-start">
           {/* Product Showcase */}
-          {!product.show_image_main && (
+          {!product.show_image_main && allImages.length > 0 && (
             <motion.div
               className="lg:col-span-2"
               initial={{ opacity: 0, y: 30 }}
@@ -180,21 +180,14 @@ export function ProductHero({ product, category }: ProductHeroProps) {
                       </div>
                     )}
                   </div>
-                ) : (
-                  <div className="aspect-square bg-white rounded-[20px] flex items-center justify-center shadow-[0_1px_3px_0_rgba(15,23,42,0.03),0_1px_2px_-1px_rgba(15,23,42,0.03)]">
-                    <Microscope
-                      className="w-24 h-24 text-slate-300"
-                      strokeWidth={1.5}
-                    />
-                  </div>
-                )}
+                ) : null}
               </div>
             </motion.div>
           )}
 
           {/* Product Information */}
           <motion.div
-            className={`space-y-8 ${product.show_image_main ? "lg:col-span-5" : "lg:col-span-3"}`}
+            className={`space-y-8 ${product.show_image_main || allImages.length === 0 ? "lg:col-span-5" : "lg:col-span-3"}`}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
