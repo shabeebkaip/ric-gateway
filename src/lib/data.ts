@@ -1694,6 +1694,7 @@ export const products = [
     },
     show_image_main: false,
   },
+
   // Redpine Products
   {
     id: "redpine-single-use-video-flexible-ureteroscope",
@@ -4086,6 +4087,6 @@ export const contactInfo = {
     extenstion: "Ext. 106",
     fax: "+966114630135",
   },
-  email: "ricemede@ricmedical.com.sa",
+  email: "ricmede@ricmedical.com.sa",
   workingHours: "Sun - Thu: 8AM - 5PM",
 };
