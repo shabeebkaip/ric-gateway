@@ -6,7 +6,6 @@ import { Search, Filter, X, ChevronDown, Package, Building2, ArrowRight, Sparkle
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { products } from "@/lib/data";
 import { productCategories, productSubcategories, partners } from "@/lib/data";
 import Link from "next/link";
 import {
@@ -16,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { products } from "@/lib/products";
 
 export function AllProductsContent() {
   const [searchQuery, setSearchQuery] = useState("");

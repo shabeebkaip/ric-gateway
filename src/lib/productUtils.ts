@@ -1,4 +1,5 @@
-import { productSubcategories, partners, products } from "./data";
+import { productSubcategories, partners,  } from "./data";
+import { products } from "./products";
 
 export function getProductsByCategory(categorySlug: string) {
   return products.filter((product) => product.category === categorySlug);
