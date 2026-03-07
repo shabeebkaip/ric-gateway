@@ -17,7 +17,7 @@ export const partners = [
     name: "Dornier MedTech",
     country: "Germany",
     flag: "🇩🇪",
-    logo: "/partners/dornier1.webp",
+    logo: "/partners/dornier-medtech.png",
     website: "https://www.dornier.com/",
     invertColor: false,
     categories: [""],
