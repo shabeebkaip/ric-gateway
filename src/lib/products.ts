@@ -1,5 +1,82 @@
+/**
+ * ============================================================================
+ * PRODUCTS CATALOG
+ * ============================================================================
+ *
+ * This file contains the complete product catalog for RIC Medical Solutions.
+ * Products are organized by brand/manufacturer for easy maintenance.
+ *
+ * STRUCTURE:
+ * ----------
+ * Each product object contains the following fields:
+ *
+ * REQUIRED FIELDS:
+ * - id: Unique identifier (kebab-case: brand-product-name)
+ * - name: Product display name
+ * - brand: Manufacturer/brand name
+ * - partnerId: Reference to partner in partners array
+ * - category: Main category (e.g., "urology", "cancer-treatment")
+ * - sub_category: Subcategory (e.g., "urology-equipment", "urology-consumables")
+ * - product_type: Specific product type (e.g., "Lithotripsy", "Surgical Lasers")
+ * - is_parent_product: Boolean - true if product has variants
+ * - images: Array of image URLs
+ * - description: Product description (1-2 paragraphs)
+ *
+ * OPTIONAL FIELDS:
+ * - features: Array of key features
+ * - technical_specifications: Object with technical details
+ * - applications: Array of use cases
+ * - certifications: Array of certifications
+ * - variants: Array of product variants (for configurable products)
+ * - accessories_included: Array of included accessories
+ * - regulatory: Object with FDA/regulatory information
+ * - manufacturer: Object with manufacturer details
+ * - support_contact: Object with support contact info
+ * - show_image_main: Boolean - if true, hides image gallery
+ *
+ * BRAND ORGANIZATION:
+ * ------------------
+ * Products are grouped by brand in the following order:
+ * 1. Medispec
+ * 2. Potent Medical
+ * 3. COMBAT Medical
+ * 4. BASDA
+ * 5. Allwin Medical Devices
+ * 6. Redpine
+ * 7. Dornier MedTech
+ * 8. Wikkon
+ * 9. Boston Scientific
+ * 10. eXciteOSA (AdtecPharma)
+ * 11. Enovis
+ * 12. ConceMed
+ * 13. Wego Ortho
+ *
+ * ADDING NEW PRODUCTS:
+ * -------------------
+ * 1. Find the appropriate brand section
+ * 2. Copy an existing product structure from that brand
+ * 3. Update all fields with new product information
+ * 4. Ensure 'id' is unique across all products
+ * 5. Add images to the public folder or use external URLs
+ * 6. Test the product appears correctly on the website
+ *
+ * MONGODB MIGRATION:
+ * -----------------
+ * This array is designed to be easily converted to MongoDB seeds.
+ * Run the seed script: npm run seed:products
+ *
+ * ============================================================================
+ */
+
 export const products = [
-  // Medispec Products
+  // ============================================================================
+  // MEDISPEC PRODUCTS
+  // ============================================================================
+  // Manufacturer: Medispec Ltd.
+  // Specialty: Extracorporeal Shock Wave Lithotripsy (ESWL) systems
+  // Website: https://www.medispec.com
+  // ============================================================================
+
   {
     id: "medispec-em1000-eswl",
     name: "EM1000™ ESWL System",
@@ -61,7 +138,15 @@ export const products = [
       contact: "",
     },
   },
-  // Potent Medical Products
+
+  // ============================================================================
+  // POTENT MEDICAL PRODUCTS
+  // ============================================================================
+  // Manufacturer: Potent Medical Inc.
+  // Specialty: High-power laser systems for urology (Holmium, Thulium)
+  // Website: https://www.potent-medical.com
+  // ============================================================================
+
   {
     id: "potent-high-power-holmium-laser-system-hp-160w-cannon",
     name: "High Power Holmium Laser System (HP 160W) – Cannon™ Double Pulse Technology",
@@ -330,7 +415,15 @@ export const products = [
       company_email: "info@potent-medical.com",
     },
   },
-  // Combat Medical Products
+
+  // ============================================================================
+  // COMBAT MEDICAL PRODUCTS
+  // ============================================================================
+  // Manufacturer: COMBAT Medical Ltd.
+  // Specialty: Bladder cancer treatment systems (HIVEC technology)
+  // Website: http://combatcancer.com
+  // ============================================================================
+
   {
     id: "combat-brs-hivec-bladder-cancer-system",
     name: "COMBAT BRS HIVEC® Bladder Cancer System",
@@ -389,7 +482,15 @@ export const products = [
       website: "https://combatcancer.com",
     },
   },
-  // BASDA Products
+
+  // ============================================================================
+  // BASDA PRODUCTS
+  // ============================================================================
+  // Manufacturer: BASDA Medical Apparatus Co., Ltd.
+  // Specialty: MRI systems and penile implants
+  // Website: https://www.basda-med.com
+  // ============================================================================
+
   {
     id: "basda-bti-050-0-5t-permanent-magnet-mri",
     name: "BTI-050 0.5T Wide Open C-Shape Permanent Magnet MRI Machine",
@@ -493,7 +594,15 @@ export const products = [
       delivery_time_days: "30-45 Days",
     },
   },
-  // Allwin Medical Devices Products
+
+  // ============================================================================
+  // ALLWIN MEDICAL DEVICES PRODUCTS
+  // ============================================================================
+  // Manufacturer: Allwin Medical Devices
+  // Specialty: Urological consumables and disposables
+  // Website: https://allwinmedical.com
+  // ============================================================================
+
   {
     id: "r-plus-ureteral-stents-open-closed-intraoperative",
     name: "R+ Ureteral Stents (Open Tip, Closed Tip & Intraoperative)",
@@ -1426,8 +1535,236 @@ export const products = [
     ],
     show_image_main: false,
   },
+  {
+    id: "allwin-supremo-nitinol-hydrophilic-guidewire",
+    name: "Supremo Nitinol Hydrophilic Guidewire",
+    brand: "Allwin Medical Devices",
+    partnerId: "allwin",
+    category: "urology",
+    sub_category: "urology-consumables",
+    product_type: "Guidewire",
+    is_parent_product: false,
+    images: [
+      "https://allwinmedical.com/wp-content/uploads/2020/11/Supremo-Nitinol-Hydrophilic-Guidewire-Straight-and-Angled-1-1536x1536.jpg",
+      "https://allwinmedical.com/wp-content/uploads/2020/11/Supremo-Nitinol-Hydrophilic-Guidewire-Straight-1-300x300.jpg",
+      "https://allwinmedical.com/wp-content/uploads/2020/11/Supremo-Nitinol-Hydrophilic-Guidewire-Angled-1-300x300.jpg",
+    ],
+    description:
+      "The Supremo Nitinol Hydrophilic Guidewire is designed to access the ureter during routine and difficult endourological procedures. The wire features a nitinol non-kink core and hydrophilic coating that enhances maneuverability and navigation through tortuous anatomy while reducing friction during catheter placement.",
+    features: [
+      "Nitinol non-kink core for improved flexibility and durability",
+      "Hydrophilic coating provides excellent lubricity",
+      "Available in straight and angled tip configurations",
+      "Super maneuverability for navigating difficult anatomy",
+      "Designed for ureteral access during urological procedures",
+    ],
+    variants: [
+      'SHSG150-25 | Straight Tip | 0.025" | 150 cm',
+      'SHSG150-32 | Straight Tip | 0.032" | 150 cm',
+      'SHSG150-35 | Straight Tip | 0.035" | 150 cm',
+      'SHAG150-25 | Angled Tip | 0.025" | 150 cm',
+      'SHAG150-32 | Angled Tip | 0.032" | 150 cm',
+      'SHAG150-35 | Angled Tip | 0.035" | 150 cm',
+    ],
+    technical_specifications: {
+      tip_types: ["Straight", "Angled"],
+      diameter_inch: ["0.025", "0.032", "0.035"],
+      length_cm: 150,
+      core_material: "Nitinol",
+      coating: "Hydrophilic",
+      qty_per_box: 5,
+    },
+    applications: [
+      "Ureteral access during endourological procedures",
+      "Guidewire support for catheter or sheath placement",
+      "Navigation through tortuous urinary tract anatomy",
+    ],
+    show_image_main: false,
+  },
+  {
+    id: "allwin-hyguide-hydrophilic-guidewire",
+    name: "HyGuide Hydrophilic Guidewire",
+    brand: "Allwin Medical Devices",
+    partnerId: "allwin",
+    category: "urology",
+    sub_category: "urology-consumables",
+    product_type: "Guidewire",
+    is_parent_product: false,
+    images: [
+      "https://allwinmedical.com/wp-content/uploads/2021/01/HyGuide-Hydrophilic-Guidewire.jpg",
+      "https://allwinmedical.com/wp-content/uploads/2021/01/HyGuide-Hydrophilic-Guidewire.png",
+    ],
+    description:
+      "The HyGuide Hydrophilic Guidewire is designed to access the ureter during routine and difficult endourological procedures. The guidewire features a stainless steel core with hydrophilic coating that enhances lubricity and allows smooth navigation through tortuous anatomy, ensuring reliable device delivery. :contentReference[oaicite:1]{index=1}",
+    features: [
+      "Hydrophilic coating permits smooth navigation through tortuous anatomy",
+      "Exacting tolerance of each wire facilitates easy and reliable instrument delivery",
+      "Non-kink shaft design improves maneuverability and durability",
+      "Designed for ureteral access during routine and complex procedures",
+    ],
+    variants: ['HGSF150-35 | Straight Tip | 0.035" | 150 cm'],
+    technical_specifications: {
+      core_material: "Stainless Steel",
+      coating: "Hydrophilic",
+      tip_type: "Straight (Fixed Core)",
+      diameter_inch: "0.035",
+      length_cm: 150,
+      qty_per_box: 5,
+    },
+    applications: [
+      "Ureteral access during routine endourological procedures",
+      "Navigation through tortuous urinary tract anatomy",
+      "Guidewire support for catheter and sheath placement",
+    ],
+    warnings: [
+      "Single-use device; do not reuse or resterilize",
+      "Do not advance or withdraw guidewire against resistance",
+      "Inspect device for damage before use",
+    ],
+    show_image_main: false,
+  },
+  {
+    id: "allwin-flexiguide-standard-straight-tip-guidewire",
+    name: "FlexiGuide Standard – Straight Tip Guidewire",
+    brand: "Allwin Medical Devices",
+    partnerId: "allwin",
+    category: "urology",
+    sub_category: "urology-consumables",
+    product_type: "Guidewire",
+    is_parent_product: false,
+    images: [
+      "https://allwinmedical.com/wp-content/uploads/2020/11/FlexiGuide-Standard-Straight-Tip-Guidewire-3.jpg",
+      "https://allwinmedical.com/wp-content/uploads/2020/11/FlexiGuide-Standard-Straight-Tip-Guidewire.png",
+    ],
+    description:
+      "The FlexiGuide Standard – Straight Tip Guidewire is designed for percutaneous entry into vessels using the Seldinger technique or for endoscopic access during urological and gastroenterology procedures. It features a straight fixed-core design and PTFE coating to facilitate smooth catheter insertion and reliable stent tracking.",
+    features: [
+      "Straight tip fixed core design for controlled access",
+      "PTFE coating enables smooth catheter insertion and stent tracking",
+      "Designed for percutaneous entry using the Seldinger technique",
+      "Suitable for endoscopic access procedures",
+      "Provides reliable device delivery during catheterization",
+    ],
+    variants: [
+      'SFT150-18 | Straight Tip | 0.018" | 150 cm',
+      'SFT150-25 | Straight Tip | 0.025" | 150 cm',
+      'SFT150-28 | Straight Tip | 0.028" | 150 cm',
+      'SFT150-32 | Straight Tip | 0.032" | 150 cm',
+      'SFT150-35 | Straight Tip | 0.035" | 150 cm',
+      'SFT150-38 | Straight Tip | 0.038" | 150 cm',
+    ],
+    technical_specifications: {
+      tip_type: "Straight Tip Fixed Core",
+      coating: "PTFE",
+      diameter_inch: ["0.018", "0.025", "0.028", "0.032", "0.035", "0.038"],
+      length_cm: 150,
+      qty_per_box: 5,
+    },
+    applications: [
+      "Percutaneous vessel access using Seldinger technique",
+      "Endoscopic access procedures",
+      "Guidewire support for catheter placement",
+      "Guidewire support for stent delivery",
+    ],
+    show_image_main: false,
+  },
+  {
+    id: "allwin-flexiguide-standard-j-tip-guidewire",
+    name: "FlexiGuide Standard – J Tip Guidewire",
+    brand: "Allwin Medical Devices",
+    partnerId: "allwin",
+    category: "urology",
+    sub_category: "urology-consumables",
+    product_type: "Guidewire",
+    is_parent_product: false,
+    images: [
+      "https://allwinmedical.com/wp-content/uploads/2020/11/FlexiGuide-Standard-J-Tip-Guidewire-2.jpg",
+      "https://allwinmedical.com/wp-content/uploads/2020/11/FlexiGuide-Standard-J-Tip-Guidewire.png",
+    ],
+    description:
+      "The FlexiGuide Standard – J Tip Guidewire is designed for percutaneous entry into vessels using the Seldinger technique or for endoscopic access during urological and gastroenterological procedures. The guidewire features a J-tip fixed core design with PTFE coating to enable smooth catheter insertion and reliable stent tracking.",
+    features: [
+      "J-tip fixed core design for safe vessel and ureter navigation",
+      "PTFE coating allows smooth catheter insertion and stent tracking",
+      "Designed for percutaneous entry using the Seldinger technique",
+      "Suitable for endoscopic access procedures",
+      "Provides reliable support for catheter and device placement",
+    ],
+    variants: [
+      'JFT150-25-3 | 3mm J Tip Fixed Core | 0.025" | 150 cm',
+      'JFT150-32-3 | 3mm J Tip Fixed Core | 0.032" | 150 cm',
+      'JFT150-35-3 | 3mm J Tip Fixed Core | 0.035" | 150 cm',
+      'JFT150-38-3 | 3mm J Tip Fixed Core | 0.038" | 150 cm',
+    ],
+    technical_specifications: {
+      tip_type: "J Tip Fixed Core",
+      coating: "PTFE",
+      diameter_inch: ["0.025", "0.032", "0.035", "0.038"],
+      length_cm: 150,
+      qty_per_box: 5,
+    },
+    applications: [
+      "Percutaneous vessel access using the Seldinger technique",
+      "Endoscopic access procedures",
+      "Guidewire support for catheter placement",
+      "Guidewire support for stent delivery",
+    ],
+    show_image_main: false,
+  },
+  {
+    id: "allwin-cobra-nitinol-guidewire",
+    name: "Cobra Nitinol Guidewire",
+    brand: "Allwin Medical Devices",
+    partnerId: "allwin",
+    category: "urology",
+    sub_category: "urology-consumables",
+    product_type: "Guidewire",
+    is_parent_product: false,
+    images: [
+      "https://allwinmedical.com/wp-content/uploads/2024/04/Cobra-Nitinol-Guidewire.jpg",
+      "https://allwinmedical.com/wp-content/uploads/2024/04/Cobra-Nitinol-Guidewire.png"
 
-  // Redpine Products
+    ],
+    description:
+      "The Cobra Nitinol Guidewire is designed for percutaneous entry into the vessel using the Seldinger technique or for endoscopic access during interventional and urological procedures. It features a kink-resistant nitinol shaft with optimal stiffness and flexibility to enable effective navigation through tortuous anatomy.",
+    features: [
+      "Kink resistant nitinol shaft",
+      "Black and white stripes for easier visualization under imaging",
+      "Provides an ideal blend of stiffness and flexibility for improved control",
+      "Designed for effective navigation through tortuous anatomy",
+      "Straight flexible tip for controlled access",
+    ],
+    variants: [
+      'CGS150-25 | Straight Tip | 0.025" | 150 cm',
+      'CGS150-32 | Straight Tip | 0.032" | 150 cm',
+      'CGS150-35 | Straight Tip | 0.035" | 150 cm',
+      'CGS450-25 | Straight Tip | 0.025" | 450 cm',
+      'CGS450-32 | Straight Tip | 0.032" | 450 cm',
+      'CGS450-35 | Straight Tip | 0.035" | 450 cm',
+    ],
+    technical_specifications: {
+      shaft_material: "Nitinol",
+      tip_type: "Straight flexible tip",
+      diameter_inch: ["0.025", "0.032", "0.035"],
+      length_cm: [150, 450],
+      qty_per_box: ["5 (150 cm variants)", "1 (450 cm variants)"],
+    },
+    applications: [
+      "Percutaneous vessel entry using the Seldinger technique",
+      "Endoscopic access procedures",
+      "Guidewire support for catheter placement",
+      "Guidewire navigation through tortuous anatomy",
+    ],
+    show_image_main: false,
+  },
+
+  // ============================================================================
+  // REDPINE MEDICAL PRODUCTS
+  // ============================================================================
+  // Manufacturer: Guangzhou Redpine Medical Instrument Co., Ltd.
+  // Specialty: Single-use endoscopes and imaging systems
+  // Website: https://en.redpinemed.com
+  // ============================================================================
   {
     id: "redpine-single-use-video-flexible-ureteroscope",
     name: "Single-Use Video Flexible Ureteroscope",
@@ -1494,6 +1831,15 @@ export const products = [
     variants: [],
     show_image_main: true,
   },
+
+  // ============================================================================
+  // EXCITE MEDICAL PRODUCTS
+  // ============================================================================
+  // Manufacturer: eXcite Medical Corporation
+  // Specialty: Non-Surgical Spinal Decompression Systems
+  // Website: https://excitemedical.com
+  // ============================================================================
+
   // Excite Medical Products
   {
     id: "excitemed-drx9000-combination-system",
@@ -1548,6 +1894,15 @@ export const products = [
       website: "https://excitemedical.com",
     },
   },
+
+  // ============================================================================
+  // CONCEMED PRODUCTS
+  // ============================================================================
+  // Manufacturer: ConceMed Medical Instruments Co., Ltd.
+  // Specialty: Endoscopy Equipment and Imaging Systems
+  // Website: https://www.concemed.com
+  // ============================================================================
+
   // Concemed Products
   {
     id: "concemed-vg-h1000z-video-optical-magnifying-endoscope",
@@ -1668,6 +2023,15 @@ export const products = [
     },
     // show_image_main: true,
   },
+
+  // ============================================================================
+  // WEGO ORTHO PRODUCTS
+  // ============================================================================
+  // Manufacturer: WEGO Ortho (Shandong Weigao Orthopaedic Device Co., Ltd.)
+  // Specialty: Orthopedic Implants and Trauma Systems
+  // Website: https://www.weigaogroup.com
+  // ============================================================================
+
   // Wego Products
   {
     id: "wego-straight-mp-joint-fusion-locking-plate-t",
