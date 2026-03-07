@@ -9,6 +9,7 @@ import {
   Activity,
   Settings2,
   ArrowRight,
+  Zap,
 } from "lucide-react";
 import { productCategories, partners } from "@/lib/data";
 import Link from "next/link";
@@ -20,6 +21,7 @@ const categoryIcons: Record<string, any> = {
   Package,
   Activity,
   Settings2,
+  Zap 
 };
 
 const containerVariants = {

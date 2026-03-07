@@ -1,5 +1,3 @@
-import { Tag } from "lucide-react";
-
 export const partners = [
   {
     id: "medispec",
@@ -173,6 +171,15 @@ export const partners = [
     products: ["Plasma Technology", "Medical Imaging Solutions"],
     tag: "Under Registration",
   },
+  {
+    id: "jingyi",
+    name: "Jingyi Medical",
+    country: "China",
+    flag: "🇨🇳",
+    logo: "/partners/jingyi-medical.png",
+    website: "https://www.jingyimedical.com/",
+    categories: ["plasma-surgical-devices"],
+  },
 ];
 
 // Product categories for navigation
@@ -226,6 +233,14 @@ export const productCategories = [
     slug: "orthopedics",
     description: "Comprehensive orthopedic treatment and diagnostic solutions",
     icon: "Activity",
+  },
+  {
+    id: "plasma-surgical-devices",
+    name: "Plasma Surgical Devices",
+    slug: "plasma-surgical-devices",
+    description:
+      "Advanced plasma surgical devices for minimally invasive procedures",
+    icon: "Zap",
   },
 ];
 
@@ -333,6 +348,7 @@ export const productSubcategories = [
       "Treatment Solutions",
     ],
   },
+  {},
 ];
 
 // Company stats
@@ -4061,6 +4077,116 @@ export const products = [
       "Poor bone quality or insufficient bone quantity",
       "Patients unable to follow postoperative instructions",
       "Known material sensitivity",
+    ],
+    show_image_main: false,
+  },
+  // Jingyi Plasma Surgical Device
+  {
+    id: "jingyi-plasma-surgical-device",
+    name: "Plasma Surgical Device",
+    brand: "Hunan Jingyi Medical Technology Co., Ltd.",
+    partnerId: "jingyi",
+    category: "plasma-surgical-devices",
+    sub_category: "",
+    product_type: "Plasma Surgical System",
+    is_parent_product: false,
+    images: ["https://www.jingyimed.com/Uploads/6336580aef3ab.jpg"],
+    description:
+      "The Jingyi Plasma Surgical Device is a low-temperature plasma surgical system consisting of a plasma generator and plasma scalpels. It relies on the body's own tissue fluids to generate plasma through a controlled electric field. At temperatures between 50–100°C, a thin plasma layer forms at the scalpel tip, enabling precise tissue cutting and separation by breaking molecular bonds while minimizing thermal damage.",
+    features: [
+      "Low-temperature plasma cutting technology (50–100°C)",
+      "Utilizes the body's own tissue fluids to generate plasma",
+      "No saline or argon gas required during operation",
+      "Minimal thermal damage to surrounding tissues",
+      "Reduced surgical smoke during procedures",
+      "Smooth and precise tissue cutting",
+      "Reduced tissue adhesion during surgery",
+      "Compact and easy-to-operate device design",
+      "Promotes faster postoperative recovery",
+    ],
+    system_components: [
+      "Plasma surgical device generator",
+      "Plasma scalpel handpiece",
+      "Electrode attachments",
+    ],
+    technical_specifications: {
+      operating_temperature_celsius: "50–100",
+      technology: "Low-temperature plasma",
+      working_medium: "Body tissue fluids",
+      gas_requirement: "None (no argon or saline required)",
+      energy_mechanism: "Electric field activation producing plasma layer",
+    },
+    applications: [
+      "Soft tissue cutting and separation",
+      "General surgical procedures",
+      "Minimally invasive surgery",
+      "Hemostasis and tissue ablation",
+    ],
+    advantages: [
+      "Lower cutting temperature compared with traditional electrosurgery",
+      "Less thermal damage to surrounding tissues",
+      "Reduced surgical smoke generation",
+      "No tissue adhesions during cutting",
+      "Improved precision and smoother cuts",
+      "Faster patient recovery after surgery",
+    ],
+    certifications: [
+      "CE Certification",
+      "ISO 13485 Quality Management System",
+      "National Innovative Medical Device (China)",
+    ],
+    show_image_main: false,
+  },
+  {
+    id: "jingyi-monopolar-open-surgery-electrosurgical-handpiece",
+    name: "Monopolar Open-surgery Electrosurgical Handpiece",
+    brand: "Hunan Jingyi Medical Technology Co., Ltd.",
+    partnerId: "jingyi",
+    category: "plasma-surgical-devices",
+    sub_category: "https://www.jingyimed.com/Uploads/6345991c428dc.jpg",
+    product_type: "Electrosurgical Handpiece",
+    is_parent_product: false,
+    images: [
+      "https://www.jingyimed.com/Uploads/6345991c428dc.jpg",
+      "https://www.jingyimed.com/Uploads/63459968925cd.jpg"
+    ],
+    description:
+      "The Monopolar Open-surgery Electrosurgical Handpiece is designed for open surgical procedures and is used with electrosurgical generators for cutting and coagulation. The device includes interchangeable electrodes and provides precise surgical control while minimizing tissue damage.",
+    features: [
+      "Designed for monopolar open surgical procedures",
+      "Includes compatible electrode attachments",
+      "Lower cutting temperatures compared with conventional systems",
+      "Reduced thermal damage to surrounding tissues",
+      "Less surgical smoke generation",
+      "Smooth and fluent tissue cutting",
+      "Reduced tissue adhesion during surgery",
+      "Damped buttons to avoid accidental activation",
+      "Soft rubber handle for comfortable grip and improved control",
+      "Supports faster postoperative recovery",
+    ],
+    system_components: [
+      "Electrosurgical handpiece",
+      "Interchangeable electrodes",
+    ],
+    technical_specifications: {
+      surgical_mode: "Monopolar electrosurgery",
+      compatible_device: "Electrosurgical generator",
+      control_interface: "Handpiece with damped activation buttons",
+      handle_material: "Soft rubber ergonomic handle",
+    },
+    applications: [
+      "Open surgical cutting",
+      "Electrosurgical coagulation",
+      "Soft tissue dissection",
+      "General surgical procedures",
+    ],
+    advantages: [
+      "Lower cutting temperature",
+      "Less thermal damage to surrounding tissues",
+      "Reduced surgical smoke",
+      "Smooth tissue cutting",
+      "Improved surgical precision",
+      "Better postoperative recovery outcomes",
     ],
     show_image_main: false,
   },
