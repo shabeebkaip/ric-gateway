@@ -181,6 +181,7 @@ export const partners = [
     logo: "/partners/jingyi-medical.png",
     website: "https://www.jingyimedical.com/",
     categories: ["plasma-surgical-devices"],
+    products: ["Plasma Surgical Devices", "Medical Equipment"],
   },
 ];
 
@@ -350,7 +351,6 @@ export const productSubcategories = [
       "Treatment Solutions",
     ],
   },
-  {},
 ];
 
 // Company stats

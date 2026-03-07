@@ -1,5 +1,6 @@
 import { productSubcategories, partners,  } from "./data";
 import { products } from "./products";
+import type { Subcategory } from "@/types";
 
 export function getProductsByCategory(categorySlug: string) {
   return products.filter((product) => product.category === categorySlug);
@@ -25,7 +26,7 @@ export function getProductsByCategoryAndSubcategory(
   return products.filter((product) => product.sub_category === subcategory.id);
 }
 
-export function getSubcategoriesByCategory(categoryId: string) {
+export function getSubcategoriesByCategory(categoryId: string): Subcategory[] {
   return productSubcategories.filter(
     (subcategory) => subcategory.categoryId === categoryId,
   );
