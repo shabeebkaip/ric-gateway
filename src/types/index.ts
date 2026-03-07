@@ -98,10 +98,12 @@ export interface ProductFiltersProps {
   selectedBrands: string[];
   showFilters: boolean;
   filteredProductCount: number;
+  searchQuery: string;
   onSubcategoryChange: (subcategoryId: string | null) => void;
   onBrandToggle: (brand: string) => void;
   onClearFilters: () => void;
   onToggleFilters: () => void;
+  onSearchChange: (query: string) => void;
 }
 
 export interface ProductCardProps {

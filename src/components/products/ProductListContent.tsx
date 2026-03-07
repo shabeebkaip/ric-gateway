@@ -30,6 +30,7 @@ export function ProductListContent({
   );
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Get unique brands from products
   const availableBrands = useMemo(() => {
@@ -40,6 +41,18 @@ export function ProductListContent({
   // Filter products based on selections
   const filteredProducts = useMemo(() => {
     let filtered = products;
+
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      filtered = filtered.filter(
+        (p) =>
+          p.name.toLowerCase().includes(query) ||
+          p.brand.toLowerCase().includes(query) ||
+          p.description?.toLowerCase().includes(query) ||
+          p.product_type?.toLowerCase().includes(query)
+      );
+    }
 
     // Filter by subcategory
     if (selectedSubcategory) {
@@ -52,7 +65,7 @@ export function ProductListContent({
     }
 
     return filtered;
-  }, [products, selectedSubcategory, selectedBrands]);
+  }, [products, selectedSubcategory, selectedBrands, searchQuery]);
 
   // Toggle brand selection
   const toggleBrand = (brand: string) => {
@@ -65,10 +78,11 @@ export function ProductListContent({
   const clearFilters = () => {
     setSelectedSubcategory(null);
     setSelectedBrands([]);
+    setSearchQuery("");
   };
 
   const hasActiveFilters =
-    selectedSubcategory !== null || selectedBrands.length > 0;
+    selectedSubcategory !== null || selectedBrands.length > 0 || searchQuery.trim() !== "";
 
   // Group products by subcategory
   const groupedProducts =
@@ -113,10 +127,12 @@ export function ProductListContent({
         selectedBrands={selectedBrands}
         showFilters={showFilters}
         filteredProductCount={filteredProducts.length}
+        searchQuery={searchQuery}
         onSubcategoryChange={setSelectedSubcategory}
         onBrandToggle={toggleBrand}
         onClearFilters={clearFilters}
         onToggleFilters={() => setShowFilters(!showFilters)}
+        onSearchChange={setSearchQuery}
       />
 
       {/* Products Section */}

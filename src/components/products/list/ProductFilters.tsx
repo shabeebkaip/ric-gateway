@@ -1,6 +1,6 @@
 "use client";
 
-import { Filter, X } from "lucide-react";
+import { Filter, X, Search } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { Subcategory, ProductFiltersProps } from "@/types";
 
@@ -11,21 +11,46 @@ export function ProductFilters({
   selectedBrands,
   showFilters,
   filteredProductCount,
+  searchQuery,
   onSubcategoryChange,
   onBrandToggle,
   onClearFilters,
   onToggleFilters,
+  onSearchChange,
 }: ProductFiltersProps) {
   const hasActiveFilters =
-    selectedSubcategory !== null || selectedBrands.length > 0;
+    selectedSubcategory !== null || selectedBrands.length > 0 || searchQuery.trim() !== "";
 
   if (subcategories.length === 0 && availableBrands.length <= 1) {
     return null;
   }
 
   return (
-    <section className=" z-40 bg-white border-b border-slate-200 shadow-sm ">
-      <div className="container mx-auto px-6 max-w-7xl py-4">
+    <section className="sticky top-0 z-40 bg-slate-50 border-b border-slate-200 shadow-sm">
+      <div className="container mx-auto px-6 max-w-7xl py-6">
+        {/* Search Bar */}
+        <div className="mb-6">
+          <div className="relative max-w-2xl">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Search products by name, brand, or description..."
+              value={searchQuery}
+              onChange={(e) => onSearchChange(e.target.value)}
+              className="w-full pl-12 pr-12 py-3.5 rounded-full border-2 border-blue-200 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all text-sm placeholder:text-slate-400"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => onSearchChange("")}
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-1.5 hover:bg-slate-100 rounded-full transition-colors"
+                aria-label="Clear search"
+              >
+                <X className="w-4 h-4 text-slate-500" />
+              </button>
+            )}
+          </div>
+        </div>
+
         <div className="flex items-center justify-between gap-4">
           {/* Mobile Filter Toggle */}
           <button
@@ -36,7 +61,7 @@ export function ProductFilters({
             <span className="text-sm font-medium">Filters</span>
             {hasActiveFilters && (
               <Badge className="ml-1 bg-blue-500 text-white px-2 py-0.5 text-xs">
-                {(selectedSubcategory ? 1 : 0) + selectedBrands.length}
+                {(selectedSubcategory ? 1 : 0) + selectedBrands.length + (searchQuery.trim() ? 1 : 0)}
               </Badge>
             )}
           </button>
@@ -122,6 +147,14 @@ export function ProductFilters({
         {hasActiveFilters && (
           <div className="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100">
             <span className="text-xs text-slate-500">Active filters:</span>
+            {searchQuery.trim() && (
+              <Badge
+                variant="outline"
+                className="rounded-full px-2 py-1 text-xs"
+              >
+                Search: {searchQuery}
+              </Badge>
+            )}
             {selectedSubcategory && (
               <Badge
                 variant="outline"
