@@ -182,6 +182,7 @@ export const partners = [
     website: "https://www.jingyimedical.com/",
     categories: ["plasma-surgical-devices"],
     products: ["Plasma Surgical Devices", "Medical Equipment"],
+    tag: "Under Registration",
   },
 ];
 
