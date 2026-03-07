@@ -14,6 +14,7 @@ import {
   Package,
   Activity,
   Settings2,
+  Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { productCategories, partners } from "@/lib/data";
@@ -34,6 +35,7 @@ const categoryIcons: Record<string, any> = {
   Package,
   Activity,
   Settings2,
+  Zap
 };
 
 export const Navigation = () => {
