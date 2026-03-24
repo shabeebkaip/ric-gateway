@@ -7,6 +7,12 @@ export interface IPartner extends Document {
   description?: string;
   website?: string;
   country?: string;
+  flag?: string;
+  invertColor?: boolean;
+  categories: string[];
+  subcategories?: string[];
+  products: string[];
+  tag?: string;
   order: number;
   isActive: boolean;
   createdAt: Date;
@@ -40,6 +46,30 @@ const PartnerSchema = new Schema<IPartner>(
       trim: true,
     },
     country: {
+      type: String,
+      trim: true,
+    },
+    flag: {
+      type: String,
+      trim: true,
+    },
+    invertColor: {
+      type: Boolean,
+      default: false,
+    },
+    categories: {
+      type: [String],
+      default: [],
+    },
+    subcategories: {
+      type: [String],
+      default: [],
+    },
+    products: {
+      type: [String],
+      default: [],
+    },
+    tag: {
       type: String,
       trim: true,
     },

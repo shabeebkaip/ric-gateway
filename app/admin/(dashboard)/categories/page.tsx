@@ -10,7 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { 
   Save, Loader2, Plus, Trash2, GripVertical, 
-  Microscope, Stethoscope, ScanLine, Package, Activity, Settings2,
+  Microscope, Stethoscope, ScanLine, Package, Activity, Settings2, Zap,
   FolderOpen, Layers
 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -22,6 +22,7 @@ const availableIcons = [
   { name: 'Package', icon: Package },
   { name: 'Activity', icon: Activity },
   { name: 'Settings2', icon: Settings2 },
+  { name: 'Zap', icon: Zap },
 ];
 
 interface Category {
@@ -196,6 +197,10 @@ export default function CategoriesPage() {
     if (field === 'name' && typeof value === 'string') {
       newSubcategories[index].slug = value.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
       newSubcategories[index].id = `${newSubcategories[index].categoryId}-${newSubcategories[index].slug}`;
+    }
+
+    if (field === 'categoryId' && typeof value === 'string') {
+      newSubcategories[index].id = `${value}-${newSubcategories[index].slug}`;
     }
     
     setSubcategories(newSubcategories);

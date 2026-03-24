@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowLeft, Save, Eye, Undo, Loader2, Plus, Trash2, GripVertical, Microscope, Stethoscope, ScanLine, Package, Activity, Settings2, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Save, Eye, Undo, Loader2, Plus, Trash2, GripVertical, Microscope, Stethoscope, ScanLine, Package, Activity, Settings2, Zap, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
@@ -18,6 +18,7 @@ const availableIcons = [
   { name: 'Package', icon: Package },
   { name: 'Activity', icon: Activity },
   { name: 'Settings2', icon: Settings2 },
+  { name: 'Zap', icon: Zap },
 ];
 
 interface Category {

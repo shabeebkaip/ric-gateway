@@ -1,12 +1,11 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
 export interface ICategory extends Document {
+  id: string;
   name: string;
   slug: string;
   description?: string;
   icon?: string;
-  image?: string;
-  subcategories: string[];
   order: number;
   isActive: boolean;
   createdAt: Date;
@@ -15,6 +14,12 @@ export interface ICategory extends Document {
 
 const CategorySchema = new Schema<ICategory>(
   {
+    id: {
+      type: String,
+      required: [true, 'Category id is required'],
+      unique: true,
+      trim: true,
+    },
     name: {
       type: String,
       required: [true, 'Category name is required'],
@@ -34,13 +39,6 @@ const CategorySchema = new Schema<ICategory>(
     icon: {
       type: String,
     },
-    image: {
-      type: String,
-    },
-    subcategories: [{
-      type: String,
-      trim: true,
-    }],
     order: {
       type: Number,
       default: 0,
@@ -55,6 +53,8 @@ const CategorySchema = new Schema<ICategory>(
   }
 );
 
-const Category: Model<ICategory> = mongoose.models.Category || mongoose.model<ICategory>('Category', CategorySchema);
+const Category: Model<ICategory> =
+  mongoose.models.Category ||
+  mongoose.model<ICategory>('Category', CategorySchema);
 
 export default Category;

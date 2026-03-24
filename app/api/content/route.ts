@@ -1,6 +1,8 @@
 import { NextRequest } from 'next/server';
 import { connectDB } from '@/lib/db/connection';
 import Content from '@/lib/db/models/Content';
+import Category from '@/lib/db/models/Category';
+import Subcategory from '@/lib/db/models/Subcategory';
 import { withAuth, apiResponse, apiError } from '@/lib/api-middleware';
 
 // GET content by page and section (public)
@@ -64,7 +66,35 @@ export async function POST(request: NextRequest) {
         { page, section, content, isActive: true },
         { upsert: true, new: true }
       );
-      
+
+      // Keep dedicated collections in sync
+      if (section === 'categories' && Array.isArray(content?.categories)) {
+        const ops = content.categories.map((cat: { id: string; name: string; slug: string; description?: string; icon?: string }, index: number) => ({
+          updateOne: {
+            filter: { id: cat.id },
+            update: { $set: { id: cat.id, name: cat.name, slug: cat.slug, description: cat.description ?? '', icon: cat.icon ?? '', order: index, isActive: true } },
+            upsert: true,
+          },
+        }));
+        if (ops.length) await Category.bulkWrite(ops);
+        // Remove categories no longer in the list
+        const keepIds = content.categories.map((c: { id: string }) => c.id);
+        await Category.deleteMany({ id: { $nin: keepIds } });
+      }
+
+      if (section === 'subcategories' && Array.isArray(content?.subcategories)) {
+        const ops = content.subcategories.map((sub: { id: string; name: string; slug: string; categoryId: string; description?: string; types?: string[] }, index: number) => ({
+          updateOne: {
+            filter: { id: sub.id },
+            update: { $set: { id: sub.id, name: sub.name, slug: sub.slug, categoryId: sub.categoryId, description: sub.description ?? '', types: sub.types ?? [], order: index, isActive: true } },
+            upsert: true,
+          },
+        }));
+        if (ops.length) await Subcategory.bulkWrite(ops);
+        const keepIds = content.subcategories.map((s: { id: string }) => s.id);
+        await Subcategory.deleteMany({ id: { $nin: keepIds } });
+      }
+
       return apiResponse({ content: result }, 201);
     } catch (error: unknown) {
       console.error('Create/Update content error:', error);

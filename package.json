@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "seed:admin": "node scripts/seed-admin.js",
-    "seed:content": "npx tsx scripts/seed-hero-content.ts"
+    "seed:content": "npx tsx scripts/seed-hero-content.ts",
+    "seed:partners": "npx tsx scripts/seed-partners.ts",
+    "seed:categories": "npx tsx scripts/seed-categories.ts",
+    "seed:products": "npx tsx scripts/seed-products.ts"
   },
   "dependencies": {
     "@fontsource/poppins": "^5.2.7",
