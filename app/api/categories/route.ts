@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
       
       const category = await Category.create(data);
       
-      revalidateTag('categories', 'hours');
+      revalidateTag('categories');
       return apiResponse({ category }, 201);
     } catch (error: any) {
       console.error('Create category error:', error);

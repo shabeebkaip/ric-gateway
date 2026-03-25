@@ -97,9 +97,9 @@ export async function POST(request: NextRequest) {
       }
 
       // Invalidate relevant page caches
-      revalidateTag('home-content', 'hours');
-      if (section === 'categories') revalidateTag('categories', 'hours');
-      if (section === 'subcategories') revalidateTag('categories', 'hours');
+      revalidateTag('home-content');
+      if (section === 'categories') revalidateTag('categories');
+      if (section === 'subcategories') revalidateTag('categories');
 
       return apiResponse({ content: result }, 201);
     } catch (error: unknown) {

@@ -31,15 +31,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const checkAuth = async () => {
     try {
       const storedToken = localStorage.getItem('admin-token');
-      if (!storedToken) {
-        setIsLoading(false);
-        return;
-      }
-
       const response = await fetch('/api/auth/me', {
-        headers: {
-          'Authorization': `Bearer ${storedToken}`,
-        },
+        headers: storedToken
+          ? {
+              'Authorization': `Bearer ${storedToken}`,
+            }
+          : undefined,
       });
 
       if (response.ok) {
@@ -48,10 +45,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setToken(storedToken);
       } else {
         localStorage.removeItem('admin-token');
+        setUser(null);
+        setToken(null);
       }
     } catch (error) {
       console.error('Auth check failed:', error);
       localStorage.removeItem('admin-token');
+      setUser(null);
+      setToken(null);
     } finally {
       setIsLoading(false);
     }

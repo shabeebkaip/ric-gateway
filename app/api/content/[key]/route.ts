@@ -3,29 +3,32 @@ import { connectDB } from '@/lib/db/connection';
 import Content from '@/lib/db/models/Content';
 import { withAuth, apiResponse, apiError } from '@/lib/api-middleware';
 
-// GET single content by key
+// GET all sections for a page (public)
+// e.g. GET /api/content/home → { content: { hero: {...}, cta: {...} } }
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ key: string }> }
 ) {
   try {
     await connectDB();
     const { key } = await params;
-    
-    const content = await Content.findOne({ key, isActive: true });
-    
-    if (!content) {
-      return apiError('Content not found', 404);
-    }
-    
+
+    const docs = await Content.find({ page: key, isActive: true }).lean();
+
+    const content: Record<string, unknown> = {};
+    docs.forEach((doc) => {
+      content[doc.section] = doc.content;
+    });
+
     return apiResponse({ content });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Get content error:', error);
     return apiError('Failed to fetch content', 500);
   }
 }
 
-// PUT update content (admin only)
+// PUT update one or more sections for a page (admin only)
+// Body: { hero: { title: '...' }, cta: { ... } }
 export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ key: string }> }
@@ -34,44 +37,55 @@ export async function PUT(
     try {
       await connectDB();
       const { key } = await params;
-      const data = await req.json();
-      
-      const content = await Content.findOneAndUpdate(
-        { key },
-        data,
-        { new: true, runValidators: true }
-      );
-      
-      if (!content) {
-        return apiError('Content not found', 404);
+      const body = await req.json();
+
+      if (!body || typeof body !== 'object' || Array.isArray(body)) {
+        return apiError('Request body must be an object of sections', 400);
       }
-      
-      return apiResponse({ content });
-    } catch (error: any) {
+
+      const entries = Object.entries(body as Record<string, unknown>);
+      if (entries.length === 0) {
+        return apiError('No sections provided', 400);
+      }
+
+      const updated: Record<string, unknown> = {};
+      await Promise.all(
+        entries.map(async ([section, content]) => {
+          const doc = await Content.findOneAndUpdate(
+            { page: key, section },
+            { page: key, section, content, isActive: true },
+            { upsert: true, new: true, runValidators: true }
+          );
+          updated[section] = doc.content;
+        })
+      );
+
+      return apiResponse({ content: updated });
+    } catch (error: unknown) {
       console.error('Update content error:', error);
-      return apiError(error.message || 'Failed to update content', 500);
+      return apiError('Failed to update content', 500);
     }
   });
 }
 
-// DELETE content (admin only)
+// DELETE all content for a page (admin only)
 export async function DELETE(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ key: string }> }
 ) {
   return withAuth(request, async () => {
     try {
       await connectDB();
       const { key } = await params;
-      
-      const content = await Content.findOneAndDelete({ key });
-      
-      if (!content) {
+
+      const result = await Content.deleteMany({ page: key });
+
+      if (result.deletedCount === 0) {
         return apiError('Content not found', 404);
       }
-      
-      return apiResponse({ message: 'Content deleted successfully' });
-    } catch (error: any) {
+
+      return apiResponse({ message: `Deleted ${result.deletedCount} section(s) for page "${key}"` });
+    } catch (error: unknown) {
       console.error('Delete content error:', error);
       return apiError('Failed to delete content', 500);
     }

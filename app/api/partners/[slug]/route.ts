@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 import { revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/db/connection';
 import Partner from '@/lib/db/models/Partner';
-import { withAuth, apiResponse, apiError } from '@/lib/api-middleware';
+import { withAuth, apiResponse, apiError, handleApiRouteError } from '@/lib/api-middleware';
 
 // GET single partner
 export async function GET(
@@ -51,7 +51,7 @@ export async function PUT(
       return apiResponse({ partner });
     } catch (error: any) {
       console.error('Update partner error:', error);
-      return apiError(error.message || 'Failed to update partner', 500);
+      return handleApiRouteError(error, 'Failed to update partner', 'Invalid partner data');
     }
   });
 }

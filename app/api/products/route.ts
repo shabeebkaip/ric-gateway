@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 import { connectDB } from '@/lib/db/connection';
 import Product from '@/lib/db/models/Product';
-import { withAuth, apiResponse, apiError } from '@/lib/api-middleware';
+import { withAuth, apiResponse, apiError, handleApiRouteError } from '@/lib/api-middleware';
 import { revalidateTag } from 'next/cache';
 
 // GET all products (public)
@@ -57,11 +57,11 @@ export async function POST(request: NextRequest) {
       
       const product = await Product.create(data);
       
-      revalidateTag('products', 'hours');
+      revalidateTag('products');
       return apiResponse({ product }, 201);
     } catch (error: any) {
       console.error('Create product error:', error);
-      return apiError(error.message || 'Failed to create product', 500);
+      return handleApiRouteError(error, 'Failed to create product', 'Invalid product data');
     }
   });
 }

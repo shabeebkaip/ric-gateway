@@ -65,7 +65,7 @@ export const getCachedHomeContent = unstable_cache(
 
 /** Maps a DB Product lean doc to the frontend Product interface shape */
 const transformProduct = (doc: any) => ({
-  id: String(doc._id ?? doc.id ?? ''),
+  id: doc.slug ?? String(doc._id ?? ''),
   name: doc.title ?? '',
   brand: doc.partner ?? '',
   partnerId: doc.partner ?? '',

@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 import { revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/db/connection';
 import Partner from '@/lib/db/models/Partner';
-import { withAuth, apiResponse, apiError } from '@/lib/api-middleware';
+import { withAuth, apiResponse, apiError, handleApiRouteError } from '@/lib/api-middleware';
 
 // GET all partners (public)
 export async function GET() {
@@ -33,11 +33,11 @@ export async function POST(request: NextRequest) {
       
       const partner = await Partner.create(data);
       
-      revalidateTag('partners', 'hours');
+      revalidateTag('partners');
       return apiResponse({ partner }, 201);
     } catch (error: any) {
       console.error('Create partner error:', error);
-      return apiError(error.message || 'Failed to create partner', 500);
+      return handleApiRouteError(error, 'Failed to create partner', 'Invalid partner data');
     }
   });
 }

@@ -18,8 +18,7 @@ export const signToken = (payload: JWTPayload): string => {
 export const verifyToken = (token: string): JWTPayload | null => {
   try {
     return jwt.verify(token, JWT_SECRET) as JWTPayload;
-  } catch (error) {
-    console.error('JWT verification error:', error);
+  } catch {
     return null;
   }
 };
@@ -51,3 +50,17 @@ export const verifyAdmin = (request: NextRequest): JWTPayload | null => {
   
   return payload;
 };
+
+  export const verifyAdminToken = (token: string | undefined): JWTPayload | null => {
+    if (!token) {
+      return null;
+    }
+
+    const payload = verifyToken(token);
+
+    if (!payload || payload.role !== 'admin') {
+      return null;
+    }
+
+    return payload;
+  };

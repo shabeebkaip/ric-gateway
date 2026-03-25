@@ -3,17 +3,23 @@ import bcrypt from 'bcryptjs';
 import { connectDB } from '@/lib/db/connection';
 import User from '@/lib/db/models/User';
 import { signToken } from '@/lib/auth';
-import { apiError, apiResponse } from '@/lib/api-middleware';
+import { apiError, apiResponse, getClientIp, isNonEmptyString } from '@/lib/api-middleware';
+import { consumeRateLimit } from '@/lib/rate-limit';
 
 export async function POST(request: NextRequest) {
   try {
-    await connectDB();
-    
     const { email, password } = await request.json();
-    
-    if (!email || !password) {
+
+    if (!isNonEmptyString(email) || !isNonEmptyString(password)) {
       return apiError('Email and password are required', 400);
     }
+
+    const rateLimit = consumeRateLimit('auth-login', getClientIp(request), 5, 15 * 60 * 1000);
+    if (!rateLimit.allowed) {
+      return apiError('Too many login attempts. Please try again later.', 429);
+    }
+
+    await connectDB();
     
     // Find user
     const user = await User.findOne({ email: email.toLowerCase() });
