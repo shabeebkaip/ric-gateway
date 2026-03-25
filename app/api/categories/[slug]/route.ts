@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+import { revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/db/connection';
 import Category from '@/lib/db/models/Category';
 import { withAuth, apiResponse, apiError } from '@/lib/api-middleware';
@@ -46,6 +47,7 @@ export async function PUT(
         return apiError('Category not found', 404);
       }
       
+      revalidateTag('categories', 'hours');
       return apiResponse({ category });
     } catch (error: any) {
       console.error('Update category error:', error);
@@ -70,6 +72,7 @@ export async function DELETE(
         return apiError('Category not found', 404);
       }
       
+      revalidateTag('categories', 'hours');
       return apiResponse({ message: 'Category deleted successfully' });
     } catch (error: any) {
       console.error('Delete category error:', error);

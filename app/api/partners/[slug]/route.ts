@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+import { revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/db/connection';
 import Partner from '@/lib/db/models/Partner';
 import { withAuth, apiResponse, apiError } from '@/lib/api-middleware';
@@ -46,6 +47,7 @@ export async function PUT(
         return apiError('Partner not found', 404);
       }
       
+      revalidateTag('partners', 'hours');
       return apiResponse({ partner });
     } catch (error: any) {
       console.error('Update partner error:', error);
@@ -70,6 +72,7 @@ export async function DELETE(
         return apiError('Partner not found', 404);
       }
       
+      revalidateTag('partners', 'hours');
       return apiResponse({ message: 'Partner deleted successfully' });
     } catch (error: any) {
       console.error('Delete partner error:', error);

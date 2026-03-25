@@ -6,7 +6,6 @@ import { Search, Filter, X, ChevronDown, Package, Building2, ArrowRight, Sparkle
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { productCategories, productSubcategories, partners } from "@/lib/data";
 import Link from "next/link";
 import {
   Select,
@@ -15,9 +14,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { products } from "@/lib/products";
 
-export function AllProductsContent() {
+interface AllProductsContentProps {
+  products: any[];
+  categories: any[];
+  subcategories: any[];
+  partners: any[];
+}
+
+export function AllProductsContent({
+  products,
+  categories: productCategories,
+  subcategories: productSubcategories,
+  partners,
+}: AllProductsContentProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>("all");

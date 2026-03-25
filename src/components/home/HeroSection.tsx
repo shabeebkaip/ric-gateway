@@ -3,24 +3,71 @@
 import { motion } from "framer-motion";
 import { Heart, Activity, Shield, Award, Users, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { companyStats } from "@/lib/data";
 
-const stats = [
-  {
-    icon: Clock,
-    value: new Date().getFullYear() - companyStats.yearsFounded,
-    label: "Years of Excellence",
-  },
-  {
-    icon: Users,
-    value: companyStats.partnersCount.toString(),
-    label: "International Partners",
-  },
-  { icon: Shield, value: companyStats.facilitiesServed, label: "Healthcare Facilities" },
-  { icon: Award, value: "ISO", label: "Certified Operations" },
-];
+// ─── Types ────────────────────────────────────────────────────────────────────
 
-export const HeroSection = () => {
+interface HeroStat { icon: string; value: string; label: string; }
+
+interface HeroContent {
+  badge?: string;
+  title?: string;
+  titleHighlight?: string;
+  description?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  secondaryCtaText?: string;
+  secondaryCtaLink?: string;
+  stats?: HeroStat[];
+}
+
+interface HeroSectionProps {
+  content?: HeroContent;
+  /** Actual partner count from DB — overrides the "International Partners" stat */
+  partnerCount?: number;
+}
+
+// ─── Icon map for stat icons stored as strings ────────────────────────────────
+
+const STAT_ICONS: Record<string, React.ElementType> = {
+  clock: Clock,
+  users: Users,
+  shield: Shield,
+  award: Award,
+};
+
+// ─── Defaults (used when DB content is missing / not yet seeded) ──────────────
+
+const DEFAULT_CONTENT: Required<HeroContent> = {
+  badge: "Trusted Since 1985",
+  title: "Transforming Healthcare",
+  titleHighlight: "Through Innovation",
+  description:
+    "Leading provider of advanced medical solutions in Saudi Arabia. Excellence in Medical Technology & Patient Care.",
+  ctaText: "Explore Our Products",
+  ctaLink: "/products",
+  secondaryCtaText: "Contact Us",
+  secondaryCtaLink: "/contact",
+  stats: [
+    { icon: "clock", value: String(new Date().getFullYear() - 1985), label: "Years of Excellence" },
+    { icon: "users", value: "12+", label: "International Partners" },
+    { icon: "shield", value: "100+", label: "Healthcare Facilities" },
+    { icon: "award", value: "ISO", label: "Certified Operations" },
+  ],
+};
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
+export const HeroSection = ({ content, partnerCount }: HeroSectionProps) => {
+  const c = { ...DEFAULT_CONTENT, ...content };
+
+  // Build stats — override partner count with live DB value when available
+  const stats = (c.stats ?? DEFAULT_CONTENT.stats).map((s) => {
+    if (s.icon === "users" && partnerCount !== undefined) {
+      return { ...s, value: String(partnerCount) };
+    }
+    return s;
+  });
+
   return (
     <section className="relative  gradient-bg-hero overflow-hidden">
       {/* Animated Background Elements */}
@@ -75,7 +122,7 @@ export const HeroSection = () => {
             >
               <Heart className="w-4 h-4 animate-heartbeat text-gold" />
               <span className="bg-gradient-to-r from-gold to-primary bg-clip-text text-transparent font-semibold">
-                Trusted Since 1985
+                {c.badge}
               </span>
             </motion.div>
 
@@ -85,8 +132,8 @@ export const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              Transforming Healthcare{" "}
-              <span className="gradient-text">Through Innovation</span>
+              {c.title}{" "}
+              <span className="gradient-text">{c.titleHighlight}</span>
             </motion.h1>
 
             <motion.p
@@ -95,8 +142,7 @@ export const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Leading provider of advanced medical solutions in Saudi Arabia.
-              Excellence in Medical Technology & Patient Care.
+              {c.description}
             </motion.p>
 
             <motion.div
@@ -111,7 +157,7 @@ export const HeroSection = () => {
                 size="xl"
                 className="bg-gradient-to-r from-primary to-primary hover:from-gold hover:to-primary transition-all duration-500 shadow-lg hover:shadow-gold/20"
               >
-                <a href="/products">Explore Our Products</a>
+                <a href={c.ctaLink}>{c.ctaText}</a>
               </Button>
               <Button
                 asChild
@@ -119,7 +165,7 @@ export const HeroSection = () => {
                 size="xl"
                 className="hover:border-gold/50 hover:text-gold transition-all duration-300"
               >
-                <a href="/contact">Contact Us</a>
+                <a href={c.secondaryCtaLink}>{c.secondaryCtaText}</a>
               </Button>
             </motion.div>
           </motion.div>
@@ -189,21 +235,24 @@ export const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.6 }}
         >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              className="glass-card rounded-2xl p-6 text-center hover-lift group hover:border-gold/30 transition-all duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 + index * 0.1 }}
-            >
-              <stat.icon className="w-8 h-8 text-primary group-hover:text-gold mx-auto mb-3 transition-colors duration-300" />
-              <p className="text-3xl font-bold text-foreground mb-1">
-                {stat.value}
-              </p>
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
-            </motion.div>
-          ))}
+          {stats.map((stat, index) => {
+            const Icon = STAT_ICONS[stat.icon] ?? Shield;
+            return (
+              <motion.div
+                key={stat.label}
+                className="glass-card rounded-2xl p-6 text-center hover-lift group hover:border-gold/30 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 + index * 0.1 }}
+              >
+                <Icon className="w-8 h-8 text-primary group-hover:text-gold mx-auto mb-3 transition-colors duration-300" />
+                <p className="text-3xl font-bold text-foreground mb-1">
+                  {stat.value}
+                </p>
+                <p className="text-sm text-muted-foreground">{stat.label}</p>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

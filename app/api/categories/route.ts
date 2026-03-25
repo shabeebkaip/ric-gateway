@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+import { revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/db/connection';
 import Category from '@/lib/db/models/Category';
 import { withAuth, apiResponse, apiError } from '@/lib/api-middleware';
@@ -32,6 +33,7 @@ export async function POST(request: NextRequest) {
       
       const category = await Category.create(data);
       
+      revalidateTag('categories', 'hours');
       return apiResponse({ category }, 201);
     } catch (error: any) {
       console.error('Create category error:', error);

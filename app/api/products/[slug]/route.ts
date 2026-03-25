@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import { connectDB } from '@/lib/db/connection';
 import Product from '@/lib/db/models/Product';
 import { withAuth, apiResponse, apiError } from '@/lib/api-middleware';
+import { revalidateTag } from 'next/cache';
 
 // GET single product
 export async function GET(
@@ -46,6 +47,7 @@ export async function PUT(
         return apiError('Product not found', 404);
       }
       
+      revalidateTag('products', 'hours');
       return apiResponse({ product });
     } catch (error: any) {
       console.error('Update product error:', error);
@@ -70,6 +72,7 @@ export async function DELETE(
         return apiError('Product not found', 404);
       }
       
+      revalidateTag('products', 'hours');
       return apiResponse({ message: 'Product deleted successfully' });
     } catch (error: any) {
       console.error('Delete product error:', error);

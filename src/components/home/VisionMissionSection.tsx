@@ -3,31 +3,67 @@
 import { motion } from "framer-motion";
 import { Eye, Target, Heart } from "lucide-react";
 
-const values = [
-  {
-    icon: Eye,
-    title: "Our Vision",
-    description: "Keep pace with fast-moving technology for Saudi Arabia's 2030 vision to accomplish excellence in healthy living by offering complete medical solutions.",
-    gradient: "from-primary/10 to-primary/5",
-    iconColor: "text-primary",
-  },
-  {
-    icon: Target,
-    title: "Our Mission",
-    description: "Inspire hope and improve quality of life by offering verifiable, effective professional solutions ensuring partner satisfaction.",
-    gradient: "from-accent/10 to-accent/5",
-    iconColor: "text-accent",
-  },
-  {
-    icon: Heart,
-    title: "Our Values",
-    description: "Trust, loyalty, and respect — the constant fundamentals of our commitment to excellence in healthcare partnerships.",
-    gradient: "from-gold/10 to-gold/5",
-    iconColor: "text-gold",
-  },
-];
+// ─── Types ────────────────────────────────────────────────────────────────────
 
-export const VisionMissionSection = () => {
+interface VMValue {
+  icon: string;
+  title: string;
+  description: string;
+  gradient?: string;
+  iconColor?: string;
+}
+
+interface VisionMissionContent {
+  badge?: string;
+  title?: string;
+  description?: string;
+  values?: VMValue[];
+}
+
+interface VisionMissionSectionProps {
+  content?: VisionMissionContent;
+}
+
+// ─── Icon map ────────────────────────────────────────────────────────────────────
+
+const VALUE_ICONS: Record<string, React.ElementType> = { Eye, Target, Heart };
+
+// ─── Defaults ────────────────────────────────────────────────────────────────────
+
+const DEFAULT_CONTENT: Required<VisionMissionContent> = {
+  badge: "Who We Are",
+  title: "Guided by Purpose",
+  description: "Our vision, mission, and values drive everything we do in healthcare excellence.",
+  values: [
+    {
+      icon: "Eye",
+      title: "Our Vision",
+      description: "Keep pace with fast-moving technology for Saudi Arabia's 2030 vision to accomplish excellence in healthy living by offering complete medical solutions.",
+      gradient: "from-primary/10 to-primary/5",
+      iconColor: "text-primary",
+    },
+    {
+      icon: "Target",
+      title: "Our Mission",
+      description: "Inspire hope and improve quality of life by offering verifiable, effective professional solutions ensuring partner satisfaction.",
+      gradient: "from-accent/10 to-accent/5",
+      iconColor: "text-accent",
+    },
+    {
+      icon: "Heart",
+      title: "Our Values",
+      description: "Trust, loyalty, and respect — the constant fundamentals of our commitment to excellence in healthcare partnerships.",
+      gradient: "from-gold/10 to-gold/5",
+      iconColor: "text-gold",
+    },
+  ],
+};
+
+// ─── Component ────────────────────────────────────────────────────────────────────
+
+export const VisionMissionSection = ({ content }: VisionMissionSectionProps) => {
+  const c = { ...DEFAULT_CONTENT, ...content };
+
   return (
     <section className="section-padding bg-background">
       <div className="container-padding container mx-auto">
@@ -38,29 +74,31 @@ export const VisionMissionSection = () => {
           viewport={{ once: true }}
         >
           <span className="inline-block px-4 py-2 rounded-full bg-gold/10 text-gold text-sm font-medium mb-4">
-            Who We Are
+            {c.badge}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Guided by Purpose
+            {c.title}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our vision, mission, and values drive everything we do in healthcare excellence.
+            {c.description}
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {values.map((value, index) => (
+          {c.values.map((value, index) => {
+            const Icon = VALUE_ICONS[value.icon] ?? Eye;
+            return (
             <motion.div
               key={value.title}
-              className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${value.gradient} p-8 border border-border/50`}
+              className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${value.gradient ?? 'from-primary/10 to-primary/5'} p-8 border border-border/50`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15 }}
             >
               <div className="relative z-10">
-                <div className={`inline-flex p-4 rounded-2xl bg-card shadow-soft mb-6 ${value.iconColor}`}>
-                  <value.icon className="w-8 h-8" />
+                <div className={`inline-flex p-4 rounded-2xl bg-card shadow-soft mb-6 ${value.iconColor ?? 'text-primary'}`}>
+                  <Icon className="w-8 h-8" />
                 </div>
                 
                 <h3 className="text-2xl font-bold text-foreground mb-4">
@@ -75,7 +113,8 @@ export const VisionMissionSection = () => {
               {/* Decorative Element */}
               <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-card/30 blur-3xl" />
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

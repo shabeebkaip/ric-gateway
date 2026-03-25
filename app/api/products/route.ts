@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import { connectDB } from '@/lib/db/connection';
 import Product from '@/lib/db/models/Product';
 import { withAuth, apiResponse, apiError } from '@/lib/api-middleware';
+import { revalidateTag } from 'next/cache';
 
 // GET all products (public)
 export async function GET(request: NextRequest) {
@@ -56,6 +57,7 @@ export async function POST(request: NextRequest) {
       
       const product = await Product.create(data);
       
+      revalidateTag('products', 'hours');
       return apiResponse({ product }, 201);
     } catch (error: any) {
       console.error('Create product error:', error);

@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProductById, getPartnerById } from "@/lib/productUtils";
-import { productCategories } from "@/lib/data";
+import { getCachedProducts, getCachedHomeContent, getCachedPartners } from "@/lib/db/pageData";
 import { ProductDetailContent } from "@/components/products/ProductDetailContent";
 
 interface PageProps {
@@ -13,15 +12,17 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { productId } = await params;
-  const product = getProductById(productId);
+  const [allProducts, rawPartners] = await Promise.all([
+    getCachedProducts(),
+    getCachedPartners(),
+  ]);
+  const product = (allProducts as any[]).find((p: any) => p.id === productId);
 
   if (!product) {
-    return {
-      title: "Product Not Found",
-    };
+    return { title: "Product Not Found" };
   }
 
-  const partner = getPartnerById(product.brand);
+  const partner = (rawPartners as any[]).find((p: any) => p.slug === product.partnerId);
   const brandName = partner?.name || product.brand;
 
   return {
@@ -32,12 +33,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ProductDetailPage({ params }: PageProps) {
   const { slug, productId } = await params;
-  const product = getProductById(productId);
-  const category = productCategories.find((cat) => cat.slug === slug);
 
-  if (!product || !category) {
-    notFound();
-  }
+  const [allProducts, homeContent] = await Promise.all([
+    getCachedProducts(),
+    getCachedHomeContent(),
+  ]);
+
+  const product = (allProducts as any[]).find((p: any) => p.id === productId);
+  const categories = (homeContent.categories as any)?.categories ?? [];
+  const category = categories.find((cat: any) => cat.slug === slug);
+
+  if (!product || !category) notFound();
 
   return <ProductDetailContent product={product} category={category} />;
 }

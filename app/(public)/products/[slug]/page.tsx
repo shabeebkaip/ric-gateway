@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProductsByCategory, getSubcategoriesByCategory } from "@/lib/productUtils";
-import { productCategories } from "@/lib/data";
+import { getCachedProducts, getCachedHomeContent } from "@/lib/db/pageData";
 import { ProductListContent } from "@/components/products/ProductListContent";
 
 interface PageProps {
@@ -12,12 +11,12 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const category = productCategories.find((cat) => cat.slug === slug);
+  const homeContent = await getCachedHomeContent();
+  const categories = (homeContent.categories as any)?.categories ?? [];
+  const category = categories.find((cat: any) => cat.slug === slug);
 
   if (!category) {
-    return {
-      title: "Category Not Found",
-    };
+    return { title: "Category Not Found" };
   }
 
   return {
@@ -26,21 +25,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export async function generateStaticParams() {
-  return productCategories.map((category) => ({
-    slug: category.slug,
-  }));
-}
-
 export default async function ProductCategoryPage({ params }: PageProps) {
   const { slug } = await params;
-  const category = productCategories.find((cat) => cat.slug === slug);
-  const products = getProductsByCategory(slug);
-  const subcategories = getSubcategoriesByCategory(slug);
 
-  if (!category) {
-    notFound();
-  }
+  const [allProducts, homeContent] = await Promise.all([
+    getCachedProducts(),
+    getCachedHomeContent(),
+  ]);
+
+  const categories = (homeContent.categories as any)?.categories ?? [];
+  const allSubcategories = (homeContent.subcategories as any)?.subcategories ?? [];
+
+  const category = categories.find((cat: any) => cat.slug === slug);
+  if (!category) notFound();
+
+  const products = (allProducts as any[]).filter(
+    (p: any) => p.category === category.id || p.category === slug
+  );
+  const subcategories = allSubcategories.filter(
+    (sub: any) => sub.categoryId === category.id || sub.categoryId === slug
+  );
 
   return <ProductListContent category={category} products={products} subcategories={subcategories} />;
 }

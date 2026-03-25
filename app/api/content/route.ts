@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+import { revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/db/connection';
 import Content from '@/lib/db/models/Content';
 import Category from '@/lib/db/models/Category';
@@ -94,6 +95,11 @@ export async function POST(request: NextRequest) {
         const keepIds = content.subcategories.map((s: { id: string }) => s.id);
         await Subcategory.deleteMany({ id: { $nin: keepIds } });
       }
+
+      // Invalidate relevant page caches
+      revalidateTag('home-content', 'hours');
+      if (section === 'categories') revalidateTag('categories', 'hours');
+      if (section === 'subcategories') revalidateTag('categories', 'hours');
 
       return apiResponse({ content: result }, 201);
     } catch (error: unknown) {

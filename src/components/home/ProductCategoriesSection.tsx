@@ -11,8 +11,28 @@ import {
   ArrowRight,
   Zap,
 } from "lucide-react";
-import { productCategories, partners } from "@/lib/data";
 import Link from "next/link";
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  description?: string;
+  icon?: string;
+}
+
+interface Partner {
+  name: string;
+  logo?: string;
+  categories?: string[];
+}
+
+interface ProductCategoriesSectionProps {
+  categories: Category[];
+  partners: Partner[];
+}
 
 const categoryIcons: Record<string, any> = {
   Microscope,
@@ -43,7 +63,7 @@ const itemVariants = {
   },
 };
 
-export const ProductCategoriesSection = () => {
+export const ProductCategoriesSection = ({ categories, partners }: ProductCategoriesSectionProps) => {
   return (
     <section id="products" className="section-padding bg-background">
       <div className="container-padding container mx-auto">
@@ -75,12 +95,12 @@ export const ProductCategoriesSection = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {productCategories.map((category) => {
-            const Icon = categoryIcons[category.icon];
+          {categories.map((category, idx) => {
+            const Icon = categoryIcons[category.icon ?? ''] ?? Package;
             const categoryPartners = partners.filter((p) =>
-              p.categories.includes(category.id)
+              (p.categories ?? []).includes(category.id)
             );
-            const isEven = productCategories.indexOf(category) % 2 === 0;
+            const isEven = idx % 2 === 0;
 
             return (
               <Link

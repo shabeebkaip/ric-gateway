@@ -1,29 +1,26 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { partners } from "@/lib/data";
 
-export const PartnersSection = () => {
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface Partner {
+  name: string;
+  slug?: string;
+  logo?: string;
+  website?: string;
+  country?: string;
+  invertColor?: boolean;
+  tag?: string;
+  categories?: string[];
+}
+
+interface PartnersSectionProps {
+  partners: Partner[];
+}
+
+export const PartnersSection = ({ partners }: PartnersSectionProps) => {
   const partnerCount = partners.length;
-
-  // Automatically determine grid layout based on number of partners
-  const getGridClass = () => {
-    if (partnerCount <= 3) {
-      return "grid-cols-2 md:grid-cols-3";
-    } else if (partnerCount <= 4) {
-      return "grid-cols-2 md:grid-cols-4";
-    } else if (partnerCount <= 6) {
-      return "grid-cols-2 md:grid-cols-3";
-    } else if (partnerCount <= 8) {
-      return "grid-cols-2 md:grid-cols-4";
-    } else if (partnerCount <= 9) {
-      return "grid-cols-3 md:grid-cols-3";
-    } else if (partnerCount <= 12) {
-      return "grid-cols-3 md:grid-cols-4";
-    } else {
-      return "grid-cols-3 md:grid-cols-4 xl:grid-cols-5";
-    }
-  };
 
   // Count unique countries
   const uniqueCountries = new Set(partners.map((p) => p.country)).size;
