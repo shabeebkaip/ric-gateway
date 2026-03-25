@@ -83,6 +83,8 @@ export interface ProductCTAProps {
   productName: string;
   categoryName: string;
   categorySlug: string;
+  productSlug?: string;
+  partnerName?: string;
 }
 
 export interface CategoryHeroProps {

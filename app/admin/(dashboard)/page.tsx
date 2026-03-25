@@ -10,7 +10,7 @@ import {
   RadialBarChart, RadialBar, Legend,
 } from 'recharts';
 import {
-  Package, FolderOpen, Users, FileText,
+  Package, FolderOpen, Users, FileText, Inbox,
   TrendingUp, ArrowRight, Globe, Activity,
   Layers, Sparkles, BarChart3, PieChartIcon,
 } from 'lucide-react';
@@ -52,6 +52,8 @@ interface DashboardData {
   categories: CategoryDoc[];
   partners: PartnerDoc[];
   content: ContentDoc[];
+  contactEnquiries: number;
+  productEnquiries: number;
 }
 
 const CHART_COLORS = ['#2563eb', '#7c3aed', '#0891b2', '#059669', '#d97706', '#dc2626', '#db2777', '#65a30d'];
@@ -93,6 +95,24 @@ const STAT_META = [
     text: 'text-emerald-600',
     href: '/admin/content',
   },
+  {
+    key: 'contactEnquiries' as const,
+    label: 'Contact Enquiries',
+    icon: Inbox,
+    gradient: 'from-rose-500 to-rose-600',
+    bg: 'bg-rose-50',
+    text: 'text-rose-600',
+    href: '/admin/enquiries/contact',
+  },
+  {
+    key: 'productEnquiries' as const,
+    label: 'Product Quotations',
+    icon: Inbox,
+    gradient: 'from-orange-500 to-orange-600',
+    bg: 'bg-orange-50',
+    text: 'text-orange-600',
+    href: '/admin/enquiries/product',
+  },
 ] as const;
 
 const QUICK_ACTIONS = [
@@ -100,6 +120,7 @@ const QUICK_ACTIONS = [
   { href: '/admin/categories', icon: FolderOpen, label: 'Categories', desc: 'Organise categories', color: 'hover:border-violet-300 hover:bg-violet-50/60 group-hover:text-violet-600' },
   { href: '/admin/partners', icon: Users, label: 'Partners', desc: 'Manage partners', color: 'hover:border-cyan-300 hover:bg-cyan-50/60 group-hover:text-cyan-600' },
   { href: '/admin/content', icon: FileText, label: 'Content', desc: 'Edit page content', color: 'hover:border-emerald-300 hover:bg-emerald-50/60 group-hover:text-emerald-600' },
+  { href: '/admin/enquiries', icon: Inbox, label: 'Enquiries', desc: 'View all enquiries', color: 'hover:border-rose-300 hover:bg-rose-50/60 group-hover:text-rose-600' },
 ];
 
 function StatCardSkeleton() {
@@ -118,24 +139,28 @@ function StatCardSkeleton() {
 }
 
 export default function AdminDashboard() {
-  const [data, setData] = useState<DashboardData>({ products: [], categories: [], partners: [], content: [] });
+  const [data, setData] = useState<DashboardData>({ products: [], categories: [], partners: [], content: [], contactEnquiries: 0, productEnquiries: 0 });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem('admin-token');
-    const headers = { Authorization: `Bearer ${token}` };
+    const headers: Record<string, string> = token ? { Authorization: `Bearer ${token}` } : {};
 
     Promise.all([
       fetch('/api/products', { headers }).then(r => r.json()).catch(() => ({})),
       fetch('/api/categories', { headers }).then(r => r.json()).catch(() => ({})),
       fetch('/api/partners', { headers }).then(r => r.json()).catch(() => ({})),
       fetch('/api/content', { headers }).then(r => r.json()).catch(() => ({})),
-    ]).then(([p, c, pa, co]) => {
+      fetch('/api/admin/enquiries/contact', { headers }).then(r => r.json()).catch(() => ({})),
+      fetch('/api/admin/enquiries/product', { headers }).then(r => r.json()).catch(() => ({})),
+    ]).then(([p, c, pa, co, ce, pe]) => {
       setData({
         products: p.products ?? [],
         categories: c.categories ?? [],
         partners: pa.partners ?? [],
         content: co.content ?? [],
+        contactEnquiries: (ce.enquiries ?? []).length,
+        productEnquiries: (pe.enquiries ?? []).length,
       });
     }).finally(() => setIsLoading(false));
   }, []);
@@ -184,6 +209,8 @@ export default function AdminDashboard() {
     categories: data.categories.length,
     partners: data.partners.length,
     content: data.content.length,
+    contactEnquiries: data.contactEnquiries,
+    productEnquiries: data.productEnquiries,
   };
 
   const activeProducts = data.products.filter(p => p.isActive !== false).length;
@@ -211,9 +238,9 @@ export default function AdminDashboard() {
       </div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
         {isLoading
-          ? Array.from({ length: 4 }).map((_, i) => <StatCardSkeleton key={i} />)
+          ? Array.from({ length: 6 }).map((_, i) => <StatCardSkeleton key={i} />)
           : STAT_META.map((meta) => {
               const Icon = meta.icon;
               const value = stats[meta.key];

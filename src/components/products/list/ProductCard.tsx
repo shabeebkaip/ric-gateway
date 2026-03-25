@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -16,11 +17,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getPartnerById } from "@/lib/productUtils";
+import { RequestQuoteModal } from "@/components/shared/RequestQuoteModal";
 import type { ProductCardProps } from "@/types";
 
 export function ProductCard({ product, category, index }: ProductCardProps) {
   const partnerIdToUse = product.partnerId || product.brand;
   const partner = getPartnerById(partnerIdToUse);
+  const [quoteOpen, setQuoteOpen] = useState(false);
 
   return (
     <motion.article
@@ -154,15 +157,12 @@ export function ProductCard({ product, category, index }: ProductCardProps) {
         <div className="px-6 lg:px-8 pb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-4 border-t border-slate-100 bg-gradient-to-r from-slate-50/50 to-transparent">
           <div className="flex flex-wrap items-center gap-2">
             <Button
-              asChild
               size="sm"
               className="h-9 px-4 text-xs font-semibold bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white shadow-md hover:shadow-lg transition-all"
-              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => { e.stopPropagation(); e.preventDefault(); setQuoteOpen(true); }}
             >
-              <Link href="/contact">
-                <FileText className="w-3.5 h-3.5 mr-1.5" />
-                Get Free Quote
-              </Link>
+              <FileText className="w-3.5 h-3.5 mr-1.5" />
+              Get Free Quote
             </Button>
             <span className="text-slate-300 hidden sm:inline">•</span>
             <Button
@@ -208,6 +208,15 @@ export function ProductCard({ product, category, index }: ProductCardProps) {
           </Link>
         </div>
       </div>
+
+      <RequestQuoteModal
+        open={quoteOpen}
+        onOpenChange={setQuoteOpen}
+        productName={product.name}
+        productSlug={product.id}
+        category={category.slug}
+        partnerName={partner?.name}
+      />
     </motion.article>
   );
 }

@@ -3,12 +3,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import { 
-  LayoutDashboard, 
-  Package, 
-  FolderOpen, 
-  Users, 
+import {
+  LayoutDashboard,
+  Package,
+  FolderOpen,
+  Users,
   FileText,
+  Inbox,
   LogOut,
   Menu,
   X
@@ -23,6 +24,7 @@ const navigation = [
   { name: 'Categories', href: '/admin/categories', icon: FolderOpen },
   { name: 'Partners', href: '/admin/partners', icon: Users },
   { name: 'Content', href: '/admin/content', icon: FileText },
+  { name: 'Enquiries', href: '/admin/enquiries', icon: Inbox },
 ];
 
 export function AdminSidebar() {
@@ -59,7 +61,9 @@ export function AdminSidebar() {
           {/* Navigation */}
           <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
             {navigation.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = item.href === '/admin'
+                ? pathname === '/admin'
+                : pathname.startsWith(item.href);
               const Icon = item.icon;
               
               return (

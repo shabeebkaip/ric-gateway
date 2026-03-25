@@ -45,6 +45,8 @@ export function ProductDetailContent({
         productName={product.name}
         categoryName={category.name}
         categorySlug={category.slug}
+        productSlug={product.id}
+        partnerName={product.brand}
       />
     </div>
   );

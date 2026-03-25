@@ -1,15 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { RequestQuoteModal } from "@/components/shared/RequestQuoteModal";
 import type { ProductCTAProps } from "@/types";
 
 export function ProductCTA({
   productName,
   categoryName,
   categorySlug,
+  partnerName,
+  productSlug,
 }: ProductCTAProps) {
+  const [quoteOpen, setQuoteOpen] = useState(false);
+
   return (
     <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
       <div className="container mx-auto px-6 max-w-4xl">
@@ -33,10 +39,10 @@ export function ProductCTA({
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
             <Button
-              asChild
+              onClick={() => setQuoteOpen(true)}
               className="rounded-full px-10 py-6 bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-700 hover:to-sky-700 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 text-base font-medium"
             >
-              <Link href="/contact">Schedule Consultation</Link>
+              Request a Quotation
             </Button>
             <Button
               asChild
@@ -50,6 +56,15 @@ export function ProductCTA({
           </div>
         </motion.div>
       </div>
+
+      <RequestQuoteModal
+        open={quoteOpen}
+        onOpenChange={setQuoteOpen}
+        productName={productName}
+        productSlug={productSlug ?? ''}
+        category={categorySlug}
+        partnerName={partnerName}
+      />
     </section>
   );
 }
