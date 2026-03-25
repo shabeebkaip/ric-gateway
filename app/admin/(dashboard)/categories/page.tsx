@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import {
@@ -18,7 +19,7 @@ import {
 import { 
   Save, Loader2, Plus, Trash2, Pencil,
   Microscope, Stethoscope, ScanLine, Package, Activity, Settings2, Zap,
-  FolderOpen, Layers
+  FolderOpen, Layers, ChevronRight, AlertTriangle,
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -271,49 +272,92 @@ export default function CategoriesPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      <div className="space-y-7 pb-10 animate-pulse">
+        <div className="space-y-2">
+          <div className="h-8 w-56 bg-muted rounded" />
+          <div className="h-4 w-44 bg-muted rounded" />
+        </div>
+        <div className="grid grid-cols-2 gap-4 max-w-sm">
+          <div className="h-20 bg-muted rounded-xl" />
+          <div className="h-20 bg-muted rounded-xl" />
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="h-32 bg-muted rounded-xl" />
+          ))}
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-7 pb-10">
       {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold">Categories Management</h1>
-        <p className="text-sm text-muted-foreground">Manage product categories and subcategories</p>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <FolderOpen className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Content</span>
+            <ChevronRight className="w-3 h-3 text-muted-foreground" />
+            <span className="text-sm font-medium text-muted-foreground">Categories</span>
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight">Categories</h1>
+          <p className="text-muted-foreground mt-1">Organise products into categories and subcategories</p>
+        </div>
+      </div>
+
+      {/* KPI strip */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {[
+          { label: 'Categories', value: categories.length, icon: FolderOpen, color: 'text-violet-600', bg: 'bg-violet-500/10' },
+          { label: 'Subcategories', value: subcategories.length, icon: Layers, color: 'text-cyan-600', bg: 'bg-cyan-500/10' },
+          { label: 'Unsaved (Cat)', value: hasCategoryChanges ? '●' : '—', icon: Save, color: hasCategoryChanges ? 'text-amber-600' : 'text-muted-foreground', bg: hasCategoryChanges ? 'bg-amber-500/10' : 'bg-muted' },
+          { label: 'Unsaved (Sub)', value: hasSubcategoryChanges ? '●' : '—', icon: Save, color: hasSubcategoryChanges ? 'text-amber-600' : 'text-muted-foreground', bg: hasSubcategoryChanges ? 'bg-amber-500/10' : 'bg-muted' },
+        ].map(({ label, value, icon: Icon, color, bg }) => (
+          <Card key={label} className="p-4 flex items-center gap-3 border-border/60">
+            <div className={`w-10 h-10 rounded-xl ${bg} flex items-center justify-center flex-shrink-0`}>
+              <Icon className={`w-5 h-5 ${color}`} />
+            </div>
+            <div>
+              <p className="text-2xl font-bold leading-none">{value}</p>
+              <p className="text-xs text-muted-foreground mt-0.5">{label}</p>
+            </div>
+          </Card>
+        ))}
       </div>
 
       <Tabs defaultValue="categories" className="space-y-6">
-        <TabsList className="grid w-full max-w-md grid-cols-2">
-          <TabsTrigger value="categories" className="flex items-center gap-2">
+        <TabsList className="h-10 p-1 bg-muted/60 rounded-xl">
+          <TabsTrigger value="categories" className="rounded-lg data-[state=active]:shadow-sm gap-2">
             <FolderOpen className="w-4 h-4" />
-            Categories ({categories.length})
+            Categories
+            <Badge variant="secondary" className="rounded-full text-[10px] px-1.5 py-0 h-4">{categories.length}</Badge>
           </TabsTrigger>
-          <TabsTrigger value="subcategories" className="flex items-center gap-2">
+          <TabsTrigger value="subcategories" className="rounded-lg data-[state=active]:shadow-sm gap-2">
             <Layers className="w-4 h-4" />
-            Subcategories ({subcategories.length})
+            Subcategories
+            <Badge variant="secondary" className="rounded-full text-[10px] px-1.5 py-0 h-4">{subcategories.length}</Badge>
           </TabsTrigger>
         </TabsList>
 
         {/* ── Categories Tab ─────────────────────────────────── */}
-        <TabsContent value="categories" className="space-y-6">
+        <TabsContent value="categories" className="space-y-5 mt-0">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Product Categories</h2>
+            <p className="text-sm text-muted-foreground">
+              {categories.length} {categories.length === 1 ? 'category' : 'categories'} configured
+            </p>
             <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" onClick={openAddCategory}>
-                <Plus className="w-4 h-4 mr-2" />
-                Add Category
+              <Button variant="outline" size="sm" onClick={openAddCategory} className="gap-1.5">
+                <Plus className="w-4 h-4" /> Add Category
               </Button>
-              <Button 
-                onClick={handleSaveCategories} 
+              <Button
+                onClick={handleSaveCategories}
                 disabled={saving || !hasCategoryChanges}
                 size="sm"
-                className="bg-gradient-to-r from-gold to-primary"
+                className="bg-gradient-to-r from-gold to-primary shadow-sm gap-1.5"
               >
-                {saving ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Save className="w-4 h-4 mr-2" />}
-                Save Categories
+                {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+                Save
               </Button>
             </div>
           </div>
@@ -321,46 +365,48 @@ export default function CategoriesPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {categories.map((category, index) => {
               const IconComponent = getIconComponent(category.icon);
+              const subCount = subcategories.filter(s => s.categoryId === category.id).length;
               return (
-                <Card key={category.id || index} className="p-4 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="p-2 rounded-lg bg-primary/10">
-                        <IconComponent className="w-5 h-5 text-primary" />
+                <Card key={category.id || index} className="overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 border-border/60 group">
+                  <div className="h-1 bg-gradient-to-r from-violet-500 to-violet-400" />
+                  <div className="p-4">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center flex-shrink-0">
+                        <IconComponent className="w-5 h-5 text-violet-600" />
                       </div>
-                      <span className="font-medium text-sm truncate max-w-[150px]">
-                        {category.name || 'Unnamed Category'}
-                      </span>
+                      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-7 w-7"
+                          onClick={() => openEditCategory(index)}
+                        >
+                          <Pencil className="w-3.5 h-3.5" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-7 w-7 text-destructive hover:text-destructive hover:bg-destructive/10"
+                          onClick={() => removeCategory(index)}
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </Button>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-8 w-8"
-                        onClick={() => openEditCategory(index)}
-                      >
-                        <Pencil className="w-4 h-4" />
-                      </Button>
-                      <Button 
-                        variant="ghost" 
-                        size="icon" 
-                        className="h-8 w-8 text-destructive hover:text-destructive"
-                        onClick={() => removeCategory(index)}
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </Button>
+
+                    <h3 className="font-semibold text-sm leading-snug mb-1 group-hover:text-primary transition-colors">
+                      {category.name || 'Unnamed Category'}
+                    </h3>
+                    {category.description && (
+                      <p className="text-xs text-muted-foreground line-clamp-2 mb-3">{category.description}</p>
+                    )}
+
+                    <div className="flex items-center justify-between pt-3 border-t border-border/50">
+                      <code className="text-[10px] text-muted-foreground bg-muted px-1.5 py-0.5 rounded">{category.slug}</code>
+                      <Badge variant="secondary" className="text-[10px] rounded-full">
+                        {subCount} {subCount === 1 ? 'sub' : 'subs'}
+                      </Badge>
                     </div>
-                  </div>
-
-                  {category.description && (
-                    <p className="text-xs text-muted-foreground line-clamp-2">{category.description}</p>
-                  )}
-
-                  <div className="pt-2 border-t flex items-center justify-between">
-                    <p className="text-xs text-muted-foreground font-mono">{category.slug}</p>
-                    <p className="text-xs text-muted-foreground">
-                      {subcategories.filter(s => s.categoryId === category.id).length} subcategories
-                    </p>
                   </div>
                 </Card>
               );
@@ -368,13 +414,14 @@ export default function CategoriesPage() {
 
             {categories.length === 0 && (
               <div className="col-span-full">
-                <Card className="p-8 text-center">
-                  <FolderOpen className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
-                  <h3 className="font-semibold mb-2">No Categories</h3>
-                  <p className="text-sm text-muted-foreground mb-4">Add your first product category.</p>
-                  <Button variant="outline" onClick={openAddCategory}>
-                    <Plus className="w-4 h-4 mr-2" />
-                    Add First Category
+                <Card className="p-12 text-center border-dashed border-border/60">
+                  <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <FolderOpen className="w-8 h-8 text-muted-foreground" />
+                  </div>
+                  <h3 className="font-semibold mb-2">No Categories Yet</h3>
+                  <p className="text-sm text-muted-foreground mb-5">Add your first product category to get started.</p>
+                  <Button onClick={openAddCategory} className="bg-gradient-to-r from-gold to-primary gap-2">
+                    <Plus className="w-4 h-4" /> Add First Category
                   </Button>
                 </Card>
               </div>
@@ -383,118 +430,137 @@ export default function CategoriesPage() {
         </TabsContent>
 
         {/* ── Subcategories Tab ───────────────────────────────── */}
-        <TabsContent value="subcategories" className="space-y-6">
+        <TabsContent value="subcategories" className="space-y-5 mt-0">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Product Subcategories</h2>
+            <p className="text-sm text-muted-foreground">
+              {subcategories.length} {subcategories.length === 1 ? 'subcategory' : 'subcategories'} across {categories.length} categories
+            </p>
             <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" onClick={() => openAddSubcategory()}>
-                <Plus className="w-4 h-4 mr-2" />
-                Add Subcategory
+              <Button variant="outline" size="sm" onClick={() => openAddSubcategory()} className="gap-1.5">
+                <Plus className="w-4 h-4" /> Add Subcategory
               </Button>
-              <Button 
-                onClick={handleSaveSubcategories} 
+              <Button
+                onClick={handleSaveSubcategories}
                 disabled={saving || !hasSubcategoryChanges}
                 size="sm"
-                className="bg-gradient-to-r from-gold to-primary"
+                className="bg-gradient-to-r from-gold to-primary shadow-sm gap-1.5"
               >
-                {saving ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Save className="w-4 h-4 mr-2" />}
-                Save Subcategories
+                {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+                Save
               </Button>
             </div>
           </div>
 
-          {categories.map((category) => {
-            const catSubs = subcategories.filter(s => s.categoryId === category.id);
-            if (catSubs.length === 0) return null;
-            const IconComponent = getIconComponent(category.icon);
-            return (
-              <Card key={category.id} className="p-4">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-lg bg-primary/10">
-                      <IconComponent className="w-4 h-4 text-primary" />
+          <div className="space-y-4">
+            {categories.map((category) => {
+              const catSubs = subcategories.filter(s => s.categoryId === category.id);
+              if (catSubs.length === 0) return null;
+              const IconComponent = getIconComponent(category.icon);
+              return (
+                <Card key={category.id} className="overflow-hidden border-border/60">
+                  <div className="h-1 bg-gradient-to-r from-cyan-500 to-cyan-400" />
+                  <div className="p-4">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                          <IconComponent className="w-4 h-4 text-cyan-600" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-sm">{category.name}</h3>
+                          <p className="text-xs text-muted-foreground">{catSubs.length} subcategories</p>
+                        </div>
+                      </div>
+                      <Button variant="outline" size="sm" onClick={() => openAddSubcategory(category.id)} className="h-7 text-xs gap-1">
+                        <Plus className="w-3 h-3" /> Add
+                      </Button>
                     </div>
-                    <h3 className="font-semibold">{category.name}</h3>
-                    <span className="text-xs text-muted-foreground">({catSubs.length} subcategories)</span>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                      {catSubs.map((sub) => {
+                        const subIndex = subcategories.findIndex(s => s.id === sub.id);
+                        return (
+                          <div key={sub.id} className="group/sub flex items-start justify-between p-3 rounded-lg border border-border/50 bg-muted/20 hover:bg-muted/50 transition-colors">
+                            <div className="min-w-0 flex-1">
+                              <p className="font-medium text-xs leading-snug truncate">{sub.name}</p>
+                              {sub.description && (
+                                <p className="text-[10px] text-muted-foreground line-clamp-1 mt-0.5">{sub.description}</p>
+                              )}
+                              {sub.types?.length > 0 && (
+                                <div className="flex flex-wrap gap-1 mt-1.5">
+                                  {sub.types.slice(0, 3).map(t => (
+                                    <span key={t} className="text-[9px] bg-muted px-1.5 py-0.5 rounded text-muted-foreground">{t}</span>
+                                  ))}
+                                  {sub.types.length > 3 && (
+                                    <span className="text-[9px] text-muted-foreground">+{sub.types.length - 3}</span>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                            <div className="flex items-center gap-0.5 ml-2 flex-shrink-0 opacity-0 group-hover/sub:opacity-100 transition-opacity">
+                              <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => openEditSubcategory(subIndex)}>
+                                <Pencil className="w-3 h-3" />
+                              </Button>
+                              <Button variant="ghost" size="icon" className="h-6 w-6 text-destructive hover:text-destructive hover:bg-destructive/10" onClick={() => removeSubcategory(subIndex)}>
+                                <Trash2 className="w-3 h-3" />
+                              </Button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                  <Button variant="outline" size="sm" onClick={() => openAddSubcategory(category.id)}>
-                    <Plus className="w-3 h-3 mr-1" />
-                    Add
-                  </Button>
-                </div>
-                <div className="grid md:grid-cols-2 gap-3">
-                  {catSubs.map((sub) => {
-                    const subIndex = subcategories.findIndex(s => s.id === sub.id);
-                    return (
-                      <div key={sub.id} className="p-3 border rounded-lg space-y-1">
-                        <div className="flex items-center justify-between">
-                          <span className="font-medium text-sm">{sub.name}</span>
-                          <div className="flex items-center gap-1">
-                            <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEditSubcategory(subIndex)}>
+                </Card>
+              );
+            })}
+
+            {/* Orphan subcategories */}
+            {subcategories.filter(s => !categories.find(c => c.id === s.categoryId)).length > 0 && (
+              <Card className="overflow-hidden border-amber-200/60">
+                <div className="h-1 bg-amber-400" />
+                <div className="p-4">
+                  <div className="flex items-center gap-2.5 mb-4">
+                    <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                      <AlertTriangle className="w-4 h-4 text-amber-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-sm text-amber-700">Unassigned Subcategories</h3>
+                      <p className="text-xs text-muted-foreground">These subcategories have no parent category</p>
+                    </div>
+                  </div>
+                  <div className="grid sm:grid-cols-2 gap-2">
+                    {subcategories.filter(s => !categories.find(c => c.id === s.categoryId)).map((sub) => {
+                      const subIndex = subcategories.findIndex(s => s.id === sub.id);
+                      return (
+                        <div key={sub.id} className="group/sub flex items-center justify-between p-3 rounded-lg border border-amber-200/60 bg-amber-50/40">
+                          <p className="font-medium text-xs">{sub.name}</p>
+                          <div className="flex items-center gap-0.5 opacity-0 group-hover/sub:opacity-100 transition-opacity">
+                            <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => openEditSubcategory(subIndex)}>
                               <Pencil className="w-3 h-3" />
                             </Button>
-                            <Button variant="ghost" size="icon" className="h-7 w-7 text-destructive hover:text-destructive" onClick={() => removeSubcategory(subIndex)}>
+                            <Button variant="ghost" size="icon" className="h-6 w-6 text-destructive hover:text-destructive hover:bg-destructive/10" onClick={() => removeSubcategory(subIndex)}>
                               <Trash2 className="w-3 h-3" />
                             </Button>
                           </div>
                         </div>
-                        {sub.description && <p className="text-xs text-muted-foreground line-clamp-1">{sub.description}</p>}
-                        {sub.types?.length > 0 && (
-                          <p className="text-xs text-muted-foreground font-mono">{sub.types.join(', ')}</p>
-                        )}
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
               </Card>
-            );
-          })}
+            )}
 
-          {/* Orphan subcategories */}
-          {subcategories.filter(s => !categories.find(c => c.id === s.categoryId)).length > 0 && (
-            <Card className="p-4 border-yellow-200">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="p-2 rounded-lg bg-yellow-100">
-                  <Package className="w-4 h-4 text-yellow-600" />
+            {subcategories.length === 0 && (
+              <Card className="p-12 text-center border-dashed border-border/60">
+                <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Layers className="w-8 h-8 text-muted-foreground" />
                 </div>
-                <h3 className="font-semibold text-yellow-600">Unassigned Subcategories</h3>
-              </div>
-              <div className="grid md:grid-cols-2 gap-3">
-                {subcategories.filter(s => !categories.find(c => c.id === s.categoryId)).map((sub) => {
-                  const subIndex = subcategories.findIndex(s => s.id === sub.id);
-                  return (
-                    <div key={sub.id} className="p-3 border border-yellow-200 rounded-lg bg-yellow-50">
-                      <div className="flex items-center justify-between">
-                        <span className="font-medium text-sm">{sub.name}</span>
-                        <div className="flex items-center gap-1">
-                          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEditSubcategory(subIndex)}>
-                            <Pencil className="w-3 h-3" />
-                          </Button>
-                          <Button variant="ghost" size="icon" className="h-7 w-7 text-destructive hover:text-destructive" onClick={() => removeSubcategory(subIndex)}>
-                            <Trash2 className="w-3 h-3" />
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </Card>
-          )}
-
-          {subcategories.length === 0 && (
-            <Card className="p-8 text-center">
-              <Layers className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
-              <h3 className="font-semibold mb-2">No Subcategories</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Add subcategories to organize products within each category.
-              </p>
-              <Button variant="outline" onClick={() => openAddSubcategory()}>
-                <Plus className="w-4 h-4 mr-2" />
-                Add First Subcategory
-              </Button>
-            </Card>
-          )}
+                <h3 className="font-semibold mb-2">No Subcategories Yet</h3>
+                <p className="text-sm text-muted-foreground mb-5">Add subcategories to organise products within each category.</p>
+                <Button onClick={() => openAddSubcategory()} className="bg-gradient-to-r from-gold to-primary gap-2">
+                  <Plus className="w-4 h-4" /> Add First Subcategory
+                </Button>
+              </Card>
+            )}
+          </div>
         </TabsContent>
       </Tabs>
 

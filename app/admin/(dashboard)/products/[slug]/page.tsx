@@ -8,8 +8,20 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
+import { Badge } from '@/components/ui/badge';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { ImageUpload } from '@/components/admin/ImageUpload';
-import { ArrowLeft, Save, Loader2 } from 'lucide-react';
+import {
+  ArrowLeft, Save, Package, Tag, Image as ImageIcon,
+  Zap, Settings, ChevronRight, Plus, X, Loader2,
+  Star, Sparkles, CheckCircle2, Hash, Edit,
+} from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
@@ -46,14 +58,11 @@ export default function EditProductPage() {
   const [specKey, setSpecKey] = useState('');
   const [specValue, setSpecValue] = useState('');
 
-  useEffect(() => {
-    fetchAll();
-  }, [slug]);
+  useEffect(() => { fetchAll(); }, [slug]);
 
   const fetchAll = async () => {
     const token = localStorage.getItem('admin-token');
     const headers = { Authorization: `Bearer ${token}` };
-
     try {
       const [productRes, categoriesRes, subcategoriesRes, partnersRes] = await Promise.all([
         fetch(`/api/products/${slug}`, { headers }),
@@ -98,7 +107,7 @@ export default function EditProductPage() {
         toast.error('Product not found');
         router.push('/admin/products');
       }
-    } catch (error) {
+    } catch {
       toast.error('Failed to load product data');
     } finally {
       setPageLoading(false);
@@ -106,33 +115,30 @@ export default function EditProductPage() {
   };
 
   const handleChange = (field: string, value: any) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   const addFeature = () => {
     if (featureInput.trim()) {
-      setFormData((prev) => ({ ...prev, features: [...prev.features, featureInput.trim()] }));
+      setFormData(prev => ({ ...prev, features: [...prev.features, featureInput.trim()] }));
       setFeatureInput('');
     }
   };
 
   const removeFeature = (index: number) => {
-    setFormData((prev) => ({ ...prev, features: prev.features.filter((_, i) => i !== index) }));
+    setFormData(prev => ({ ...prev, features: prev.features.filter((_, i) => i !== index) }));
   };
 
   const addSpecification = () => {
     if (specKey && specValue) {
-      setFormData((prev) => ({
-        ...prev,
-        specifications: { ...prev.specifications, [specKey]: specValue },
-      }));
+      setFormData(prev => ({ ...prev, specifications: { ...prev.specifications, [specKey]: specValue } }));
       setSpecKey('');
       setSpecValue('');
     }
   };
 
   const removeSpecification = (key: string) => {
-    setFormData((prev) => {
+    setFormData(prev => {
       const newSpecs = { ...prev.specifications };
       delete newSpecs[key];
       return { ...prev, specifications: newSpecs };
@@ -146,21 +152,13 @@ export default function EditProductPage() {
       const token = localStorage.getItem('admin-token');
       const response = await fetch(`/api/products/${slug}`, {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          ...formData,
-          thumbnail: formData.images[0] || formData.thumbnail,
-        }),
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ ...formData, thumbnail: formData.images[0] || formData.thumbnail }),
       });
-
       if (!response.ok) {
         const err = await response.json();
         throw new Error(err.error || 'Failed to update product');
       }
-
       toast.success('Product updated successfully');
       router.push('/admin/products');
     } catch (error: any) {
@@ -170,132 +168,176 @@ export default function EditProductPage() {
     }
   };
 
-  const selectedCategorySubcategories = subcategories.filter(
-    (s) => s.categoryId === formData.category
-  );
+  const selectedCategorySubcategories = subcategories.filter(s => s.categoryId === formData.category);
 
   if (pageLoading) {
     return (
-      <div className="flex items-center justify-center h-96">
-        <Loader2 className="w-10 h-10 animate-spin text-primary" />
+      <div className="space-y-7 pb-16 max-w-4xl animate-pulse">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-muted" />
+          <div className="space-y-2">
+            <div className="h-6 w-48 bg-muted rounded" />
+            <div className="h-4 w-32 bg-muted rounded" />
+          </div>
+        </div>
+        {[...Array(5)].map((_, i) => (
+          <Card key={i} className="overflow-hidden border-border/60">
+            <div className="h-1 bg-muted" />
+            <div className="p-6 space-y-4">
+              <div className="h-5 w-36 bg-muted rounded" />
+              <div className="h-10 bg-muted rounded" />
+              <div className="h-10 bg-muted rounded" />
+              <div className="grid grid-cols-2 gap-4">
+                <div className="h-10 bg-muted rounded" />
+                <div className="h-10 bg-muted rounded" />
+              </div>
+            </div>
+          </Card>
+        ))}
       </div>
     );
   }
 
   return (
-    <div className="space-y-6 max-w-4xl">
-      <div className="flex items-center gap-4">
-        <Link href="/admin/products">
-          <Button variant="outline" size="icon">
-            <ArrowLeft className="w-4 h-4" />
-          </Button>
-        </Link>
-        <div>
-          <h1 className="text-3xl font-bold">Edit Product</h1>
-          <p className="text-muted-foreground">{formData.title}</p>
+    <div className="space-y-7 pb-16 max-w-4xl">
+      {/* Header */}
+      <div>
+        <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-3">
+          <Link href="/admin/products" className="hover:text-foreground transition-colors">Products</Link>
+          <ChevronRight className="w-3 h-3" />
+          <span className="text-foreground font-medium truncate max-w-[200px]">{formData.title || 'Edit Product'}</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <Link href="/admin/products">
+            <Button variant="outline" size="icon" className="h-9 w-9 rounded-xl flex-shrink-0">
+              <ArrowLeft className="w-4 h-4" />
+            </Button>
+          </Link>
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <h1 className="text-2xl font-bold">Edit Product</h1>
+              <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Edit className="w-3.5 h-3.5 text-primary" />
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-0.5 truncate">{formData.title}</p>
+          </div>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Basic Information */}
-        <Card className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Basic Information</h2>
-          <div className="space-y-4">
-            <div>
-              <Label htmlFor="title">Product Title *</Label>
-              <Input
-                id="title"
-                value={formData.title}
-                onChange={(e) => handleChange('title', e.target.value)}
-                placeholder="Enter product title"
-                required
-              />
+        {/* Basic Info */}
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-blue-500 to-blue-400" />
+          <div className="p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                <Package className="w-4 h-4 text-blue-600" />
+              </div>
+              <h2 className="text-base font-semibold">Basic Information</h2>
             </div>
-
-            <div>
-              <Label htmlFor="slug">Slug</Label>
-              <Input
-                id="slug"
-                value={formData.slug}
-                disabled
-                className="bg-muted cursor-not-allowed"
-              />
-              <p className="text-xs text-muted-foreground mt-1">Slug cannot be changed after creation</p>
-            </div>
-
-            <div>
-              <Label htmlFor="description">Description *</Label>
-              <Textarea
-                id="description"
-                value={formData.description}
-                onChange={(e) => handleChange('description', e.target.value)}
-                placeholder="Enter product description"
-                rows={5}
-                required
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-5">
               <div>
-                <Label htmlFor="category">Category *</Label>
-                <select
-                  id="category"
-                  value={formData.category}
-                  onChange={(e) => handleChange('category', e.target.value)}
-                  className="w-full h-10 px-3 rounded-md border border-input bg-background"
+                <Label htmlFor="title" className="text-xs font-medium mb-1.5 block">Product Title *</Label>
+                <Input
+                  id="title"
+                  value={formData.title}
+                  onChange={e => handleChange('title', e.target.value)}
+                  placeholder="Enter product title"
+                  className="h-10"
                   required
-                >
-                  <option value="">Select category</option>
-                  {categories.map((cat) => (
-                    <option key={cat._id} value={cat.slug}>
-                      {cat.name}
-                    </option>
-                  ))}
-                </select>
+                />
               </div>
-
               <div>
-                <Label htmlFor="subcategory">Subcategory</Label>
-                <select
-                  id="subcategory"
-                  value={formData.subcategory}
-                  onChange={(e) => handleChange('subcategory', e.target.value)}
-                  className="w-full h-10 px-3 rounded-md border border-input bg-background"
-                >
-                  <option value="">Select subcategory</option>
-                  {selectedCategorySubcategories.map((sub: any) => (
-                    <option key={sub._id || sub.id} value={sub.id}>
-                      {sub.name}
-                    </option>
-                  ))}
-                </select>
+                <Label htmlFor="slug" className="text-xs font-medium mb-1.5 block">
+                  Slug <span className="text-muted-foreground font-normal">(read-only)</span>
+                </Label>
+                <div className="relative">
+                  <Hash className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <Input
+                    id="slug"
+                    value={formData.slug}
+                    disabled
+                    className="h-10 pl-9 font-mono text-sm bg-muted cursor-not-allowed"
+                  />
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">Slug cannot be changed after creation</p>
               </div>
-
               <div>
-                <Label htmlFor="partner">Partner *</Label>
-                <select
-                  id="partner"
-                  value={formData.partner}
-                  onChange={(e) => handleChange('partner', e.target.value)}
-                  className="w-full h-10 px-3 rounded-md border border-input bg-background"
+                <Label htmlFor="description" className="text-xs font-medium mb-1.5 block">Description *</Label>
+                <Textarea
+                  id="description"
+                  value={formData.description}
+                  onChange={e => handleChange('description', e.target.value)}
+                  placeholder="Enter product description"
+                  rows={5}
+                  className="resize-none"
                   required
-                >
-                  <option value="">Select partner</option>
-                  {partners.map((p) => (
-                    <option key={p._id} value={p.slug}>
-                      {p.name}
-                    </option>
-                  ))}
-                </select>
+                />
               </div>
+            </div>
+          </div>
+        </Card>
 
+        {/* Classification */}
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-violet-500 to-violet-400" />
+          <div className="p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <div className="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center">
+                <Tag className="w-4 h-4 text-violet-600" />
+              </div>
+              <h2 className="text-base font-semibold">Classification</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
-                <Label htmlFor="type">Product Type</Label>
+                <Label className="text-xs font-medium mb-1.5 block">Category *</Label>
+                <Select value={formData.category} onValueChange={v => handleChange('category', v)}>
+                  <SelectTrigger className="h-10">
+                    <SelectValue placeholder="Select category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {categories.map(cat => (
+                      <SelectItem key={cat._id} value={cat.slug}>{cat.name}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label className="text-xs font-medium mb-1.5 block">Subcategory</Label>
+                <Select value={formData.subcategory || '__none__'} onValueChange={v => handleChange('subcategory', v === '__none__' ? '' : v)}>
+                  <SelectTrigger className="h-10">
+                    <SelectValue placeholder="Select subcategory" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="__none__">None</SelectItem>
+                    {selectedCategorySubcategories.map((sub: any) => (
+                      <SelectItem key={sub._id || sub.id} value={sub.id}>{sub.name}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label className="text-xs font-medium mb-1.5 block">Partner *</Label>
+                <Select value={formData.partner} onValueChange={v => handleChange('partner', v)}>
+                  <SelectTrigger className="h-10">
+                    <SelectValue placeholder="Select partner" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {partners.map(p => (
+                      <SelectItem key={p._id} value={p.slug}>{p.name}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label htmlFor="type" className="text-xs font-medium mb-1.5 block">Product Type</Label>
                 <Input
                   id="type"
                   value={formData.type}
-                  onChange={(e) => handleChange('type', e.target.value)}
+                  onChange={e => handleChange('type', e.target.value)}
                   placeholder="e.g., Lithotripsy System"
+                  className="h-10"
                 />
               </div>
             </div>
@@ -303,175 +345,188 @@ export default function EditProductPage() {
         </Card>
 
         {/* Images */}
-        <Card className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Product Images</h2>
-          <ImageUpload
-            value={formData.images}
-            onChange={(urls) => handleChange('images', urls)}
-            maxFiles={10}
-            folder="products"
-          />
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-emerald-500 to-emerald-400" />
+          <div className="p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                <ImageIcon className="w-4 h-4 text-emerald-600" />
+              </div>
+              <h2 className="text-base font-semibold">Product Images</h2>
+            </div>
+            <ImageUpload
+              value={formData.images}
+              onChange={urls => handleChange('images', urls)}
+              maxFiles={10}
+              folder="products"
+            />
+          </div>
         </Card>
 
         {/* Features */}
-        <Card className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Features</h2>
-          <div className="space-y-4">
-            <div className="flex gap-2">
-              <Input
-                value={featureInput}
-                onChange={(e) => setFeatureInput(e.target.value)}
-                placeholder="Add a feature"
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    e.preventDefault();
-                    addFeature();
-                  }
-                }}
-              />
-              <Button type="button" onClick={addFeature} variant="outline">
-                Add
-              </Button>
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-amber-500 to-amber-400" />
+          <div className="p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                <Zap className="w-4 h-4 text-amber-600" />
+              </div>
+              <h2 className="text-base font-semibold">Key Features</h2>
             </div>
-            <div className="space-y-2">
-              {formData.features.map((feature, index) => (
-                <div key={index} className="flex items-center gap-2 p-3 border rounded-lg">
-                  <span className="flex-1 text-sm">{feature}</span>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => removeFeature(index)}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    Remove
-                  </Button>
+            <div className="space-y-4">
+              <div className="flex gap-2">
+                <Input
+                  value={featureInput}
+                  onChange={e => setFeatureInput(e.target.value)}
+                  placeholder="Type a feature and press Enter or click Add"
+                  className="h-10"
+                  onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addFeature(); } }}
+                />
+                <Button type="button" onClick={addFeature} variant="outline" className="h-10 px-4 flex-shrink-0">
+                  <Plus className="w-4 h-4 mr-1" /> Add
+                </Button>
+              </div>
+              {formData.features.length > 0 && (
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {formData.features.map((feature, index) => (
+                    <span key={index} className="inline-flex items-center gap-1.5 text-sm bg-muted rounded-full px-3 py-1.5 border border-border/60">
+                      <span>{feature}</span>
+                      <button type="button" onClick={() => removeFeature(index)} className="text-muted-foreground hover:text-destructive transition-colors">
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    </span>
+                  ))}
                 </div>
-              ))}
+              )}
+              {formData.features.length === 0 && (
+                <p className="text-xs text-muted-foreground italic">No features added yet.</p>
+              )}
             </div>
           </div>
         </Card>
 
         {/* Specifications */}
-        <Card className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Technical Specifications</h2>
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-2">
-              <Input
-                value={specKey}
-                onChange={(e) => setSpecKey(e.target.value)}
-                placeholder="Spec name (e.g. Voltage)"
-              />
-              <div className="flex gap-2">
-                <Input
-                  value={specValue}
-                  onChange={(e) => setSpecValue(e.target.value)}
-                  placeholder="Value (e.g. 220V)"
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      e.preventDefault();
-                      addSpecification();
-                    }
-                  }}
-                />
-                <Button type="button" onClick={addSpecification} variant="outline">
-                  Add
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-cyan-500 to-cyan-400" />
+          <div className="p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <div className="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                <Hash className="w-4 h-4 text-cyan-600" />
+              </div>
+              <h2 className="text-base font-semibold">Technical Specifications</h2>
+            </div>
+            <div className="space-y-4">
+              <div className="grid grid-cols-[1fr_1fr_auto] gap-2 items-end">
+                <div>
+                  <Label className="text-xs font-medium mb-1.5 block">Specification name</Label>
+                  <Input
+                    value={specKey}
+                    onChange={e => setSpecKey(e.target.value)}
+                    placeholder="e.g., Voltage"
+                    className="h-10"
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs font-medium mb-1.5 block">Value</Label>
+                  <Input
+                    value={specValue}
+                    onChange={e => setSpecValue(e.target.value)}
+                    placeholder="e.g., 220V"
+                    className="h-10"
+                    onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addSpecification(); } }}
+                  />
+                </div>
+                <Button type="button" onClick={addSpecification} variant="outline" className="h-10 px-4">
+                  <Plus className="w-4 h-4" />
                 </Button>
               </div>
-            </div>
-            <div className="space-y-2">
-              {Object.entries(formData.specifications).map(([key, value]) => (
-                <div key={key} className="flex items-center gap-2 p-3 border rounded-lg">
-                  <span className="font-medium text-sm min-w-[140px]">{key}:</span>
-                  <span className="flex-1 text-sm">{String(value)}</span>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => removeSpecification(key)}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    Remove
-                  </Button>
+              {Object.entries(formData.specifications).length > 0 && (
+                <div className="rounded-lg border border-border/60 overflow-hidden">
+                  {Object.entries(formData.specifications).map(([key, value], i) => (
+                    <div key={key} className={`flex items-center gap-3 px-4 py-2.5 ${i % 2 === 0 ? 'bg-muted/30' : ''}`}>
+                      <span className="text-sm font-medium w-44 flex-shrink-0 text-muted-foreground">{key}</span>
+                      <span className="text-sm flex-1">{String(value)}</span>
+                      <button type="button" onClick={() => removeSpecification(key)} className="text-muted-foreground hover:text-destructive transition-colors ml-2">
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              )}
+              {Object.entries(formData.specifications).length === 0 && (
+                <p className="text-xs text-muted-foreground italic">No specifications added yet.</p>
+              )}
             </div>
           </div>
         </Card>
 
         {/* Settings */}
-        <Card className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Product Settings</h2>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <Label>Premium Product</Label>
-                <p className="text-sm text-muted-foreground">Mark as premium product</p>
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-rose-500 to-rose-400" />
+          <div className="p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center">
+                <Settings className="w-4 h-4 text-rose-600" />
               </div>
-              <Switch
-                checked={formData.isPremium}
-                onCheckedChange={(v) => handleChange('isPremium', v)}
-              />
+              <h2 className="text-base font-semibold">Settings</h2>
             </div>
-            <div className="flex items-center justify-between">
-              <div>
-                <Label>Featured Product</Label>
-                <p className="text-sm text-muted-foreground">Show in featured section</p>
+            <div className="space-y-1">
+              {[
+                { field: 'isPremium', label: 'Premium Product', desc: 'Mark this as a premium offering', icon: Star, color: 'text-violet-600' },
+                { field: 'isFeatured', label: 'Featured Product', desc: 'Show in featured sections on the homepage', icon: Sparkles, color: 'text-amber-600' },
+                { field: 'isActive', label: 'Active', desc: 'Make product visible on the website', icon: CheckCircle2, color: 'text-emerald-600' },
+              ].map(({ field, label, desc, icon: Icon, color }) => (
+                <div key={field} className="flex items-center justify-between py-3 border-b border-border/40 last:border-0">
+                  <div className="flex items-center gap-3">
+                    <Icon className={`w-4 h-4 ${color}`} />
+                    <div>
+                      <p className="text-sm font-medium">{label}</p>
+                      <p className="text-xs text-muted-foreground">{desc}</p>
+                    </div>
+                  </div>
+                  <Switch
+                    checked={formData[field as keyof typeof formData] as boolean}
+                    onCheckedChange={checked => handleChange(field, checked)}
+                  />
+                </div>
+              ))}
+              <div className="flex items-center justify-between py-3 mt-1">
+                <div>
+                  <p className="text-sm font-medium">Display Order</p>
+                  <p className="text-xs text-muted-foreground">Lower numbers appear first</p>
+                </div>
+                <Input
+                  type="number"
+                  value={formData.order}
+                  onChange={e => handleChange('order', parseInt(e.target.value) || 0)}
+                  placeholder="0"
+                  className="w-24 h-9 text-center"
+                />
               </div>
-              <Switch
-                checked={formData.isFeatured}
-                onCheckedChange={(v) => handleChange('isFeatured', v)}
-              />
-            </div>
-            <div className="flex items-center justify-between">
-              <div>
-                <Label>Active</Label>
-                <p className="text-sm text-muted-foreground">Make product visible on website</p>
-              </div>
-              <Switch
-                checked={formData.isActive}
-                onCheckedChange={(v) => handleChange('isActive', v)}
-              />
-            </div>
-            <div>
-              <Label htmlFor="order">Display Order</Label>
-              <Input
-                id="order"
-                type="number"
-                value={formData.order}
-                onChange={(e) => handleChange('order', parseInt(e.target.value) || 0)}
-                placeholder="0"
-                className="w-40"
-              />
             </div>
           </div>
         </Card>
 
-        <div className="flex gap-4">
+        {/* Action bar */}
+        <div className="flex items-center gap-3 pt-2">
           <Button
             type="submit"
             disabled={isLoading}
-            className="bg-gradient-to-r from-gold to-primary"
+            className="bg-gradient-to-r from-gold to-primary shadow-md hover:shadow-lg transition-shadow gap-2"
           >
             {isLoading ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Saving...
-              </>
+              <><Loader2 className="w-4 h-4 animate-spin" /> Saving...</>
             ) : (
-              <>
-                <Save className="w-4 h-4 mr-2" />
-                Save Changes
-              </>
+              <><Save className="w-4 h-4" /> Save Changes</>
             )}
           </Button>
           <Link href="/admin/products">
-            <Button type="button" variant="outline">
-              Cancel
-            </Button>
+            <Button type="button" variant="outline">Cancel</Button>
           </Link>
         </div>
       </form>
     </div>
   );
 }
+
+

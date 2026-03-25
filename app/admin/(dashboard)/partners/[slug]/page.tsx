@@ -3,7 +3,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { PartnerForm } from '@/components/admin/PartnerForm';
-import { Loader2 } from 'lucide-react';
+import { Loader2, ArrowLeft, AlertTriangle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function EditPartnerPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -32,17 +34,38 @@ export default function EditPartnerPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-96">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      <div className="space-y-6 max-w-3xl pb-10 animate-pulse">
+        <div className="flex items-center gap-3">
+          <div className="h-9 w-9 bg-muted rounded-md" />
+          <div className="space-y-1.5">
+            <div className="h-3 w-24 bg-muted rounded" />
+            <div className="h-6 w-40 bg-muted rounded" />
+          </div>
+        </div>
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="h-36 bg-muted rounded-xl" />
+        ))}
       </div>
     );
   }
 
   if (error || !data) {
     return (
-      <div className="flex flex-col items-center justify-center h-96 gap-2">
-        <p className="text-lg font-semibold text-red-600">Partner not found</p>
-        <p className="text-muted-foreground">{error}</p>
+      <div className="max-w-3xl">
+        <div className="flex flex-col items-center justify-center py-20 gap-4">
+          <div className="w-16 h-16 bg-destructive/10 rounded-2xl flex items-center justify-center">
+            <AlertTriangle className="w-8 h-8 text-destructive" />
+          </div>
+          <div className="text-center">
+            <p className="text-lg font-semibold">Partner not found</p>
+            <p className="text-sm text-muted-foreground mt-1">{error}</p>
+          </div>
+          <Link href="/admin/partners">
+            <Button variant="outline" className="gap-2">
+              <ArrowLeft className="w-4 h-4" /> Back to Partners
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }

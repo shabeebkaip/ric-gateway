@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowLeft, Save, Loader2, Plus, X } from 'lucide-react';
+import { ArrowLeft, Save, Loader2, Plus, X, Users, Image, FolderOpen, Layers, Package, Settings2, Hash } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
@@ -147,25 +147,34 @@ export function PartnerForm({ initialData, slug }: Props) {
   };
 
   return (
-    <div className="space-y-6 max-w-3xl">
-      <div className="flex items-center gap-4">
+    <div className="space-y-6 max-w-3xl pb-10">
+      <div className="flex items-center gap-3">
         <Link href="/admin/partners">
-          <Button variant="outline" size="icon">
+          <Button variant="outline" size="icon" className="h-9 w-9 flex-shrink-0">
             <ArrowLeft className="w-4 h-4" />
           </Button>
         </Link>
         <div>
-          <h1 className="text-3xl font-bold">{isEditing ? 'Edit Partner' : 'Add New Partner'}</h1>
-          <p className="text-muted-foreground">
-            {isEditing ? `Editing: ${form.name}` : 'Create a new international partner'}
-          </p>
+          <div className="flex items-center gap-1.5 mb-0.5">
+            <span className="text-xs text-muted-foreground">Partners</span>
+            <span className="text-xs text-muted-foreground">/</span>
+            <span className="text-xs font-medium text-primary">{isEditing ? form.name || 'Edit' : 'New Partner'}</span>
+          </div>
+          <h1 className="text-2xl font-bold tracking-tight">{isEditing ? 'Edit Partner' : 'Add New Partner'}</h1>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Basic Info */}
-        <Card className="p-6 space-y-4">
-          <h2 className="text-lg font-semibold">Basic Information</h2>
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-blue-500 to-blue-400" />
+          <div className="p-6 space-y-4">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+              <Users className="w-4 h-4 text-blue-600" />
+            </div>
+            <h2 className="font-semibold">Basic Information</h2>
+          </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -224,6 +233,28 @@ export function PartnerForm({ initialData, slug }: Props) {
           </div>
 
           <div className="space-y-2">
+            <Label htmlFor="tag">Tag (optional)</Label>
+            <Input
+              id="tag"
+              value={form.tag}
+              onChange={(e) => set('tag', e.target.value)}
+              placeholder="e.g. Under Registration"
+            />
+          </div>
+          </div>
+        </Card>
+
+        {/* Logo */}
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-emerald-500 to-emerald-400" />
+          <div className="p-6 space-y-4">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+              <Image className="w-4 h-4 text-emerald-600" />
+            </div>
+            <h2 className="font-semibold">Logo & Display</h2>
+          </div>
+          <div className="space-y-2">
             <Label htmlFor="logo">Logo URL</Label>
             <Input
               id="logo"
@@ -242,17 +273,7 @@ export function PartnerForm({ initialData, slug }: Props) {
               </div>
             )}
           </div>
-
           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="tag">Tag (optional)</Label>
-              <Input
-                id="tag"
-                value={form.tag}
-                onChange={(e) => set('tag', e.target.value)}
-                placeholder="e.g. Under Registration"
-              />
-            </div>
             <div className="space-y-2">
               <Label htmlFor="order">Display Order</Label>
               <Input
@@ -263,36 +284,52 @@ export function PartnerForm({ initialData, slug }: Props) {
               />
             </div>
           </div>
+          </div>
         </Card>
 
         {/* Toggles */}
-        <Card className="p-6 space-y-4">
-          <h2 className="text-lg font-semibold">Display Settings</h2>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium">Invert Logo Color</p>
-              <p className="text-sm text-muted-foreground">Inverts logo colors on display</p>
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-rose-500 to-rose-400" />
+          <div className="p-6 space-y-4">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center">
+              <Settings2 className="w-4 h-4 text-rose-600" />
             </div>
-            <Switch
-              checked={form.invertColor}
-              onCheckedChange={(v) => set('invertColor', v)}
-            />
+            <h2 className="font-semibold">Settings</h2>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between py-2 border-b border-border/40">
             <div>
-              <p className="font-medium">Active</p>
-              <p className="text-sm text-muted-foreground">Show this partner on the website</p>
+              <p className="text-sm font-medium">Active</p>
+              <p className="text-xs text-muted-foreground">Show this partner on the website</p>
             </div>
             <Switch
               checked={form.isActive}
               onCheckedChange={(v) => set('isActive', v)}
             />
           </div>
+          <div className="flex items-center justify-between py-2">
+            <div>
+              <p className="text-sm font-medium">Invert Logo Color</p>
+              <p className="text-xs text-muted-foreground">Inverts logo colors on display</p>
+            </div>
+            <Switch
+              checked={form.invertColor}
+              onCheckedChange={(v) => set('invertColor', v)}
+            />
+          </div>
+          </div>
         </Card>
 
         {/* Categories */}
-        <Card className="p-6 space-y-4">
-          <h2 className="text-lg font-semibold">Categories</h2>
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-violet-500 to-violet-400" />
+          <div className="p-6 space-y-4">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center">
+              <FolderOpen className="w-4 h-4 text-violet-600" />
+            </div>
+            <h2 className="font-semibold">Categories</h2>
+          </div>
           <Select
             onValueChange={(value) => {
               if (!form.categories.includes(value)) {
@@ -330,11 +367,19 @@ export function PartnerForm({ initialData, slug }: Props) {
               );
             })}
           </div>
+          </div>
         </Card>
 
         {/* Subcategories */}
-        <Card className="p-6 space-y-4">
-          <h2 className="text-lg font-semibold">Subcategories</h2>
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-cyan-500 to-cyan-400" />
+          <div className="p-6 space-y-4">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+              <Layers className="w-4 h-4 text-cyan-600" />
+            </div>
+            <h2 className="font-semibold">Subcategories</h2>
+          </div>
           {form.categories.length === 0 && (
             <p className="text-sm text-muted-foreground">Select at least one category first.</p>
           )}
@@ -381,11 +426,19 @@ export function PartnerForm({ initialData, slug }: Props) {
               );
             })}
           </div>
+          </div>
         </Card>
 
         {/* Products */}
-        <Card className="p-6 space-y-4">
-          <h2 className="text-lg font-semibold">Product Types</h2>
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-amber-500 to-amber-400" />
+          <div className="p-6 space-y-4">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
+              <Package className="w-4 h-4 text-amber-600" />
+            </div>
+            <h2 className="font-semibold">Product Types</h2>
+          </div>
           <p className="text-sm text-muted-foreground">
             High-level product categories this partner offers.
           </p>
@@ -422,6 +475,7 @@ export function PartnerForm({ initialData, slug }: Props) {
                 </button>
               </Badge>
             ))}
+          </div>
           </div>
         </Card>
 
