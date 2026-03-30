@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
       
       const partner = await Partner.create(data);
       
-      revalidateTag('partners');
+      revalidateTag('partners', 'hours');
       return apiResponse({ partner }, 201);
     } catch (error: any) {
       console.error('Create partner error:', error);

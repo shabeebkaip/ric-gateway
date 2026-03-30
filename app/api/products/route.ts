@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
       
       const product = await Product.create(data);
       
-      revalidateTag('products');
+      revalidateTag('products', 'hours');
       return apiResponse({ product }, 201);
     } catch (error: any) {
       console.error('Create product error:', error);

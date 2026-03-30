@@ -73,7 +73,7 @@ export async function DELETE(
   _request: NextRequest,
   { params }: { params: Promise<{ key: string }> }
 ) {
-  return withAuth(request, async () => {
+  return withAuth(_request, async () => {
     try {
       await connectDB();
       const { key } = await params;
