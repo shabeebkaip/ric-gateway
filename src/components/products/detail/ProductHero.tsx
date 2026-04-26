@@ -11,6 +11,7 @@ import {
   Home,
   Maximize2,
   ArrowLeft,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -276,7 +277,21 @@ export function ProductHero({ product, category }: ProductHeroProps) {
               >
                 <a href="tel:+966114654113">
                   <Stethoscope className="w-4 h-4 mr-2" />
-                  Call Us: +966 11 465 4113
+                  Call Us: +966 11 465 4113 (Ext. 106)
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-full px-8 py-6 border-2 border-slate-200 hover:border-slate-300 transition-all duration-300"
+              >
+                <a
+                  href="https://www.google.com/maps/place/RIYADH+INTERNATIONAL+CORPORATION/@24.7166169,46.680542,17z/data=!3m1!4b1!4m6!3m5!1s0x3e2f03048c8ab6cd:0x37200af5e3ccaffc!8m2!3d24.7166169!4d46.6831169!16s%2Fg%2F1tj6fgpd?entry=ttu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin className="w-4 h-4 mr-2" />
+                  Visit Office
                 </a>
               </Button>
             </div>

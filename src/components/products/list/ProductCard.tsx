@@ -13,6 +13,7 @@ import {
   MessageCircle,
   Star,
   CheckCircle2,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -174,7 +175,7 @@ export function ProductCard({ product, category, index }: ProductCardProps) {
             >
               <a href="tel:+966114654113">
                 <Phone className="w-3.5 h-3.5 mr-1.5" />
-                <span className="hidden lg:inline">+966 11 465 4113</span>
+                <span className="hidden lg:inline">+966 11 465 4113 (Ext. 106)</span>
                 <span className="lg:hidden">Call Us</span>
               </a>
             </Button>
@@ -193,6 +194,24 @@ export function ProductCard({ product, category, index }: ProductCardProps) {
               >
                 <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
                 WhatsApp
+              </a>
+            </Button>
+            <span className="text-slate-300 hidden sm:inline">•</span>
+            <Button
+              asChild
+              size="sm"
+              variant="ghost"
+              className="h-9 px-3 text-xs font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+            >
+              <a
+                href="https://www.google.com/maps/place/RIYADH+INTERNATIONAL+CORPORATION/@24.7166169,46.680542,17z/data=!3m1!4b1!4m6!3m5!1s0x3e2f03048c8ab6cd:0x37200af5e3ccaffc!8m2!3d24.7166169!4d46.6831169!16s%2Fg%2F1tj6fgpd?entry=ttu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MapPin className="w-3.5 h-3.5 mr-1.5" />
+                <span className="hidden lg:inline">Visit Office</span>
+                <span className="lg:hidden">Visit</span>
               </a>
             </Button>
           </div>

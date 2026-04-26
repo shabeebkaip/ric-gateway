@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function ServiceCTA() {
@@ -42,7 +42,22 @@ export function ServiceCTA() {
             >
               <a href="tel:+966114654113">
                 <Phone className="w-5 h-5 mr-2" />
-                +966 11 465 4113
+                +966 11 465 4113 (Ext. 106)
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="rounded-full px-10 py-6 border-2 border-white text-white hover:bg-white/10 hover:border-white/90 transition-all duration-300 text-base font-medium backdrop-blur-sm"
+            >
+              <a
+                href="https://www.google.com/maps/place/RIYADH+INTERNATIONAL+CORPORATION/@24.7166169,46.680542,17z/data=!3m1!4b1!4m6!3m5!1s0x3e2f03048c8ab6cd:0x37200af5e3ccaffc!8m2!3d24.7166169!4d46.6831169!16s%2Fg%2F1tj6fgpd?entry=ttu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MapPin className="w-5 h-5 mr-2" />
+                Visit Office
               </a>
             </Button>
           </div>
