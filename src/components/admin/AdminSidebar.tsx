@@ -12,7 +12,8 @@ import {
   Inbox,
   LogOut,
   Menu,
-  X
+  X,
+  BookOpen,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -23,6 +24,7 @@ const navigation = [
   { name: 'Products', href: '/admin/products', icon: Package },
   { name: 'Categories', href: '/admin/categories', icon: FolderOpen },
   { name: 'Partners', href: '/admin/partners', icon: Users },
+  { name: 'Blog', href: '/admin/blog', icon: BookOpen },
   { name: 'Content', href: '/admin/content', icon: FileText },
   { name: 'Enquiries', href: '/admin/enquiries', icon: Inbox },
 ];

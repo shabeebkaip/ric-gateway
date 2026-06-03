@@ -61,6 +61,44 @@ export const getCachedHomeContent = unstable_cache(
   { tags: ['home-content'], revalidate: false }
 );
 
+// ─── Blog Posts ──────────────────────────────────────────────────────────────
+
+import BlogPostModel from './models/BlogPost';
+
+export const getCachedBlogPosts = unstable_cache(
+  async () => {
+    await connectDB();
+    const docs = await BlogPostModel.find({ isPublished: true })
+      .sort({ order: 1, publishedAt: -1 })
+      .lean();
+    return toPlain(docs) as any[];
+  },
+  ['db-blog-posts'],
+  { tags: ['blog-posts'], revalidate: false }
+);
+
+export const getCachedBlogPost = unstable_cache(
+  async (slug: string) => {
+    await connectDB();
+    const doc = await BlogPostModel.findOne({ slug, isPublished: true }).lean();
+    return doc ? (toPlain(doc) as any) : null;
+  },
+  ['db-blog-post'],
+  { tags: ['blog-posts'], revalidate: false }
+);
+
+export const getCachedFeaturedBlogPost = unstable_cache(
+  async () => {
+    await connectDB();
+    const doc = await BlogPostModel.findOne({ isPublished: true, isFeatured: true })
+      .sort({ publishedAt: -1 })
+      .lean();
+    return doc ? (toPlain(doc) as any) : null;
+  },
+  ['db-blog-featured'],
+  { tags: ['blog-posts'], revalidate: false }
+);
+
 // ─── Products ─────────────────────────────────────────────────────────────────
 
 /** Maps a DB Product lean doc to the frontend Product interface shape */

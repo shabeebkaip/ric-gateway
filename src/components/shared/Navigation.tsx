@@ -25,6 +25,7 @@ const navItems = [
   { label: "About Us", href: "/about" },
   { label: "Products", href: "#", hasDropdown: true },
   { label: "Services", href: "/services" },
+  { label: "News & Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
