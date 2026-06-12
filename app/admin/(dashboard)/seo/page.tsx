@@ -639,8 +639,8 @@ export default function SeoPage() {
                 </div>
                 {/* Local Business */}
                 <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
-                  <button onClick={() => toggleSection('lb')} className="w-full flex items-center justify-between px-5 py-4 hover:bg-slate-50 transition-colors">
-                    <div className="flex items-center gap-3">
+                  <div className="w-full flex items-center justify-between px-5 py-4 hover:bg-slate-50 transition-colors cursor-pointer">
+                    <div className="flex items-center gap-3 flex-1" onClick={() => toggleSection('lb')}>
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-emerald-50 shrink-0"><MapPin size={14} className="text-emerald-600" /></div>
                       <div className="text-left">
                         <p className="text-sm font-semibold text-slate-900">Local Business Schema</p>
@@ -648,11 +648,13 @@ export default function SeoPage() {
                       </div>
                       <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Recommended</span>
                     </div>
-                    <div className="flex items-center gap-3" onClick={(e) => e.stopPropagation()}>
+                    <div className="flex items-center gap-3">
                       <Toggle checked={seo.schema.localBusiness.enabled} onChange={(v) => patchSeo(['schema', 'localBusiness', 'enabled'], v)} label="" />
-                      {expandedSections.lb ? <ChevronDown size={14} className="text-slate-400" /> : <ChevronRight size={14} className="text-slate-400" />}
+                      <div onClick={() => toggleSection('lb')}>
+                        {expandedSections.lb ? <ChevronDown size={14} className="text-slate-400" /> : <ChevronRight size={14} className="text-slate-400" />}
+                      </div>
                     </div>
-                  </button>
+                  </div>
                   {expandedSections.lb && (
                     <div className="px-5 pb-5 space-y-4 border-t border-slate-100 pt-5">
                       <div className="grid grid-cols-2 gap-4">
