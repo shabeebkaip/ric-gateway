@@ -1,21 +1,14 @@
 import { Star } from 'lucide-react';
 import type { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo-metadata';
 import { getCachedBlogPosts, getCachedFeaturedBlogPost } from '@/lib/db/pageData';
 import { BlogHero } from '@/components/blog/BlogHero';
 import { BlogCardFeatured } from '@/components/blog/BlogCardFeatured';
 import { BlogGrid } from '@/components/blog/BlogGrid';
 
-export const metadata: Metadata = {
-  title: 'News & Blog | RIC Medical',
-  description:
-    "Latest news, expert articles, product spotlights, and clinical education resources from RIC – Saudi Arabia's trusted medical equipment provider since 1985.",
-  openGraph: {
-    title: 'News & Blog | RIC Medical',
-    description:
-      "Latest news, expert articles, product spotlights, and clinical education resources from RIC – Saudi Arabia's trusted medical equipment provider since 1985.",
-    type: 'website',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('blog');
+}
 
 export const revalidate = 3600;
 

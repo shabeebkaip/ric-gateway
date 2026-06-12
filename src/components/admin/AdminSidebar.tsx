@@ -14,6 +14,7 @@ import {
   Menu,
   X,
   BookOpen,
+  Search,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -26,6 +27,7 @@ const navigation = [
   { name: 'Partners', href: '/admin/partners', icon: Users },
   { name: 'Blog', href: '/admin/blog', icon: BookOpen },
   { name: 'Content', href: '/admin/content', icon: FileText },
+  { name: 'SEO', href: '/admin/seo', icon: Search },
   { name: 'Enquiries', href: '/admin/enquiries', icon: Inbox },
 ];
 

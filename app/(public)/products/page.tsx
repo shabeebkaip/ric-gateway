@@ -1,12 +1,11 @@
 import { AllProductsContent } from "@/components/products/AllProductsContent";
 import { getCachedProducts, getCachedPartners, getCachedHomeContent } from "@/lib/db/pageData";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo-metadata";
 
-export const metadata: Metadata = {
-  title: "All Products | RIC Medical Solutions",
-  description:
-    "Browse our complete range of medical equipment and healthcare solutions from world-leading manufacturers including BASDA, Combat Medical, Potent Medical, and more.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('products');
+}
 
 export default async function AllProductsPage() {
   const [rawProducts, rawPartners, homeContent] = await Promise.all([

@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getCachedBlogPost, getCachedBlogPosts } from '@/lib/db/pageData';
+import { readSeo, defaultSeo } from '@/lib/seo';
 import { processContentForTOC } from '@/lib/blogUtils';
 import { ArticleProgress } from '@/components/blog/detail/ArticleProgress';
 import { ArticleHeader } from '@/components/blog/detail/ArticleHeader';
@@ -20,22 +21,37 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getCachedBlogPost(slug);
+  const [post, seo] = await Promise.all([
+    getCachedBlogPost(slug),
+    readSeo().catch(() => defaultSeo),
+  ]);
   if (!post) return { title: 'Article Not Found | RIC Medical' };
 
+  const rawTitle = post.metaTitle || post.title;
+  const title = seo.global.titleTemplate?.includes('%s')
+    ? seo.global.titleTemplate.replace('%s', rawTitle)
+    : rawTitle;
+  const description = post.metaDescription || post.excerpt;
+  const ogImage = post.coverImage || seo.global.defaultOgImage || undefined;
+
   return {
-    title: post.metaTitle ?? `${post.title} | RIC Medical`,
-    description: post.metaDescription ?? post.excerpt,
+    title,
+    description,
     alternates: { canonical: `${SITE_URL}/blog/${post.slug}` },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: rawTitle,
+      description,
       type: 'article',
       publishedTime: new Date(post.publishedAt).toISOString(),
       modifiedTime: new Date(post.updatedAt).toISOString(),
-      images: post.coverImage
-        ? [{ url: post.coverImage, width: 1200, height: 630, alt: post.title }]
-        : [],
+      images: ogImage ? [{ url: ogImage, width: 1200, height: 630, alt: rawTitle }] : [],
+    },
+    twitter: {
+      card: seo.global.twitterCardType || 'summary_large_image',
+      title: rawTitle,
+      description,
+      ...(seo.global.twitterHandle && { site: `@${seo.global.twitterHandle}` }),
+      ...(ogImage && { images: [ogImage] }),
     },
   };
 }

@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo-metadata';
 import { HeroSection } from "@/components/home/HeroSection";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('home');
+}
 import { PartnersSection } from "@/components/home/PartnersSection";
 import { ServicesSection } from "@/components/home/ProductCategoriesSection";
 import { AboutSection } from "@/components/home/AboutSection";

@@ -1,28 +1,61 @@
-import { MetadataRoute } from 'next';
-import { getCachedBlogPosts } from '@/lib/db/pageData';
+import type { MetadataRoute } from 'next';
+import { getCachedBlogPosts, getCachedCategories, getCachedProducts } from '@/lib/db/pageData';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ricmedical.com.sa';
+export const dynamic = 'force-dynamic';
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ricmedical.com.sa';
+
+const staticRoutes = [
+  { path: '/',        priority: 1.0, changeFreq: 'weekly'  as const },
+  { path: '/about',   priority: 0.8, changeFreq: 'monthly' as const },
+  { path: '/services',priority: 0.8, changeFreq: 'monthly' as const },
+  { path: '/products',priority: 0.9, changeFreq: 'weekly'  as const },
+  { path: '/contact', priority: 0.7, changeFreq: 'monthly' as const },
+  { path: '/blog',    priority: 0.9, changeFreq: 'daily'   as const },
+];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticRoutes: MetadataRoute.Sitemap = [
-    { url: SITE_URL, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
-    { url: `${SITE_URL}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${SITE_URL}/services`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${SITE_URL}/products`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${SITE_URL}/contact`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${SITE_URL}/blog`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
-  ];
+  const now = new Date();
 
+  const statics: MetadataRoute.Sitemap = staticRoutes.map((r) => ({
+    url: `${BASE_URL}${r.path}`,
+    lastModified: now,
+    changeFrequency: r.changeFreq,
+    priority: r.priority,
+  }));
+
+  let categoryEntries: MetadataRoute.Sitemap = [];
+  try {
+    const categories = await getCachedCategories();
+    categoryEntries = (categories as any[]).map((c) => ({
+      url: `${BASE_URL}/products/${c.slug}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    }));
+  } catch { /* skip */ }
+
+  let productEntries: MetadataRoute.Sitemap = [];
+  try {
+    const products = await getCachedProducts();
+    productEntries = (products as any[]).map((p) => ({
+      url: `${BASE_URL}/products/${p.category}/${p.id}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    }));
+  } catch { /* skip */ }
+
+  let blogEntries: MetadataRoute.Sitemap = [];
   try {
     const posts = await getCachedBlogPosts();
-    const blogRoutes: MetadataRoute.Sitemap = (posts as any[]).map((post) => ({
-      url: `${SITE_URL}/blog/${post.slug}`,
-      lastModified: new Date(post.updatedAt),
+    blogEntries = (posts as any[]).map((p) => ({
+      url: `${BASE_URL}/blog/${p.slug}`,
+      lastModified: p.updatedAt ? new Date(p.updatedAt) : now,
       changeFrequency: 'weekly' as const,
-      priority: post.isFeatured ? 0.9 : 0.7,
+      priority: p.isFeatured ? 0.9 : 0.7,
     }));
-    return [...staticRoutes, ...blogRoutes];
-  } catch {
-    return staticRoutes;
-  }
+  } catch { /* skip */ }
+
+  return [...statics, ...categoryEntries, ...productEntries, ...blogEntries];
 }
