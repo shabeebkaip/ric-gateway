@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Send, MessageCircle, Clock, Printer } from "lucide-react";
+import { Phone, Mail, MapPin, Send, MessageCircle, Clock, Printer, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,8 +9,13 @@ import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import type { ContactCard } from "@/lib/getContactInfo";
 
-export const CTASection = () => {
+const ICON_MAP: Record<string, LucideIcon> = {
+  MapPin, Phone, Printer, Mail, Clock,
+};
+
+export const CTASection = ({ contactCards }: { contactCards: ContactCard[] }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -176,7 +181,7 @@ export const CTASection = () => {
             </Card>
           </motion.div>
 
-          {/* Contact Information */}
+          {/* Contact Information — driven by CMS */}
           <motion.div
             className="space-y-6"
             initial={{ opacity: 0, x: 30 }}
@@ -184,82 +189,38 @@ export const CTASection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <a
-              href="https://www.google.com/maps/place/PM8M%2BJ6X,+Oruba+Road,+As+Sulimaniyah,+Riyadh+11411,+Saudi+Arabia"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
-                    <MapPin className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
+            {contactCards.map((card) => {
+              const Icon = ICON_MAP[card.icon] ?? MapPin;
+              const inner = (
+                <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
+                      <Icon className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg mb-2">{card.title}</h3>
+                      {card.details.map((detail, i) => (
+                        <p key={i} className="text-sm text-muted-foreground">{detail}</p>
+                      ))}
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">Visit Us</h3>
-                    <p className="text-sm text-muted-foreground">PM8M+J6X, Oruba Road, As Sulimaniyah, Riyadh 11411, Saudi Arabia</p>
-                  </div>
-                </div>
-              </Card>
-            </a>
+                </Card>
+              );
 
-            <a href="tel:+966509698043">
-              <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
-                    <Phone className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">Call Us</h3>
-                    <p className="text-muted-foreground hover:text-primary transition-colors">
-                      +966 50 969 8043
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </a>
-
-            <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
-                  <Printer className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Fax</h3>
-                  <p className="text-muted-foreground">
-                    +966 11 463 0135
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <a href="mailto:ricmede@ricmedical.com.sa">
-              <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
-                    <Mail className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">Email Us</h3>
-                    <p className="text-muted-foreground hover:text-primary transition-colors break-all">
-                      ricmede@ricmedical.com.sa
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </a>
-
-            <Card className="p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/30 hover:scale-105 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:from-gold/20 group-hover:to-primary/20 transition-all duration-300">
-                  <Clock className="w-6 h-6 text-primary group-hover:text-gold transition-colors duration-300" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Working Hours</h3>
-                  <p className="text-sm text-muted-foreground">Sunday - Thursday</p>
-                  <p className="text-sm text-muted-foreground">8:00 AM - 5:00 PM</p>
-                </div>
-              </div>
-            </Card>
+              if (card.link) {
+                return (
+                  <a
+                    key={card.id}
+                    href={card.link}
+                    target={card.icon === 'MapPin' ? '_blank' : undefined}
+                    rel={card.icon === 'MapPin' ? 'noopener noreferrer' : undefined}
+                  >
+                    {inner}
+                  </a>
+                );
+              }
+              return <div key={card.id}>{inner}</div>;
+            })}
           </motion.div>
         </div>
       </div>

@@ -1,23 +1,25 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { MapPin, Phone, PhoneCall, Mail, Clock, Send, LucideIcon, Printer } from "lucide-react";
+import { MapPin, Phone, PhoneCall, Mail, Clock, Send, Printer, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import type { ContactCard } from "@/lib/getContactInfo";
 
-interface ContactInfoItem {
-  icon: LucideIcon;
-  title: string;
-  details: string[];
-  link?: string;
-  color: string;
-}
+const ICON_MAP: Record<string, LucideIcon> = {
+  MapPin,
+  Phone,
+  PhoneCall,
+  Printer,
+  Mail,
+  Clock,
+};
 
-export const ContactPageContent = () => {
+export const ContactPageContent = ({ contactCards }: { contactCards: ContactCard[] }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -66,43 +68,8 @@ export const ContactPageContent = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const contactInfo: ContactInfoItem[] = [
-    {
-      icon: MapPin,
-      title: "Visit Us",
-      details: [
-        "PM8M+J6X, Oruba Road, As Sulimaniyah, Riyadh 11411, Saudi Arabia"
-      ],
-      link: "https://www.google.com/maps/place/RIYADH+INTERNATIONAL+CORPORATION/@24.7166169,46.680542,17z/data=!3m1!4b1!4m6!3m5!1s0x3e2f03048c8ab6cd:0x37200af5e3ccaffc!8m2!3d24.7166169!4d46.6831169!16s%2Fg%2F1tj6fgpd?entry=ttu",
-      color: "text-primary",
-    },
-    {
-      icon: Phone,
-      title: "Call Us",
-      details: ["+966 50 969 8043", "+966 11 465 4113 (Ext. 106)"],
-      link: "tel:+966509698043",
-      color: "text-gold",
-    },
-    {
-      icon: Printer,
-      title: "Fax",
-      details: ["+966 11 463 0135"],
-      color: "text-accent",
-    },
-    {
-      icon: Mail,
-      title: "Email Us",
-      details: ["ricmede@ricmedical.com.sa"],
-      link: "mailto:ricmede@ricmedical.com.sa",
-      color: "text-primary",
-    },
-    {
-      icon: Clock,
-      title: "Working Hours",
-      details: ["Sunday - Thursday", "8:00 AM - 5:00 PM"],
-      color: "text-gold",
-    },
-  ];
+  const addressCard = contactCards.find((c) => c.icon === 'MapPin');
+  const phoneCard = contactCards.find((c) => c.icon === 'Phone');
 
   return (
     <div className="min-h-screen bg-background">
@@ -133,18 +100,18 @@ export const ContactPageContent = () => {
       <section className="py-12 bg-background">
         <div className="container-padding container mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            {contactInfo.map((info, index) => {
-              const IconComponent = info.icon;
-              const CardWrapper = info.link ? 'a' : 'div';
-              const cardProps = info.link ? {
-                href: info.link,
-                target: info.icon === MapPin ? "_blank" : undefined,
-                rel: info.icon === MapPin ? "noopener noreferrer" : undefined,
+            {contactCards.map((card, index) => {
+              const IconComponent = ICON_MAP[card.icon] ?? MapPin;
+              const CardWrapper = card.link ? 'a' : 'div';
+              const cardProps = card.link ? {
+                href: card.link,
+                target: card.icon === 'MapPin' ? "_blank" : undefined,
+                rel: card.icon === 'MapPin' ? "noopener noreferrer" : undefined,
               } : {};
 
               return (
                 <motion.div
-                  key={info.title}
+                  key={card.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -152,14 +119,14 @@ export const ContactPageContent = () => {
                 >
                   <CardWrapper
                     {...cardProps}
-                    className={`glass-card rounded-2xl p-6 hover:shadow-card transition-all duration-300 border border-border/50 hover:border-gold/30 block ${info.link ? 'cursor-pointer' : ''}`}
+                    className={`glass-card rounded-2xl p-6 hover:shadow-card transition-all duration-300 border border-border/50 hover:border-gold/30 block ${card.link ? 'cursor-pointer' : ''}`}
                   >
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center mb-4`}>
-                      <IconComponent className={`w-6 h-6 ${info.color}`} />
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold/10 to-primary/10 flex items-center justify-center mb-4">
+                      <IconComponent className={`w-6 h-6 ${card.color}`} />
                     </div>
-                    <h3 className="font-semibold text-foreground mb-3">{info.title}</h3>
+                    <h3 className="font-semibold text-foreground mb-3">{card.title}</h3>
                     <div className="space-y-1">
-                      {info.details.map((detail, i) => (
+                      {card.details.map((detail, i) => (
                         <p key={i} className="text-sm text-muted-foreground">
                           {detail}
                         </p>
@@ -309,28 +276,33 @@ export const ContactPageContent = () => {
                 </p>
                 
                 <div className="space-y-4 mb-6">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-foreground">Address</p>
-                      <p className="text-sm text-muted-foreground">
-                        PM8M+J6X, Oruba Road, As Sulimaniyah, Riyadh 11411, Saudi Arabia
-                      </p>
+                  {addressCard && (
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                      <div>
+                        <p className="font-semibold text-foreground">{addressCard.title}</p>
+                        {addressCard.details.map((d, i) => (
+                          <p key={i} className="text-sm text-muted-foreground">{d}</p>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <Phone className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-foreground">Phone</p>
-                      <a href="tel:+966509698043" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
-                        +966 50 969 8043
-                      </a>
-                      <a href="tel:+966114654113" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
-                        +966 11 465 4113 <span className="text-xs opacity-70">(Ext. 106)</span>
-                      </a>
+                  )}
+
+                  {phoneCard && (
+                    <div className="flex items-start gap-3">
+                      <Phone className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
+                      <div>
+                        <p className="font-semibold text-foreground">{phoneCard.title}</p>
+                        {phoneCard.details.map((d, i) => (
+                          phoneCard.link ? (
+                            <a key={i} href={phoneCard.link} className="text-sm text-muted-foreground hover:text-primary transition-colors block">{d}</a>
+                          ) : (
+                            <p key={i} className="text-sm text-muted-foreground">{d}</p>
+                          )
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
 

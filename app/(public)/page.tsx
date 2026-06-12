@@ -9,13 +9,14 @@ import {
   getCachedCategories,
   getCachedHomeContent,
 } from "@/lib/db/pageData";
+import { getContactInfo } from "@/lib/getContactInfo";
 
 export default async function Home() {
-  // All three queries run in parallel — DB is hit only on cache miss.
-  const [partners, categories, homeContent] = await Promise.all([
+  const [partners, categories, homeContent, contactCards] = await Promise.all([
     getCachedPartners(),
     getCachedCategories(),
     getCachedHomeContent(),
+    getContactInfo(),
   ]);
 
   return (
@@ -29,7 +30,7 @@ export default async function Home() {
         <ServicesSection categories={categories as any} partners={partners as any} />
         <AboutSection content={homeContent.about as any} />
         <VisionMissionSection content={homeContent["vision-mission"] as any} />
-        <CTASection />
+        <CTASection contactCards={contactCards} />
       </main>
     </div>
   );

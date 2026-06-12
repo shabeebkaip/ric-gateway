@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ContactPageContent } from '@/components/contact/ContactPageContent';
+import { getContactInfo } from '@/lib/getContactInfo';
 
 export const metadata: Metadata = {
   title: 'Contact Us - RIC Medical Solutions | Get in Touch',
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   keywords: 'contact RIC, medical equipment inquiry, Riyadh healthcare, RIC location, medical solutions contact',
 };
 
-export default function ContactPage() {
-  return <ContactPageContent />;
+export default async function ContactPage() {
+  const contactCards = await getContactInfo();
+  return <ContactPageContent contactCards={contactCards} />;
 }
