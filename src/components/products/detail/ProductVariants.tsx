@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import type { ProductVariantsProps } from "@/types";
 
 export function ProductVariants({ variants }: ProductVariantsProps) {
@@ -36,10 +37,12 @@ export function ProductVariants({ variants }: ProductVariantsProps) {
                 >
                   {variant.image && (
                     <div className="aspect-square bg-slate-50 p-4">
-                      <img
+                      <Image
                         src={variant.image}
                         alt={variant.tip_type || `Configuration ${index + 1}`}
-                        className="w-full h-full object-contain"
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 50vw, 25vw"
                       />
                     </div>
                   )}

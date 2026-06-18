@@ -26,6 +26,11 @@ export interface Product {
   combinations?: any;
   show_image_main?: boolean;
   accessories_included?: string[];
+  imageTitle?: string;
+  imageAlt?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  focusKeyword?: string;
 }
 
 // Category Types

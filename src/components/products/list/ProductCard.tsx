@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Package,
@@ -50,10 +51,12 @@ export function ProductCard({ product, category, index }: ProductCardProps) {
 
               {product.images && product.images.length > 0 ? (
                 <>
-                  <img
+                  <Image
                     src={product.images[0]}
-                    alt={product.name}
-                    className="relative w-full h-full object-contain p-6 lg:p-8 group-hover:scale-110 transition-transform duration-700"
+                    alt={product.imageAlt || product.name}
+                    fill
+                    className="object-contain p-6 lg:p-8 group-hover:scale-110 transition-transform duration-700"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                   />
                   {/* Hover overlay with gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

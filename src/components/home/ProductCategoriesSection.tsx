@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Microscope,
   Stethoscope,
@@ -144,10 +145,12 @@ export const ProductCategoriesSection = ({ categories, partners }: ProductCatego
                           className="w-8 h-8 rounded-full bg-background border-2 border-border flex items-center justify-center overflow-hidden"
                           title={partner.name}
                         >
-                          <img
+                          <Image
                             src={partner.logo}
                             alt={partner.name}
-                            className="w-full h-full object-contain p-1"
+                            fill
+                            className="object-contain p-1"
+                            sizes="32px"
                           />
                         </div>
                       ))}

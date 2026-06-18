@@ -24,6 +24,9 @@ export interface IBlogPost extends Document {
   readTime: number;
   metaTitle?: string;
   metaDescription?: string;
+  focusKeyword?: string;
+  coverImageTitle?: string;
+  coverImageAlt?: string;
   relatedProducts: string[];
   relatedPosts: string[];
   views: number;
@@ -67,6 +70,9 @@ const BlogPostSchema = new Schema<IBlogPost>(
     readTime: { type: Number, default: 1, min: 1 },
     metaTitle: { type: String, trim: true },
     metaDescription: { type: String, trim: true },
+    focusKeyword: { type: String, trim: true },
+    coverImageTitle: { type: String, trim: true },
+    coverImageAlt: { type: String, trim: true },
     relatedProducts: [{ type: String }],
     relatedPosts: [{ type: String }],
     views: { type: Number, default: 0, min: 0 },

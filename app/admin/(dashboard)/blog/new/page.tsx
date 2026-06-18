@@ -38,6 +38,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { BLOG_CATEGORIES, BLOG_CATEGORY_LABELS, generateSlug } from '@/lib/blogUtils';
+import { SeoScorePanel } from '@/components/admin/SeoScorePanel';
 
 interface FormData {
   title: string;
@@ -52,6 +53,9 @@ interface FormData {
   isPublished: boolean;
   metaTitle: string;
   metaDescription: string;
+  focusKeyword: string;
+  coverImageTitle: string;
+  coverImageAlt: string;
   order: number;
 }
 
@@ -73,6 +77,9 @@ export default function NewBlogPostPage() {
     isPublished: false,
     metaTitle: '',
     metaDescription: '',
+    focusKeyword: '',
+    coverImageTitle: '',
+    coverImageAlt: '',
     order: 0,
   });
 
@@ -277,6 +284,35 @@ export default function NewBlogPostPage() {
               maxFiles={1}
               folder="blog"
             />
+            {formData.coverImage && (
+              <div className="mt-4 space-y-4">
+                <div>
+                  <Label className="text-xs font-medium mb-1.5 block">
+                    Alt Text <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    value={formData.coverImageAlt}
+                    onChange={(e) => handleChange('coverImageAlt', e.target.value)}
+                    placeholder="Describe the image for screen readers and search engines…"
+                    className={`h-10 ${formData.coverImage && !formData.coverImageAlt ? 'border-amber-400 focus-visible:ring-amber-400' : ''}`}
+                  />
+                  {formData.coverImage && !formData.coverImageAlt && (
+                    <p className="text-xs text-amber-600 mt-1">Alt text is required for image SEO.</p>
+                  )}
+                </div>
+                <div>
+                  <Label className="text-xs font-medium mb-1.5 block">
+                    Image Title Tag <span className="text-muted-foreground font-normal">(optional — shown on hover)</span>
+                  </Label>
+                  <Input
+                    value={formData.coverImageTitle}
+                    onChange={(e) => handleChange('coverImageTitle', e.target.value)}
+                    placeholder="Descriptive title for the cover image…"
+                    className="h-10"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </Card>
 
@@ -408,9 +444,30 @@ export default function NewBlogPostPage() {
                   className="resize-none"
                 />
               </div>
+              <div>
+                <Label className="text-xs font-medium mb-1.5 block">
+                  Focus Keyword <span className="text-muted-foreground font-normal">(optional)</span>
+                </Label>
+                <Input
+                  value={formData.focusKeyword}
+                  onChange={(e) => handleChange('focusKeyword', e.target.value)}
+                  placeholder="e.g. medical imaging equipment"
+                  className="h-10"
+                />
+              </div>
             </div>
           </div>
         </Card>
+
+        <SeoScorePanel
+          title={formData.title}
+          slug={formData.slug}
+          content={formData.content}
+          metaTitle={formData.metaTitle}
+          metaDescription={formData.metaDescription}
+          focusKeyword={formData.focusKeyword}
+          coverImageAlt={formData.coverImageAlt}
+        />
 
         {/* Settings */}
         <Card className="overflow-hidden border-border/60">

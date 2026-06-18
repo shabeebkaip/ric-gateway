@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface ProductImageGalleryProps {
   images: string[];
@@ -25,9 +26,12 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="w-full"
             >
-              <img
+              <Image
                 src={image}
                 alt={`${productName} - Image ${index + 1}`}
+                width={0}
+                height={0}
+                sizes="100vw"
                 className="w-full h-auto object-contain"
               />
             </motion.div>

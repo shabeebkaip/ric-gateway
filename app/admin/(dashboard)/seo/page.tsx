@@ -16,6 +16,8 @@ interface SEOPageMeta {
   ogImage: string;
   noindex: boolean;
   canonical: string;
+  focusKeyword: string;
+  sitemapExcluded: boolean;
 }
 
 interface SEORedirect {
@@ -77,12 +79,12 @@ const defaultSeo: CMSSeo = {
     twitterCardType: 'summary_large_image',
   },
   pages: {
-    home:     { title: '', description: '', ogImage: '', noindex: false, canonical: '' },
-    about:    { title: '', description: '', ogImage: '', noindex: false, canonical: '' },
-    services: { title: '', description: '', ogImage: '', noindex: false, canonical: '' },
-    products: { title: '', description: '', ogImage: '', noindex: false, canonical: '' },
-    contact:  { title: '', description: '', ogImage: '', noindex: false, canonical: '' },
-    blog:     { title: '', description: '', ogImage: '', noindex: false, canonical: '' },
+    home:     { title: '', description: '', ogImage: '', noindex: false, canonical: '', focusKeyword: '', sitemapExcluded: false },
+    about:    { title: '', description: '', ogImage: '', noindex: false, canonical: '', focusKeyword: '', sitemapExcluded: false },
+    services: { title: '', description: '', ogImage: '', noindex: false, canonical: '', focusKeyword: '', sitemapExcluded: false },
+    products: { title: '', description: '', ogImage: '', noindex: false, canonical: '', focusKeyword: '', sitemapExcluded: false },
+    contact:  { title: '', description: '', ogImage: '', noindex: false, canonical: '', focusKeyword: '', sitemapExcluded: false },
+    blog:     { title: '', description: '', ogImage: '', noindex: false, canonical: '', focusKeyword: '', sitemapExcluded: false },
   },
   schema: {
     organization: {
@@ -559,14 +561,24 @@ export default function SeoPage() {
                         <TextArea value={seo.pages[activePage].description} onChange={(v) => patchPage(activePage, { description: v })} placeholder="Write a compelling description to improve click-through rate…" maxLength={160} rows={3} />
                       </div>
                       <div>
+                        <FieldLabel text="Focus Keyword" hint="The primary keyword this page should rank for. Used as a reference — not sent to Google." />
+                        <TextInput value={seo.pages[activePage].focusKeyword ?? ''} onChange={(v) => patchPage(activePage, { focusKeyword: v })} placeholder="e.g. medical equipment saudi arabia" />
+                      </div>
+                      <div>
                         <FieldLabel text="Canonical URL" hint="Prevents duplicate content. Leave empty to auto-use this page's URL." />
                         <TextInput value={seo.pages[activePage].canonical} onChange={(v) => patchPage(activePage, { canonical: v })} placeholder={`https://ricmedical.com.sa/${PAGE_SLUGS[activePage]}`} />
                       </div>
-                      <div className="pt-1 border-t border-slate-100">
+                      <div className="pt-1 border-t border-slate-100 space-y-3">
                         <Toggle checked={seo.pages[activePage].noindex} onChange={(v) => patchPage(activePage, { noindex: v })} label="Hide from search engines" description="Sets noindex, nofollow — this page won't appear in Google." />
                         {seo.pages[activePage].noindex && (
-                          <div className="mt-3 flex items-center gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                          <div className="flex items-center gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
                             <AlertCircle size={12} className="shrink-0" /> This page is hidden from search engines.
+                          </div>
+                        )}
+                        <Toggle checked={seo.pages[activePage].sitemapExcluded ?? false} onChange={(v) => patchPage(activePage, { sitemapExcluded: v })} label="Exclude from sitemap" description="This page will be omitted from sitemap.xml." />
+                        {seo.pages[activePage].sitemapExcluded && (
+                          <div className="flex items-center gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                            <AlertCircle size={12} className="shrink-0" /> This page is excluded from the XML sitemap.
                           </div>
                         )}
                       </div>

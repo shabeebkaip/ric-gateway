@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   MapPin,
   Phone,
@@ -40,9 +41,11 @@ export const FooterClient = ({ contactCards }: { contactCards: ContactCard[] }) 
             viewport={{ once: true }}
           >
             <div className="mb-6">
-              <img
+              <Image
                 src="/logo@2x.png"
                 alt="RIC Medical Solutions"
+                width={200}
+                height={64}
                 className="h-16 w-auto object-contain"
               />
             </div>

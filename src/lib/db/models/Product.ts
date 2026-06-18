@@ -23,6 +23,9 @@ export interface IProduct extends Document {
   // SEO
   metaTitle?: string;
   metaDescription?: string;
+  focusKeyword?: string;
+  imageTitle?: string;
+  imageAlt?: string;
   
   // Ordering
   order: number;
@@ -107,6 +110,18 @@ const ProductSchema = new Schema<IProduct>(
       trim: true,
     },
     metaDescription: {
+      type: String,
+      trim: true,
+    },
+    focusKeyword: {
+      type: String,
+      trim: true,
+    },
+    imageTitle: {
+      type: String,
+      trim: true,
+    },
+    imageAlt: {
       type: String,
       trim: true,
     },

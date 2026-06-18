@@ -8,6 +8,8 @@ export interface SEOPageMeta {
   ogImage: string;
   noindex: boolean;
   canonical: string;
+  focusKeyword?: string;
+  sitemapExcluded?: boolean;
 }
 
 export interface SEORedirect {
@@ -76,12 +78,12 @@ export const defaultSeo: CMSSeo = {
     twitterCardType: 'summary_large_image',
   },
   pages: {
-    home:     { title: '', description: '', ogImage: '', noindex: false, canonical: '' },
-    about:    { title: '', description: '', ogImage: '', noindex: false, canonical: '' },
-    services: { title: '', description: '', ogImage: '', noindex: false, canonical: '' },
-    products: { title: '', description: '', ogImage: '', noindex: false, canonical: '' },
-    contact:  { title: '', description: '', ogImage: '', noindex: false, canonical: '' },
-    blog:     { title: '', description: '', ogImage: '', noindex: false, canonical: '' },
+    home:     { title: '', description: '', ogImage: '', noindex: false, canonical: '', focusKeyword: '', sitemapExcluded: false },
+    about:    { title: '', description: '', ogImage: '', noindex: false, canonical: '', focusKeyword: '', sitemapExcluded: false },
+    services: { title: '', description: '', ogImage: '', noindex: false, canonical: '', focusKeyword: '', sitemapExcluded: false },
+    products: { title: '', description: '', ogImage: '', noindex: false, canonical: '', focusKeyword: '', sitemapExcluded: false },
+    contact:  { title: '', description: '', ogImage: '', noindex: false, canonical: '', focusKeyword: '', sitemapExcluded: false },
+    blog:     { title: '', description: '', ogImage: '', noindex: false, canonical: '', focusKeyword: '', sitemapExcluded: false },
   },
   schema: {
     organization: {

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -72,10 +73,12 @@ export const PartnersSection = ({ partners }: PartnersSectionProps) => {
               {/* Minimal hover effect - subtle underline */}
               <div className="relative">
                 {partner.logo ? (
-                  <img
+                  <Image
                     src={partner.logo}
                     alt={`${partner.name} logo`}
-                    className={`w-32  object-contain transition-all duration-300 ease-out
+                    width={128}
+                    height={64}
+                    className={`w-32 object-contain transition-all duration-300 ease-out
                       ${partner.invertColor ? "invert" : ""}
                       grayscale hover:grayscale-0 opacity-60 hover:opacity-100
                       group-hover:scale-105`}

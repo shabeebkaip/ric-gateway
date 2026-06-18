@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import {
   Menu,
@@ -91,10 +92,13 @@ export const Navigation = () => {
             transition={{ duration: 0.2 }}
           >
             <div className="relative">
-              <img
+              <Image
                 src="/logo@2x.png"
                 alt="RIC Medical Solutions"
+                width={200}
+                height={80}
                 className="h-16 md:h-20 w-auto object-contain relative z-10"
+                priority
               />
               {/* Glow effect on hover */}
               <div className="absolute inset-0 bg-gradient-to-r from-gold/20 to-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

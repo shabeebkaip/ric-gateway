@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import {
@@ -144,16 +145,22 @@ export function ProductHero({ product, category }: ProductHeroProps) {
                       </motion.div>
 
                       {/* Main Image */}
-                      <motion.img
+                      <motion.div
                         key={selectedImageIndex}
-                        src={mainImage}
-                        alt={product.name}
-                        className="relative w-full h-full object-contain"
-                        animate={{
-                          scale: isImageHovered ? 1.1 : 1,
-                        }}
+                        className="absolute inset-0"
+                        animate={{ scale: isImageHovered ? 1.1 : 1 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
-                      />
+                      >
+                        <Image
+                          src={mainImage}
+                          alt={product.imageAlt || product.name}
+                          title={product.imageTitle || product.name}
+                          fill
+                          className="object-contain p-12"
+                          sizes="(max-width: 1024px) 100vw, 40vw"
+                          priority
+                        />
+                      </motion.div>
                     </div>
 
                     {/* Gallery Thumbnails */}
@@ -171,10 +178,12 @@ export function ProductHero({ product, category }: ProductHeroProps) {
                             transition={{ duration: 0.2 }}
                             onClick={() => setSelectedImageIndex(index)}
                           >
-                            <img
+                            <Image
                               src={image}
                               alt={`${product.name} - ${index + 1}`}
-                              className="w-full h-full object-contain"
+                              fill
+                              className="object-contain"
+                              sizes="80px"
                             />
                           </motion.div>
                         ))}
@@ -201,10 +210,12 @@ export function ProductHero({ product, category }: ProductHeroProps) {
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-slate-500">
                 {partner?.logo ? (
-                  <div className="relative w-28 flex items-center justify-center">
-                    <img
+                  <div className="relative w-28 h-10 flex items-center justify-center">
+                    <Image
                       src={partner.logo}
                       alt={partner.name}
+                      width={112}
+                      height={40}
                       className={`max-w-full max-h-full object-contain ${
                         partner.invertColor ? "invert" : ""
                       }`}
@@ -339,15 +350,21 @@ export function ProductHero({ product, category }: ProductHeroProps) {
                 <div className="flex flex-col h-full">
                   {/* Large Image Display */}
                   <div className="flex-1 flex items-center justify-center p-12 bg-gradient-to-br from-slate-50 to-white">
-                    <motion.img
+                    <motion.div
                       key={selectedImageIndex}
-                      src={mainImage}
-                      alt={product.name}
-                      className="max-w-full max-h-full object-contain"
+                      className="relative w-full h-full"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.2 }}
-                    />
+                    >
+                      <Image
+                        src={mainImage}
+                        alt={product.imageAlt || product.name}
+                        fill
+                        className="object-contain"
+                        sizes="90vw"
+                      />
+                    </motion.div>
                   </div>
 
                   {/* Thumbnail Navigation */}
@@ -364,10 +381,12 @@ export function ProductHero({ product, category }: ProductHeroProps) {
                                 : "border-slate-200 hover:border-slate-400"
                             }`}
                           >
-                            <img
+                            <Image
                               src={image}
                               alt={`${product.name} - ${index + 1}`}
-                              className="w-full h-full object-contain p-1"
+                              fill
+                              className="object-contain p-1"
+                              sizes="80px"
                             />
                           </button>
                         ))}

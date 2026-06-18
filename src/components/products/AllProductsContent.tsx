@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Search, Filter, X, ChevronDown, Package, Building2, ArrowRight, Sparkles } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -528,10 +529,12 @@ export function AllProductsContent({
                             <div className="relative aspect-square bg-gradient-to-br from-slate-50 to-white overflow-hidden">
                               {product.images && product.images.length > 0 ? (
                                 <>
-                                  <img
+                                  <Image
                                     src={product.images[0]}
-                                    alt={product.name}
-                                    className="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-700"
+                                    alt={product.imageAlt || product.name}
+                                    fill
+                                    className="object-contain p-6 group-hover:scale-110 transition-transform duration-700"
+                                    sizes="(max-width: 768px) 50vw, 25vw"
                                   />
                                   {/* Subtle gradient overlay on hover */}
                                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -558,9 +561,11 @@ export function AllProductsContent({
                               {/* Partner Logo */}
                               {partner?.logo && (
                                 <div className="flex items-center justify-center h-8 mb-1">
-                                  <img
+                                  <Image
                                     src={partner.logo}
                                     alt={partner.name}
+                                    width={120}
+                                    height={32}
                                     className={`max-h-full max-w-[120px] object-contain transition-opacity group-hover:opacity-80 ${
                                       partner.invertColor ? "invert" : ""
                                     }`}

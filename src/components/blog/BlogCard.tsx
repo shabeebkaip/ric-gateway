@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -27,12 +28,14 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
       <Link href={`/blog/${post.slug}`} className="group block h-full">
         <div className="glass-card rounded-2xl overflow-hidden h-full flex flex-col hover-lift hover:border-gold/30 transition-all duration-300">
           {/* Cover image */}
-          <div className="aspect-[16/9] bg-gradient-to-br from-primary-lighter to-muted overflow-hidden flex-shrink-0">
+          <div className="relative aspect-[16/9] bg-gradient-to-br from-primary-lighter to-muted overflow-hidden flex-shrink-0">
             {post.coverImage ? (
-              <img
+              <Image
                 src={post.coverImage}
-                alt={post.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                alt={post.coverImageAlt || post.title}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center">

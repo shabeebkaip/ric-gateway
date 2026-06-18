@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
+import { SeoScorePanel } from '@/components/admin/SeoScorePanel';
 
 export default function EditProductPage() {
   const router = useRouter();
@@ -44,6 +45,11 @@ export default function EditProductPage() {
     type: '',
     images: [] as string[],
     thumbnail: '',
+    imageTitle: '',
+    imageAlt: '',
+    metaTitle: '',
+    metaDescription: '',
+    focusKeyword: '',
     isPremium: false,
     isFeatured: false,
     isActive: true,
@@ -94,6 +100,11 @@ export default function EditProductPage() {
           type: p.type ?? '',
           images: p.images ?? [],
           thumbnail: p.thumbnail ?? '',
+          imageTitle: p.imageTitle ?? '',
+          imageAlt: p.imageAlt ?? '',
+          metaTitle: p.metaTitle ?? '',
+          metaDescription: p.metaDescription ?? '',
+          focusKeyword: p.focusKeyword ?? '',
           isPremium: p.isPremium ?? false,
           isFeatured: p.isFeatured ?? false,
           isActive: p.isActive ?? true,
@@ -160,7 +171,11 @@ export default function EditProductPage() {
         throw new Error(err.error || 'Failed to update product');
       }
       toast.success('Product updated successfully');
-      router.push('/admin/products');
+      if (formData.slug !== slug) {
+        router.push(`/admin/products/${formData.slug}`);
+      } else {
+        router.push('/admin/products');
+      }
     } catch (error: any) {
       toast.error(error.message);
     } finally {
@@ -249,19 +264,18 @@ export default function EditProductPage() {
                 />
               </div>
               <div>
-                <Label htmlFor="slug" className="text-xs font-medium mb-1.5 block">
-                  Slug <span className="text-muted-foreground font-normal">(read-only)</span>
-                </Label>
+                <Label htmlFor="slug" className="text-xs font-medium mb-1.5 block">Slug</Label>
                 <div className="relative">
                   <Hash className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input
                     id="slug"
                     value={formData.slug}
-                    disabled
-                    className="h-10 pl-9 font-mono text-sm bg-muted cursor-not-allowed"
+                    onChange={e => handleChange('slug', e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/(^-|-$)/g, ''))}
+                    className="h-10 pl-9 font-mono text-sm"
+                    placeholder="product-url-slug"
                   />
                 </div>
-                <p className="text-xs text-muted-foreground mt-1">Slug cannot be changed after creation</p>
+                <p className="text-xs text-amber-600 mt-1">⚠ Changing the slug will break existing links to this product.</p>
               </div>
               <div>
                 <Label htmlFor="description" className="text-xs font-medium mb-1.5 block">Description *</Label>
@@ -360,6 +374,35 @@ export default function EditProductPage() {
               maxFiles={10}
               folder="products"
             />
+            {formData.images.length > 0 && (
+              <div className="mt-4 space-y-4">
+                <div>
+                  <Label className="text-xs font-medium mb-1.5 block">
+                    Alt Text <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    value={formData.imageAlt}
+                    onChange={e => handleChange('imageAlt', e.target.value)}
+                    placeholder="Describe the images for screen readers and search engines…"
+                    className={`h-10 ${formData.images.length > 0 && !formData.imageAlt ? 'border-amber-400 focus-visible:ring-amber-400' : ''}`}
+                  />
+                  {formData.images.length > 0 && !formData.imageAlt && (
+                    <p className="text-xs text-amber-600 mt-1">Alt text is required for image SEO.</p>
+                  )}
+                </div>
+                <div>
+                  <Label className="text-xs font-medium mb-1.5 block">
+                    Image Title Tag <span className="text-muted-foreground font-normal">(optional — shown on hover)</span>
+                  </Label>
+                  <Input
+                    value={formData.imageTitle}
+                    onChange={e => handleChange('imageTitle', e.target.value)}
+                    placeholder="Descriptive title for product images…"
+                    className="h-10"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </Card>
 
@@ -459,6 +502,49 @@ export default function EditProductPage() {
             </div>
           </div>
         </Card>
+
+        {/* SEO */}
+        <Card className="overflow-hidden border-border/60">
+          <div className="h-1 bg-gradient-to-r from-orange-500 to-orange-400" />
+          <div className="p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <div className="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
+                <Hash className="w-4 h-4 text-orange-600" />
+              </div>
+              <h2 className="text-base font-semibold">SEO</h2>
+            </div>
+            <div className="space-y-5">
+              <div>
+                <Label className="text-xs font-medium mb-1.5 block">
+                  Meta Title <span className="text-muted-foreground font-normal">(optional — defaults to product title)</span>
+                </Label>
+                <Input value={formData.metaTitle} onChange={e => handleChange('metaTitle', e.target.value)} placeholder="Custom page title for search engines…" className="h-10" />
+              </div>
+              <div>
+                <Label className="text-xs font-medium mb-1.5 block">
+                  Meta Description <span className="text-muted-foreground font-normal">(optional — defaults to description)</span>
+                </Label>
+                <Textarea value={formData.metaDescription} onChange={e => handleChange('metaDescription', e.target.value)} placeholder="Custom meta description (150–160 chars)…" rows={3} className="resize-none" />
+              </div>
+              <div>
+                <Label className="text-xs font-medium mb-1.5 block">
+                  Focus Keyword <span className="text-muted-foreground font-normal">(optional)</span>
+                </Label>
+                <Input value={formData.focusKeyword} onChange={e => handleChange('focusKeyword', e.target.value)} placeholder="e.g. lithotripsy system saudi arabia" className="h-10" />
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        <SeoScorePanel
+          title={formData.title}
+          slug={formData.slug}
+          description={formData.description}
+          metaTitle={formData.metaTitle}
+          metaDescription={formData.metaDescription}
+          focusKeyword={formData.focusKeyword}
+          imageAlt={formData.imageAlt}
+        />
 
         {/* Settings */}
         <Card className="overflow-hidden border-border/60">

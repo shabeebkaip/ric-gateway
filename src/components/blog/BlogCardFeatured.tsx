@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowRight, Star, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -30,10 +31,13 @@ export function BlogCardFeatured({ post }: BlogCardFeaturedProps) {
             {/* Image */}
             <div className="aspect-[4/3] lg:aspect-auto lg:min-h-[400px] relative overflow-hidden">
               {post.coverImage ? (
-                <img
+                <Image
                   src={post.coverImage}
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  alt={post.coverImageAlt || post.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-primary-lighter to-primary/10 flex items-center justify-center">

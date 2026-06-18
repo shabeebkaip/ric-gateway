@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { partners } from "@/lib/data";
 
 export function ServicePartners() {
@@ -44,9 +45,11 @@ export function ServicePartners() {
                 </div>
               )}
               <div className="flex items-center justify-center mb-3 h-14">
-                <img
+                <Image
                   src={partner.logo}
                   alt={partner.name}
+                  width={120}
+                  height={48}
                   className={`max-h-12 w-auto object-contain ${
                     partner.invertColor ? "invert" : ""
                   }`}

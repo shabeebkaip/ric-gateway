@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { User, Building2 } from 'lucide-react';
 
 interface ArticleAuthorProps {
@@ -16,9 +17,11 @@ export function ArticleAuthor({ author }: ArticleAuthorProps) {
       </p>
       <div className="flex items-start gap-4">
         {author.avatar ? (
-          <img
+          <Image
             src={author.avatar}
             alt={author.name}
+            width={56}
+            height={56}
             className="w-14 h-14 rounded-full object-cover ring-2 ring-border flex-shrink-0"
           />
         ) : (

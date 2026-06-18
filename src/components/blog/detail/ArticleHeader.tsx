@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Clock, ChevronRight, User } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -54,9 +55,11 @@ export function ArticleHeader({ post }: ArticleHeaderProps) {
       <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-muted-foreground pb-8 border-b border-border/50">
         <div className="flex items-center gap-2.5">
           {post.author?.avatar ? (
-            <img
+            <Image
               src={post.author.avatar}
               alt={post.author.name}
+              width={36}
+              height={36}
               className="w-9 h-9 rounded-full object-cover ring-2 ring-border"
             />
           ) : (
@@ -89,11 +92,15 @@ export function ArticleHeader({ post }: ArticleHeaderProps) {
 
       {/* Cover image */}
       {post.coverImage && (
-        <div className="mt-8 rounded-2xl overflow-hidden aspect-[16/9] shadow-card">
-          <img
+        <div className="relative mt-8 rounded-2xl overflow-hidden aspect-[16/9] shadow-card">
+          <Image
             src={post.coverImage}
-            alt={post.title}
-            className="w-full h-full object-cover"
+            alt={post.coverImageAlt || post.title}
+            title={post.coverImageTitle || post.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 800px"
+            priority
           />
         </div>
       )}
