@@ -142,7 +142,7 @@ export const ProductCategoriesSection = ({ categories, partners }: ProductCatego
                       {categoryPartners.slice(0, 3).map((partner, idx) => (
                         <div
                           key={partner.name}
-                          className="w-8 h-8 rounded-full bg-background border-2 border-border flex items-center justify-center overflow-hidden"
+                          className="relative w-8 h-8 rounded-full bg-background border-2 border-border flex items-center justify-center overflow-hidden"
                           title={partner.name}
                         >
                           <Image
