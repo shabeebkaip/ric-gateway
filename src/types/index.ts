@@ -66,6 +66,7 @@ export interface ProductDetailContentProps {
 export interface ProductHeroProps {
   product: Product;
   category: Category;
+  onRequestQuote: (trigger: HTMLButtonElement) => void;
 }
 
 export interface ProductVariantsProps {
@@ -88,8 +89,7 @@ export interface ProductCTAProps {
   productName: string;
   categoryName: string;
   categorySlug: string;
-  productSlug?: string;
-  partnerName?: string;
+  onRequestQuote: (trigger: HTMLButtonElement) => void;
 }
 
 export interface CategoryHeroProps {

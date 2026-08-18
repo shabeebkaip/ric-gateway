@@ -13,6 +13,7 @@ import Partner from './models/Partner';
 import Category from './models/Category';
 import Content from './models/Content';
 import ProductModel from './models/Product';
+import { normalizeProductImages } from '../productImageNormalization';
 
 /** Converts Mongoose lean docs to plain serializable objects */
 const toPlain = <T>(data: T): T => JSON.parse(JSON.stringify(data));
@@ -102,20 +103,21 @@ export const getCachedFeaturedBlogPost = unstable_cache(
 // ─── Products ─────────────────────────────────────────────────────────────────
 
 /** Maps a DB Product lean doc to the frontend Product interface shape */
-const transformProduct = (doc: any) => ({
-  id: doc.slug ?? String(doc._id ?? ''),
-  name: doc.title ?? '',
-  brand: doc.partner ?? '',
-  partnerId: doc.partner ?? '',
-  category: doc.category ?? '',
-  sub_category: doc.subcategory ?? null,
-  product_type: doc.type ?? '',
-  description: doc.description ?? '',
-  images: doc.images ?? [],
-  features: doc.features ?? [],
-  technical_specifications: doc.specifications ?? {},
-  ...(doc.additionalInfo ?? {}),
-});
+const transformProduct = (doc: any) =>
+  normalizeProductImages({
+    id: doc.slug ?? String(doc._id ?? ''),
+    name: doc.title ?? '',
+    brand: doc.partner ?? '',
+    partnerId: doc.partner ?? '',
+    category: doc.category ?? '',
+    sub_category: doc.subcategory ?? null,
+    product_type: doc.type ?? '',
+    description: doc.description ?? '',
+    images: doc.images ?? [],
+    features: doc.features ?? [],
+    technical_specifications: doc.specifications ?? {},
+    ...(doc.additionalInfo ?? {}),
+  });
 
 export const getCachedProducts = unstable_cache(
   async () => {
@@ -125,7 +127,6 @@ export const getCachedProducts = unstable_cache(
       .lean();
     return (toPlain(docs) as any[]).map(transformProduct);
   },
-  ['db-products'],
+  ['db-products-normalized-images-v1'],
   { tags: ['products'], revalidate: false }
 );
-

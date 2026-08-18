@@ -11,7 +11,9 @@
     "seed:content": "npx tsx scripts/seed-hero-content.ts",
     "seed:partners": "npx tsx scripts/seed-partners.ts",
     "seed:categories": "npx tsx scripts/seed-categories.ts",
-    "seed:products": "npx tsx scripts/seed-products.ts"
+    "seed:products": "npx tsx scripts/seed-products.ts",
+    "verify:product-images": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/verify-product-images.mjs",
+    "verify:product-quote-modal": "node scripts/verify-product-quote-modal.mjs"
   },
   "dependencies": {
     "@fontsource/poppins": "^5.2.7",

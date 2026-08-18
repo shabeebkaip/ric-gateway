@@ -1,3 +1,5 @@
+import { normalizeProductImages } from './productImageNormalization';
+
 /**
  * ============================================================================
  * PRODUCTS CATALOG
@@ -68,7 +70,7 @@
  * ============================================================================
  */
 
-export const products = [
+const productCatalog = [
   // ============================================================================
   // MEDISPEC PRODUCTS
   // ============================================================================
@@ -2095,7 +2097,7 @@ export const products = [
     product_type: "Endoscopic Video Image Processor",
     is_parent_product: true,
     images: [
-      "	https://static2.xunxiang.site/uploads/sites/2086/2024/01/d398bc0c944a243ee45596058d0e22f1.jpg",
+      "https://static2.xunxiang.site/uploads/sites/2086/2024/01/d398bc0c944a243ee45596058d0e22f1.jpg",
       "https://concemed-02.obs.cn-north-4.myhuaweicloud.com/f75f484ee2a6f0891fd910db69fcd63f.jpg",
     ],
     description:
@@ -4397,3 +4399,5 @@ export const products = [
     show_image_main: false,
   },
 ];
+
+export const products = productCatalog.map(normalizeProductImages);

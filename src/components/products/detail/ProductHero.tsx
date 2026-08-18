@@ -26,7 +26,11 @@ import {
 import { getPartnerById } from "@/lib/productUtils";
 import type { ProductHeroProps } from "@/types";
 
-export function ProductHero({ product, category }: ProductHeroProps) {
+export function ProductHero({
+  product,
+  category,
+  onRequestQuote,
+}: ProductHeroProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isImageHovered, setIsImageHovered] = useState(false);
   const [isZoomViewOpen, setIsZoomViewOpen] = useState(false);
@@ -273,13 +277,12 @@ export function ProductHero({ product, category }: ProductHeroProps) {
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-4">
               <Button
-                asChild
+                type="button"
+                onClick={(event) => onRequestQuote(event.currentTarget)}
                 className="rounded-full px-8 py-6 bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-700 hover:to-sky-700 text-white shadow-lg shadow-blue-500/30 transition-all duration-300"
               >
-                <Link href="/contact">
-                  <FileText className="w-4 h-4 mr-2" />
-                  Request for Quotation
-                </Link>
+                <FileText className="w-4 h-4 mr-2" />
+                Request for Quotation
               </Button>
               <Button
                 asChild
