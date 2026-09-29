@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { buildPageMetadata } from '@/lib/seo-metadata';
 import { HeroSection } from "@/components/home/HeroSection";
+import { EventBannerSection } from "@/components/home/EventBannerSection";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata('home');
@@ -28,10 +29,11 @@ export default async function Home() {
   return (
     <div className="min-h-screen bg-background">
       <main>
-        <HeroSection
+        <EventBannerSection />
+        {/* <HeroSection
           content={homeContent.hero as any}
           partnerCount={partners.length}
-        />
+        /> */}
         <PartnersSection partners={partners as any} />
         <ServicesSection categories={categories as any} partners={partners as any} />
         <AboutSection content={homeContent.about as any} />
