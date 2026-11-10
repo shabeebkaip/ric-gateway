@@ -52,10 +52,11 @@ jobs:
           # Load nvm if node/pnpm/pm2 were installed through it
           [ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"
           cd /var/www/ric-gateway
-          # Keep the scheduled blog writer's draft-only key in the server .env
+          # Keep the scheduled blog writer's draft-only key in .env.local (Next.js loads it in production)
           if [ -n "$BLOG_KEY" ]; then
-            sed -i '/^BLOG_DRAFT_API_KEY=/d' .env
-            echo "BLOG_DRAFT_API_KEY=$BLOG_KEY" >> .env
+            touch .env.local
+            sed -i '/^BLOG_DRAFT_API_KEY=/d' .env.local
+            echo "BLOG_DRAFT_API_KEY=$BLOG_KEY" >> .env.local
           fi
           # Update the code first so deploy.sh below is the latest version
           git fetch origin main
