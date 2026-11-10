@@ -72,7 +72,7 @@ interface CMSSeo {
 
 const defaultSeo: CMSSeo = {
   global: {
-    titleTemplate: '%s | RIC Medical Solutions',
+    titleTemplate: '%s | Riyadh International Corporation',
     defaultDescription: '',
     defaultOgImage: '',
     twitterHandle: '',
@@ -96,7 +96,7 @@ const defaultSeo: CMSSeo = {
     },
     localBusiness: {
       enabled: true, type: 'MedicalBusiness',
-      name: 'RIC Medical Solutions',
+      name: 'Riyadh International Corporation Medical Equipments & Services, Ltd',
       streetAddress: 'PM8M+J6X, Oruba Road, As Sulimaniyah',
       city: 'Riyadh', region: 'Riyadh Region',
       country: 'SA', postalCode: '11411',
@@ -239,7 +239,7 @@ function SerpPreview({ title, description, slug }: { title: string; description:
             <span className="text-[8px] font-black text-white">R</span>
           </div>
           <div>
-            <p className="text-[13px] font-medium text-slate-800 leading-none">RIC Medical Solutions</p>
+            <p className="text-[13px] font-medium text-slate-800 leading-none">Riyadh International Corporation</p>
             <p className="text-[11px] text-slate-500 leading-none mt-0.5">{url}</p>
           </div>
         </div>
@@ -495,8 +495,8 @@ export default function SeoPage() {
                 </div>
                 <SectionCard icon={<Tag size={15} />} iconBg="#e0f2fe" iconColor="#0ea5e9" title="Title Template" description='Format used for every page title. Use %s for the page name.'>
                   <div>
-                    <FieldLabel text="Title Template" hint='Use %s where the page name goes. E.g. "%s | RIC Medical"' />
-                    <TextInput value={seo.global.titleTemplate} onChange={(v) => patchSeo(['global', 'titleTemplate'], v)} placeholder="%s | RIC Medical Solutions" />
+                    <FieldLabel text="Title Template" hint='Use %s where the page name goes. E.g. "%s | Riyadh International Corporation"' />
+                    <TextInput value={seo.global.titleTemplate} onChange={(v) => patchSeo(['global', 'titleTemplate'], v)} placeholder="%s | Riyadh International Corporation" />
                     {seo.global.titleTemplate && (
                       <p className="text-xs text-slate-500 mt-1.5">Preview: <span className="text-slate-700 font-medium">{seo.global.titleTemplate.replace('%s', 'About Us')}</span></p>
                     )}
@@ -626,7 +626,7 @@ export default function SeoPage() {
                   {expandedSections.org && (
                     <div className="px-5 pb-5 space-y-4 border-t border-slate-100 pt-5">
                       <div className="grid grid-cols-2 gap-4">
-                        <div><FieldLabel text="Organization Name" /><TextInput value={seo.schema.organization.name} onChange={(v) => patchSeo(['schema', 'organization', 'name'], v)} placeholder="RIC Medical Solutions" /></div>
+                        <div><FieldLabel text="Organization Name" /><TextInput value={seo.schema.organization.name} onChange={(v) => patchSeo(['schema', 'organization', 'name'], v)} placeholder="Riyadh International Corporation Medical Equipments &amp; Services, Ltd" /></div>
                         <div><FieldLabel text="Website URL" /><TextInput value={seo.schema.organization.url} onChange={(v) => patchSeo(['schema', 'organization', 'url'], v)} placeholder="https://ricmedical.com.sa" /></div>
                       </div>
                       <div><FieldLabel text="Logo URL" /><TextInput value={seo.schema.organization.logo} onChange={(v) => patchSeo(['schema', 'organization', 'logo'], v)} placeholder="https://ricmedical.com.sa/logo@2x.png" /></div>
@@ -670,7 +670,7 @@ export default function SeoPage() {
                   {expandedSections.lb && (
                     <div className="px-5 pb-5 space-y-4 border-t border-slate-100 pt-5">
                       <div className="grid grid-cols-2 gap-4">
-                        <div><FieldLabel text="Business Name" /><TextInput value={seo.schema.localBusiness.name} onChange={(v) => patchSeo(['schema', 'localBusiness', 'name'], v)} placeholder="RIC Medical Solutions" /></div>
+                        <div><FieldLabel text="Business Name" /><TextInput value={seo.schema.localBusiness.name} onChange={(v) => patchSeo(['schema', 'localBusiness', 'name'], v)} placeholder="Riyadh International Corporation Medical Equipments &amp; Services, Ltd" /></div>
                         <div><FieldLabel text="Business Type" hint='E.g. "MedicalBusiness", "LocalBusiness"' /><TextInput value={seo.schema.localBusiness.type} onChange={(v) => patchSeo(['schema', 'localBusiness', 'type'], v)} placeholder="MedicalBusiness" /></div>
                         <div><FieldLabel text="Phone" /><TextInput value={seo.schema.localBusiness.phone} onChange={(v) => patchSeo(['schema', 'localBusiness', 'phone'], v)} placeholder="+966509698043" /></div>
                         <div><FieldLabel text="Email" /><TextInput value={seo.schema.localBusiness.email} onChange={(v) => patchSeo(['schema', 'localBusiness', 'email'], v)} placeholder="ricmede@ricmedical.com.sa" type="email" /></div>

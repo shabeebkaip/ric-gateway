@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     getCachedBlogPost(slug),
     readSeo().catch(() => defaultSeo),
   ]);
-  if (!post) return { title: 'Article Not Found | RIC Medical' };
+  if (!post) return { title: 'Article Not Found | Riyadh International Corporation' };
 
   const rawTitle = post.metaTitle || post.title;
   const title = seo.global.titleTemplate?.includes('%s')

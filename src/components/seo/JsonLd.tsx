@@ -17,6 +17,14 @@ interface JsonLdProps {
 export function JsonLd({ seo, breadcrumbs, article }: JsonLdProps) {
   const schemas: object[] = [];
 
+  // Google uses WebSite.name as the site name shown above search results
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: seo.schema.organization.name,
+    url: seo.schema.organization.url,
+  });
+
   schemas.push({
     '@context': 'https://schema.org',
     '@type': 'Organization',

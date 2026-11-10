@@ -94,7 +94,7 @@ export const Navigation = () => {
             <div className="relative">
               <Image
                 src="/logo@2x.png"
-                alt="RIC Medical Solutions"
+                alt="Riyadh International Corporation Medical Equipments & Services, Ltd"
                 width={200}
                 height={80}
                 className="h-16 md:h-20 w-auto object-contain relative z-10"

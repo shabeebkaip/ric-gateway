@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const brandName = partner?.name || product.brand;
 
   return {
-    title: `${product.name} - ${brandName} | RIC Medical Equipment`,
+    title: `${product.name} - ${brandName} | Riyadh International Corporation`,
     description: product.description || `${product.product_type} by ${brandName}`,
   };
 }

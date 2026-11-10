@@ -86,7 +86,7 @@ export const ContactPageContent = ({ contactCards }: { contactCards: ContactCard
               Get In Touch
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Contact <span className="gradient-text">RIC Medical Solutions</span>
+              Contact <span className="gradient-text">Riyadh International Corporation</span>
             </h1>
             <p className="text-lg text-muted-foreground">
               Have questions about our medical equipment or healthcare solutions? 

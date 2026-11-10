@@ -10,11 +10,11 @@ import { readSeo } from '@/lib/seo';
 import { headers } from 'next/headers';
 
 export const metadata: Metadata = {
-  title: 'RIC Medical Solutions | Advanced Medical Equipment Saudi Arabia',
+  title: 'Riyadh International Corporation Medical Equipments & Services, Ltd',
   description:
     'Leading provider of advanced medical equipment and healthcare solutions in Saudi Arabia since 1985. Cancer treatment, urology, medical imaging, and disposables.',
   keywords:
-    'medical equipment, healthcare solutions, Saudi Arabia, cancer treatment, urology, medical imaging, RIC',
+    'medical equipment, healthcare solutions, Saudi Arabia, cancer treatment, urology, medical imaging, Riyadh International Corporation',
   icons: {
     icon: '/logo@2x.png',
     shortcut: '/logo@2x.png',

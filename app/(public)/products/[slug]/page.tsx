@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${category.name} - RIC Medical Equipment`,
+    title: `${category.name} | Riyadh International Corporation`,
     description: category.description,
   };
 }

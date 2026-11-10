@@ -70,7 +70,7 @@ export interface CMSSeo {
 
 export const defaultSeo: CMSSeo = {
   global: {
-    titleTemplate: '%s | RIC Medical Solutions',
+    titleTemplate: '%s | Riyadh International Corporation',
     defaultDescription:
       'Leading provider of advanced medical equipment and healthcare solutions in Saudi Arabia since 1985.',
     defaultOgImage: '',
@@ -97,7 +97,7 @@ export const defaultSeo: CMSSeo = {
     localBusiness: {
       enabled: true,
       type: 'MedicalBusiness',
-      name: 'RIC Medical Solutions',
+      name: 'Riyadh International Corporation Medical Equipments & Services, Ltd',
       streetAddress: 'PM8M+J6X, Oruba Road, As Sulimaniyah',
       city: 'Riyadh',
       region: 'Riyadh Region',

@@ -5,15 +5,15 @@ import type { CMSSeo } from './seo';
 type PageKey = keyof CMSSeo['pages'];
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ricmedical.com.sa';
-const SITE_NAME = 'RIC Medical Solutions';
+const SITE_NAME = 'Riyadh International Corporation Medical Equipments & Services, Ltd';
 
 const FALLBACK_TITLES: Record<PageKey, string> = {
-  home:     'RIC Medical Solutions | Advanced Medical Equipment Saudi Arabia',
-  about:    'About Us | RIC Medical Solutions',
-  services: 'Our Services | RIC Medical Solutions',
-  products: 'Medical Equipment & Products | RIC Medical Solutions',
-  contact:  'Contact Us | RIC Medical Solutions',
-  blog:     'Healthcare Insights & News | RIC Medical Solutions',
+  home:     'Riyadh International Corporation Medical Equipments & Services, Ltd',
+  about:    'About Us | Riyadh International Corporation',
+  services: 'Our Services | Riyadh International Corporation',
+  products: 'Medical Equipment & Products | Riyadh International Corporation',
+  contact:  'Contact Us | Riyadh International Corporation',
+  blog:     'Healthcare Insights & News | Riyadh International Corporation',
 };
 
 const FALLBACK_DESCRIPTIONS: Record<PageKey, string> = {
@@ -21,8 +21,8 @@ const FALLBACK_DESCRIPTIONS: Record<PageKey, string> = {
   about:    'Learn about Riyadh International Corporation — Saudi Arabia\'s trusted medical equipment provider since 1985.',
   services: 'Comprehensive medical equipment services including installation, maintenance, and technical support across Saudi Arabia.',
   products: 'Explore our wide range of advanced medical equipment for cancer treatment, urology, medical imaging, and disposables.',
-  contact:  'Get in touch with RIC Medical Solutions. Visit our Riyadh office or contact us for medical equipment enquiries.',
-  blog:     'Stay informed with the latest insights on medical technology, healthcare solutions, and industry news from RIC Medical.',
+  contact:  'Get in touch with Riyadh International Corporation. Visit our Riyadh office or contact us for medical equipment enquiries.',
+  blog:     'Stay informed with the latest insights on medical technology, healthcare solutions, and industry news from Riyadh International Corporation.',
 };
 
 const PAGE_PATHS: Record<PageKey, string> = {

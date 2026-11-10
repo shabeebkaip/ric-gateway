@@ -43,7 +43,7 @@ export const FooterClient = ({ contactCards }: { contactCards: ContactCard[] }) 
             <div className="mb-6">
               <Image
                 src="/logo@2x.png"
-                alt="RIC Medical Solutions"
+                alt="Riyadh International Corporation Medical Equipments & Services, Ltd"
                 width={200}
                 height={64}
                 className="h-16 w-auto object-contain"
