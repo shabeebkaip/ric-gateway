@@ -15,6 +15,18 @@ function validKey(provided: string | null): boolean {
   return a.length === b.length && timingSafeEqual(a, b);
 }
 
+// Lets the writer see every existing post (incl. drafts) to avoid repeating topics
+export async function GET(request: NextRequest) {
+  if (!validKey(request.headers.get('x-api-key'))) {
+    return apiError('Unauthorized', 401);
+  }
+  await connectDB();
+  const posts = await BlogPost.find({}, { title: 1, slug: 1, isPublished: 1, createdAt: 1, _id: 0 })
+    .sort({ createdAt: -1 })
+    .lean();
+  return apiResponse({ posts });
+}
+
 export async function POST(request: NextRequest) {
   if (!validKey(request.headers.get('x-api-key'))) {
     return apiError('Unauthorized', 401);

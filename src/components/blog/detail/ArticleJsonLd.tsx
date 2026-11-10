@@ -20,7 +20,7 @@ export function ArticleJsonLd({ post, url }: ArticleJsonLdProps) {
         dateModified: new Date(post.updatedAt).toISOString(),
         author: {
           '@type': 'Person',
-          name: post.author?.name ?? 'RIC Medical Team',
+          name: post.author?.name ?? 'Riyadh International Corporation',
           jobTitle: post.author?.role ?? undefined,
         },
         publisher: {

@@ -72,7 +72,7 @@ export default function NewBlogPostPage() {
     coverImage: '',
     category: '',
     tags: [],
-    author: { name: 'RIC Medical Team', role: 'Medical Equipment Specialist', avatar: '' },
+    author: { name: 'Riyadh International Corporation', role: 'Editorial Team', avatar: '' },
     isFeatured: false,
     isPublished: false,
     metaTitle: '',
