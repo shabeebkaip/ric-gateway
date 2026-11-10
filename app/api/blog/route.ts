@@ -3,6 +3,7 @@ import { connectDB } from '@/lib/db/connection';
 import BlogPost from '@/lib/db/models/BlogPost';
 import { withAuth, apiResponse, apiError, handleApiRouteError } from '@/lib/api-middleware';
 import { revalidateTag } from 'next/cache';
+import { verifyAdmin } from '@/lib/auth';
 
 export async function GET(request: NextRequest) {
   try {
@@ -10,9 +11,10 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
     const featured = searchParams.get('featured');
-    const all = searchParams.get('all'); // admin: include unpublished
+    // Drafts only for logged-in admins
+    const all = searchParams.get('all') === 'true' && !!verifyAdmin(request);
 
-    const filter: Record<string, unknown> = all === 'true' ? {} : { isPublished: true };
+    const filter: Record<string, unknown> = all ? {} : { isPublished: true };
     if (category) filter.category = category;
     if (featured === 'true') filter.isFeatured = true;
 
