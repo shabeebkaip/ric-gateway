@@ -5,7 +5,6 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-pnpm-lock.yaml
 
 # testing
 /coverage
@@ -78,4 +77,4 @@ sentry.properties
 
 # Documentation
 documentation/
-playwright-mcp/
+.playwright-mcp/

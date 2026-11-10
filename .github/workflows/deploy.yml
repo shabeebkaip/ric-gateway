@@ -53,6 +53,8 @@ jobs:
           cd /var/www/ric-gateway
           # Update the code first so deploy.sh below is the latest version
           git fetch origin main
+          # Old untracked lockfile (was gitignored) would block checkout of the committed one
+          git ls-files --error-unmatch pnpm-lock.yaml >/dev/null 2>&1 || rm -f pnpm-lock.yaml
           git reset --hard origin/main
           bash deploy.sh
           EOF
