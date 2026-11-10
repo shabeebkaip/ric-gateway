@@ -2,59 +2,64 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { toast } from 'sonner';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { MessageSquare, Package, Mail, Phone, Building2, Calendar, RefreshCw } from 'lucide-react';
+import { MessageSquare, Package, Mail, Phone, Building2, Calendar, RefreshCw, AlertCircle } from 'lucide-react';
+import { EnquiryDetailSheet, STATUS_STYLES, type Enquiry, type EnquiryStatus } from '@/components/admin/EnquiryDetailSheet';
 
-interface ContactEnquiry {
-  _id: string;
-  name: string;
-  email: string;
-  phone?: string;
-  company?: string;
-  message: string;
-  status: 'new' | 'read' | 'replied';
-  createdAt: string;
+const API = '/api/admin/enquiries/contact';
+
+function authHeaders(): Record<string, string> {
+  const token = localStorage.getItem('admin-token');
+  return { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) };
 }
 
-const STATUS_STYLES = {
-  new: 'bg-blue-100 text-blue-700 border-blue-200',
-  read: 'bg-slate-100 text-slate-700 border-slate-200',
-  replied: 'bg-green-100 text-green-700 border-green-200',
-};
-
 export default function ContactEnquiriesPage() {
-  const [enquiries, setEnquiries] = useState<ContactEnquiry[]>([]);
+  const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [updating, setUpdating] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   async function load() {
     setIsLoading(true);
-    const token = localStorage.getItem('admin-token');
-    const headers: Record<string, string> = { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) };
-    const res = await fetch('/api/admin/enquiries/contact', { headers }).catch(() => null);
-    if (res?.ok) {
+    setLoadError(null);
+    try {
+      const res = await fetch(API, { headers: authHeaders() });
+      if (!res.ok) throw new Error(res.status === 401 ? 'Your session has expired. Please log in again.' : `Server error (${res.status})`);
       const data = await res.json();
       setEnquiries(data.enquiries ?? []);
+    } catch (err) {
+      setLoadError(err instanceof Error ? err.message : 'Could not load enquiries');
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }
 
   useEffect(() => { load(); }, []);
 
-  async function updateStatus(id: string, status: ContactEnquiry['status']) {
+  async function updateStatus(id: string, status: EnquiryStatus, silent = false) {
     setUpdating(id);
-    const token = localStorage.getItem('admin-token');
-    await fetch('/api/admin/enquiries/contact', {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
-      body: JSON.stringify({ id, status }),
-    });
-    setEnquiries(prev => prev.map(e => e._id === id ? { ...e, status } : e));
-    setUpdating(null);
+    try {
+      const res = await fetch(API, { method: 'PATCH', headers: authHeaders(), body: JSON.stringify({ id, status }) });
+      if (!res.ok) throw new Error();
+      setEnquiries(prev => prev.map(e => e._id === id ? { ...e, status } : e));
+      if (!silent) toast.success(`Marked as ${status}`);
+    } catch {
+      toast.error('Could not update status. Please try again.');
+    } finally {
+      setUpdating(null);
+    }
   }
 
+  function openEnquiry(e: Enquiry) {
+    setSelectedId(e._id);
+    if (e.status === 'new') updateStatus(e._id, 'read', true);
+  }
+
+  const selected = enquiries.find(e => e._id === selectedId) ?? null;
   const newCount = enquiries.filter(e => e.status === 'new').length;
 
   return (
@@ -109,6 +114,12 @@ export default function ContactEnquiriesPage() {
             </Card>
           ))}
         </div>
+      ) : loadError ? (
+        <Card className="p-12 text-center">
+          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <p className="text-slate-700 mb-4">{loadError}</p>
+          <Button variant="outline" size="sm" onClick={load}>Try again</Button>
+        </Card>
       ) : enquiries.length === 0 ? (
         <Card className="p-12 text-center">
           <MessageSquare className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
@@ -117,9 +128,13 @@ export default function ContactEnquiriesPage() {
       ) : (
         <div className="space-y-3">
           {enquiries.map(e => (
-            <Card key={e._id} className={`p-5 ${e.status === 'new' ? 'border-blue-200 bg-blue-50/30' : ''}`}>
+            <Card
+              key={e._id}
+              onClick={ev => { if (!(ev.target as HTMLElement).closest('a,button')) openEnquiry(e); }}
+              className={`p-5 cursor-pointer transition-shadow hover:shadow-md ${e.status === 'new' ? 'border-blue-200 bg-blue-50/30' : ''}`}
+            >
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-                <div className="flex-1 space-y-2">
+                <div className="flex-1 min-w-0 space-y-2">
                   <div className="flex items-center gap-3 flex-wrap">
                     <span className="font-semibold text-slate-900">{e.name}</span>
                     <Badge className={`text-xs border ${STATUS_STYLES[e.status]}`}>
@@ -130,40 +145,33 @@ export default function ContactEnquiriesPage() {
                       {new Date(e.createdAt).toLocaleString()}
                     </span>
                   </div>
-                  <div className="flex flex-wrap gap-4 text-sm text-slate-600">
-                    <span className="flex items-center gap-1">
-                      <Mail className="w-3.5 h-3.5" />
-                      <a href={`mailto:${e.email}`} className="hover:underline">{e.email}</a>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-600">
+                    <span className="flex items-center gap-1 min-w-0">
+                      <Mail className="w-3.5 h-3.5 shrink-0" />
+                      <a href={`mailto:${e.email}`} className="hover:underline break-all">{e.email}</a>
                     </span>
                     {e.phone && (
                       <span className="flex items-center gap-1">
-                        <Phone className="w-3.5 h-3.5" />
-                        {e.phone}
+                        <Phone className="w-3.5 h-3.5 shrink-0" />
+                        <a href={`tel:${e.phone.replace(/\s/g, '')}`} className="hover:underline">{e.phone}</a>
                       </span>
                     )}
                     {e.company && (
-                      <span className="flex items-center gap-1">
-                        <Building2 className="w-3.5 h-3.5" />
-                        {e.company}
+                      <span className="flex items-center gap-1 min-w-0">
+                        <Building2 className="w-3.5 h-3.5 shrink-0" />
+                        <span className="break-all">{e.company}</span>
                       </span>
                     )}
                   </div>
-                  <p className="text-sm text-slate-700 bg-white border border-slate-100 rounded-lg p-3 leading-relaxed">
+                  <p className="text-sm text-slate-700 bg-white border border-slate-100 rounded-lg p-3 leading-relaxed break-words line-clamp-3">
                     {e.message}
                   </p>
                 </div>
                 <div className="flex gap-2 shrink-0">
-                  {e.status !== 'read' && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      disabled={updating === e._id}
-                      onClick={() => updateStatus(e._id, 'read')}
-                    >
-                      Mark Read
-                    </Button>
-                  )}
-                  {e.status !== 'replied' && (
+                  <Button size="sm" variant="outline" onClick={() => openEnquiry(e)}>
+                    View
+                  </Button>
+                  {e.status !== 'replied' ? (
                     <Button
                       size="sm"
                       disabled={updating === e._id}
@@ -171,8 +179,7 @@ export default function ContactEnquiriesPage() {
                     >
                       Mark Replied
                     </Button>
-                  )}
-                  {e.status === 'replied' && (
+                  ) : (
                     <Button
                       size="sm"
                       variant="outline"
@@ -188,6 +195,13 @@ export default function ContactEnquiriesPage() {
           ))}
         </div>
       )}
+
+      <EnquiryDetailSheet
+        enquiry={selected}
+        onClose={() => setSelectedId(null)}
+        onStatusChange={(id, status) => updateStatus(id, status)}
+        updating={updating === selectedId}
+      />
     </div>
   );
 }
